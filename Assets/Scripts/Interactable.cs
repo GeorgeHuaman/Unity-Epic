@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,8 +10,11 @@ public class Interactable : MonoBehaviour
     [ReadOnly]public string interactableID;
     public float interactableRadius;
     public float interactableRadiusVisibility;
-    [HideInInspector]private MeshRenderer interactableMeshRenderer; 
-    
+    [HideInInspector]private MeshRenderer interactableMeshRenderer;
+    public GameObject dialogueTextGameObject;
+    [HideInInspector]public TextMeshProUGUI dialogueText;
+    [HideInInspector] public GameObject player;
+
     [Header("Unity Events")]
     public UnityEvent unityEvent;
 
@@ -24,6 +28,8 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         interactableMeshRenderer = GetComponent<MeshRenderer>();
+        dialogueText = dialogueTextGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -37,8 +43,31 @@ public class Interactable : MonoBehaviour
         {
             AssignID();
         }
+        if (this.GetComponent<SphereCollider>() == null)
+        {
+            gameObject.AddComponent<SphereCollider>();
+            gameObject.AddComponent<Rigidbody>();
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            GetComponent<SphereCollider>().radius = interactableRadiusVisibility;
+            GetComponent<SphereCollider>().isTrigger = true;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.transform.tag=="Player")
+        {
+            Debug.Log("QQQ");
+        }
     }
 
+    //IEnumerator DialogueStart()
+    //{
+    //    while (true)
+    //    {
+    //        if()
+    //    }
+    //    return null;
+    //}
     private void AssignID()
     {
         // Solo si no tiene ya un ID
