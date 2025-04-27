@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,19 @@ public class Interactable : MonoBehaviour
     [HideInInspector]private MeshRenderer interactableMeshRenderer;
     public GameObject dialogueTextGameObject;
     [HideInInspector]public TextMeshProUGUI dialogueText;
+    [TextArea(1,5)]public List<string> dialogue;
     [HideInInspector] public GameObject player;
+    bool range;
+    private float distance;
+    public enum type
+    {
+        None,
+        Type1,
+        Type2,
+        Type3,
+        Type4,
+    }
+    public type iconType;
 
     [Header("Unity Events")]
     public UnityEvent unityEvent;
@@ -35,7 +48,8 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (range)
+            RangeDialogue();
     }
     private void OnValidate()
     {
@@ -52,22 +66,36 @@ public class Interactable : MonoBehaviour
             GetComponent<SphereCollider>().isTrigger = true;
         }
     }
+
+    public void RangeDialogue()
+    {
+         distance = Vector3.Distance(this.transform.position, player.transform.position);
+        if (distance <= interactableRadius && Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.DrawLine(transform.position,player.transform.position);
+        }
+    }
+
+    public void DialogueRepro()
+    {
+
+    }
+   
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.transform.tag=="Player")
         {
-            Debug.Log("QQQ");
+          range = true;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
 
-    //IEnumerator DialogueStart()
-    //{
-    //    while (true)
-    //    {
-    //        if()
-    //    }
-    //    return null;
-    //}
+        if (other.gameObject.transform.tag == "Player" && distance > interactableRadiusVisibility   )
+        {
+           range =  false;
+        }
+    }
     private void AssignID()
     {
         // Solo si no tiene ya un ID
