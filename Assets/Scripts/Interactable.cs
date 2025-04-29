@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -12,10 +13,16 @@ public class Interactable : MonoBehaviour
     public float interactableRadius;
     public float interactableRadiusVisibility;
     [HideInInspector]private MeshRenderer interactableMeshRenderer;
+
     public GameObject dialogueTextGameObject;
+    private bool startDialogue;
     [HideInInspector]public TextMeshProUGUI dialogueText;
-    [TextArea(1,5)]public List<string> dialogue;
+    public List<LineDialogue> lineasDeDialogo;
+    public AudioSource audioSource;
+
     [HideInInspector] public GameObject player;
+    public float delayEntreLineas = 1f;
+    private int indiceActual = 0;
     bool range;
     private float distance;
     public enum type
@@ -70,17 +77,34 @@ public class Interactable : MonoBehaviour
     public void RangeDialogue()
     {
          distance = Vector3.Distance(this.transform.position, player.transform.position);
-        if (distance <= interactableRadius && Input.GetKeyDown(KeyCode.F))
+        if (distance <= interactableRadius && Input.GetKeyDown(KeyCode.F) && !startDialogue)
         {
             Debug.DrawLine(transform.position,player.transform.position);
+            StartCoroutine(ReproducirDialogo());
         }
     }
 
-    public void DialogueRepro()
+    IEnumerator ReproducirDialogo()
     {
+        startDialogue = true;
+        while (indiceActual < lineasDeDialogo.Count)
+        {
+            LineDialogue linea = lineasDeDialogo[indiceActual];
 
+            dialogueText.text = linea.text;
+            audioSource.clip = linea.clip;
+            audioSource.Play();
+
+            yield return new WaitForSeconds(linea.clip.length + delayEntreLineas);
+
+            indiceActual++;
+        }
+        indiceActual = 0;
+        dialogueText.text = "";
+        startDialogue = false;
+        Debug.Log("Diálogo terminado");
     }
-   
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.transform.tag=="Player")
@@ -120,4 +144,18 @@ public class Interactable : MonoBehaviour
         interactableID = id.ToString("D2");
         Debug.Log($"Asignado ID {interactableID} a {gameObject.name}", gameObject);
     }
+}
+
+[Serializable]
+public class LineDialogue
+{
+    public AudioClip clip;
+    [TextArea]
+    public string text;
+
+    public LineDialogue (AudioClip clip, string text)
+    {
+        this.clip = clip;
+        this.text = text;
+    }   
 }
