@@ -4,32 +4,36 @@ using UnityEngine.UI;
 
 public class MissionUI : MonoBehaviour
 {
-    public Mision currentMission;
-    public TextMeshProUGUI nombreMisionText;
-    public TextMeshProUGUI descripcionMisionText;
-    public Transform listaDeTareasParent;
-    public GameObject tareaPrefab;
+    public static MissionUI instance;
+    public Mission mision;
+    public TextMeshProUGUI nameMisionText;
+    public TextMeshProUGUI descriptionMisionText;
+    public TextMeshProUGUI currentTaskText;
 
     void Start()
     {
-        MostrarMision(currentMission);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        nameMisionText.text = ("Mision: " + mision.questName);
+        descriptionMisionText.text = mision.description;
+        ShowTaskText();
     }
 
-    public void MostrarMision(Mision mision)
+    public void ShowTaskText()
     {
-        nombreMisionText.text = mision.questName;
-        descripcionMisionText.text = mision.description;
-
-        foreach (Transform child in listaDeTareasParent)
+        Task currentTask = mision.CurrentTask;
+        if (currentTask != null)
         {
-            Destroy(child.gameObject);
+            currentTaskText.text = currentTask.taskName;
+            Debug.Log("[MissionUI] Tarea actual mostrada: " + currentTask.taskName);
+        }
+        else
+        {
+            nameMisionText.text = "¡Misión completada!";
+            Debug.Log("[MissionUI] Todas las tareas completadas.");
         }
 
-        foreach (var task in mision.tasks)
-        {
-            GameObject nuevaTarea = Instantiate(tareaPrefab, listaDeTareasParent);
-            var texto = nuevaTarea.GetComponentInChildren<TextMeshProUGUI>();
-            texto.text = $"{task.taskName} - {(task.completed ? "✔️" : "❌")}";
-        }
     }
 }

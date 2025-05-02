@@ -9,7 +9,7 @@ public class MissionTriggerEventEditor : Editor
         MissionTriggerEvent trigger = (MissionTriggerEvent)target;
 
         trigger.triggeringTag = EditorGUILayout.TextField("Triggering Tag", trigger.triggeringTag);
-        trigger.targetMission = (Mision)EditorGUILayout.ObjectField("Target Mission", trigger.targetMission, typeof(Mision), true);
+        trigger.targetMission = (Mission)EditorGUILayout.ObjectField("Target Mission", trigger.targetMission, typeof(Mission), true);
         trigger.action = (MissionTriggerEvent.TriggerAction)EditorGUILayout.EnumPopup("Action", trigger.action);
 
         if (trigger.targetMission != null && trigger.targetMission.tasks.Count > 0)

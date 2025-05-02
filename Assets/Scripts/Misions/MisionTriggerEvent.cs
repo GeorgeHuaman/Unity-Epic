@@ -12,7 +12,7 @@ public class MissionTriggerEvent : MonoBehaviour
     public string triggeringTag = "Player";
 
     [Header("Quest Settings")]
-    public Mision targetMission;
+    public Mission targetMission;
     public TriggerAction action;
 
     [HideInInspector] public int selectedTaskIndex;
@@ -43,13 +43,12 @@ public class MissionTriggerEvent : MonoBehaviour
         {
             case TriggerAction.CompleteTask:
                 Debug.Log($"[Trigger] Completando la tarea '{task.taskName}'");
-                task.StartTask();
-                task.CompleteTask();
+                targetMission.CompleteTask(index);
+                MissionUI.instance.ShowTaskText();
                 break;
 
             case TriggerAction.AddProgressToTask:
-                Debug.Log($"[Trigger] Añadiendo progreso a la tarea '{task.taskName}'");
-                task.AddProgress();
+                targetMission.AddProgressToTask(index);
                 break;
         }
     }

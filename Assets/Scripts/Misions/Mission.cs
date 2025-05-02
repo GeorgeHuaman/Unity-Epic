@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Mision : MonoBehaviour
+public class Mission : MonoBehaviour
 {
     public string questName;
     public string description;
@@ -15,8 +15,8 @@ public class Mision : MonoBehaviour
 
     public List<Task> tasks = new List<Task>();
 
-    private bool started;
-    private bool completed;
+    [ReadOnly]public bool started;
+    [ReadOnly]public bool completed;
 
     private void Start()
     {
@@ -61,6 +61,7 @@ public class Mision : MonoBehaviour
             completed = true;
             onMissionComplete?.Invoke();
         }
+        MissionUI.instance.ShowTaskText();
     }
 
     private void TryStartNextTask()
@@ -100,5 +101,18 @@ public class Mision : MonoBehaviour
         }
 
         TryStartNextTask();
+    }
+
+    public Task CurrentTask
+    {
+        get
+        {
+            foreach (var task in tasks)
+            {
+                if (!task.completed)
+                    return task;
+            }
+            return null;
+        }
     }
 }

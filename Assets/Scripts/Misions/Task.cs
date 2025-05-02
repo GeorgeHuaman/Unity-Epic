@@ -15,7 +15,7 @@ public class Task
     public UnityEvent onStart;
     public UnityEvent onComplete;
 
-    [HideInInspector] public bool started;
+    [HideInInspector] public bool started = false;
     [HideInInspector] public bool completed;
     [HideInInspector] public int currentProgress = 0;
 
