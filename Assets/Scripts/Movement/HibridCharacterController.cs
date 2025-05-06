@@ -21,6 +21,8 @@ public class HibridCharacterController : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    public Joystick joystickDigital;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -38,11 +40,16 @@ public class HibridCharacterController : MonoBehaviour
         HandleInputs();
         Gravity();
     }
+    
+    bool IsOnMobile()
+    {
+        return Application.platform == RuntimePlatform.Android ||
+               Application.platform == RuntimePlatform.IPhonePlayer;
+    }
     bool IsUsingVR()
     {
         return XRSettings.isDeviceActive && !forceNonVR;
     }
-
     void HandleGroundCheck()
     {
         isGrounded = controller.isGrounded;
@@ -51,8 +58,15 @@ public class HibridCharacterController : MonoBehaviour
     }
     private void Move()
     {
+        if (velocity.x < 0)
+        {
+
+        }
         float inputX = Input.GetAxis("Horizontal");
         float inputZ = Input.GetAxis("Vertical");
+
+        inputX += joystickDigital.Horizontal;
+        inputZ += joystickDigital.Vertical;
 
         Vector3 move = cameraTransform.right * inputX + cameraTransform.forward * inputZ;
         move.y = 0f;
@@ -60,10 +74,13 @@ public class HibridCharacterController : MonoBehaviour
         float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
         controller.Move(move * speed * Time.deltaTime);
     }
-
-    private void Jump()
+    public void Jump()
     {
-        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        
     }
     private void Gravity()
     {
