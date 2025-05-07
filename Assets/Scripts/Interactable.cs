@@ -13,17 +13,11 @@ public class Interactable : MonoBehaviour
     public float interactableRadius;
     public float interactableRadiusVisibility;
     [HideInInspector]private MeshRenderer interactableMeshRenderer;
-
-    public GameObject dialogueTextGameObject;
-    private bool startDialogue;
-    [HideInInspector]public TextMeshProUGUI dialogueText;
-    public List<LineDialogue> lineasDeDialogo;
-    public AudioSource audioSource;
-
-    [HideInInspector] public GameObject player;
-    public float delayEntreLineas = 1f;
-    private int indiceActual = 0;
-    bool range;
+    [HideInInspector]public GameObject player;
+    [HideInInspector]public bool range;
+    [HideInInspector]public bool inputButton;
+    public GameObject button;
+    public GameObject icons;
     private float distance;
     public enum type
     {
@@ -48,7 +42,6 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         interactableMeshRenderer = GetComponent<MeshRenderer>();
-        dialogueText = dialogueTextGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         player = GameObject.FindWithTag("Player");
     }
 
@@ -56,55 +49,44 @@ public class Interactable : MonoBehaviour
     void Update()
     {
         if (range)
-            RangeDialogue();
+        {
+            Vector3 lookDir = Camera.main.transform.position - transform.position;
+            lookDir.y = 0f; // Solo gira en el plano XZ
+            icons.transform.forward = lookDir;
+            
+        }
+
+        if(RangePlayer())
+        {
+            button.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.F) || inputButton)
+                 EnterEvent();
+        }
     }
-    private void OnValidate()
+
+    private void EnterEvent()
     {
-        if (!Application.isPlaying)
-        {
-            AssignID();
-        }
-        if (this.GetComponent<SphereCollider>() == null)
-        {
-            gameObject.AddComponent<SphereCollider>();
-            gameObject.AddComponent<Rigidbody>();
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-            GetComponent<SphereCollider>().radius = interactableRadiusVisibility;
-            GetComponent<SphereCollider>().isTrigger = true;
-        }
+        inputButton = false;
+        Debug.Log("FUnciona");
+        //unityEvent.Invoke();
+        //animatorEvent.Invoke();
+        //questEvent.Invoke();
     }
 
-    public void RangeDialogue()
+    public bool RangePlayer()
     {
-         distance = Vector3.Distance(this.transform.position, player.transform.position);
-        if (distance <= interactableRadius && Input.GetKeyDown(KeyCode.F) && !startDialogue)
-        {
-            Debug.DrawLine(transform.position,player.transform.position);
-            StartCoroutine(ReproducirDialogo());
-        }
+        distance = Vector3.Distance(this.transform.position, player.transform.position);
+        if (distance <= interactableRadius)
+            return true;
+        return false;
     }
 
-    IEnumerator ReproducirDialogo()
+    public void ButtonsInteractuable(bool interactable)
     {
-        startDialogue = true;
-        while (indiceActual < lineasDeDialogo.Count)
-        {
-            LineDialogue linea = lineasDeDialogo[indiceActual];
-
-            dialogueText.text = linea.text;
-            audioSource.clip = linea.clip;
-            audioSource.Play();
-
-            yield return new WaitForSeconds(linea.clip.length + delayEntreLineas);
-
-            indiceActual++;
-        }
-        indiceActual = 0;
-        dialogueText.text = "";
-        startDialogue = false;
-        Debug.Log("Diálogo terminado");
+        inputButton = interactable;
     }
 
+    #region Collider
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.transform.tag=="Player")
@@ -120,6 +102,7 @@ public class Interactable : MonoBehaviour
            range =  false;
         }
     }
+    #endregion
     private void AssignID()
     {
         // Solo si no tiene ya un ID
@@ -143,6 +126,21 @@ public class Interactable : MonoBehaviour
 
         interactableID = id.ToString("D2");
         Debug.Log($"Asignado ID {interactableID} a {gameObject.name}", gameObject);
+    }
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+        {
+            AssignID();
+        }
+        if (this.GetComponent<SphereCollider>() == null)
+        {
+            gameObject.AddComponent<SphereCollider>();
+            gameObject.AddComponent<Rigidbody>();
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            GetComponent<SphereCollider>().radius = interactableRadiusVisibility;
+            GetComponent<SphereCollider>().isTrigger = true;
+        }
     }
 }
 
