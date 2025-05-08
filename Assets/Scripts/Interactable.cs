@@ -12,9 +12,9 @@ public class Interactable : MonoBehaviour
     [ReadOnly]public string interactableID;
     public float interactableRadius;
     public float interactableRadiusVisibility;
-    [HideInInspector]private MeshRenderer interactableMeshRenderer;
+    //[HideInInspector]private MeshRenderer interactableMeshRenderer;
     [HideInInspector]public GameObject player;
-    [HideInInspector]public bool range;
+    /*[HideInInspector]*/public bool range;
     [HideInInspector]public bool inputButton;
     public GameObject button;
     public GameObject icons;
@@ -35,26 +35,34 @@ public class Interactable : MonoBehaviour
     [Header("Animator Event")]
     public UnityEvent animatorEvent;
 
-    [Header("Quest Event")]
-    public UnityEvent questEvent;
+    //[Header("Quest Event")]
+    //public UnityEvent questEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-        interactableMeshRenderer = GetComponent<MeshRenderer>();
+        //interactableMeshRenderer = GetComponent<MeshRenderer>();
         player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (range)
+        Vector3 horizontalDistance = new Vector3(this.transform.position.x - player.transform.position.x, 0,
+            this.transform.position.z - player.transform.position.z);
+
+        float distanceVisibility = horizontalDistance.magnitude;
+
+        if (distanceVisibility <= interactableRadiusVisibility)
         {
+            icons.SetActive(true);
             Vector3 lookDir = Camera.main.transform.position - transform.position;
-            lookDir.y = 0f; // Solo gira en el plano XZ
+            /*lookDir.y = 0f;*/ // Solo gira en el plano XZ
             icons.transform.forward = lookDir;
-            
+            //button.transform.forward = lookDir;
         }
+        else
+        icons.SetActive(false);
 
         if(RangePlayer())
         {
@@ -62,23 +70,27 @@ public class Interactable : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.F) || inputButton)
                  EnterEvent();
         }
+        else
+            button.SetActive(false);
     }
 
     private void EnterEvent()
     {
         inputButton = false;
         Debug.Log("FUnciona");
-        //unityEvent.Invoke();
-        //animatorEvent.Invoke();
+        unityEvent?.Invoke();
+        animatorEvent?.Invoke();
         //questEvent.Invoke();
     }
 
     public bool RangePlayer()
     {
-        distance = Vector3.Distance(this.transform.position, player.transform.position);
-        if (distance <= interactableRadius)
-            return true;
-        return false;
+        Vector3 horizontalDistance = new Vector3(this.transform.position.x - player.transform.position.x,0,
+            this.transform.position.z - player.transform.position.z);
+
+        float distance = horizontalDistance.magnitude;
+
+        return distance <= interactableRadius;
     }
 
     public void ButtonsInteractuable(bool interactable)
@@ -97,7 +109,7 @@ public class Interactable : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
 
-        if (other.gameObject.transform.tag == "Player" && distance > interactableRadiusVisibility   )
+        if (other.gameObject.transform.tag == "Player" /*&& distance > interactableRadiusVisibility*/)
         {
            range =  false;
         }
@@ -129,18 +141,18 @@ public class Interactable : MonoBehaviour
     }
     private void OnValidate()
     {
-        if (!Application.isPlaying)
-        {
-            AssignID();
-        }
-        if (this.GetComponent<SphereCollider>() == null)
-        {
-            gameObject.AddComponent<SphereCollider>();
-            gameObject.AddComponent<Rigidbody>();
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-            GetComponent<SphereCollider>().radius = interactableRadiusVisibility;
-            GetComponent<SphereCollider>().isTrigger = true;
-        }
+        //if (!Application.isPlaying)
+        //{
+        //    AssignID();
+        //}
+        //if (this.GetComponent<SphereCollider>() == null)
+        //{
+        //    gameObject.AddComponent<SphereCollider>();
+        //    gameObject.AddComponent<Rigidbody>();
+        //    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        //    GetComponent<SphereCollider>().radius = interactableRadiusVisibility;
+        //    GetComponent<SphereCollider>().isTrigger = true;
+        //}
     }
 }
 

@@ -5,6 +5,11 @@ public class ImageUiActive : MonoBehaviour
     public GameObject imageWorld;
     public Transform player;
     float timer;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     void Update()
     {
         if (timer >= 0.5f)
