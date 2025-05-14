@@ -20,11 +20,6 @@ public class ImageUiActive : MonoBehaviour
                 gameObject.SetActive(false);
                 timer = 0;
             }
-            if (Vector3.Distance(player.transform.position, imageWorld.transform.position) >= 6f)
-            {
-                gameObject.SetActive(false);
-                timer = 0;
-            }
         }
         else
         {

@@ -4,14 +4,24 @@ using UnityEngine;
 using UnityEngine.XR;
 public class CameraLook : MonoBehaviour
 {
+    [Header("Pc")]
     float xMove;
     float yMove;
     float xRotation = 0f;
-    public Transform playerBody;
     public float sensitivity = 2f;
-    public float sensitivityMovil = 40f;
+
+    [Header("Movil")]
+    float rotateH;
+    float rotateV;
+    public float speedGiro = 0.2f;
+    public Joystick joystickDigital;
+
+    private float verticalRotation = 0f;
+
+    public Transform playerBody;
+
     
-    public Vector2 LockAxis;
+    
 
     void Start()
     {
@@ -20,10 +30,10 @@ public class CameraLook : MonoBehaviour
 
     void Update()
     {
-        
-        //if (IsOnMobile())
+
+        if (IsOnMobile())
             CameraMovil();
-        //else
+        else
             CameraMouse();
 
     }
@@ -42,13 +52,18 @@ public class CameraLook : MonoBehaviour
 
     private void CameraMovil()
     {
-        xMove = LockAxis.x * sensitivityMovil * Time.deltaTime;
-        yMove = LockAxis.y * sensitivityMovil * Time.deltaTime;
-        xRotation -= yMove;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        rotateH = joystickDigital.Horizontal * speedGiro;
+        float rotateV = -(joystickDigital.Vertical * speedGiro);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        playerBody.Rotate(Vector3.up * xMove);
+        // Acumular la rotación vertical
+        verticalRotation += rotateV;
+        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+
+        // Aplicar la rotación vertical con restricción
+        transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
+
+        // Rotación horizontal sin restricción
+        playerBody.Rotate(0, rotateH, 0);
     }
     bool IsOnMobile()
     {
