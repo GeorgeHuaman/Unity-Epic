@@ -9,10 +9,12 @@ public class HibridCharacterController : MonoBehaviour
     public float walkSpeed = 2f;
     public float sprintSpeed = 4f;
     public float jumpHeight = 1.2f;
+    public float rotationSpeed = 50f;
 
     [Header("Gravedad")]
     public float gravity = -9.81f;
     public Transform cameraTransform;
+    public Transform playerBody;
 
     [Header("Modo")]
     public bool forceNonVR = false;
@@ -40,7 +42,7 @@ public class HibridCharacterController : MonoBehaviour
         HandleInputs();
         Gravity();
     }
-    
+
     bool IsOnMobile()
     {
         return Application.platform == RuntimePlatform.Android ||
@@ -58,30 +60,30 @@ public class HibridCharacterController : MonoBehaviour
     }
     private void Move()
     {
-        if (velocity.x < 0)
-        {
+        float inputX = Input.GetAxis("Horizontal") + joystickDigital.Horizontal;
+        float inputZ = Input.GetAxis("Vertical") + joystickDigital.Vertical;
 
-        }
-        float inputX = Input.GetAxis("Horizontal");
-        float inputZ = Input.GetAxis("Vertical");
-
-        inputX += joystickDigital.Horizontal;
-        inputZ += joystickDigital.Vertical;
-
-        Vector3 move = cameraTransform.right * inputX + cameraTransform.forward * inputZ;
+        Vector3 move = playerBody.forward * inputZ + playerBody.right * inputX;
         move.y = 0f;
 
         float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
         controller.Move(move * speed * Time.deltaTime);
+
+        if (inputX != 0)
+        {
+            float rotationAmount = inputX * rotationSpeed * Time.deltaTime;
+            playerBody.Rotate(Vector3.up * rotationAmount);
+        }
     }
+
     public void Jump()
     {
         if (isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-        
     }
+
     private void Gravity()
     {
         velocity.y += gravity * Time.deltaTime;
@@ -90,11 +92,11 @@ public class HibridCharacterController : MonoBehaviour
 
     private void HandleInputs()
     {
-
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             forceNonVR = !forceNonVR;

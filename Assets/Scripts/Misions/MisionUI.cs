@@ -9,6 +9,7 @@ public class MissionUI : MonoBehaviour
     public TextMeshProUGUI nameMisionText;
     public TextMeshProUGUI descriptionMisionText;
     public TextMeshProUGUI currentTaskText;
+    public Animator animator;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class MissionUI : MonoBehaviour
         }
         else
         {
+            animator.SetBool("Completed", true);
             nameMisionText.text = "¡Misión completada!";
             Debug.Log("[MissionUI] Todas las tareas completadas.");
         }
