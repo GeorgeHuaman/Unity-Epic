@@ -60,8 +60,8 @@ public class HibridCharacterController : MonoBehaviour
     }
     private void Move()
     {
-        float inputX = Input.GetAxis("Horizontal") + joystickDigital.Horizontal;
-        float inputZ = Input.GetAxis("Vertical") + joystickDigital.Vertical;
+        float inputX = Input.GetAxis("Horizontal") /*+ joystickDigital.Horizontal*/;
+        float inputZ = Input.GetAxis("Vertical") /*+ joystickDigital.Vertical*/;
 
         Vector3 move = playerBody.forward * inputZ + playerBody.right * inputX;
         move.y = 0f;
