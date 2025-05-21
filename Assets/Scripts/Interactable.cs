@@ -14,6 +14,7 @@ public class Interactable : MonoBehaviour
     public float interactableRadiusVisibility;
     [HideInInspector]public GameObject player;
     [HideInInspector]public bool inputButton;
+    public Animator animator;
     public GameObject button;
     private float distance;
     public enum type
@@ -65,10 +66,26 @@ public class Interactable : MonoBehaviour
     public void EnterEvent()
     {
         inputButton = false;
-        Debug.Log("FUnciona");
         unityEvent?.Invoke();
         animatorEvent?.Invoke();
         //questEvent.Invoke();
+    }
+    public void SetAnimatorBoolTrue(string parameterName)
+    {
+        Animator animator = this.animator;
+        if (animator != null)
+        {
+            animator.SetBool(parameterName, true);
+        }
+    }
+
+    public void SetAnimatorBoolFalse(string parameterName)
+    {
+        Animator animator = this.animator;
+        if (animator != null)
+        {
+            animator.SetBool(parameterName, false);
+        }
     }
 
     public bool RangePlayer()
