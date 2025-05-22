@@ -3622,7 +3622,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3692,6 +3692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawn: {fileID: 1090492583}
+  player: {fileID: 1370209065}
 --- !u!54 &1115154095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3873,6 +3874,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7138209512225570615, guid: 9ba5c868cb7f7ea47b53ff5b614a4603, type: 3}
+--- !u!1 &1370209065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8733093507751517971, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 448115436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1385586910
 MeshCollider:
   m_ObjectHideFlags: 0

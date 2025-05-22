@@ -6,11 +6,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Reposition : MonoBehaviour
 {
     public GameObject respawn;
-    private void OnCollisionEnter(Collision collision)
+    public GameObject player;
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            transform.position = respawn.transform.position;
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position = respawn.transform.position;
+            player.GetComponent<CharacterController>().enabled = true;
         }
     }
 }
