@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +9,7 @@ public class Dialogue : MonoBehaviour
 {
     public Interactable interactable;
     public GameObject dialogueTextGameObject;
-    private bool startDialogue;
+    [HideInInspector] public bool startDialogue;
     [HideInInspector] public TextMeshProUGUI dialogueText;
     public List<LineDialogue> lineasDeDialogo;
     public AudioSource audioSource;
@@ -18,7 +19,8 @@ public class Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueText = dialogueTextGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        if (dialogueTextGameObject)
+            dialogueText = dialogueTextGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         player = GameObject.FindWithTag("Player");
     }
 
@@ -26,7 +28,10 @@ public class Dialogue : MonoBehaviour
     void Update()
     {
         if (interactable.RangePlayer() && !startDialogue && Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("aaaa");
             RangeDialogue();
+        }
     }
     public void RangeDialogue()
     {
@@ -34,13 +39,15 @@ public class Dialogue : MonoBehaviour
     }
     IEnumerator ReproducirDialogo()
     {
+        if(dialogueTextGameObject)
         dialogueText.gameObject.SetActive(true);
         startDialogue = true;
         while (indiceActual < lineasDeDialogo.Count)
         {
             LineDialogue linea = lineasDeDialogo[indiceActual];
 
-            dialogueText.text = linea.text;
+            if (dialogueTextGameObject)
+                dialogueText.text = linea.text;
             audioSource.clip = linea.clip;
             audioSource.Play();
 
@@ -49,9 +56,24 @@ public class Dialogue : MonoBehaviour
             indiceActual++;
         }
         indiceActual = 0;
-        dialogueText.text = "";
+        if (dialogueTextGameObject)
+            dialogueText.text = "";
         startDialogue = false;
         dialogueText.gameObject.SetActive(false);
         Debug.Log("Diálogo terminado");
+    }
+}
+
+[Serializable]
+public class LineDialogue
+{
+    public AudioClip clip;
+    [TextArea]
+    public string text;
+
+    public LineDialogue(AudioClip clip, string text)
+    {
+        this.clip = clip;
+        this.text = text;
     }
 }

@@ -48,12 +48,15 @@ public class Interactable : MonoBehaviour
     {
         if (RangeVisibility())
         {
+            if(button)
             button.SetActive(true);
             Vector3 lookDir = Camera.main.transform.position - transform.position;
             lookDir.y = 0f; // Solo gira en el plano XZ
-            button.transform.forward = -lookDir;
+            if (button)
+                button.transform.forward = -lookDir;
         }
         else
+            if (button)
             button.SetActive(false);
 
         if(RangePlayer())
@@ -156,16 +159,3 @@ public class Interactable : MonoBehaviour
     }
 }
 
-[Serializable]
-public class LineDialogue
-{
-    public AudioClip clip;
-    [TextArea]
-    public string text;
-
-    public LineDialogue(AudioClip clip, string text)
-    {
-        this.clip = clip;
-        this.text = text;
-    }
-}
