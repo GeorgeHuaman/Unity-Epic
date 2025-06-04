@@ -30,6 +30,8 @@ public class CameraLook : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.IsCanvasOpen())
+            return;
 
         if (IsOnMobile())
             CameraMovil();

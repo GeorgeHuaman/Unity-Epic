@@ -19,6 +19,8 @@ public class ChatGPTManager : MonoBehaviour
     private OpenAIApi openAI = new OpenAIApi();
     private List<ChatMessage> messages = new List<ChatMessage>();
 
+    public GameObject panelIA;
+
     public string GetIntruction()
     {
         string instruction = "Eres un personaje de videojuego y responderás al mensaje que el jugador te haga. \n" +
@@ -69,4 +71,11 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 
+    public void ButtonOpenPanel()
+    {
+        GameManager gameManager = GameManager.Instance;
+        gameManager.SetIsCanvasOpen(!panelIA.activeSelf);
+        panelIA.SetActive(gameManager.IsCanvasOpen());
+        
+    }
 }

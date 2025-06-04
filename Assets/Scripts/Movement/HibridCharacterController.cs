@@ -35,6 +35,10 @@ public class HibridCharacterController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.IsCanvasOpen())
+        {
+            return;
+        }
         if (IsUsingVR()) return;
 
         HandleGroundCheck();
