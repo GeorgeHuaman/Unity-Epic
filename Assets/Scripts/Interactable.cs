@@ -30,9 +30,6 @@ public class Interactable : MonoBehaviour
     [Header("Unity Events")]
     public UnityEvent unityEvent;
 
-    [Header("Animator Event")]
-    public UnityEvent animatorEvent;
-
     [Header("Quest Event")]
     public UnityEvent questEvent;
 
@@ -70,7 +67,6 @@ public class Interactable : MonoBehaviour
     {
         inputButton = false;
         unityEvent?.Invoke();
-        animatorEvent?.Invoke();
         //questEvent.Invoke();
     }
     public void SetAnimatorBoolTrue(string parameterName)
