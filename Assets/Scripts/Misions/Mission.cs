@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Mission : MonoBehaviour
 {
     public string questName;
+    [TextArea(5, 20)]
     public string description;
     public bool startAutomatically;
     public bool taskAreOrdered;

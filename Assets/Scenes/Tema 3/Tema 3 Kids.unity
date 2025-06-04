@@ -2425,12 +2425,220 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7677674002667498155, guid: 93af787185db9c14484238ec0535b82f, type: 3}
+    - {fileID: 7677674003062338173, guid: 93af787185db9c14484238ec0535b82f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7677674001602207613, guid: 93af787185db9c14484238ec0535b82f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7677674003062338174, guid: 93af787185db9c14484238ec0535b82f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1748796574}
+    - targetCorrespondingSourceObject: {fileID: 7677674002667498157, guid: 93af787185db9c14484238ec0535b82f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1748796573}
   m_SourcePrefab: {fileID: 100100000, guid: 93af787185db9c14484238ec0535b82f, type: 3}
+--- !u!1 &1748796571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7677674002667498157, guid: 93af787185db9c14484238ec0535b82f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1748796570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1748796572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7677674003062338174, guid: 93af787185db9c14484238ec0535b82f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1748796570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1748796573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748796571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15ed871611295842991b6c614c29eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggeringTag: Player
+  targetMission: {fileID: 0}
+  action: 0
+  selectedTaskIndex: 0
+--- !u!114 &1748796574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748796572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333fca9190682604698c0b9a92fe6805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questName: Tema 3
+  description: "Sigue las instrucciones. Encuentra las pinturas, los s\xEDmbolos,
+    entra en los enlaces y realiza las actividades."
+  startAutomatically: 0
+  taskAreOrdered: 1
+  onMissionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onMissionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  tasks:
+  - type: 0
+    taskName: Dirigete al Pozo
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Entra al museo
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: "Busca \"Monta\xF1as de basura\""
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: "Busca \"Contaminaci\xF3n ambiental\""
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: "Busca \"Contaminaci\xF3n de mares\""
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Busca "Incendios forestales"
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Ve al jardin trasero
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: "Busca el coraz\xF3n"
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Busca la lupa
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Busca la bombilla
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Encuentra Prototipar
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Encuentra el testeo
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  started: 0
+  completed: 0
 --- !u!1 &1783201303
 GameObject:
   m_ObjectHideFlags: 0
