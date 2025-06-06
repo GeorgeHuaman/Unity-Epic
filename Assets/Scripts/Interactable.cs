@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
@@ -30,13 +31,21 @@ public class Interactable : MonoBehaviour
     public UnityEvent onInteractEvent;
     public UnityEvent onExitEvent;
 
-    [Header("Quest Event")]
-    public UnityEvent questEvent;
+    public GameObject prefabCanvasButton;
+    public Button interactButton;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         AssignEvent();
+
+        if (prefabCanvasButton != null)
+        {
+            GameObject prefab = Instantiate(prefabCanvasButton, transform.position, Quaternion.identity);
+            interactButton = prefab.GetComponentInChildren<Button>();
+            button = interactButton.gameObject;
+        }
+        
     }
 
     void Update()
