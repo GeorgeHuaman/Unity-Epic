@@ -28,7 +28,7 @@ public class Interactable : MonoBehaviour
 
     [Header("Unity Events")]
     public UnityEvent onEnterEvent;
-    public UnityEvent onInteractEvent;
+    public UnityEvent onAnimEvent;
     public UnityEvent onExitEvent;
 
     public GameObject prefabCanvasButton;
@@ -38,7 +38,10 @@ public class Interactable : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         AssignEvent();
-
+        if (gameObject.GetComponent<Animator>() != null)
+        {
+            animator = gameObject.GetComponent<Animator>();
+        }
         if (prefabCanvasButton != null)
         {
             GameObject prefab = Instantiate(prefabCanvasButton, transform.position, Quaternion.identity);
@@ -79,9 +82,9 @@ public class Interactable : MonoBehaviour
 
     private IEnumerator HandleInteraction()
     {
-        onEnterEvent?.Invoke();
+        onAnimEvent?.Invoke();
         yield return null;
-        onInteractEvent?.Invoke();
+        onEnterEvent?.Invoke();
         yield return null;
         onExitEvent?.Invoke();
     }
@@ -163,7 +166,7 @@ public class Interactable : MonoBehaviour
             ImageInteractuable imageInteractuable = parent.GetComponent<ImageInteractuable>();
             if (imageInteractuable != null)
             {
-                onInteractEvent.AddListener(imageInteractuable.OpenUI);
+                onAnimEvent.AddListener(imageInteractuable.OpenUI);
             }
         }
     }

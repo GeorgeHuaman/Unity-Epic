@@ -221,6 +221,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -405,7 +410,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 38437172}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 38437172}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &43067830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5186248660551573003, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &43067832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43067830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -415,15 +481,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &57560994
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +756,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64902217}
   m_CullTransparentMesh: 1
+--- !u!1 &76700561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1612546348708615467, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &76700563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76700561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &85341264
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +876,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -854,6 +961,43 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b87de091bc2c74458a9ae7da6b81bc0, type: 3}
+--- !u!1 &111675542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1612546348800471160, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &111675544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111675542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &120470690
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1131,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120470690}
   m_CullTransparentMesh: 1
+--- !u!1 &120506448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076765109794397070, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &120506450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120506448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &144596251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1537,73 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!1 &159406168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3613014118609258039, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &159406171 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1209894563758926431, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &159406172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159406168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.95
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 159406171}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 159406172}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 159406172}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1001 &174548003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1364,6 +1612,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1714,15 +1967,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &182090874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,15 +1998,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &182090875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,15 +2029,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &182090876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1810,15 +2060,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &184957891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,27 +2320,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &208459726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,27 +2613,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &252528360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3281,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300993138}
   m_CullTransparentMesh: 1
+--- !u!1 &321057321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076765109711268902, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &321057323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321057321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &338160081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,27 +3386,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &343963208
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,27 +3450,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &347248551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3466,6 +3712,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348891266}
   m_CullTransparentMesh: 1
+--- !u!1 &351241954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238581433305700520, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &351241956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351241954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &361447284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,7 +3837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -3563,16 +3846,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 372519721}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 372519721}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &375339791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3586,7 +3892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -3595,16 +3901,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 375339791}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 375339791}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1001 &380288255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3613,6 +3942,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3817,6 +4151,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3933,6 +4272,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &454518633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643555684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816db035f2877c74094bc3bbe0d83232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correct: {fileID: 0}
+  incorrect: {fileID: 0}
+  letter: {fileID: 0}
+  pedestal:
+    Object: {fileID: 0}
+    objectType: 0
 --- !u!1 &474814814
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,6 +4545,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &503592351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8952886406903758801, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &523486198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4201,7 +4564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -4210,16 +4573,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 523486198}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 523486198}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &587794223
 GameObject:
   m_ObjectHideFlags: 0
@@ -4444,6 +4830,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591707462}
   m_CullTransparentMesh: 1
+--- !u!1 &594549871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238581433531916697, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &594549873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594549871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &623919438
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,6 +5001,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623919438}
   m_CullTransparentMesh: 1
+--- !u!1 &642620996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5186248660287177954, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &642620998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642620996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &644303051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238581433583564228, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &644303053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644303051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!4 &675402354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6454855748047721705, guid: a9cdcbb21c79f4e45b0e8099be69291f,
@@ -4592,6 +5089,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4728,27 +5230,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &714626675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5072,7 +5561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -5081,16 +5570,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 773903658}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 773903658}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &775387975
 GameObject:
   m_ObjectHideFlags: 0
@@ -5331,6 +5843,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5679,27 +6196,51 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &879326144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1612546349401391331, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &879326146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879326144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &893194251
 GameObject:
   m_ObjectHideFlags: 0
@@ -6106,27 +6647,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &953159560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6140,7 +6668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -6149,16 +6677,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 953159560}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 953159560}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &972904242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6172,7 +6723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -6181,16 +6732,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 972904242}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 972904242}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1017229008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6351,7 +6925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -6360,16 +6934,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 1056841855}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1056841855}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1063316821
 GameObject:
   m_ObjectHideFlags: 0
@@ -6406,6 +7003,67 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1070976518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3613014119322772239, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1070976522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070976518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.95
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1070976522}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1070976522}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1076363468
 GameObject:
   m_ObjectHideFlags: 0
@@ -6508,6 +7166,67 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!1 &1077365340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076765108798295082, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1077365342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077365340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1077365343}
+        m_TargetAssemblyTypeName: Return, Assembly-CSharp
+        m_MethodName: Data
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!114 &1077365343 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7864406110113057031, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077365340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089e6521abfc5f24e82034ef6491200b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1128448918
 GameObject:
   m_ObjectHideFlags: 0
@@ -6564,27 +7283,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1128574783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6743,27 +7449,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1150879781
 GameObject:
   m_ObjectHideFlags: 0
@@ -7096,27 +7789,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1216653393
 GameObject:
   m_ObjectHideFlags: 0
@@ -7588,6 +8268,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7681,7 +8366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -7690,16 +8375,45 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 1262001095}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1262001095}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &1274749167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6782131212647621239, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1298771229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7834,6 +8548,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298771229}
   m_CullTransparentMesh: 1
+--- !u!1 &1368155842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5186248661087843076, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1368155844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368155842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1390718828
 GameObject:
   m_ObjectHideFlags: 0
@@ -7949,7 +8700,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1404540205}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1404540205}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &1405145072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5186248659470040967, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1405145074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405145072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -7959,152 +8771,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &1415976543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1415976546}
-  - component: {fileID: 1415976545}
-  - component: {fileID: 1415976544}
-  - component: {fileID: 1415976547}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1415976544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415976543}
-  m_Enabled: 1
---- !u!20 &1415976545
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415976543}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1415976546
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415976543}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1415976547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415976543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1425416918
 GameObject:
   m_ObjectHideFlags: 0
@@ -8493,6 +9167,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435318005}
   m_CullTransparentMesh: 1
+--- !u!1 &1438426032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076765109349598011, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438426034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438426032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &1476226774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238581433544118249, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1476226776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476226774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1513002864
 GameObject:
   m_ObjectHideFlags: 0
@@ -8772,6 +9520,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!4 &1530782519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3489755654699711439, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908846869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1532339602
 GameObject:
   m_ObjectHideFlags: 0
@@ -8906,6 +9660,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532339602}
   m_CullTransparentMesh: 1
+--- !u!1 &1554581773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 865075385244835223, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908846869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1554581774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554581773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063c02c17fba69647968ae6e15b3e787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 1530782519}
+  handVerify: 0
+  types:
+    Object: {fileID: 0}
+    objectType: 0
+--- !u!20 &1561135641 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7990873191231833673, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908846869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563224486
 GameObject:
   m_ObjectHideFlags: 0
@@ -9217,27 +10000,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1587615800
 GameObject:
   m_ObjectHideFlags: 0
@@ -9506,7 +10276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -9515,16 +10285,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 1619091886}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1619091886}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1001 &1643555668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9593,7 +10386,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6782131212355243037, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1561135641}
     - target: {fileID: 6782131213732031618, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864406110113057031, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      propertyPath: types.objectType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952886406903758801, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9634,6 +10442,12 @@ PrefabInstance:
     - {fileID: 5283134545408828087, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 5283134545769871874, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 5283134545720151466, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 5283134544748506534, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 424328485245666458, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 9090929471589800312, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 5458909161076343136, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 5458909160950445522, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 5458909161453364312, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6454855748047721705, guid: a9cdcbb21c79f4e45b0e8099be69291f,
@@ -9641,38 +10455,118 @@ PrefabInstance:
       insertIndex: 70
       addedObject: {fileID: 1150879782}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9076765109711268902, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 321057323}
+    - targetCorrespondingSourceObject: {fileID: 9076765109794397070, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 120506450}
+    - targetCorrespondingSourceObject: {fileID: 9076765109349598011, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1438426034}
+    - targetCorrespondingSourceObject: {fileID: 1612546348165469080, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1694370315}
+    - targetCorrespondingSourceObject: {fileID: 1612546348800471160, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 111675544}
+    - targetCorrespondingSourceObject: {fileID: 1612546348708615467, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 76700563}
+    - targetCorrespondingSourceObject: {fileID: 5186248660551573003, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 43067832}
+    - targetCorrespondingSourceObject: {fileID: 5186248660287177954, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642620998}
+    - targetCorrespondingSourceObject: {fileID: 5186248659470040967, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1405145074}
+    - targetCorrespondingSourceObject: {fileID: 238581433544118249, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1476226776}
+    - targetCorrespondingSourceObject: {fileID: 238581433531916697, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 594549873}
+    - targetCorrespondingSourceObject: {fileID: 238581433583564228, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 644303053}
     - targetCorrespondingSourceObject: {fileID: 4974339494194623648, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 182090876}
+    - targetCorrespondingSourceObject: {fileID: 238581433305700520, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 351241956}
     - targetCorrespondingSourceObject: {fileID: 5387908830035273338, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 182090875}
+    - targetCorrespondingSourceObject: {fileID: 9076765108798295082, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1077365342}
     - targetCorrespondingSourceObject: {fileID: 966363894702974836, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 182090874}
+    - targetCorrespondingSourceObject: {fileID: 1612546349401391331, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 879326146}
     - targetCorrespondingSourceObject: {fileID: 1656127638770365229, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 182090873}
+    - targetCorrespondingSourceObject: {fileID: 5186248661087843076, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1368155844}
     - targetCorrespondingSourceObject: {fileID: 6782131213069731907, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1643555692}
+    - targetCorrespondingSourceObject: {fileID: 6782131213069731907, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1643555698}
     - targetCorrespondingSourceObject: {fileID: 6782131212320907925, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1643555691}
+    - targetCorrespondingSourceObject: {fileID: 6782131212320907925, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1643555697}
     - targetCorrespondingSourceObject: {fileID: 6782131214248919868, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1643555690}
+    - targetCorrespondingSourceObject: {fileID: 6782131214248919868, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1643555696}
     - targetCorrespondingSourceObject: {fileID: 6782131212619275361, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1643555689}
+    - targetCorrespondingSourceObject: {fileID: 6782131212619275361, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 454518633}
     - targetCorrespondingSourceObject: {fileID: 3613014117695477670, guid: a9cdcbb21c79f4e45b0e8099be69291f,
         type: 3}
       insertIndex: -1
@@ -9733,6 +10627,18 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1262001095}
+    - targetCorrespondingSourceObject: {fileID: 3613014119322772239, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1070976522}
+    - targetCorrespondingSourceObject: {fileID: 3613014118751695493, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1645978914}
+    - targetCorrespondingSourceObject: {fileID: 3613014118609258039, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 159406172}
   m_SourcePrefab: {fileID: 100100000, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
 --- !u!1 &1643555669 stripped
 GameObject:
@@ -9861,7 +10767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -9870,16 +10776,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 1643555688}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1643555688}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &1643555689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9903,15 +10832,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &1643555690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9935,15 +10863,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &1643555691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9957,7 +10884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.41
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -9966,16 +10893,27 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 1554581774}
+        m_TargetAssemblyTypeName: GrabObject, Assembly-CSharp
+        m_MethodName: VerifyPedestal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &1643555692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9999,15 +10937,129 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!114 &1643555696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643555685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816db035f2877c74094bc3bbe0d83232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correct: {fileID: 0}
+  incorrect: {fileID: 0}
+  letter: {fileID: 0}
+  pedestal:
+    Object: {fileID: 0}
+    objectType: 0
+--- !u!114 &1643555697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643555686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816db035f2877c74094bc3bbe0d83232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correct: {fileID: 1942184662}
+  incorrect: {fileID: 1274749167}
+  letter: {fileID: 503592351}
+  pedestal:
+    Object: {fileID: 1643555686}
+    objectType: 1
+--- !u!114 &1643555698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643555687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816db035f2877c74094bc3bbe0d83232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correct: {fileID: 0}
+  incorrect: {fileID: 0}
+  letter: {fileID: 0}
+  pedestal:
+    Object: {fileID: 0}
+    objectType: 0
+--- !u!1 &1645978910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3613014118751695493, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1645978914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645978910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.95
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1645978914}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1645978914}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitEvent:
     m_PersistentCalls:
       m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1647658412
 GameObject:
   m_ObjectHideFlags: 0
@@ -10276,27 +11328,51 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+--- !u!1 &1694370313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1612546348165469080, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1694370315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694370313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 2.44
+  interactableRadiusVisibility: 0
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  button: {fileID: 0}
+  iconType: 0
+  onEnterEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1709381316
 GameObject:
   m_ObjectHideFlags: 0
@@ -10945,16 +12021,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 1877489882}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877489882}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &1878076143
 GameObject:
   m_ObjectHideFlags: 0
@@ -11180,6 +12279,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903849472}
   m_CullTransparentMesh: 1
+--- !u!1001 &1908846869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 865075385244835223, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_Name
+      value: XR Interaction Hands Setup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.623
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773256366622995465, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 865075385244835223, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1554581774}
+  m_SourcePrefab: {fileID: 100100000, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
 --- !u!1 &1916372887
 GameObject:
   m_ObjectHideFlags: 0
@@ -11271,6 +12442,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916372887}
   m_CullTransparentMesh: 1
+--- !u!1 &1942184662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6782131213787676071, guid: a9cdcbb21c79f4e45b0e8099be69291f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1643555668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1959567621
 GameObject:
   m_ObjectHideFlags: 0
@@ -11515,6 +12692,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11944,7 +13126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -11953,16 +13135,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 2034614847}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034614847}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &2039222417
 GameObject:
   m_ObjectHideFlags: 0
@@ -12148,6 +13353,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3787113938488472387, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2102492956}
     - target: {fileID: 4191845407038929422, guid: 9b87de091bc2c74458a9ae7da6b81bc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12223,6 +13433,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b87de091bc2c74458a9ae7da6b81bc0, type: 3}
+--- !u!1 &2102492956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8733093507751517971, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908846869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2109163881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12236,7 +13452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableID: 
-  interactableRadius: 0
+  interactableRadius: 2.95
   interactableRadiusVisibility: 0
   player: {fileID: 0}
   inputButton: 0
@@ -12245,16 +13461,39 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
-  onInteractEvent:
+      m_Calls:
+      - m_Target: {fileID: 2109163881}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2109163881}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetAnimatorBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OpenBox
+          m_BoolArgument: 0
+        m_CallState: 2
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &2109837000
 GameObject:
   m_ObjectHideFlags: 0
@@ -12347,27 +13586,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &2140803321
 GameObject:
   m_ObjectHideFlags: 0
@@ -12524,27 +13750,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &88457488005536447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13345,27 +14558,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &856506604835395109
 GameObject:
   m_ObjectHideFlags: 0
@@ -15531,27 +16731,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!224 &3799077241307457886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16595,27 +17782,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!65 &4917803615050927203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17437,27 +18611,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!222 &5606895620344455495
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17753,27 +18914,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!114 &5880983123569479413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18344,27 +19492,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &6661107972595627862
 GameObject:
   m_ObjectHideFlags: 0
@@ -19290,27 +20425,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!4 &8130435238334853078
 Transform:
   m_ObjectHideFlags: 0
@@ -19757,27 +20879,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!222 &8599092445298202714
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20186,27 +21295,14 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
 --- !u!1 &8971026791682434283
 GameObject:
   m_ObjectHideFlags: 0
@@ -20519,10 +21615,10 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1415976546}
   - {fileID: 210217184}
   - {fileID: 1643555668}
   - {fileID: 8091484488725714016}
+  - {fileID: 1908846869}
   - {fileID: 434263761}
   - {fileID: 1986699983}
   - {fileID: 380288255}
