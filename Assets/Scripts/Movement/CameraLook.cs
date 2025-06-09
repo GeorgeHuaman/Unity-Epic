@@ -25,13 +25,19 @@ public class CameraLook : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
+
     }
 
     void Update()
     {
         if (GameManager.Instance.IsCanvasOpen())
+        {
+            Cursor.lockState = CursorLockMode.None;
             return;
+        }
+        else Cursor.lockState = CursorLockMode.Locked;
+
+
 
         if (IsOnMobile())
             CameraMovil();

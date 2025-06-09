@@ -12,7 +12,6 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public GameObject player;
     [HideInInspector] public bool inputButton;
     public Animator animator;
-    public GameObject button;
     private float distance;
 
     public enum type
@@ -33,11 +32,13 @@ public class Interactable : MonoBehaviour
 
     public GameObject prefabCanvasButton;
     public Button interactButton;
+    public GameObject buttonParent;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         AssignEvent();
+       
         if (gameObject.GetComponent<Animator>() != null)
         {
             animator = gameObject.GetComponent<Animator>();
@@ -46,7 +47,16 @@ public class Interactable : MonoBehaviour
         {
             GameObject prefab = Instantiate(prefabCanvasButton, transform.position, Quaternion.identity);
             interactButton = prefab.GetComponentInChildren<Button>();
-            button = interactButton.gameObject;
+            buttonParent = interactButton.transform.parent.gameObject;
+            interactButton.onClick.AddListener(EnterEvent);
+
+        }
+        else
+        {
+            if (interactButton == null)
+            {
+                buttonParent = transform.GetChild(0).transform.GetChild(0).gameObject;
+            }
         }
         
     }
@@ -55,16 +65,16 @@ public class Interactable : MonoBehaviour
     {
         if (RangeVisibility())
         {
-            if (button)
-                button.SetActive(true);
+            if (buttonParent)
+                buttonParent.SetActive(true);
             Vector3 lookDir = Camera.main.transform.position - transform.position;
             lookDir.y = 0f;
-            if (button)
-                button.transform.forward = -lookDir;
+            if (buttonParent)
+                buttonParent.transform.forward = -lookDir;
         }
-        else if (button)
+        else if (buttonParent)
         {
-            button.SetActive(false);
+            buttonParent.SetActive(false);
         }
 
         if (RangePlayer())
