@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GrabObject;
 
 public class Return : MonoBehaviour
 {
     public Vector3 init;
     public ObjectTypes types;
-    GrabObject grabObject;
+    public GrabObject grabObject;
     void Start()
     {
         init = transform.position;
