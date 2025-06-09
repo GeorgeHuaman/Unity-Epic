@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MissionTriggerEvent : MonoBehaviour
 {
@@ -17,12 +18,19 @@ public class MissionTriggerEvent : MonoBehaviour
 
     [HideInInspector] public int selectedTaskIndex;
 
+    [Header("Trigger Events")]
+    public UnityEvent onTriggerEnterEvent;
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(triggeringTag)) return;
-        if (targetMission == null) return;
 
         Debug.Log($"[Trigger] Activado por: {other.name}");
+
+        // Ejecutar UnityEvent asignado
+        onTriggerEnterEvent?.Invoke();
+
+        if (targetMission == null) return;
 
         int index = selectedTaskIndex;
         if (index < 0 || index >= targetMission.tasks.Count) return;
@@ -32,11 +40,13 @@ public class MissionTriggerEvent : MonoBehaviour
         if (targetMission.taskAreOrdered)
         {
             for (int i = 0; i < index; i++)
+            {
                 if (!targetMission.tasks[i].completed)
                 {
                     Debug.Log($"[Trigger] No se puede completar '{task.taskName}' porque la tarea anterior no está completa.");
                     return;
                 }
+            }
         }
 
         switch (action)

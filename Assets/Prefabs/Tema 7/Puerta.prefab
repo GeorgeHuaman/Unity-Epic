@@ -182,29 +182,20 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 1232050310899820586}
-  button: {fileID: 8947742500411840802}
   iconType: 0
-  unityEvent:
+  onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  animatorEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1316450403301431025}
-        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: SetAnimatorBoolTrue
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OpenBool
-          m_BoolArgument: 0
-        m_CallState: 2
-  questEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &7254340140496440905
 GameObject:
   m_ObjectHideFlags: 0

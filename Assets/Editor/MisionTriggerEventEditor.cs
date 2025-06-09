@@ -9,6 +9,7 @@ public class MissionTriggerEventEditor : Editor
     SerializedProperty targetMissionProp;
     SerializedProperty actionProp;
     SerializedProperty selectedTaskIndexProp;
+    SerializedProperty onTriggerEnterEventProp; // <- NUEVO
 
     private void OnEnable()
     {
@@ -17,6 +18,7 @@ public class MissionTriggerEventEditor : Editor
         targetMissionProp = serializedObject.FindProperty("targetMission");
         actionProp = serializedObject.FindProperty("action");
         selectedTaskIndexProp = serializedObject.FindProperty("selectedTaskIndex");
+        onTriggerEnterEventProp = serializedObject.FindProperty("onTriggerEnterEvent"); // <- NUEVO
     }
 
     public override void OnInspectorGUI()
@@ -26,6 +28,9 @@ public class MissionTriggerEventEditor : Editor
         EditorGUILayout.PropertyField(triggeringTagProp, new GUIContent("Triggering Tag"));
         EditorGUILayout.PropertyField(targetMissionProp, new GUIContent("Target Mission"));
         EditorGUILayout.PropertyField(actionProp, new GUIContent("Action"));
+
+        // Evento UnityEvent
+        EditorGUILayout.PropertyField(onTriggerEnterEventProp, new GUIContent("On Trigger Enter Event")); // <- NUEVO
 
         // Botón para buscar misión automáticamente
         if (GUILayout.Button("Buscar misión en la escena"))

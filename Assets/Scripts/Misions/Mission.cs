@@ -100,7 +100,7 @@ public class Mission : MonoBehaviour
             completed = true;
             onMissionComplete?.Invoke();
         }
-
+        MissionUI.instance.ShowTaskText();
         TryStartNextTask();
     }
 
