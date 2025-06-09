@@ -8,21 +8,23 @@ public class GrabObject : MonoBehaviour
     public Transform hand;
     public bool handVerify = false;
     public static GrabObject instance;
-    [HideInInspector] public ObjectTypes types;
+    public ObjectTypes types;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instance = this.GetComponent<GrabObject>();
+        instance = this;
     }
 
     public void PickObject(ObjectTypes types)
     {
         if (handVerify)
         {
-            types.Object.transform.SetParent(null, false);
-            types.Object.GetComponent<Return>().Returned();
+            this.types.Object.transform.SetParent(null, false);
+            this.types.Object.GetComponent<Return>().Returned();
         }
         types.Object.transform.SetParent(hand);
+        this.types = types;
+        handVerify = true;
     }
 
     void Drop(ObjectTypes types)
@@ -41,6 +43,7 @@ public class GrabObject : MonoBehaviour
             types.Object.transform.SetParent(null, false);
             types.Object.gameObject.SetActive(false);
             types = null;
+            handVerify=false;
 
         }
         else
@@ -50,25 +53,24 @@ public class GrabObject : MonoBehaviour
         }
         
     }
-
-    [Serializable]
-    public class ObjectTypes
+}
+[Serializable]
+public class ObjectTypes
+{
+    public GameObject Object;
+    public enum type
     {
-        public GameObject Object;
-        public enum type
-        {
-            None,
-            Red,
-            Blue,
-            Yellow,
-            Green
-        }
-        public type objectType;
+        None,
+        Red,
+        Blue,
+        Yellow,
+        Green
+    }
+    public type objectType;
 
-        public ObjectTypes(GameObject @object, type objectType)
-        {
-            Object = @object;
-            this.objectType = objectType;
-        }
+    public ObjectTypes(GameObject @object, type objectType)
+    {
+        Object = @object;
+        this.objectType = objectType;
     }
 }
