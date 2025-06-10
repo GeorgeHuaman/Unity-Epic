@@ -71,7 +71,7 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 
-    public void ButtonOpenPanel()
+    public void ButtonChatGpt()
     {
         GameManager gameManager = GameManager.Instance;
         gameManager.SetIsCanvasOpen(!panelIA.activeSelf);

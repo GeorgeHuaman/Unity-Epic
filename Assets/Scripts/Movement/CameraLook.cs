@@ -21,23 +21,12 @@ public class CameraLook : MonoBehaviour
     public Transform playerBody;
 
     
-    
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-        if (GameManager.Instance.IsCanvasOpen())
+        if (!GameManager.Instance.GetBoolCursorLocked())
         {
-            Cursor.lockState = CursorLockMode.None;
             return;
         }
-        else Cursor.lockState = CursorLockMode.Locked;
-
-
 
         if (IsOnMobile())
             CameraMovil();
