@@ -8,9 +8,13 @@ public class Teleport : MonoBehaviour
     public GameObject buttons;
     public List<GameObject> cartelesWord = new List<GameObject>();
     bool acces= false;
+    public GameObject player;
     //19
     public void Tepe()
     {
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = teleport.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
     public void AgreedTeleport(GameObject carteles)
