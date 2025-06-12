@@ -35,10 +35,10 @@ public class HibridCharacterController : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.GetBoolCursorLocked())
-        {
-            return;
-        }
+        //if (!GameManager.Instance.GetBoolCursorLocked())
+        //{
+        //    return;
+        //}
 
         if (IsUsingVR()) return;
 
