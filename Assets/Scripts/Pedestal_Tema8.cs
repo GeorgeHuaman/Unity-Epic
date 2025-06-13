@@ -5,6 +5,7 @@ using static GrabObject;
 
 public class Pedestal_Tema8 : MonoBehaviour
 {
+    public Mission mision;
     public GameObject correct;
     public GameObject incorrect;
     public GameObject letter;
@@ -26,10 +27,26 @@ public class Pedestal_Tema8 : MonoBehaviour
         correct.SetActive(true);
         letter.SetActive(true);
         gameObject.GetComponent<Pedestal_Tema8>().enabled = false;
-        if (red) confirm.Red();
-        if (yellow) confirm.Yellow();
-        if (blue) confirm.Blue();
-        if (green) confirm.Green();
+        if (red)
+        { 
+            confirm.Red();
+            mision.CompleteTask(4);
+        }
+        if (yellow) 
+        { 
+            confirm.Yellow();
+            mision.CompleteTask(6);
+        }
+        if (blue) 
+        { 
+            confirm.Blue();
+            mision.CompleteTask(3);
+        }
+        if (green) 
+        {
+            confirm.Green();
+            mision.CompleteTask(5);
+        }
     }
 
     public void Incorrect()
