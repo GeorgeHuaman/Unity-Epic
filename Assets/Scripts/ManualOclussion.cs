@@ -10,7 +10,6 @@ public class ManualOclussion : MonoBehaviour
     void Start()
     {
         //localAvatar = SpatialBridge.actorService.localActor.avatar;
-        //avatar = localAvatar.position;
         StartCoroutine(CheckDistanceRoutine());
     }
 
