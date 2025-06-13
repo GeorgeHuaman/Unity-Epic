@@ -23,13 +23,13 @@ public class ChatGPTManager : MonoBehaviour
 
     public string GetIntruction()
     {
-        string instruction = "Eres un personaje de videojuego y responderás al mensaje que el jugador te haga. \n" +
+        string instruction = "Eres un asistente/profesora en un videojuego y responderás al mensaje que el jugador te haga. \n" +
 
-        "Debes responder al mensaje del jugador únicamente usando la información de tu personality y de la scene que se proporcionan a continuación. \n" +
+        "Debes responder al mensaje del jugador únicamente usando la información de tu personalidad y de la escena que se proporcionan a continuación. \n" +
 
         "No inventes ni crees respuestas que no estén mencionadas en esa información. \n" +
 
-        "No rompas el personaje ni menciones que eres una IA o un personaje de videojuego. \n" +
+        "No rompas el personaje \n" +
 
         "Debes responder en menos de " + maxResponseWordLimit + " palabras. \n" +
 

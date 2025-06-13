@@ -23,10 +23,10 @@ public class CameraLook : MonoBehaviour
     
     void Update()
     {
-        //if (!GameManager.Instance.GetBoolCursorLocked())
-        //{
-        //    return;
-        //}
+        if (!GameManager.Instance.GetBoolCursorLocked())
+        {
+            return;
+        }
 
         if (IsOnMobile())
             CameraMovil();
