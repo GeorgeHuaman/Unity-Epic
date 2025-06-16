@@ -3887,6 +3887,12 @@ MonoBehaviour:
     type: 3}
   interactButton: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!1 &886117496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8979526245312595840, guid: 48ad168993dad9d4687beaab3e5a8623,
+    type: 3}
+  m_PrefabInstance: {fileID: 1670832935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &888768260
 GameObject:
   m_ObjectHideFlags: 0
@@ -9714,7 +9720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableID: 
   interactableRadius: 2.04
-  interactableRadiusVisibility: 0
+  interactableRadiusVisibility: 3
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
@@ -9733,6 +9739,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 886117496}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1307893549}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
