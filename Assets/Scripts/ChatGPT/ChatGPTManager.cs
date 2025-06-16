@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class ChatGPTManager : MonoBehaviour
 {
     [TextArea(5,20)]
-    public string personality;
+    public string info;
     [TextArea(5,20)]
     public string scene;
     public int maxResponseWordLimit = 15;
@@ -25,17 +25,17 @@ public class ChatGPTManager : MonoBehaviour
     {
         string instruction = "Eres un asistente/profesora en un videojuego y responderás al mensaje que el jugador te haga. \n" +
 
-        "Debes responder al mensaje del jugador únicamente usando la información de tu personalidad y de la escena que se proporcionan a continuación. \n" +
+        "Debes responder al mensaje del jugador únicamente usando la información del tema que se te brinda y de la escena que se proporcionan a continuación. \n" +
 
         "No inventes ni crees respuestas que no estén mencionadas en esa información. \n" +
 
-        "No rompas el personaje \n" +
+        "No rompas el personaje ni hables fuera del tema que se te proporcionara \n" +
 
-        "Debes responder en menos de " + maxResponseWordLimit + " palabras. \n" +
+        "Debes responder de forma concisa siempre que pueda, pero si el jugador te pide que seas detallada, deberas responder con menos de " + maxResponseWordLimit + "palabras. \n"+
 
-        "Aquí está la información sobre tu personalidad: \n" +
+        "Aquí está la información sobre el Tema: \n" +
 
-        personality + "\n" +
+        info + "\n" +
 
         "Aquí está la información sobre la escena que te rodea: \n" +
 

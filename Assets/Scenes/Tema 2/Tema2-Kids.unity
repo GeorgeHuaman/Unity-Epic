@@ -173,6 +173,9 @@ MonoBehaviour:
   targetMission: {fileID: 1673936570}
   action: 0
   selectedTaskIndex: 0
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &49073562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -301,6 +304,9 @@ MonoBehaviour:
   targetMission: {fileID: 1673936570}
   action: 0
   selectedTaskIndex: 2
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &91728215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -809,20 +815,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &278458034
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,20 +996,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &401025454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,20 +1957,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!114 &532831338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,20 +2010,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!114 &532831340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,20 +2063,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &539412875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2224,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 325040010325339680, guid: 97db2b442abeb304ebda66c1b01a7ae9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 909359627394420903, guid: 97db2b442abeb304ebda66c1b01a7ae9,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -2232,6 +2238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 22.694
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067767411944160331, guid: 97db2b442abeb304ebda66c1b01a7ae9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3721319085022138744, guid: 97db2b442abeb304ebda66c1b01a7ae9,
         type: 3}
@@ -2456,20 +2467,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1001 &918841230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3066,20 +3076,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!114 &918841237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3098,20 +3107,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!114 &918841238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3283,7 +3291,7 @@ PrefabInstance:
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.041
       objectReference: {fileID: 0}
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
@@ -3293,7 +3301,7 @@ PrefabInstance:
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.019
       objectReference: {fileID: 0}
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
@@ -3554,6 +3562,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 50344a0c857900e49a20b249d047399d,
         type: 3}
+    - target: {fileID: 5399794720431243305, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188003112933853177, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.814777
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188003112933853177, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.814777
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188003112933853177, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.814777
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188003112933853177, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188003112933853177, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.3469
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188003112933853177, guid: 039220e786b06a64cab3c7232aded2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18.628
+      objectReference: {fileID: 0}
     - target: {fileID: 9029657940614373768, guid: 039220e786b06a64cab3c7232aded2fa,
         type: 3}
       propertyPath: m_Sprite
@@ -3739,20 +3782,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &1115201735
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,23 +4063,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0265
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
+        type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6566863
+      value: 0.6740885
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0265
       objectReference: {fileID: 0}
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5299997
+      value: -5.546
       objectReference: {fileID: 0}
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.040000003
+      value: -0.07298
       objectReference: {fileID: 0}
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.75
+      value: -0.926
       objectReference: {fileID: 0}
     - target: {fileID: 6795002943025176290, guid: 3cb842c54d0aeaa4bbb09f3245ce37dc,
         type: 3}
@@ -4130,20 +4182,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &1179807698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,6 +4570,9 @@ MonoBehaviour:
   targetMission: {fileID: 1673936570}
   action: 0
   selectedTaskIndex: 3
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1498602786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4915,20 +4969,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &1673936569
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,6 +5151,9 @@ MonoBehaviour:
   targetMission: {fileID: 1673936570}
   action: 0
   selectedTaskIndex: 4
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1748497817
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5667,6 +5723,9 @@ MonoBehaviour:
   targetMission: {fileID: 1673936570}
   action: 0
   selectedTaskIndex: 1
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2065963462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5778,20 +5837,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 0}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
