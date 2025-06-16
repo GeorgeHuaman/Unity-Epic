@@ -2157,7 +2157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableID: 
   interactableRadius: 2.57
-  interactableRadiusVisibility: 0
+  interactableRadiusVisibility: 3
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
@@ -2182,6 +2182,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: SecondItem
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1307893549}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: AddProgressToTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 549953682}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3468,6 +3492,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804082516}
   m_CullTransparentMesh: 1
+--- !u!1001 &817606255
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 281
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840095437585604840, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: mision
+      value: 
+      objectReference: {fileID: 1307893549}
+    - target: {fileID: 7910951603826289979, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_Name
+      value: CanvasPrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7458aa3d20e4c7242af5ce3980565250, type: 3}
 --- !u!1 &819888358
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,7 +5071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableID: 
   interactableRadius: 2.12
-  interactableRadiusVisibility: 0
+  interactableRadiusVisibility: 3
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
@@ -4999,6 +5096,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: FirstItem
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1307893549}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: AddProgressToTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1157906102}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5777,6 +5898,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258487115}
   m_CullTransparentMesh: 1
+--- !u!1 &1307893548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307893550}
+  - component: {fileID: 1307893549}
+  m_Layer: 0
+  m_Name: Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1307893549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307893548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333fca9190682604698c0b9a92fe6805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questName: Tema 9
+  description: 
+  startAutomatically: 0
+  taskAreOrdered: 0
+  onMissionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onMissionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  tasks:
+  - type: 1
+    taskName: Encuentra los Objetos Claves
+    progressSteps: 3
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Dirigete hacia la puerta
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Lee todos los carteles y toca el boton al final
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  started: 0
+  completed: 0
+--- !u!4 &1307893550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307893548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 252.50002, y: 142, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315612003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7366,10 +7580,155 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tema 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4440746597097175657, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.046
+      objectReference: {fileID: 0}
     - target: {fileID: 4440746598002734104, guid: 48ad168993dad9d4687beaab3e5a8623,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440746598290804108, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.121
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440746598290804108, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440746598641694529, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440746598641694529, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554193274283, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554193392960, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554269874842, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554325235019, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554379463436, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554413355285, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554491883927, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554578527054, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554809453207, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554839357340, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554877927943, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799554958006741, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555174833892, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555356456039, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555443490164, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555472002140, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555482325745, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555542870188, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555635784661, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555666018302, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555803465571, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799555933659094, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799556233410245, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542799556266741622, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: interactableRadiusVisibility
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6831058425149539734, guid: 48ad168993dad9d4687beaab3e5a8623,
         type: 3}
@@ -7431,6 +7790,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8979526245312595841, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979526245312595841, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 585
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979526245312595841, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979526245312595841, guid: 48ad168993dad9d4687beaab3e5a8623,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -292
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4440746597424141420, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
     - {fileID: 4440746598948098201, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
@@ -7461,6 +7840,9 @@ PrefabInstance:
     - {fileID: 8979526245210496349, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
     - {fileID: 8979526243966646245, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
     - {fileID: 2609230687136503450, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
+    - {fileID: 4440746598290804105, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
+    - {fileID: 4440746598641694532, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
+    - {fileID: 4440746597097175660, guid: 48ad168993dad9d4687beaab3e5a8623, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -9396,7 +9778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableID: 
   interactableRadius: 2.57
-  interactableRadiusVisibility: 0
+  interactableRadiusVisibility: 3
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
@@ -9421,6 +9803,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: TheerItem
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1307893549}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: AddProgressToTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1934022846}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14246,3 +14652,5 @@ SceneRoots:
   - {fileID: 1670832935}
   - {fileID: 361566446}
   - {fileID: 4342444358398775926}
+  - {fileID: 817606255}
+  - {fileID: 1307893550}
