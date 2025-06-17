@@ -96,7 +96,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 782e977302916f14f97faed20d1b76d8,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -11152,7 +11153,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc1a4709650f8e44683dafcaf4496c12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0d561b4a5b2d044ea653ab44ced71c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11428,6 +11429,7 @@ GameObject:
   - component: {fileID: 3404780106848334041}
   - component: {fileID: 915768063566964782}
   - component: {fileID: 8069807609146347521}
+  - component: {fileID: 8069807609146347522}
   m_Layer: 0
   m_Name: Artboard 1 (1)
   m_TagString: Untagged
@@ -12384,6 +12386,7 @@ GameObject:
   - component: {fileID: 460623214543061373}
   - component: {fileID: 7198373340182819406}
   - component: {fileID: 5186114317716346889}
+  - component: {fileID: 7198373340182819407}
   m_Layer: 6
   m_Name: cartel tema 1 Genuine
   m_TagString: Untagged
@@ -13260,7 +13263,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.91254115, z: -0, w: -0.40898493}
   m_LocalPosition: {x: 28.646, y: 18.457, z: -87.129}
-  m_LocalScale: {x: 0.31187898, y: 0.31187892, z: 0.31187898}
+  m_LocalScale: {x: 0.24020608, y: 0.24020602, z: 0.24020608}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5750819883563355498}
@@ -13597,6 +13600,7 @@ GameObject:
   - component: {fileID: 2870670360232590005}
   - component: {fileID: 1814795656094381654}
   - component: {fileID: 5459544539615845654}
+  - component: {fileID: 6512140964723734191}
   m_Layer: 0
   m_Name: Ciclo
   m_TagString: Untagged
@@ -13604,6 +13608,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &6512140964723734191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512140964723734190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7dca467ff8f274ab6ecc2d3635a7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  z: 0
+  y: 1
 --- !u!114 &6590150587229673135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13817,6 +13835,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.030001, y: 5.5599995, z: 0.20000017}
   m_Center: {x: 0, y: 0.0000009536743, z: 0}
+--- !u!114 &7198373340182819407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557006303645363687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7dca467ff8f274ab6ecc2d3635a7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  z: 0
+  y: 1
 --- !u!224 &7215848367138850200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14196,6 +14228,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
+--- !u!114 &8069807609146347522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080142643836712773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7dca467ff8f274ab6ecc2d3635a7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  z: 0
+  y: 1
 --- !u!222 &8129410175917591030
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14474,6 +14520,7 @@ GameObject:
   - component: {fileID: 1257854600040601516}
   - component: {fileID: 2844331023403710294}
   - component: {fileID: 3065928078497896001}
+  - component: {fileID: 8798425962977670444}
   m_Layer: 0
   m_Name: Vivir
   m_TagString: Untagged
@@ -14481,6 +14528,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &8798425962977670444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798425962977670443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7dca467ff8f274ab6ecc2d3635a7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  z: 0
+  y: 1
 --- !u!114 &8845096606712131495
 MonoBehaviour:
   m_ObjectHideFlags: 0
