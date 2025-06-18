@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class Interactable : MonoBehaviour
 {
     [ReadOnly] public string interactableID;
-    public float interactableRadius;
-    public float interactableRadiusVisibility;
+    public float interactableRadius = 2.5f;
+    public float interactableRadiusVisibility = 5f;
     [HideInInspector] public GameObject player;
     [HideInInspector] public bool inputButton;
     public Animator animator;
