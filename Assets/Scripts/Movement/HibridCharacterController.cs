@@ -89,6 +89,11 @@ public class HibridCharacterController : MonoBehaviour
         }
     }
 
+    public void KnockBack(float knockBackForce)
+    {
+            velocity.y = Mathf.Sqrt(knockBackForce * -2f * gravity);
+    }
+
     private void Gravity()
     {
         velocity.y += gravity * Time.deltaTime;
@@ -107,4 +112,5 @@ public class HibridCharacterController : MonoBehaviour
             forceNonVR = !forceNonVR;
         }
     }
+
 }
