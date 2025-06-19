@@ -16,4 +16,11 @@ public class Reposition : MonoBehaviour
             player.GetComponent<CharacterController>().enabled = true;
         }
     }
+
+   public void Teleport()
+    {
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = respawn.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
+    }
 }
