@@ -20,4 +20,5 @@ public class TriggerEvent : MonoBehaviour
         if (other.CompareTag("Player"))
             onTriggerExit?.Invoke();
     }
+
 }

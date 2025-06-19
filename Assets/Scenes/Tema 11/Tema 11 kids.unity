@@ -903,7 +903,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -2865,7 +2865,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -3083,7 +3083,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -4258,7 +4258,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -4998,7 +4998,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -6154,7 +6154,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -6572,7 +6572,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -6774,7 +6774,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -7076,7 +7076,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -7112,7 +7112,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -7152,7 +7152,7 @@ Transform:
   m_GameObject: {fileID: 715639533}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -268.28033, y: 1.662, z: 279.31702}
+  m_LocalPosition: {x: -268.28033, y: 2.02, z: 279.31702}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8450,6 +8450,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820423215}
   m_CullTransparentMesh: 1
+--- !u!1 &827634194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827634196}
+  - component: {fileID: 827634195}
+  m_Layer: 0
+  m_Name: Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &827634195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827634194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333fca9190682604698c0b9a92fe6805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questName: Tema 11
+  description: Completa las tareas
+  startAutomatically: 1
+  taskAreOrdered: 1
+  onMissionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onMissionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  tasks:
+  - type: 0
+    taskName: Elige un equipo
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Dirigete al ascensor
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Completa la pista de obstaculos
+    progressSteps: 0
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  started: 0
+  completed: 0
+--- !u!4 &827634196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827634194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.467993, y: -7.0594254, z: 4.272896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &835556504 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5736219540920182184, guid: 1ae188dad40df8e47adb441bfd21d44c,
@@ -8471,7 +8564,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -10305,7 +10398,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -11029,7 +11122,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -11336,7 +11429,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -11671,7 +11764,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -12248,6 +12341,45 @@ CharacterController:
     type: 3}
   m_PrefabInstance: {fileID: 2110720777}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1274678721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6818764180249616746, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 2110720777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274678713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6502a8cafc4dfe0479a5ddd15c73aa69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1274678727
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274678713}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1 &1275844341
 GameObject:
   m_ObjectHideFlags: 0
@@ -12481,7 +12613,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -13948,8 +14080,8 @@ Transform:
   m_GameObject: {fileID: 1425976760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -275.42, y: 18.57, z: 309.25}
-  m_LocalScale: {x: 0.09335812, y: 0.1385849, z: 0.09220555}
+  m_LocalPosition: {x: -275.9, y: 19.696, z: 309.33}
+  m_LocalScale: {x: 0.12884355, y: 0.12884355, z: 0.12884355}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 989657851}
@@ -14407,7 +14539,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -15191,18 +15323,6 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1492205105 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1835144945582196918, guid: 1ae188dad40df8e47adb441bfd21d44c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2070050536}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15add8ae544af1b4295910cd9415799a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1492520029
 GameObject:
   m_ObjectHideFlags: 0
@@ -15515,7 +15635,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -15551,7 +15671,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -16902,7 +17022,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -17828,7 +17948,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -18843,7 +18963,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -19012,7 +19132,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -19280,7 +19400,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -19705,7 +19825,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -20870,7 +20990,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
@@ -21008,7 +21128,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -21044,7 +21164,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -21631,6 +21751,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1564674638891579073, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835144944409698256, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835144944593477951, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835144944956300032, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1835144945116468386, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
       propertyPath: player
@@ -21648,19 +21788,29 @@ PrefabInstance:
       objectReference: {fileID: 1274678720}
     - target: {fileID: 1835144945116468386, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
+      propertyPath: knockBackForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835144945116468386, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
       propertyPath: knockbackForce
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1835144945116468386, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
+      propertyPath: characterController
+      value: 
+      objectReference: {fileID: 1274678721}
     - target: {fileID: 1835144945116468396, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1274678713}
-    - target: {fileID: 1835144945116468399, guid: 1ae188dad40df8e47adb441bfd21d44c,
+    - target: {fileID: 1835144945116468398, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
-      propertyPath: canvasImage
+      propertyPath: objectsToCheck.Array.data[0]
       value: 
-      objectReference: {fileID: 2004051392}
+      objectReference: {fileID: 2070050537}
     - target: {fileID: 1835144945582196918, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
       propertyPath: player
@@ -21675,6 +21825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5868507187614071862, guid: 1ae188dad40df8e47adb441bfd21d44c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6283107159510049231, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
@@ -21777,7 +21932,8 @@ PrefabInstance:
     - {fileID: 1835144945451729598, guid: 1ae188dad40df8e47adb441bfd21d44c, type: 3}
     - {fileID: 1835144944102516098, guid: 1ae188dad40df8e47adb441bfd21d44c, type: 3}
     - {fileID: 2190641668011694551, guid: 1ae188dad40df8e47adb441bfd21d44c, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1835144945582196919, guid: 1ae188dad40df8e47adb441bfd21d44c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6963069771231023461, guid: 1ae188dad40df8e47adb441bfd21d44c,
         type: 3}
@@ -22005,6 +22161,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1571566886}
   m_SourcePrefab: {fileID: 100100000, guid: 1ae188dad40df8e47adb441bfd21d44c, type: 3}
+--- !u!1 &2070050537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5627084208576381210, guid: 1ae188dad40df8e47adb441bfd21d44c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2070050536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2071547749
 GameObject:
   m_ObjectHideFlags: 0
@@ -22281,7 +22443,7 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492205105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
         m_MethodName: KnockBack
         m_Mode: 1
@@ -22402,7 +22564,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8733093507751517971, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1274678727}
   m_SourcePrefab: {fileID: 100100000, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
 --- !u!1 &2116279697
 GameObject:
@@ -22962,7 +23128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &413570997129410320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30691,3 +30857,4 @@ SceneRoots:
   - {fileID: 7364382795870673899}
   - {fileID: 1446237207}
   - {fileID: 715639534}
+  - {fileID: 827634196}
