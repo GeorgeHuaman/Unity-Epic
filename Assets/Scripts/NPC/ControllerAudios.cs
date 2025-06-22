@@ -6,18 +6,7 @@ public class ControllerAudios : MonoBehaviour
 {
     public List<Dialogue> npcs = new List<Dialogue>();
     public List<AudioSource> sources;
-    public Coroutine coroutine;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public Coroutine coroutine; 
 
     public void StopAudios()
     {

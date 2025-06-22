@@ -98,7 +98,7 @@ public class Interactable : MonoBehaviour
         yield return null;
         onExitEvent?.Invoke();
     }
-
+    #region Animation
     public void SetAnimatorBoolTrue(string parameterName)
     {
         Animator animator = this.animator;
@@ -116,7 +116,7 @@ public class Interactable : MonoBehaviour
             animator.SetBool(parameterName, false);
         }
     }
-
+    #endregion
     public bool RangePlayer()
     {
         Vector3 horizontalDistance = new Vector3(

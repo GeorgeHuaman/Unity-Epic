@@ -39,10 +39,10 @@ public class Teleport : MonoBehaviour
            cartelesWord.Add (carteles);
             Debug.LogWarning(cartelesWord.Count);
         }
-        if(cartelesWord.Count >= 20)
-        {
-            buttons.SetActive(true);
-        }
+        //if(cartelesWord.Count >= 20)
+        //{
+        //    buttons.SetActive(true);
+        //}
 
     }
 }

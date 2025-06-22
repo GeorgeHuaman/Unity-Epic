@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Dialogue : MonoBehaviour
@@ -16,6 +15,7 @@ public class Dialogue : MonoBehaviour
     [HideInInspector] public GameObject player;
     public float delayEntreLineas = 1f;
     private int indiceActual = 0;
+    public ControllerAudios controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,25 +29,23 @@ public class Dialogue : MonoBehaviour
     {
         if (interactable.RangePlayer() && !startDialogue && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("aaaa");
+            controller.StopAudios();
             RangeDialogue();
         }
     }
     public void RangeDialogue()
     {
-        StartCoroutine(ReproducirDialogo());
+       controller.coroutine = StartCoroutine(ReproducirDialogo());
     }
     IEnumerator ReproducirDialogo()
     {
-        if(dialogueTextGameObject)
-        dialogueText.gameObject.SetActive(true);
+        //dialogueText.gameObject.SetActive(true);
         startDialogue = true;
         while (indiceActual < lineasDeDialogo.Count)
         {
             LineDialogue linea = lineasDeDialogo[indiceActual];
 
-            if (dialogueTextGameObject)
-                dialogueText.text = linea.text;
+                //dialogueText.text = linea.text;
             audioSource.clip = linea.clip;
             audioSource.Play();
 
@@ -56,10 +54,9 @@ public class Dialogue : MonoBehaviour
             indiceActual++;
         }
         indiceActual = 0;
-        if (dialogueTextGameObject)
-            dialogueText.text = "";
+            //dialogueText.text = "";
         startDialogue = false;
-        dialogueText.gameObject.SetActive(false);
+            //dialogueText.gameObject.SetActive(false);
         Debug.Log("Diálogo terminado");
     }
 }
