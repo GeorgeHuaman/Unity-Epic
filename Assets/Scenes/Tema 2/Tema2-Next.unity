@@ -829,6 +829,7 @@ MonoBehaviour:
   audioSource: {fileID: 1405065347}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &265704248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,6 +1011,7 @@ MonoBehaviour:
   audioSource: {fileID: 1117710465}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &313858357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,6 +1043,99 @@ MonoBehaviour:
   prefabCanvasButton: {fileID: 0}
   interactButton: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!1001 &363053764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6234666053005889400, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: lineasDeDialogo.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7580a44ac466aad4fa38427d56d9902f, type: 3}
+    - target: {fileID: 6786872852100574506, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_Name
+      value: NPC Tema 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930359390068931356, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150795887640189611, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585133463575555779, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: lineasDeDialogo.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a4e666b8d94ef0745a0a682785880b0b, type: 3}
+    - target: {fileID: 8940713735038808395, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044824049371527950, guid: 81f3493ccec277d458a94dcb1af918f0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 81f3493ccec277d458a94dcb1af918f0, type: 3}
 --- !u!1 &401025454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1622,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dad9b1d794c15074c998d18975d4482e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3195567558737790530, guid: dad9b1d794c15074c998d18975d4482e,
         type: 3}
@@ -1971,6 +2066,7 @@ MonoBehaviour:
   audioSource: {fileID: 1003152085}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &532831337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,6 +2120,7 @@ MonoBehaviour:
   audioSource: {fileID: 107218278}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &532831339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,6 +2174,7 @@ MonoBehaviour:
   audioSource: {fileID: 278458036}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &532831341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,6 +2574,7 @@ MonoBehaviour:
   audioSource: {fileID: 1841961791}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &793231295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3085,6 +3184,7 @@ MonoBehaviour:
   audioSource: {fileID: 926924919}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &918841236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3169,6 +3269,7 @@ MonoBehaviour:
   audioSource: {fileID: 1179807700}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &926924917
 GameObject:
   m_ObjectHideFlags: 0
@@ -3661,6 +3762,7 @@ MonoBehaviour:
   audioSource: {fileID: 237121146}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &1114792720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,6 +4168,7 @@ MonoBehaviour:
   audioSource: {fileID: 401025456}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &1167037002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4853,6 +4956,7 @@ MonoBehaviour:
   audioSource: {fileID: 1586652771}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &1667691621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5721,6 +5825,7 @@ MonoBehaviour:
   audioSource: {fileID: 539412877}
   player: {fileID: 0}
   delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!114 &2077670375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5909,3 +6014,4 @@ SceneRoots:
   - {fileID: 1673936571}
   - {fileID: 516126602}
   - {fileID: 214174280}
+  - {fileID: 363053764}

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Dialogue : MonoBehaviour
@@ -22,6 +23,7 @@ public class Dialogue : MonoBehaviour
         if (dialogueTextGameObject)
             dialogueText = dialogueTextGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         player = GameObject.FindWithTag("Player");
+        interactable.interactButton.onClick.AddListener(RangeDialogue);
     }
 
     // Update is called once per frame
@@ -29,13 +31,13 @@ public class Dialogue : MonoBehaviour
     {
         if (interactable.RangePlayer() && !startDialogue && Input.GetKeyDown(KeyCode.F))
         {
-            controller.StopAudios();
             RangeDialogue();
         }
     }
     public void RangeDialogue()
     {
-       controller.coroutine = StartCoroutine(ReproducirDialogo());
+        controller.StopAudios();
+        controller.coroutine = StartCoroutine(ReproducirDialogo());
     }
     IEnumerator ReproducirDialogo()
     {

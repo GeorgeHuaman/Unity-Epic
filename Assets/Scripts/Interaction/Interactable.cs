@@ -83,7 +83,7 @@ public class Interactable : MonoBehaviour
                 EnterEvent();
         }
     }
-
+    
     public void EnterEvent()
     {
         inputButton = false;
