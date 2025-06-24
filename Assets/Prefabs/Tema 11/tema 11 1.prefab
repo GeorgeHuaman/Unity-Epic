@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &206856241106169832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6371882429303649902}
+  - component: {fileID: 4047692292918639027}
+  - component: {fileID: 7824094015762681591}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &6371882429303649902
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206856241106169832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7651413846151771338}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 290.097, y: 203.132}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &4047692292918639027
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206856241106169832}
+  m_CullTransparentMesh: 1
+--- !u!114 &7824094015762681591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206856241106169832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 343a5e26c1635db40bb4ff44eee8ee6e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &900990970607361010
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +196,7 @@ GameObject:
   - component: {fileID: 1835144944102516096}
   - component: {fileID: 1835144944102516097}
   - component: {fileID: 1835144944102516102}
+  - component: {fileID: 3636481610871650812}
   m_Layer: 0
   m_Name: TriggerCheckPoint
   m_TagString: Untagged
@@ -137,7 +213,7 @@ Transform:
   m_GameObject: {fileID: 1835144944102516103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -196.5763, y: -50.7059, z: 16.4444}
+  m_LocalPosition: {x: -196.5763, y: -59.4, z: 16.4444}
   m_LocalScale: {x: 352.8387, y: 82.44933, z: 105.69838}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -214,6 +290,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3636481610871650812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144944102516103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ResetPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144944252241138
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +332,7 @@ GameObject:
   - component: {fileID: 1835144944252241145}
   - component: {fileID: 1835144944252241150}
   - component: {fileID: 1835144944252241151}
+  - component: {fileID: 4682268766236979888}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -319,6 +426,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4682268766236979888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144944252241138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144944252241149}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144944356634961
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +468,7 @@ GameObject:
   - component: {fileID: 1835144944356634972}
   - component: {fileID: 1835144944356634973}
   - component: {fileID: 1835144944356634962}
+  - component: {fileID: 704010752195658345}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -424,6 +562,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &704010752195658345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144944356634961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144944356634960}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144944409698263
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +676,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -588,6 +756,7 @@ GameObject:
   - component: {fileID: 1835144944570658169}
   - component: {fileID: 1835144944570658174}
   - component: {fileID: 1835144944570658175}
+  - component: {fileID: 57311553653530261}
   m_Layer: 0
   m_Name: CheckPoint (1)
   m_TagString: Untagged
@@ -681,6 +850,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &57311553653530261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144944570658162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144944570658173}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144944593477938
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +964,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -811,6 +1010,7 @@ GameObject:
   - component: {fileID: 1835144944906525664}
   - component: {fileID: 1835144944906525665}
   - component: {fileID: 1835144944906525670}
+  - component: {fileID: 2747379812617954361}
   m_Layer: 0
   m_Name: CheckPoint (4)
   m_TagString: Untagged
@@ -904,6 +1104,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2747379812617954361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144944906525669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144944906525668}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144944956300039
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +1218,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1034,6 +1264,7 @@ GameObject:
   - component: {fileID: 1835144945000279539}
   - component: {fileID: 1835144945000279536}
   - component: {fileID: 1835144945000279537}
+  - component: {fileID: 791261109425776179}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -1127,6 +1358,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &791261109425776179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144945000279540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144945000279543}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144945116468387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
-  knockBackForce: 0
+  knockBackForce: 1
 --- !u!114 &1835144945116468396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,7 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToCheck:
-  - {fileID: 0}
+  - {fileID: 5627084208576381210}
   distanceToOcclude: 500
   checkInterval: 0.1
 --- !u!1 &1835144945207183060
@@ -1274,6 +1535,7 @@ GameObject:
   - component: {fileID: 1835144945283351424}
   - component: {fileID: 1835144945283351425}
   - component: {fileID: 1835144945283351430}
+  - component: {fileID: 4225382178351214915}
   m_Layer: 0
   m_Name: CheckPoint (2)
   m_TagString: Untagged
@@ -1367,6 +1629,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4225382178351214915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144945283351429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144945283351428}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144945351108561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1671,7 @@ GameObject:
   - component: {fileID: 1835144945351108572}
   - component: {fileID: 1835144945351108573}
   - component: {fileID: 1835144945351108562}
+  - component: {fileID: 5916257318446735342}
   m_Layer: 0
   m_Name: CheckPoint (3)
   m_TagString: Untagged
@@ -1472,6 +1765,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5916257318446735342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144945351108561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144945351108560}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144945451729596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,6 +1807,7 @@ GameObject:
   - component: {fileID: 1835144945451729595}
   - component: {fileID: 1835144945451729592}
   - component: {fileID: 1835144945451729593}
+  - component: {fileID: 616104758645820939}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -1577,6 +1901,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &616104758645820939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144945451729596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144945451729599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1835144945484849817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,6 +1943,7 @@ GameObject:
   - component: {fileID: 1835144945484849796}
   - component: {fileID: 1835144945484849797}
   - component: {fileID: 1835144945484849818}
+  - component: {fileID: 6864211864196222736}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -1682,6 +2037,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6864211864196222736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835144945484849817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468396}
+        m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
+        m_MethodName: ObtainTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1835144945484849816}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1933563379779265844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,6 +2457,7 @@ Transform:
   - {fileID: 1835144944102516099}
   - {fileID: 1835144945207183063}
   - {fileID: 5272831094622585272}
+  - {fileID: 7651413846151771338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6985361402505488628
@@ -2287,6 +2673,108 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: a5f5d7a44e8961640952fa3e6fcda392, type: 3}
+--- !u!1 &9106272973833633197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7651413846151771338}
+  - component: {fileID: 2911565272218050308}
+  - component: {fileID: 5626791554824100855}
+  - component: {fileID: 9055874619465879282}
+  m_Layer: 0
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7651413846151771338
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106272973833633197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6371882429303649902}
+  m_Father: {fileID: 6963069771231023461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &2911565272218050308
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106272973833633197}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &5626791554824100855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106272973833633197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &9055874619465879282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106272973833633197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &1835144944354905281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2393,13 +2881,1644 @@ PrefabInstance:
     - {fileID: 6594081690011247860, guid: 705d546b994fb42479af8de5ae9d0275, type: 3}
     - {fileID: 509195272890760299, guid: 705d546b994fb42479af8de5ae9d0275, type: 3}
     - {fileID: 509195272651753961, guid: 705d546b994fb42479af8de5ae9d0275, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2003240054, guid: 705d546b994fb42479af8de5ae9d0275, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 509195272495658641, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5793272830712705680}
+    - targetCorrespondingSourceObject: {fileID: 6196316192425971226, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7589123182963371334}
+    - targetCorrespondingSourceObject: {fileID: 3322816721597344583, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 800012721643965781}
+    - targetCorrespondingSourceObject: {fileID: 2174354531405318435, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1084303499955599475}
+    - targetCorrespondingSourceObject: {fileID: 2174354531405318435, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1543281403205429983}
+    - targetCorrespondingSourceObject: {fileID: 2174354531405318435, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2028338052576651809}
+    - targetCorrespondingSourceObject: {fileID: 1101813112252119134, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1668089031238463051}
+    - targetCorrespondingSourceObject: {fileID: 273156727546404146, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8966364772672978127}
+    - targetCorrespondingSourceObject: {fileID: 6263552556557101417, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7480001744602162352}
+    - targetCorrespondingSourceObject: {fileID: 1937135493118023542, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3593751962458917230}
+    - targetCorrespondingSourceObject: {fileID: 1937135493118023542, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1733416159472174725}
+    - targetCorrespondingSourceObject: {fileID: 1937135493118023542, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7837087511589353502}
+    - targetCorrespondingSourceObject: {fileID: 5226354796056190721, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6569786656594661673}
+    - targetCorrespondingSourceObject: {fileID: 5226354796056190721, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1673306411499578273}
+    - targetCorrespondingSourceObject: {fileID: 5226354796056190721, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7985706871475560124}
+    - targetCorrespondingSourceObject: {fileID: 7507644606498573875, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4278708806520285147}
+    - targetCorrespondingSourceObject: {fileID: 1301096318949207069, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486704840445672890}
+    - targetCorrespondingSourceObject: {fileID: 4938906287583011656, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6916289029302630625}
+    - targetCorrespondingSourceObject: {fileID: 4570323693981354474, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8721521995665609597}
+    - targetCorrespondingSourceObject: {fileID: 6315397365118432017, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7448669575373395257}
+    - targetCorrespondingSourceObject: {fileID: 7749211432274348274, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2903930420534466395}
+    - targetCorrespondingSourceObject: {fileID: 4500899749886146689, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6974420165949526733}
+    - targetCorrespondingSourceObject: {fileID: 5483930037305314953, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1663669788338476525}
+    - targetCorrespondingSourceObject: {fileID: 7141090331299328169, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1584533616136565989}
+    - targetCorrespondingSourceObject: {fileID: 2767166616890806054, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2278594787707016768}
+    - targetCorrespondingSourceObject: {fileID: 588548360840489071, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8246514417327888540}
+    - targetCorrespondingSourceObject: {fileID: 2888231658272816722, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5260614108662779038}
+    - targetCorrespondingSourceObject: {fileID: 8044687868321958302, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244806061473458568}
+    - targetCorrespondingSourceObject: {fileID: 582551737404566673, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5081865331883600362}
+    - targetCorrespondingSourceObject: {fileID: 2135618234391324393, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 949132346106604115}
+    - targetCorrespondingSourceObject: {fileID: 7740413768917937713, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8915729450319686166}
+    - targetCorrespondingSourceObject: {fileID: 5846329996318700000, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6756701805872123751}
+    - targetCorrespondingSourceObject: {fileID: 8602964662903503099, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6044647957141122234}
+    - targetCorrespondingSourceObject: {fileID: 8069294559307925670, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9011820645756471123}
+    - targetCorrespondingSourceObject: {fileID: 5534175898736402643, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3838446313531512507}
+    - targetCorrespondingSourceObject: {fileID: 4641643897609128871, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3549721712081030771}
+    - targetCorrespondingSourceObject: {fileID: 4397929475311967267, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1618745181309828497}
+    - targetCorrespondingSourceObject: {fileID: 6492486996479304997, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5844269478872756006}
+    - targetCorrespondingSourceObject: {fileID: 7970352829347137029, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5947133975544868194}
+    - targetCorrespondingSourceObject: {fileID: 5239172348747492099, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7291643111318792793}
+    - targetCorrespondingSourceObject: {fileID: 509195273359433765, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8555509578915060778}
+    - targetCorrespondingSourceObject: {fileID: 980593175136397870, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7387579833347329116}
+    - targetCorrespondingSourceObject: {fileID: 509195272394165314, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 622341416099382090}
   m_SourcePrefab: {fileID: 100100000, guid: 705d546b994fb42479af8de5ae9d0275, type: 3}
+--- !u!1 &258298290086943671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1937135493118023542, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3593751962458917230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258298290086943671}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1, y: 0.32, z: 0.78291017}
+  m_Center: {x: -0.74, y: -0.000055551543, z: 0.5276913}
+--- !u!65 &1733416159472174725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258298290086943671}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1, y: 0.32, z: 0.78291017}
+  m_Center: {x: 0.79, y: -0.000055551543, z: 0.5276913}
+--- !u!114 &7837087511589353502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258298290086943671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &348048080234162728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2135618234391324393, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &949132346106604115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348048080234162728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &530128945128670690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2174354531405318435, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1084303499955599475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530128945128670690}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.04, y: 0.3, z: 0.78291017}
+  m_Center: {x: -0.78, y: -0.000055551543, z: 0.5276913}
+--- !u!65 &1543281403205429983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530128945128670690}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.04, y: 0.3, z: 0.78291017}
+  m_Center: {x: 0.82, y: -0.000055551543, z: 0.5276913}
+--- !u!114 &2028338052576651809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530128945128670690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &826923659723137244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1301096318949207069, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1486704840445672890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826923659723137244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1251243163946443950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 588548360840489071, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8246514417327888540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251243163946443950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1252595727300419664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 582551737404566673, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5081865331883600362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252595727300419664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1507715037866600175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 980593175136397870, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7387579833347329116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507715037866600175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1602669771844187295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1101813112252119134, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1668089031238463051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602669771844187295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1867869597786000640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 43838740340769217, guid: 705d546b994fb42479af8de5ae9d0275,
     type: 3}
   m_PrefabInstance: {fileID: 1835144944354905281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1926920525197185523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 273156727546404146, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8966364772672978127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926920525197185523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &2190641668011327619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 509195272394165314, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &622341416099382090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190641668011327619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &2190641668175805008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 509195272495658641, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5793272830712705680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190641668175805008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &2190641668385238244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 509195273359433765, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8555509578915060778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190641668385238244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &2629868076275880162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4397929475311967267, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1618745181309828497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2629868076275880162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &2745704516965860651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4570323693981354474, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8721521995665609597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745704516965860651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &2810763914482775104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4500899749886146689, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6974420165949526733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810763914482775104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &3558602362534998675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2888231658272816722, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5260614108662779038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558602362534998675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &3993209278774732678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3322816721597344583, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &800012721643965781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993209278774732678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &4544499235495101415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2767166616890806054, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2278594787707016768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544499235495101415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &4858904734785677796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6492486996479304997, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5844269478872756006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858904734785677796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5212327997535272225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846329996318700000, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6756701805872123751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212327997535272225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5515223054997635803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6196316192425971226, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7589123182963371334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5515223054997635803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5680009912528322512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6315397365118432017, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7448669575373395257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680009912528322512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5736219540920182184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6263552556557101417, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7480001744602162352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736219540920182184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5891546023347906498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5239172348747492099, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7291643111318792793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5891546023347906498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5904222846874702784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5226354796056190721, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6569786656594661673
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904222846874702784}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.18, y: 0.41, z: 0.78291017}
+  m_Center: {x: -0.69, y: -0.000055551543, z: 0.5276913}
+--- !u!65 &1673306411499578273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904222846874702784}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.18, y: 0.41, z: 0.78291017}
+  m_Center: {x: 0.71, y: -0.000055551543, z: 0.5276913}
+--- !u!114 &7985706871475560124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904222846874702784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6155694784251773512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5483930037305314953, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1663669788338476525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155694784251773512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6177506240102853650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5534175898736402643, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3838446313531512507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177506240102853650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6421517423143995238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4641643897609128871, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3549721712081030771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6421517423143995238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6772634850440834953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4938906287583011656, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6916289029302630625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772634850440834953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &7932070797801763898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8602964662903503099, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6044647957141122234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932070797801763898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8162559252403667698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7507644606498573875, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4278708806520285147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162559252403667698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8222666738945598192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7740413768917937713, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8915729450319686166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222666738945598192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8285783455010849843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7749211432274348274, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2903930420534466395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285783455010849843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8542301809176888423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8069294559307925670, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9011820645756471123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542301809176888423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8562405453514491231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8044687868321958302, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244806061473458568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562405453514491231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8641245715619957444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7970352829347137029, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5947133975544868194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641245715619957444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1835144945116468386}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8821849394240453736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7141090331299328169, guid: 705d546b994fb42479af8de5ae9d0275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835144944354905281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1584533616136565989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821849394240453736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e780bc22b488a0459280466d473f108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: KnockbackOnImpact, Assembly-CSharp
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
