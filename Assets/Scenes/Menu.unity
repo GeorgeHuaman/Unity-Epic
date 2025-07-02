@@ -214,111 +214,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &209344951
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 209344952}
-  - component: {fileID: 209344953}
-  m_Layer: 0
-  m_Name: ProgressLevel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &209344952
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209344951}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 285.26083, y: 133.77449, z: 2.6941533}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &209344953
+--- !u!114 &209344953 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6776272519732967259, guid: e4a3786d5351b094e95a34c37fc44628,
+    type: 3}
+  m_PrefabInstance: {fileID: 8476030376105766602}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209344951}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e41a15ba7acb744a8e496fe74b7b323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - name: Tema 1
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 9875cfc2318c6d14780293d70fcc553d, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 2
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 7d78ee596ac431a4c90ee6effcd7de11, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 3
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: e4c79841c64cb0e40a929e8c1cc1cc45, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 4
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 4cb5acc0e8902d348b4eed9d772c880b, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 5
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: ba8299ff8a68e824da621a71d7d9b882, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 6
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: aec93fc5ab5d1b147b145c46f3cc83e2, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 7
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 17cca7634409a5844b2ab369a657e8cb, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 8
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 6cca6403d7ec1f34180a78ae4d0d1f2f, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 9
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: afa521a7092f7e64cad88bd2ac576910, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 10
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: bced0f0d2d5d1b3498022dc1eed4a3fb, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 11
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 460bd75b34401444793480b610a71252, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
-  - name: Tema 12
-    currentLevel: 0
-    levelData: {fileID: 11400000, guid: 5646ad3ab81355a459475c037e6686e0, type: 2}
-    progressBar: {fileID: 0}
-    progressText: {fileID: 0}
 --- !u!1 &1292840255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1647,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5646ad3ab81355a459475c037e6686e0, type: 2}
   parent: {fileID: 3426515431984467444}
   prefab: {fileID: 218263066232134664, guid: 93d8cb51d25b02c44aa703e45f904c08, type: 3}
+  systemProgressLevel: {fileID: 209344953}
 --- !u!222 &7475155951671810596
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1951,6 +1859,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2818646365710491974}
   m_CullTransparentMesh: 1
+--- !u!1001 &8476030376105766602
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 285.26083
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 133.77449
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.6941533
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800222485229083564, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165835067738272906, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_Name
+      value: ProgressLevel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4a3786d5351b094e95a34c37fc44628, type: 3}
 --- !u!114 &8603544062474565328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2073,4 +2049,4 @@ SceneRoots:
   - {fileID: 1292840257}
   - {fileID: 1352941565598139916}
   - {fileID: 1375919927}
-  - {fileID: 209344952}
+  - {fileID: 8476030376105766602}

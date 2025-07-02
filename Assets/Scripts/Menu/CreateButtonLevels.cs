@@ -9,6 +9,11 @@ public class CreateButtonLevels : MonoBehaviour
     public List<LevelData> levelsData = new List<LevelData>();
     public GameObject parent;
     public GameObject prefab;
+    public SystemProgressLevel systemProgressLevel;
+    private void Awake()
+    {
+        systemProgressLevel = FindAnyObjectByType<SystemProgressLevel>();
+    }
     void Start()
     {
         foreach (LevelData levelData in levelsData)
@@ -28,6 +33,11 @@ public class CreateButtonLevels : MonoBehaviour
                     Transform child = go.transform.GetChild(index);
                     child.GetComponent<Button>().onClick.AddListener(() => {
                         LoadScene(levelData.versions[index - 1].versionName); // -1 porque el primer hijo (i==0) era el título
+
+                    });
+                    child.GetComponent<Button>().onClick.AddListener(() =>
+                    {
+                        SendInfoLevel(levelData.versions[index - 1].versionName, levelData);
                     });
                 }
             }
@@ -37,5 +47,10 @@ public class CreateButtonLevels : MonoBehaviour
     void LoadScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene);
+    }
+
+    void SendInfoLevel(string nameScene,LevelData version)
+    {
+        systemProgressLevel.IdentifyLevel(nameScene,version);
     }
 }
