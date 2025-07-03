@@ -47,7 +47,6 @@ public class SystemProgressLevel : MonoBehaviour
         currentLevelName = level;
         currentLevelVersion = version;
     }
-
     public void LevelEnd()
     {
         int bools = 0;
@@ -76,7 +75,6 @@ public class SystemProgressLevel : MonoBehaviour
             UpdateLevel();
         }
     }
-
     public void UpdateLevel()
     {
         for (int i = 0; i < levels.Count; i++)
@@ -90,6 +88,18 @@ public class SystemProgressLevel : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool VerifyTemCompleted(ProgressLevel level)
+    {
+        for (int i = 0; i < level.levelDataVerify.Count; i++)
+        {
+            if (level.levelDataVerify[i].end)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

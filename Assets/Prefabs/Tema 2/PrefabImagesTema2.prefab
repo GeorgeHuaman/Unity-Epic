@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2de72c89192ebc442b6804f24ec5a500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -295,32 +295,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 4990222520683125511}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &247970306035587438
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +587,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 37360a94a00713e4a88010949341131b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -706,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579371605713247734}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1922,7 +1909,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: aabe547adfac0f74ba9b4ca374f9cf3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2019,32 +2006,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 1232447850841656437}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &1983543925999583950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,7 +2705,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c653695b43ab2f641a62bda8f6efbff6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3197,7 +3171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c6ad9325cf649024c8585c3809e93d0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3484,7 +3458,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c5a52d81c01c4a34d932d300f0a5e0fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3558,8 +3532,8 @@ Transform:
   m_GameObject: {fileID: 3297266596369799214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.967, y: 1.344, z: -1.14}
-  m_LocalScale: {x: 0.12564312, y: 0.12564313, z: 0.12564312}
+  m_LocalPosition: {x: -12.103, y: 1.296, z: -0.862}
+  m_LocalScale: {x: 0.14389353, y: 0.14389354, z: 0.14389353}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 253731442052295925}
@@ -3605,7 +3579,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0a9839dd7cb04374cb0c906c3fdd6484, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3872,32 +3846,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 3382372952614775635}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &3829150020626942121
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,7 +4041,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 059fa0c14f86fae4991593d839c83b27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4248,7 +4209,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 98c506628d8cb4c4bbd5c35521f70c07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5653,7 +5614,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8f90f6f0f31f6224593ef615b883691e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5774,7 +5735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cc06882406bc1bc459d3f19160a2c401, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5915,32 +5876,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 783752399319309439}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &5692104762404133879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6827,32 +6775,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 6784825674817800342}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &6475986736421214341
 GameObject:
   m_ObjectHideFlags: 0
@@ -7163,7 +7098,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 495df404bd72b7f4ba4cf633729f42cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7260,32 +7195,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 2416673464388390418}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &6784825674817800342
 GameObject:
   m_ObjectHideFlags: 0
@@ -7347,7 +7269,7 @@ Transform:
   m_GameObject: {fileID: 6784996831504663581}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.08, y: 0.8, z: -40.085}
+  m_LocalPosition: {x: -18.14, y: 0.777, z: -40.04}
   m_LocalScale: {x: 4.0848, y: 4.0848, z: 4.0848}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7405,32 +7327,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 956170152906544337}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &6902357618438530762
 GameObject:
   m_ObjectHideFlags: 0
@@ -7506,7 +7415,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f22a2b1c291faac4492ffaed63dbdeb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7811,32 +7720,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 561434989564964427}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &7085558747488150471
 GameObject:
   m_ObjectHideFlags: 0
@@ -8959,32 +8855,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 2535748581829010478}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &8908217541644714615
 GameObject:
   m_ObjectHideFlags: 0
@@ -9143,32 +9026,19 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
-  button: {fileID: 4390853491200329121}
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  onInteractEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &9141101779346760680
 GameObject:
   m_ObjectHideFlags: 0
