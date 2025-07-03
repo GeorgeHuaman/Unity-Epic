@@ -37,12 +37,17 @@ public class InterfazProgressLevel : MonoBehaviour
                     TextMeshProUGUI text = child.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                     text.text = systemProgressLevel.levels[i].name;
                 }
-                if(j == 2)
+                if (TextVerifyTem(systemProgressLevel.levels[i]) == "Completed!!!")
+                {
+                    Transform childSlider = levelProgress[i].transform.GetChild(1);
+                    Slider slider = childSlider.GetComponent<Slider>();
+                    slider.value = 1;
+                }
+                if (j == 2)
                 {
                     Transform child = tem.transform.GetChild(j);
                     TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
                     text.text = TextVerifyTem(systemProgressLevel.levels[i]);
-
                 }
             }
         }
