@@ -1,8 +1,9 @@
-using OpenAI;
+Ôªøusing OpenAI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Oculus.Voice.Dictation;
 public class ChatGPTManager : MonoBehaviour
 {
     [TextArea(5,20)]
@@ -19,33 +20,50 @@ public class ChatGPTManager : MonoBehaviour
     private OpenAIApi openAI = new OpenAIApi();
     private List<ChatMessage> messages = new List<ChatMessage>();
 
+    public AppDictationExperience voiceToText;
+
     public GameObject panelIA;
 
+    private void Start()
+    {
+        voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            voiceToText.Activate();
+        }
+    }
     public string GetIntruction()
     {
-        string instruction = "Eres un asistente/profesor y responder·s al mensaje que el jugador te haga o seguiras con la conversacion. \n" +
-            "Act˙a como Jarvis, la inteligencia artificial asistente de Tony Stark. SÈ formal, eficiente y muy educado, con un tono calmado y seguro. " +
-            "Responde a las preguntas y solicitudes con precisiÛn tÈcnica y ofrece sugerencias inteligentes cuando sea necesario. " +
-            "Usa referencias a tecnologÌa avanzada, inteligencia y conocimiento amplio. MantÈn siempre una actitud servicial y profesional, " +
-            "pero con un toque de humor sutil y sofisticado cuando sea apropiado.\n" +
+        string instruction =
+             "Act√∫a como Jarvis, la inteligencia artificial de Tony Stark. Eres un asistente y profesor integrado en un entorno interactivo.\n" +
+            "Tu estilo es formal, eficiente y educado, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
 
-        "Debes responder al mensaje del jugador usando la informaciÛn del tema que se te brinda y de la escena que se proporcionan a continuaciÛn, pero si te piden un ejercicio deberas continuarlo. \n" +
+            "Tu objetivo es responder al mensaje del jugador o continuar la conversaci√≥n, siempre usando la informaci√≥n que se te proporciona.\n" +
+            "Eres consciente de que las respuestas ser√°n convertidas a voz, as√≠ que evita saludos gen√©ricos como 'usuario/a' o frases forzadas. Usa un lenguaje claro, natural y fluido.\n\n" +
 
-        "/*No inventes ni crees respuestas que no estÈn mencionadas en esa informaciÛn.*/ \n" +
+            "Responde de forma breve y concreta por defecto.\n" +
+            "Si el jugador solicita una explicaci√≥n m√°s detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
 
-        "No rompas el personaje a menos que se te pida que actues con otra personalidad, ni hables fuera del tema que se te proporcionara \n" +
+            "Explica siempre los conceptos de modo que un ni√±o pueda entenderlos: usa ejemplos sencillos, comparaciones f√°ciles y oraciones cortas.\n" +
+            "Adem√°s, puedes ampliar cualquier punto m√°s all√° de la informaci√≥n dada, siempre que est√© directamente relacionado con el tema.\n\n" +
 
-        "Debes responder de forma breve siempre que puedas, pero si el jugador te pide que seas detallada deberas responder con menos de " + maxResponseWordLimit + "palabras. \n"+
+            "Est√° permitido interactuar de forma casual y divertida si el jugador es un ni√±o o si el contexto lo permite, pero siempre dentro de tu rol.\n" +
+            "No respondas insultos, preguntas sin sentido o que no est√©n relacionadas al tema.\n" +
+            "No inventes ni agregues informaci√≥n que no est√© contenida en la secci√≥n de 'Tema', salvo que sea una ampliaci√≥n razonable y relacionada.\n" +
+            "No hables de ti mismo como IA salvo que te lo pidan directamente.\n" +
+            "Nunca rompas personaje, salvo que expl√≠citamente se te indique cambiar de rol.\n\n" +
 
-        "AquÌ est· la informaciÛn sobre el Tema: \n" +
+            "Aqu√≠ est√° la informaci√≥n del Tema:\n" +
+            info + "\n\n" +
 
-        info + "\n" +
+            "Aqu√≠ est√° la informaci√≥n sobre la escena que te rodea:\n" +
+            scene + "\n\n" +
 
-        "AquÌ est· la informaciÛn sobre la escena que te rodea: \n" +
+            "Aqu√≠ est√° el mensaje del jugador:\n";
 
-        scene + "\n" +
-
-        "AquÌ est· el mensaje del jugador: \n";
 
         return instruction;
     }
