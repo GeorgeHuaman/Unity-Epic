@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SystemProgressLevel : MonoBehaviour
+public class ProgressLevelSystem : MonoBehaviour
 {
     public List<ProgressLevel> levels = new List<ProgressLevel>();
-    public static SystemProgressLevel instance;
+    public static ProgressLevelSystem instance;
     public string currentLevelName;
     public LevelData currentLevelVersion;
 
@@ -37,11 +37,6 @@ public class SystemProgressLevel : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Update()
-    {
-        
-    }
-
     public void IdentifyLevel(string level, LevelData version)
     {
         currentLevelName = level;
@@ -75,7 +70,7 @@ public class SystemProgressLevel : MonoBehaviour
             UpdateLevel();
         }
     }
-    public void UpdateLevel()
+    private void UpdateLevel()
     {
         for (int i = 0; i < levels.Count; i++)
         {
@@ -89,7 +84,6 @@ public class SystemProgressLevel : MonoBehaviour
             }
         }
     }
-
     public bool VerifyTemCompleted(ProgressLevel level)
     {
         for (int i = 0; i < level.levelDataVerify.Count; i++)
@@ -101,6 +95,28 @@ public class SystemProgressLevel : MonoBehaviour
         }
         return false;
     }
+
+    #region Load/Save
+    public void SaveProgress()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadProgress()
+    {
+        ProgressDataSystem system = SaveSystem.LoadPlayer();
+        int k = 0;
+        for (int i = 0; i < levels.Count; i++)
+        {
+            for (int j = 0; j < levels[i].levelDataVerify.Count; j++)
+            {
+                levels[i].levelDataVerify[j].name = system.name[k + j];
+                levels[i].levelDataVerify[j].end = system.end[k + j];
+            }
+            k += 4;
+        }
+    }
+    #endregion
 }
 
 [Serializable]

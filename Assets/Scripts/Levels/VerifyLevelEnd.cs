@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class VerifyLevelEnd : MonoBehaviour
 {
-    private SystemProgressLevel SystemProgressLevel;
+    private ProgressLevelSystem SystemProgressLevel;
     private void Awake()
     {
-        SystemProgressLevel = FindAnyObjectByType<SystemProgressLevel>();
+        SystemProgressLevel = FindAnyObjectByType<ProgressLevelSystem>();
     }
 
     public void EndLevel()

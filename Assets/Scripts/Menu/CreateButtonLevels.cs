@@ -9,10 +9,10 @@ public class CreateButtonLevels : MonoBehaviour
     public List<LevelData> levelsData = new List<LevelData>();
     public GameObject parent;
     public GameObject prefab;
-    public SystemProgressLevel systemProgressLevel;
+    public ProgressLevelSystem systemProgressLevel;
     private void Awake()
     {
-        systemProgressLevel = FindAnyObjectByType<SystemProgressLevel>();
+        systemProgressLevel = FindAnyObjectByType<ProgressLevelSystem>();
     }
     void Start()
     {

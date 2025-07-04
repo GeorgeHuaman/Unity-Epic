@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InterfazProgressLevel : MonoBehaviour
 {
-    public SystemProgressLevel systemProgressLevel;
+    public ProgressLevelSystem systemProgressLevel;
     public GameObject prefabTema;
     public GameObject parent;
     public GameObject panelProgress;
@@ -15,7 +15,7 @@ public class InterfazProgressLevel : MonoBehaviour
 
     private void Awake()
     {
-        systemProgressLevel = FindAnyObjectByType<SystemProgressLevel>();
+        systemProgressLevel = FindAnyObjectByType<ProgressLevelSystem>();
     }
     void Start()
     {
@@ -42,6 +42,8 @@ public class InterfazProgressLevel : MonoBehaviour
                     Transform childSlider = levelProgress[i].transform.GetChild(1);
                     Slider slider = childSlider.GetComponent<Slider>();
                     slider.value = 1;
+
+
                 }
                 if (j == 2)
                 {
