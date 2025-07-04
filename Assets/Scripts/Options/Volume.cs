@@ -1,39 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Volume : MonoBehaviour
 {
-    public Slider slider;
-    public float sliderValue;
-    public Image muteImage;
+    public TextMeshProUGUI volumeText;
+    //public Image muteImage;
+    public float volumeValue = 1f;
+    public float step = 0.05f; // Lo cambia de 5 en 5
 
     void Start()
     {
-        slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
-        AudioListener.volume = slider.value;
-        CheckMute();
+        volumeValue = PlayerPrefs.GetFloat("volumenAudio", 1f);
+        volumeValue = Mathf.Clamp01(volumeValue);
+        ApplyVolume();
     }
 
-
-    public void ChangeSlider(float value)
+    public void IncreaseVolume()
     {
-        sliderValue = value;
-        PlayerPrefs.SetFloat("volumenAudio", sliderValue);
-        AudioListener.volume = sliderValue;
-        CheckMute();
+        volumeValue += step;
+        volumeValue = Mathf.Clamp01(volumeValue);
+        ApplyVolume();
     }
 
-    public void CheckMute()
+    public void DecreaseVolume()
     {
-        if (sliderValue == 0)
-        {
-            muteImage.enabled = true;
-        }
-        else
-        {
-            muteImage.enabled = false;
-        }
+        volumeValue -= step;
+        volumeValue = Mathf.Clamp01(volumeValue);
+        ApplyVolume();
+    }
+
+    private void ApplyVolume()
+    {
+        AudioListener.volume = volumeValue;
+        PlayerPrefs.SetFloat("volumenAudio", volumeValue);
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        int percentage = Mathf.RoundToInt(volumeValue * 100f);
+        volumeText.text = percentage + "%";
+        //muteImage.enabled = (percentage == 0);
     }
 }
