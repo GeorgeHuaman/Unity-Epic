@@ -42,8 +42,12 @@ public class InterfazProgressLevel : MonoBehaviour
                     Transform childSlider = levelProgress[i].transform.GetChild(1);
                     Slider slider = childSlider.GetComponent<Slider>();
                     slider.value = 1;
-
-
+                }
+                if (TextVerifyTem(systemProgressLevel.levels[i]) == "Missing")
+                {
+                    Transform childSlider = levelProgress[i].transform.GetChild(1);
+                    Slider slider = childSlider.GetComponent<Slider>();
+                    slider.value = 0;
                 }
                 if (j == 2)
                 {
