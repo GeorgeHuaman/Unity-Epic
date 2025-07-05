@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour
             buttonParent.SetActive(false);
         }
 
-        if (RangePlayer())
+        if (RangePlayer() && !GameManager.Instance.IsCanvasOpen())
         {
             if (Input.GetKeyDown(KeyCode.F) || inputButton)
                 EnterEvent();
