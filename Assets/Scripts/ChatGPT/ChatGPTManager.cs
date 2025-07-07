@@ -24,6 +24,10 @@ public class ChatGPTManager : MonoBehaviour
 
     public GameObject panelIA;
 
+    [Header("Actions NPC")]
+    public List<NPCAction> actions;
+    public OnResponseEvent OnResponse;
+
     private void Start()
     {
         voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
@@ -56,13 +60,15 @@ public class ChatGPTManager : MonoBehaviour
             "No inventes ni agregues información que no esté contenida en la sección de 'Tema', salvo que sea una ampliación razonable y relacionada.\n" +
             "No hables de ti mismo como IA salvo que te lo pidan directamente.\n" +
             "Nunca rompas personaje, salvo que explícitamente se te indique cambiar de rol.\n" +
-            "Recuerda que si tienes que explicar algo, hazlo de forma que un niño pueda entenderlo facil.\n"+
+            "Recuerda que si tienes que explicar algo, hazlo de forma que un niño pueda entenderlo facil.\n" +
 
             "Aquí está la información del Tema:\n" +
             info + "\n\n" +
 
             "Aquí está la información sobre la escena que te rodea:\n" +
             scene + "\n\n" +
+
+            buildActionInstruction() +
 
             "Aquí está el mensaje del jugador:\n";
 
@@ -86,6 +92,17 @@ public class ChatGPTManager : MonoBehaviour
         if (respone.Choices != null && respone.Choices.Count > 0)
         {
             var chatResponse = respone.Choices[0].Message;
+
+            foreach (var item in actions)
+            {
+                if (chatResponse.Content.Contains(item.actionKeyword))
+                {
+                    string textNoKeyword = chatResponse.Content.Replace(item.actionKeyword, "");
+                    chatResponse.Content = textNoKeyword;
+                    item.actionEvent.Invoke();
+                }
+                
+            }
             messages.Add(chatResponse);
 
             Debug.Log(chatResponse.Content);
@@ -94,6 +111,17 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 
+    public string buildActionInstruction()
+    {
+        actions[0].actionEvent.Invoke();
+        string instruction = "";
+        foreach (var item in actions)
+        {
+            instruction += "if i imply that I want you to do the following: " + item.actionsDescription
+                + ". You must add to your answer the following keyword : " + item.actionKeyword + ". \n";
+        }
+        return instruction;
+    }
     public void ButtonChatGpt()
     {
         GameManager gameManager = GameManager.Instance;
@@ -101,4 +129,15 @@ public class ChatGPTManager : MonoBehaviour
         panelIA.SetActive(gameManager.IsCanvasOpen());
         
     }
+
+    [System.Serializable]
+    public struct NPCAction
+    {
+        public string actionKeyword;
+        [TextArea(2, 5)]
+        public string actionsDescription;
+
+        public UnityEvent actionEvent;
+    }
+
 }
