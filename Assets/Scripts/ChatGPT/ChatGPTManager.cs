@@ -78,9 +78,9 @@ public class ChatGPTManager : MonoBehaviour
 
             // Prompt para insertar marcadores after each sentence
             "Tras CADA ORACIÓN que generes, inserta inmediatamente un marcador de emoción entre corchetes, " +
-            "por ejemplo [EMOCIÓN: Feliz], [EMOCIÓN: Enojado], [EMOCIÓN: Guiño], [EMOCIÓN: CejaArriba], etc. " +
+            "por ejemplo [EMOCIÓN: Feliz], [EMOCIÓN: Normal], [EMOCIÓN: Guiño], [EMOCIÓN: Asombrado],[EMOCIÓN: Sarcasmo],[EMOCIÓN: Apagado],[EMOCIÓN: Happy],[EMOCIÓN: Wink],[EMOCIÓN: Happy],[EMOCIÓN: Amazed],[EMOCIÓN: Sarcastic],[EMOCIÓN: Turnoff] " +
             "Quiero que, justo después de cada punto, coma o signo de exclamación, pongas algo como:\n" +
-            "   ¡Muy bien! [EMOCIÓN: Feliz] ¿Listo para continuar? [EMOCIÓN: Entusiasmado]\n\n" +
+            "   ¡Muy bien! [EMOCIÓN: Feliz] ¿Listo para continuar? [EMOCIÓN: Asombrado]\n\n" +
 
             "Aquí está el mensaje del jugador:\n";
 
@@ -146,7 +146,7 @@ public class ChatGPTManager : MonoBehaviour
             messages.Add(chatResponse);
 
             // 7) Opcional: callback de texto
-            ttsSpeaker.Stop();
+            ttsSpeaker.Stop(); 
             onResponse.Invoke(content);
 
             // 8) Encola cada frase por separado para TTS
