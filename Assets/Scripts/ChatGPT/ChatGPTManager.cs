@@ -97,7 +97,7 @@ public class ChatGPTManager : MonoBehaviour
 
     public async void AskChatGPT(string newText)
     {
-        Agrega el mensaje del usuario al historial
+        //Agrega el mensaje del usuario al historial
         _messages.Add(new ChatMessage
         {
             Role = "user",
