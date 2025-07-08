@@ -819,18 +819,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
+      propertyPath: ttsSpeaker
+      value: 
+      objectReference: {fileID: 1840101246}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
       propertyPath: voiceToText
       value: 
       objectReference: {fileID: 1943917787}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: actions.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: maxResponseWordLimit
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: emotionActions.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
@@ -864,13 +874,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionKeyword
+      value: Triste
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
       propertyPath: OnResponse.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: onResponse.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
@@ -935,7 +950,7 @@ PrefabInstance:
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: actions.Array.data[1].actionEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
@@ -956,6 +971,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onResponse.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Meta.WitAi.TTS.Utilities.TTSSpeaker, Meta.WitAi.TTS
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
@@ -1019,6 +1039,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 228257107}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
       propertyPath: OnResponse.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -1059,6 +1099,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChatGPTAnims, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
       propertyPath: actions.Array.data[0].actionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -1070,6 +1115,11 @@ PrefabInstance:
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: actions.Array.data[2].actionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: emotionActions.Array.data[0].emotionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1177692247504454778, guid: 7458aa3d20e4c7242af5ce3980565250,
