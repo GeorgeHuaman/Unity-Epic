@@ -5,10 +5,12 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 using Oculus.Voice.Dictation;
-using Meta.WitAi.TTS.Utilities; // Para TTSSpeaker
+using Meta.WitAi.TTS.Utilities;
+using Meta.WitAi.TTS.Data; // Para TTSSpeaker
 
 public class ChatGPTManager : MonoBehaviour
 {
+
     [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
     public int maxResponseWordLimit = 15;
@@ -29,14 +31,21 @@ public class ChatGPTManager : MonoBehaviour
     [Header("Emotion Actions")]
     public List<EmotionAction> emotionActions;
 
+    // Cola de fragmentos junto con su emoción
+    private List<(string text, string emotion)> _fragmentQueue = new List<(string, string)>();
+    private int _currentFragmentIndex = 0;
+
+    public UnityEvent<bool> OnPlaybackComplete;
     private void Start()
     {
         voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
+        ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
     }
 
     private void OnDestroy()
     {
         voiceToText.DictationEvents.OnFullTranscription.RemoveListener(AskChatGPT);
+        ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
     }
 
     private void Update()
@@ -78,7 +87,7 @@ public class ChatGPTManager : MonoBehaviour
 
             // Prompt para insertar marcadores after each sentence
             "Tras CADA ORACIÓN que generes, inserta inmediatamente un marcador de emoción entre corchetes, " +
-            "por ejemplo [EMOCIÓN: Feliz], [EMOCIÓN: Normal], [EMOCIÓN: Guiño], [EMOCIÓN: Asombrado],[EMOCIÓN: Sarcasmo],[EMOCIÓN: Apagado],[EMOCIÓN: Happy],[EMOCIÓN: Wink],[EMOCIÓN: Happy],[EMOCIÓN: Amazed],[EMOCIÓN: Sarcastic],[EMOCIÓN: Turnoff] " +
+            "por ejemplo [EMOCIÓN: Feliz], [EMOCIÓN: Normal], [EMOCIÓN: Guiño], [EMOCIÓN: Asombrado], [EMOCIÓN: Sarcasmo], [EMOCIÓN: Apagado], [EMOCIÓN: Happy], [EMOCIÓN: Wink], [EMOCIÓN: Amazed], [EMOCIÓN: Sarcastic], [EMOCIÓN: Turnoff]. " +
             "Quiero que, justo después de cada punto, coma o signo de exclamación, pongas algo como:\n" +
             "   ¡Muy bien! [EMOCIÓN: Feliz] ¿Listo para continuar? [EMOCIÓN: Asombrado]\n\n" +
 
@@ -87,10 +96,8 @@ public class ChatGPTManager : MonoBehaviour
         return instruction;
     }
 
-
     public async void AskChatGPT(string newText)
     {
-        // 1) Envío del mensaje del jugador
         var newMessage = new ChatMessage
         {
             Role = "user",
@@ -98,7 +105,7 @@ public class ChatGPTManager : MonoBehaviour
         };
         messages.Add(newMessage);
 
-        // 2) Llamada a la API
+        
         var request = new CreateChatCompletionRequest
         {
             Model = "gpt-4.1-mini",
@@ -109,53 +116,90 @@ public class ChatGPTManager : MonoBehaviour
         if (response.Choices != null && response.Choices.Count > 0)
         {
             var chatResponse = response.Choices[0].Message;
-            string content = chatResponse.Content;
+            string raw = chatResponse.Content;
 
-            // 3) Detecta marcadores ES/EN de emoción y dispara sus eventos
+            // Regex para extraer marcadores ES/EN(no se como funciona exactamente xd)
             var regex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]",
-                                    RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+                                  RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            Debug.Log(chatResponse.Content);
+            // Limpiar marcadores del texto
+            string clean = regex.Replace(raw, "").Trim();
 
-            foreach (Match match in regex.Matches(content))
-            {
-                string emotion = match.Groups[1].Value.Trim();
-                foreach (var emo in emotionActions)
-                {
-                    if (emo.emotionKeyword.Equals(emotion, System.StringComparison.OrdinalIgnoreCase))
-                    {
-                        emo.emotionEvent.Invoke();
-                        break;
-                    }
-                }
-            }
-            Debug.Log(content);
-            // 4) Limpia todos los marcadores antes de hablar
-            content = regex.Replace(content, "").Trim();
-
-            // 5) Procesa acciones NPC basadas en keywords
+            // NPCAction en caso se le haya pedido hacer algo
             foreach (var item in actions)
             {
-                if (content.Contains(item.actionKeyword))
+                if (clean.Contains(item.actionKeyword))
                 {
-                    content = content.Replace(item.actionKeyword, "");
+                    clean = clean.Replace(item.actionKeyword, "");
                     item.actionEvent.Invoke();
                 }
             }
 
-            // 6) Guarda el mensaje en el historial
-            chatResponse.Content = content;
+            // Guarda mensaje
+            chatResponse.Content = clean;
             messages.Add(chatResponse);
 
-            // 7) Opcional: callback de texto
-            ttsSpeaker.Stop(); 
-            onResponse.Invoke(content);
+          
+            onResponse.Invoke(clean);
 
-            // 8) Encola cada frase por separado para TTS
-            var fragments = Regex.Split(content, @"(?<=[\.!?])\s+");
+            //Construye la cola de parrafos con su emoción
+            _fragmentQueue.Clear();
+            _currentFragmentIndex = 0;
+
+            var fragments = Regex.Split(clean, @"(?<=[\.!?])\s+");
             foreach (var frag in fragments)
             {
                 if (string.IsNullOrWhiteSpace(frag)) continue;
-                ttsSpeaker.SpeakQueued(frag.Trim());
+
+                // Busca la siguiente emoción en raw
+                var match = regex.Match(raw);
+                string emo = null;
+                if (match.Success)
+                {
+                    emo = match.Groups[1].Value.Trim();
+                    raw = raw.Substring(match.Index + match.Length);
+                }
+                _fragmentQueue.Add((frag.Trim(), emo));
             }
+
+            // Detener todos los audios en caso se este reproduciendo uno
+            ttsSpeaker.Stop();
+
+            // Inicia el siguiente fragmento
+            PlayNextFragment();
+        }
+    }
+
+    private void PlayNextFragment()
+    {
+        if (_currentFragmentIndex >= _fragmentQueue.Count) return;
+
+        var (text, emotion) = _fragmentQueue[_currentFragmentIndex];
+
+        // Dispara la emoción antes de hablar
+        if (!string.IsNullOrEmpty(emotion))
+        {
+            foreach (var emo in emotionActions)
+            {
+                if (emo.emotionKeyword.Equals(emotion, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    emo.emotionEvent.Invoke();
+                    break;
+                }
+            }
+        }
+
+        // Habla solo este fragmento
+        ttsSpeaker.Speak(text);
+        _currentFragmentIndex++;
+    }
+
+    private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
+    {
+        // Si el clip no terminó con error, pasamos al siguiente fragmento
+        if (clipData.loadState != TTSClipLoadState.Error)
+        {
+            PlayNextFragment();
         }
     }
 
@@ -188,8 +232,7 @@ public class ChatGPTManager : MonoBehaviour
     [System.Serializable]
     public struct EmotionAction
     {
-        public string emotionKeyword;   // e.g. "Feliz", "Enojado", "Guiño"
+        public string emotionKeyword;   // e.g. "Feliz", "Enojado", "Guiño", "Happy", "Wink"
         public UnityEvent emotionEvent; // evento a invocar
     }
 }
-
