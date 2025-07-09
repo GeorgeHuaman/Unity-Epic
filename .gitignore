@@ -72,3 +72,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignorar todas las JSON de credenciales de servicio en StreamingAssets
+/Assets/StreamingAssets/*.json
+
+# (Opcional) Si prefieres ignorar sólo este archivo:
+/Assets/StreamingAssets/epicapp-465420-ac43382845f3.json
