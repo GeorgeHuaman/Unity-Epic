@@ -51,17 +51,34 @@ public class GoogleSheetsAPI : MonoBehaviour
         var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
         var response = request.Execute();
         var values = response.Values;
-        if (values != null && values.Count >0)
+
+        if (values != null && values.Count > 0)
         {
-            foreach(var row in values)
+            Debug.Log($"[GoogleSheetsAPI] Total rows read: {values.Count}");
+            int rowIndex = 0;
+
+            foreach (var row in values)
             {
                 Row newRow = new Row();
                 DataFromGoogleSheets.rows.Add(newRow);
+
+                // Construyo un string con todos los valores de esta fila
+                var rowDataStrings = new List<string>();
                 foreach (var data in row)
                 {
-                    newRow.cellData.Add(data.ToString());
+                    string cellText = data.ToString();
+                    newRow.cellData.Add(cellText);
+                    rowDataStrings.Add(cellText);
                 }
+
+                // Logueo la fila completa en un solo mensaje
+                Debug.Log($"[GoogleSheetsAPI] Row {rowIndex}: {string.Join(", ", rowDataStrings)}");
+                rowIndex++;
             }
+        }
+        else
+        {
+            Debug.LogWarning("[GoogleSheetsAPI] No se han encontrado datos en el rango especificado.");
         }
     }
 
