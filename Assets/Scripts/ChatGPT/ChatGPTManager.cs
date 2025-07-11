@@ -13,6 +13,7 @@ public class ChatGPTManager : MonoBehaviour
     [TextArea(5, 20)] public string scene;
     public int maxResponseWordLimit = 15;
     public OnResponseEvent onResponse;
+    private OpenAIApi openAI = new OpenAIApi();
     [System.Serializable] public class OnResponseEvent : UnityEvent<string> { }
 
     public AppDictationExperience voiceToText;
@@ -113,7 +114,7 @@ public class ChatGPTManager : MonoBehaviour
             req.Add(_messages[i]);
 
         // 3) Llamada a la API
-        var response = await new OpenAIApi().CreateChatCompletion(new CreateChatCompletionRequest
+        var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
         {
             Model = "gpt-4.1-mini",
             Messages = req

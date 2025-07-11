@@ -7,6 +7,7 @@ using UnityEngine;
 using Google.Apis.Services;
 using System;
 using System.IO;
+using Google.Apis.Sheets.v4.Data;
 public class GoogleSheetsAPI : MonoBehaviour
 {
     [Header("GoogleSheets Information")]
@@ -16,30 +17,38 @@ public class GoogleSheetsAPI : MonoBehaviour
     [Header("Data From GoogleSheets")]
     [SerializeField] private string getDataInRange;
 
-    private string serviceAccountEmail = "googlesheetsunity@epicapp-465420.iam.gserviceaccount.com";
-    private string certificateName = "epicapp-465420-44ec8edf9ddc.p12";
-    private string certificatePath;
-
     private static SheetsService googleSheetService;
 
     public RowList DataFromGoogleSheets = new RowList();
 
+    [Header("Write Data From Unity")]
+    [SerializeField] private string writeDataInRange;
+
+    public RowList WriteDataFromUnity = new RowList();
+
+    [Header("Delete Data in GoogleSheets")]
+    [SerializeField] private string deleteDataInRange;
+
     void Start()
     {
-        var jsonPath = Path.Combine(Application.streamingAssetsPath, "epicapp-465420-ac43382845f3.json");
-        GoogleCredential credential;
-        using (var stream = new FileStream(jsonPath, FileMode.Open, FileAccess.Read))
+        var credAsset = Resources.Load<TextAsset>("epicapp-465420-ac43382845f3");
+        if (credAsset == null)
         {
-            credential = GoogleCredential.FromStream(stream)
-                .CreateScoped(SheetsService.Scope.Spreadsheets);
+            Debug.LogError("[GoogleSheetsAPI] No pude cargar el JSON de credenciales en Resources!");
+            return;
         }
 
+        GoogleCredential credential = GoogleCredential
+            .FromJson(credAsset.text)
+            .CreateScoped(SheetsService.Scope.Spreadsheets);
+
+        // 3) Inicializa el servicio:
         googleSheetService = new SheetsService(new BaseClientService.Initializer()
         {
             HttpClientInitializer = credential,
             ApplicationName = "GoogleSheets API for Unity"
         });
-
+         
         ReadData();
 
     }
@@ -80,6 +89,35 @@ public class GoogleSheetsAPI : MonoBehaviour
         {
             Debug.LogWarning("[GoogleSheetsAPI] No se han encontrado datos en el rango especificado.");
         }
+    }
+
+    public void WriteData()
+    {
+        string range = sheetID + "!" + writeDataInRange;
+        var valueRange = new ValueRange();
+        var cellData = new List<object>();
+        var arrows = new List<IList<object>>();
+        foreach (var row in WriteDataFromUnity.rows)
+        {
+            cellData = new List<object>();
+            foreach (var data in row.cellData)
+            {
+                cellData.Add(data);
+            }
+            arrows.Add(cellData);
+        }
+        valueRange.Values = arrows;
+
+        var request = googleSheetService.Spreadsheets.Values.Append(valueRange, spreadSheetID, range);
+        request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
+        var response = request.Execute();
+    }
+    
+    public void DeleteData()
+    {
+        string range = sheetID + "!" + deleteDataInRange;
+        var deleteData = googleSheetService.Spreadsheets.Values.Clear(new ClearValuesRequest(), spreadSheetID, range);
+        deleteData.Execute();
     }
 
     [Serializable]
