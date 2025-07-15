@@ -13,7 +13,7 @@ public class ChatGPTManager : MonoBehaviour
     [TextArea(5, 20)] public string scene;
     public int maxResponseWordLimit = 15;
     public OnResponseEvent onResponse;
-    private OpenAIApi openAI = new OpenAIApi();
+    private OpenAIApi openAI;
     [System.Serializable] public class OnResponseEvent : UnityEvent<string> { }
 
     public AppDictationExperience voiceToText;
@@ -38,6 +38,12 @@ public class ChatGPTManager : MonoBehaviour
 
     void Awake()
     {
+        var credAsset = Resources.Load<TextAsset>("auth");
+        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
+
+        string apiKey = auth.api_key.Trim();
+        openAI = new OpenAIApi(apiKey);
+
         _systemMessage = new ChatMessage
         {
             Role = "system",
@@ -228,5 +234,12 @@ public class ChatGPTManager : MonoBehaviour
     {
         public string emotionKeyword;   // “Feliz”, “Happy”, etc.
         public UnityEvent emotionEvent;
+    }
+
+    [System.Serializable]
+    public class AuthData
+    {
+        public string api_key;
+        public string organization;
     }
 }
