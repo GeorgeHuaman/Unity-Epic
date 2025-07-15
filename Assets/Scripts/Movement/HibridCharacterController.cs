@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class HibridCharacterController : MonoBehaviour
@@ -24,10 +25,17 @@ public class HibridCharacterController : MonoBehaviour
     bool isGrounded;
 
     public Joystick joystickDigital;
+    public Button buttonJump;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        if (buttonJump != null )
+        {
+            buttonJump.onClick.AddListener(Jump);
+        }
+        
 
         if (cameraTransform == null && Camera.main != null)
             cameraTransform = Camera.main.transform;
