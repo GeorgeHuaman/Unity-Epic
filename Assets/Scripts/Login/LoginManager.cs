@@ -2,6 +2,7 @@
 using TMPro;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Events;
 
 public class LoginManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class LoginManager : MonoBehaviour
 
     [Header("Google Sheets Service")]
     [SerializeField] private GoogleSheetsAPI sheetsApi;
+
+    [Header("Eventos")]
+    public UnityEvent onLoginSuccess;
+    public UnityEvent onLoginFailure;
     public void OnLoginButtonPressed()
     {
         sheetsApi.DataFromGoogleSheets.rows.Clear();
@@ -37,6 +42,7 @@ public class LoginManager : MonoBehaviour
         if (!loggedIn)
         {
             Debug.LogWarning("[LoginManager] Usuario o contraseña incorrectos.");
+            onLoginFailure?.Invoke();
             return;
         }
 
@@ -61,6 +67,7 @@ public class LoginManager : MonoBehaviour
         UserSession.Instance.sheetRowNumber = sheetRowNum;
         UserSession.Instance.cells = fullRow;
 
+        onLoginSuccess?.Invoke();
         Debug.Log($"[LoginManager] Fila {sheetRowNum} cargada: {string.Join(", ", fullRow)}");
     }
 }

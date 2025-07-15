@@ -12,12 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject exit;
 
     private bool isCanvasOpen;
-    private bool isCursorLocked;
+    public bool isCursorLocked = true;
 
     void Start()
     {
         Instance = this;
-        isCursorLocked = true;
 
         if (SceneManager.GetActiveScene().name != "Plaza Central")
         {
