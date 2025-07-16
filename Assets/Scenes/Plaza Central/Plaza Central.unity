@@ -974,6 +974,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 742097337343794320, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00024414062
+      objectReference: {fileID: 0}
     - target: {fileID: 798007529197090072, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1039,6 +1044,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1776148087466841220, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.2659912
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381717472723333136, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2465838593283425939, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1067,6 +1082,21 @@ PrefabInstance:
     - target: {fileID: 3084552845170403625, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736284360714108399, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736284360714108399, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736284360714108399, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4821641916586688473, guid: 7458aa3d20e4c7242af5ce3980565250,
@@ -1144,6 +1174,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6568699428942544133, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -57.491455
+      objectReference: {fileID: 0}
     - target: {fileID: 7762935444372042195, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: m_IsActive
@@ -1169,6 +1204,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 9063813870456171174, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1184,6 +1224,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1198338469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6805308486905470519, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198338467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ede974a13a2754a9e4c40b1efef4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1324192800
@@ -1731,6 +1783,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProgressLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 5165835067738272906, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6776272519732967259, guid: e4a3786d5351b094e95a34c37fc44628,
         type: 3}
       propertyPath: levels.Array.data[0].name
@@ -1977,7 +2034,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1198338469}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SetIsCanvasOpen
         m_Mode: 6
