@@ -69,5 +69,6 @@ public class LoginManager : MonoBehaviour
 
         onLoginSuccess?.Invoke();
         Debug.Log($"[LoginManager] Fila {sheetRowNum} cargada: {string.Join(", ", fullRow)}");
+        GameTime.instance.Init();
     }
 }

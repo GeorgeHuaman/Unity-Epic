@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,12 +19,23 @@ public class Mission : MonoBehaviour
 
     [ReadOnly]public bool started;
     [ReadOnly]public bool completed;
+    [HideInInspector] private ProgressLevelSystem progressLevelSystem;
 
     private void Start()
     {
+        progressLevelSystem = FindObjectOfType<ProgressLevelSystem>();
         if (startAutomatically)
         {
             StartMission();
+            AssignPercentageTask();
+        }
+    }
+
+    private void AssignPercentageTask()
+    {
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            tasks[i].percentage = (((float)i+1) / tasks.Count) * 100f;
         }
     }
 
@@ -55,6 +67,7 @@ public class Mission : MonoBehaviour
 
         task.StartTask();
         task.CompleteTask();
+        progressLevelSystem.UpdatePercentage(this.tasks[taskId].percentage);
         TryStartNextTask();
 
         if (!completed && tasks.TrueForAll(t => t.completed))

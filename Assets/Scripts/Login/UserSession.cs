@@ -27,6 +27,14 @@ public class UserSession : MonoBehaviour
         return cells.Count > idx ? cells[idx] : "";
     }
 
+    public void TimeGame(string time)
+    {
+        cells[7] = time;
+    }
+    public void Percentage(float percentage,int tema)
+    {
+        cells[tema+7] = percentage.ToString();
+    }
     void Awake()
     {
         if (Instance == null)

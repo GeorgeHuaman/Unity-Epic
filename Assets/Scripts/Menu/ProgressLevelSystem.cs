@@ -96,6 +96,34 @@ public class ProgressLevelSystem : MonoBehaviour
         return false;
     }
 
+    public void UpdatePercentage(float percentage)
+    {
+        ProgressLevel moment = null;
+        int level = 0;
+        for (int i = 0; i <= levels.Count; i++)
+        {
+            if (levels[i].levelData == currentLevelVersion)
+            {
+                moment = levels[i];
+                level = i+1;
+                break;
+            }
+        }
+        if (moment.percentage < percentage)
+        {
+            UserSession.Instance.Percentage(percentage,level);
+            moment.percentage = percentage;
+        }
+    }
+    void save(string time)
+    {
+        int fila = UserSession.Instance.sheetRowNumber;
+        string celda = "H" + fila;
+        GoogleSheetsAPI.instance.WriteDataFor(celda, celda, time);
+    }
+    private void OnApplicationQuit()
+    {
+    }
     #region Load/Save
     public void SaveProgress()
     {
@@ -125,6 +153,7 @@ public class ProgressLevel
     public string name;
     public int currentLevel = 1;
     public LevelData levelData;
+    public float percentage;
     public List<LevelDataVerify> levelDataVerify = new List<LevelDataVerify>();
     public Slider progressBar;
     public Text progressText;

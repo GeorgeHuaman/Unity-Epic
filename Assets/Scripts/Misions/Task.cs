@@ -8,6 +8,7 @@ public class Task
 
     public TaskType type;
     public string taskName;
+    public float percentage;
 
     [ShowIfProgress]
     public int progressSteps;
