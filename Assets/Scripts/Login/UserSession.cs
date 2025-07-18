@@ -31,9 +31,9 @@ public class UserSession : MonoBehaviour
     {
         cells[7] = time;
     }
-    public void Percentage(float percentage,int tema)
+    public float Percentage(int tema)
     {
-        cells[tema+7] = percentage.ToString();
+        return float.Parse(cells[tema + 7]);
     }
     void Awake()
     {

@@ -42,9 +42,9 @@ public class GameTime : MonoBehaviour
         TimeSpan tiempo = TimeSpan.FromSeconds(tiempoInicial+this.tiempo); 
         string tiempoTexto = tiempo.ToString(@"hh\:mm\:ss");
         UserSession.Instance.TimeGame(tiempoTexto); Debug.Log($"Tiempo desde inicio: {tiempoTexto}");
-        save(tiempoTexto);
+        SaveExcell(tiempoTexto);
     }
-    void save(string time) 
+    void SaveExcell(string time) 
     {
         int fila = UserSession.Instance.sheetRowNumber;
         string celda = "H" + fila;
@@ -55,5 +55,6 @@ public class GameTime : MonoBehaviour
         TimeSpan tiempo = TimeSpan.FromSeconds(tiempoInicial); 
         string tiempoTexto = tiempo.ToString(@"hh\:mm\:ss");
         UserSession.Instance.TimeGame(tiempoTexto);
+        SaveExcell(tiempoTexto);
     }
 }

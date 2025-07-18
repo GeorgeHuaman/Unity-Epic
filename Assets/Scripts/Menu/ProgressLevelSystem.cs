@@ -10,6 +10,7 @@ public class ProgressLevelSystem : MonoBehaviour
     public static ProgressLevelSystem instance;
     public string currentLevelName;
     public LevelData currentLevelVersion;
+    private string abec = "ABCDEFGHIJKLMNOPQRST";
 
     private void Start()
     {
@@ -109,20 +110,32 @@ public class ProgressLevelSystem : MonoBehaviour
                 break;
             }
         }
-        if (moment.percentage < percentage)
+        if (percentage > UserSession.Instance.Percentage(level))
         {
-            UserSession.Instance.Percentage(percentage,level);
             moment.percentage = percentage;
+            SaveExcell(percentage.ToString(), level);
         }
     }
-    void save(string time)
+    void SaveExcell(string percentage, int level)
     {
         int fila = UserSession.Instance.sheetRowNumber;
-        string celda = "H" + fila;
-        GoogleSheetsAPI.instance.WriteDataFor(celda, celda, time);
+        string celda = GetLetraPorIndice(level) + fila;
+        Debug.Log(GetLetraPorIndice(level));
+        GoogleSheetsAPI.instance.WriteDataFor(celda, celda, percentage);
+    }
+    string GetLetraPorIndice(int index)
+    {
+        if (index >= 1 && index <= abec.Length)
+        {
+            Debug.Log(abec[index + 7].ToString() + "---");
+            return abec[index + 7].ToString(); // devuelve como string
+        }
+        else
+            throw new ArgumentOutOfRangeException("Índice fuera de rango del abecedario.");
     }
     private void OnApplicationQuit()
     {
+
     }
     #region Load/Save
     public void SaveProgress()
