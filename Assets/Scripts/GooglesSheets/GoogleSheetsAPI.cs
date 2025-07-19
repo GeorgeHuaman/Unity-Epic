@@ -6,6 +6,7 @@ using Google.Apis.Services;
 using System;
 using Google.Apis.Sheets.v4.Data;
 using System.Linq;
+using UnityEngine.SocialPlatforms;
 public class GoogleSheetsAPI : MonoBehaviour
 {
     public static GoogleSheetsAPI instance;
@@ -31,7 +32,7 @@ public class GoogleSheetsAPI : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        instance = this; 
     }
     void Start()
     {
@@ -52,7 +53,7 @@ public class GoogleSheetsAPI : MonoBehaviour
             HttpClientInitializer = credential,
             ApplicationName = "GoogleSheets API for Unity"
         });
-
+        ReadDataFrom("A2","A");
     }
 
     public void ReadData()
@@ -199,7 +200,7 @@ public class GoogleSheetsAPI : MonoBehaviour
         updateRequest.ValueInputOption =
             SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
 
-        updateRequest.Execute();
+        updateRequest.ExecuteAsync();
         Debug.Log($"[GoogleSheetsAPI] Actualizadas {newValues.Length} celdas en rango {range}");
     }
     public void DeleteData()
@@ -208,7 +209,18 @@ public class GoogleSheetsAPI : MonoBehaviour
         var deleteData = googleSheetService.Spreadsheets.Values.Clear(new ClearValuesRequest(), spreadSheetID, range);
         deleteData.Execute();
     }
+    public void SearchAlumn()
+    {
+        if(googleSheetService == null)
+        {
+            Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
+            return;
+        }
 
+    }
+    public void FindLastRowData()
+    {
+    }
     [Serializable]
     public class Row
     {
