@@ -7,6 +7,7 @@ using System;
 using Google.Apis.Sheets.v4.Data;
 using System.Linq;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
 public class GoogleSheetsAPI : MonoBehaviour
 {
     public static GoogleSheetsAPI instance;
@@ -29,6 +30,8 @@ public class GoogleSheetsAPI : MonoBehaviour
 
     [Header("Delete Data in GoogleSheets")]
     [SerializeField] private string deleteDataInRange;
+
+    public DataBaseAlumn dataBaseAlumn;
 
     private void Awake()
     {
@@ -59,7 +62,6 @@ public class GoogleSheetsAPI : MonoBehaviour
     public void ReadData()
     {
         string range = sheetID + "!" + getDataInRange;
-
         var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
         var response = request.Execute();
         var values = response.Values;
@@ -209,17 +211,88 @@ public class GoogleSheetsAPI : MonoBehaviour
         var deleteData = googleSheetService.Spreadsheets.Values.Clear(new ClearValuesRequest(), spreadSheetID, range);
         deleteData.Execute();
     }
-    public void SearchAlumn()
+    public string FilterEducation(string row, string columns, int numberRows)
     {
         if(googleSheetService == null)
         {
             Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
-            return;
+            return null;
+        }
+        string range = $"{sheetID}!{row}:{columns}";
+        var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
+        var response = request.Execute();
+        var values = response.Values;
+
+        if (values != null && values.Count > 0)
+        {
+            string colegio = values[0][0].ToString();
+            return colegio;
+        }
+        else
+        {
+            Debug.LogWarning("[GoogleSheetsAPI] No hay datos en el rango especificado.");
+        }
+        return null;
+    }
+
+    public ListExcel AddAlumn(string row,string columns)
+    {
+        ListExcel listExcel = new ListExcel();
+        if (googleSheetService == null)
+        {
+            Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
+            return null;
+        }
+        string range = $"{sheetID}!{row}:{columns}";
+        var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
+        var response = request.Execute();
+        var values = response.Values;
+        if (values != null && values.Count > 0)
+        {
+            listExcel.email = values[0][0].ToString();
+            listExcel.password = values[0][1].ToString();
+            listExcel.name = values[0][2].ToString();
+            listExcel.lastName = values[0][3].ToString();
+            listExcel.school = values[0][4].ToString();
+            listExcel.rol = values[0][5].ToString();
+            listExcel.gradeEducation = values[0][6].ToString();
+            listExcel.gameTime = values[0][7].ToString();
+        }
+        return listExcel;
+    }
+
+    public int LimitUsser()
+    {
+        int limit = 0;
+        if (googleSheetService == null)
+        {
+            Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
+            return 0;
+        }
+        string range = $"{sheetID}!{"A2"}:{"A"}";
+        var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
+        var response = request.Execute();
+        var values = response.Values;
+
+        if (values != null && values.Count > 0)
+        {
+            for (int i = 0; i < values.Count; i++)
+            {
+                var row = values[i];
+                var newRow = new Row();
+                foreach (var cell in row)
+                {
+                    limit += 1;
+                }
+                DataFromGoogleSheets.rows.Add(newRow);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[GoogleSheetsAPI] No hay datos en el rango especificado.");
         }
 
-    }
-    public void FindLastRowData()
-    {
+        return limit;
     }
     [Serializable]
     public class Row
@@ -231,4 +304,5 @@ public class GoogleSheetsAPI : MonoBehaviour
     {
         public List<Row> rows = new List<Row>();
     }
+
 }

@@ -1543,6 +1543,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1050195192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1616827527585469649, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198338467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1050195194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5837374515958105866, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198338467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050195192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164c2f64ca6b1d74c88945eea039fed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1050195195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050195192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1aae3151c4192540b0284836b469ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExcelList: []
+  GoogleSheetsAPI: {fileID: 1050195194}
+  abeced: ABCDEFGH
+  userSession: {fileID: 0}
 --- !u!1001 &1198338467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1779,7 +1813,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1616827527585469649, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1050195195}
   m_SourcePrefab: {fileID: 100100000, guid: 7458aa3d20e4c7242af5ce3980565250, type: 3}
 --- !u!114 &1198338468 stripped
 MonoBehaviour:
