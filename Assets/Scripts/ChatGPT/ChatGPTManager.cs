@@ -11,9 +11,9 @@ public class ChatGPTManager : MonoBehaviour
 {
     [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
-    [TextArea(5, 20)] public string extraInstruction; // instrucciones para system prompt
+    [TextArea(5, 20)] public string extraInstruction;
     public int maxResponseWordLimit = 15;
-    public bool useVoiceFriendly = false;            // <<--- Nuevo booleano
+    public bool useVoiceFriendly = false;
     public OnResponseEvent onResponse;
     [System.Serializable] public class OnResponseEvent : UnityEvent<string> { }
 
@@ -46,7 +46,6 @@ public class ChatGPTManager : MonoBehaviour
         var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
         openAI = new OpenAIApi(auth.api_key.Trim());
 
-        // Construye el system prompt (sin incluir extraInstruction; lo usamos solo como referencia)
         _systemMessage = new ChatMessage
         {
             Role = "system",
@@ -141,11 +140,14 @@ public class ChatGPTManager : MonoBehaviour
                     voiceOnly = "";
                 }
             }
+            if (string.IsNullOrWhiteSpace(voiceOnly))
+            {
+                voiceOnly = written;
+            }
 
-            // UI: solo la parte escrita
+            //  UI: solo la parte escrita
             onResponse.Invoke(written);
 
-            // TTS: encolamos toda la parte de voz
             EnqueueVoice(voiceOnly);
         }
         else

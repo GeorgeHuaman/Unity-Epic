@@ -11,4 +11,10 @@ public class ChatGPTAnims : MonoBehaviour
     public AnimationClip sarcastic;
     public AnimationClip wink;
     public AnimationClip turnOff;
+
+
+    public void Start()
+    {
+        anim.SetBool("Talk", true);
+    }
 }
