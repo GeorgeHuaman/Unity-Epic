@@ -11,9 +11,10 @@ public class ChatGPTManager : MonoBehaviour
 {
     [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
+    [TextArea(5, 20)] public string extraInstruction; // instrucciones para system prompt
     public int maxResponseWordLimit = 15;
+    public bool useVoiceFriendly = false;            // <<--- Nuevo booleano
     public OnResponseEvent onResponse;
-    private OpenAIApi openAI;
     [System.Serializable] public class OnResponseEvent : UnityEvent<string> { }
 
     public AppDictationExperience voiceToText;
@@ -25,6 +26,8 @@ public class ChatGPTManager : MonoBehaviour
 
     [Header("Emotion Actions")]
     public List<EmotionAction> emotionActions;
+
+    private OpenAIApi openAI;
 
     // System prompt fijo
     private ChatMessage _systemMessage;
@@ -38,49 +41,29 @@ public class ChatGPTManager : MonoBehaviour
 
     void Awake()
     {
+        // Carga credenciales
         var credAsset = Resources.Load<TextAsset>("auth");
         var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
+        openAI = new OpenAIApi(auth.api_key.Trim());
 
-        string apiKey = auth.api_key.Trim();
-        openAI = new OpenAIApi(apiKey);
-
+        // Construye el system prompt (sin incluir extraInstruction; lo usamos solo como referencia)
         _systemMessage = new ChatMessage
         {
             Role = "system",
             Content =
                 "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
                 "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
-
                 "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
-                "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a' o frases forzadas.\n" +
+                "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a'.\n" +
                 "Usa un lenguaje claro, natural y fluido.\n\n" +
-
                 "Responde de forma breve y concreta por defecto.\n" +
                 "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
+                "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos y oraciones cortas.\n\n" +
+                "Aquí está la información del Tema:\n" + info + "\n\n" +
+                "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
+                extraInstruction + "\n\n" +
+                buildActionInstruction() + "\n\n"
 
-                "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos, comparaciones fáciles y oraciones cortas.\n" +
-                "Además, puedes ampliar cualquier punto más allá de la información dada, siempre que esté directamente relacionado con el tema.\n\n" +
-
-                "Está permitido interactuar de forma casual y divertida si el jugador es un niño o si el contexto lo permite, pero siempre dentro de tu rol.\n" +
-                "No respondas insultos, preguntas sin sentido o que no estén relacionadas al tema.\n" +
-                "No inventes ni agregues información que no esté contenida en la sección de 'Tema', salvo que sea una ampliación razonable y relacionada.\n" +
-                "No hables de ti mismo como IA salvo que te lo pidan directamente.\n" +
-                "Nunca rompas personaje, salvo que explícitamente se te indique cambiar de rol.\n" +
-                "Recuerda que si tienes que explicar algo, hazlo de forma que un niño pueda entenderlo fácil.\n\n" +
-
-                "Aquí está la información del Tema:\n" +
-                info + "\n\n" +
-
-                "Aquí está la información sobre la escena que te rodea:\n" +
-                scene + "\n\n" +
-
-                buildActionInstruction() + "\n\n" +
-
-                "Tras CADA ORACIÓN que generes, inserta inmediatamente un marcador de emoción entre corchetes, " +
-                "Solo usa estos [EMOCIÓN: Feliz], [EMOCIÓN: Normal], [EMOCIÓN: Guiño], [EMOCIÓN: Asombrado], [EMOCIÓN: Sarcasmo], [EMOCIÓN: Apagado], [EMOCIÓN: Happy], [EMOCIÓN: Wink], [EMOCIÓN: Amazed], [EMOCIÓN: Sarcastic], [EMOCIÓN: Turnoff]. \n" +
-
-                 "Quiero que, justo después de cada punto, coma o signo de exclamación, pongas algo como:\n" +
-                "¡Muy bien! [EMOCIÓN: Feliz] ¿Listo para continuar? [EMOCIÓN: Asombrado]\n\n"
         };
     }
 
@@ -104,37 +87,76 @@ public class ChatGPTManager : MonoBehaviour
 
     public async void AskChatGPT(string newText)
     {
-        //Agrega el mensaje del usuario al historial
-        _messages.Add(new ChatMessage
+        // Reconstruye el prompt del sistema cada vez
+        _systemMessage = new ChatMessage
         {
-            Role = "user",
-            Content = newText
-        });
+            Role = "system",
+            Content = BuildFullSystemPrompt()
+        };
 
-        // 2) Construye la lista de mensajes para la petición (system + últimos N)
-        const int maxTurns = 8 * 2; // 8 intercambios usuario+IA
+        _messages.Add(new ChatMessage { Role = "user", Content = newText });
+
+        const int maxTurns = 8 * 2;
         var req = new List<ChatMessage> { _systemMessage };
-        // Sólo los últimos maxTurns de _messages
         int start = Mathf.Max(0, _messages.Count - maxTurns);
         for (int i = start; i < _messages.Count; i++)
             req.Add(_messages[i]);
 
-        // 3) Llamada a la API
         var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
         {
             Model = "gpt-4.1-mini",
             Messages = req
         });
+        if (response.Choices == null || response.Choices.Count == 0) return;
 
-        if (response.Choices != null && response.Choices.Count > 0)
+        string raw = response.Choices[0].Message.Content;
+        Debug.Log(raw);
+
+        if (useVoiceFriendly)
         {
-            string raw = response.Choices[0].Message.Content;
+            string written = "";
+            string voiceOnly = "";
+
+            var escMatch = Regex.Match(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)",
+                                       RegexOptions.Singleline);
+            var vozMatch = Regex.Match(raw, @"\*\*VOZ:\*\*(.+)\z",
+                                       RegexOptions.Singleline);
+
+            if (escMatch.Success && vozMatch.Success)
+            {
+                written = escMatch.Groups[1].Value.Trim();
+                voiceOnly = vozMatch.Groups[1].Value.Trim();
+            }
+            else
+            {
+                var parts = raw.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
+                if (parts.Length == 2)
+                {
+                    written = parts[0].Trim();
+                    voiceOnly = parts[1].Trim();
+                }
+                else
+                {
+                    written = raw.Trim();
+                    voiceOnly = "";
+                }
+            }
+
+            // UI: solo la parte escrita
+            onResponse.Invoke(written);
+
+            // TTS: encolamos toda la parte de voz
+            EnqueueVoice(voiceOnly);
+        }
+        else
+        {
+            string emoraw = response.Choices[0].Message.Content;
             // 4) Extrae emociones con Regex
             var regex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]",
                                   RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-            Debug.Log(raw);
+            Debug.Log(emoraw);
             // 5) Limpia texto plano
-            string clean = regex.Replace(raw, "").Trim();
+            string clean = regex.Replace(emoraw, "").Trim();
 
             // 6) Dispara tus acciones por keyword
             foreach (var act in actions)
@@ -158,7 +180,7 @@ public class ChatGPTManager : MonoBehaviour
             _fragmentQueue.Clear();
             _currentFragmentIndex = 0;
             var fragments = Regex.Split(clean, @"(?<=[\.!?])\s+");
-            string tempRaw = raw;
+            string tempRaw = emoraw;
             foreach (var frag in fragments)
             {
                 if (string.IsNullOrWhiteSpace(frag)) continue;
@@ -176,30 +198,62 @@ public class ChatGPTManager : MonoBehaviour
             // 11) Inicia reproducción secuencial
             PlayNextFragment();
         }
+
+        // 6) Guarda la respuesta (raw) para gestionar el historial
+        _messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+    }
+
+    // Divide un texto en frases, ignora emociones (ya disparadas) y encola
+    private void EnqueueVoice(string text)
+    {
+        // Detiene audio anterior
+        ttsSpeaker.Stop();
+
+        // Extrae y dispara emociones inline si quedara alguna
+        var emoRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]",
+                                 RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        foreach (Match m in emoRegex.Matches(text))
+        {
+            string key = m.Groups[1].Value.Trim();
+            foreach (var emo in emotionActions)
+                if (emo.emotionKeyword.Equals(key, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    emo.emotionEvent.Invoke();
+                    break;
+                }
+        }
+        // Limpia etiquetas
+        text = emoRegex.Replace(text, "").Trim();
+
+        // Prepara la cola de fragments
+        _fragmentQueue.Clear();
+        _currentFragmentIndex = 0;
+        var frags = Regex.Split(text, @"(?<=[\.!?])\s+");
+        foreach (var f in frags)
+            if (!string.IsNullOrWhiteSpace(f))
+                _fragmentQueue.Add((f.Trim(), null));
+
+        // Empieza a hablar
+        PlayNextFragment();
     }
 
     private void PlayNextFragment()
     {
         if (_currentFragmentIndex >= _fragmentQueue.Count) return;
-
-        var (text, emotion) = _fragmentQueue[_currentFragmentIndex];
-        // dispara emoción
-        if (!string.IsNullOrEmpty(emotion))
-            foreach (var emo in emotionActions)
-                if (emo.emotionKeyword.Equals(emotion, System.StringComparison.OrdinalIgnoreCase))
+        var (t, emo) = _fragmentQueue[_currentFragmentIndex];
+        if (!string.IsNullOrEmpty(emo))
+            foreach (var e in emotionActions)
+                if (e.emotionKeyword.Equals(emo, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    emo.emotionEvent.Invoke();
+                    e.emotionEvent.Invoke();
                     break;
                 }
-
-        // reproduce solo esa frase
-        ttsSpeaker.Speak(text);
+        ttsSpeaker.Speak(t);
         _currentFragmentIndex++;
     }
 
     private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
     {
-        // si no hubo error, avanza
         if (clipData.loadState != TTSClipLoadState.Error)
             PlayNextFragment();
     }
@@ -207,10 +261,8 @@ public class ChatGPTManager : MonoBehaviour
     public string buildActionInstruction()
     {
         string instr = "";
-        foreach (var item in actions)
-        {
-            instr += $"Si quiero que hagas: {item.actionsDescription}, incluye la palabra clave “{item.actionKeyword}”.\n";
-        }
+        foreach (var i in actions)
+            instr += $"Si quiero que hagas: {i.actionsDescription}, usa “{i.actionKeyword}”.\n";
         return instr;
     }
 
@@ -220,7 +272,22 @@ public class ChatGPTManager : MonoBehaviour
         gm.SetIsCanvasOpen(!panelIA.activeSelf);
         panelIA.SetActive(gm.IsCanvasOpen());
     }
-
+    private string BuildFullSystemPrompt()
+    {
+        return
+            "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
+            "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
+            "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
+            "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a'.\n" +
+            "Usa un lenguaje claro, natural y fluido.\n\n" +
+            "Responde de forma breve y concreta por defecto.\n" +
+            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
+            "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos y oraciones cortas.\n\n" +
+            "Aquí está la información del Tema:\n" + info + "\n\n" +
+            "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
+            extraInstruction + "\n\n" +
+            buildActionInstruction() + "\n\n";
+    }
     [System.Serializable]
     public struct NPCAction
     {
@@ -232,14 +299,9 @@ public class ChatGPTManager : MonoBehaviour
     [System.Serializable]
     public struct EmotionAction
     {
-        public string emotionKeyword;   // “Feliz”, “Happy”, etc.
+        public string emotionKeyword;
         public UnityEvent emotionEvent;
     }
 
-    [System.Serializable]
-    public class AuthData
-    {
-        public string api_key;
-        public string organization;
-    }
+    [System.Serializable] public class AuthData { public string api_key; public string organization; }
 }
