@@ -10,6 +10,7 @@ public class InterfazProgressLevel : MonoBehaviour
     public GameObject prefabTema;
     public GameObject parent;
     public GameObject panelProgress;
+    public ListExcel listExcel;
     public List<GameObject> levelProgress = new List<GameObject>();
     // Start is called before the first frame update
 

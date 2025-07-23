@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchAlumn : MonoBehaviour
+public class ControlPanelProfesores : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
