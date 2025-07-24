@@ -1310,8 +1310,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3297430240011878283, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297430240011878283, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297430240011878283, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Oculus.Voice.Dictation.AppDictationExperience, VoiceSDK.Dictation.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 3297430240011878283, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
@@ -1545,6 +1555,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9178497729320309764, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: sendButton
+      value: 
+      objectReference: {fileID: 1669190755}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3442,6 +3457,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e919abfe68b0314aa3fa156a83435f2, type: 3}
+--- !u!114 &1669190755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4006829860205507015, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 835398962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762780043
 GameObject:
   m_ObjectHideFlags: 0
