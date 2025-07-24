@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 812934a8e4782ff4e8c5a8b3026c0bc4
+  m_OcclusionCullingData: {fileID: 36300000, guid: 500aeb798fa4f7647936ec4d1435ed1a,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -6121,6 +6122,7 @@ MonoBehaviour:
   tasks:
   - type: 1
     taskName: Encuentra los Objetos Claves
+    percentage: 0
     progressSteps: 3
     onStart:
       m_PersistentCalls:
@@ -6133,6 +6135,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: Dirigete hacia la puerta
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -6145,6 +6148,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: Lee todos los carteles
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -6157,6 +6161,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: Toca el Boton
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5292630758020814446}
   - component: {fileID: 1382247508372915684}
+  - component: {fileID: 4801357649571002444}
   m_Layer: 0
   m_Name: EndLevel
   m_TagString: Untagged
@@ -44,4 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ee6b4aa01d2c4b9c4370c804ce098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SystemProgressLevel: {fileID: 0}
+--- !u!114 &4801357649571002444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2384129828722969700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6948d1797238bd14c97f32f1c185425c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels: []
+  currentLevelName: 
+  currentLevelVersion: {fileID: 0}

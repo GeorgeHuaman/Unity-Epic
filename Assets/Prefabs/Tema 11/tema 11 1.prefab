@@ -163,6 +163,7 @@ MonoBehaviour:
   tasks:
   - type: 0
     taskName: Dirigete al ascensor
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -175,6 +176,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: Completa la pista de obstaculos
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -3330,6 +3332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tema 11 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 851303160199371643, guid: 705d546b994fb42479af8de5ae9d0275,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 509195273359433767, guid: 705d546b994fb42479af8de5ae9d0275, type: 3}

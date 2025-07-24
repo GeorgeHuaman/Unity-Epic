@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: f05b7d2047921c440aec533c4429a570
+  m_OcclusionCullingData: {fileID: 36300000, guid: 109fa605efa4aa146bcba5ebd9d36d15,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -96,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: b7b834f09f293ee468ed5f57379bebb8,
+  m_LightingDataAsset: {fileID: 112000000, guid: 5aba2695b40a3d94d843b9b61afd1b92,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: dcdcf05dff529644eb7b381a5ad04ecf,
     type: 2}
@@ -1265,6 +1266,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7371823052454740638, guid: 93af787185db9c14484238ec0535b82f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7677674003052417278, guid: 93af787185db9c14484238ec0535b82f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1319,6 +1325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PrefabWorld Tema3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677674003052417279, guid: 93af787185db9c14484238ec0535b82f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

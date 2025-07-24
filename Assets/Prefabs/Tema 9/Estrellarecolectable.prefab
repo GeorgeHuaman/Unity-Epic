@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1612545871841632399}
   - component: {fileID: 3568010497346524229}
   - component: {fileID: 6667933671927938017}
-  - component: {fileID: 3836252083456563329}
   - component: {fileID: 6702243858666450488}
   m_Layer: 0
   m_Name: Estrellarecolectable
@@ -28,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3063823049357522320}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 234.7063, y: 234.7063, z: 234.7063}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1612545871841632399
 MeshFilter:
@@ -94,63 +93,19 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3063823049357522320}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 0.0034061938
   m_Center: {x: 0, y: 4.6566145e-10, z: 0.0027302913}
---- !u!114 &3836252083456563329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3063823049357522320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24533cd6da2394ed2bea6783b0af62c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  listenFor: 1
-  onEnterEvent:
-    id: 0
-    unityEventIsSynced: 0
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3063823049357522320}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    animatorEvent:
-      events: []
-    questEvent:
-      events: []
-  onExitEvent:
-    id: 0
-    unityEventIsSynced: 0
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    animatorEvent:
-      events: []
-    questEvent:
-      events: []
-  deprecated_onEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  deprecated_onExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6702243858666450488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7dca467ff8f274ab6ecc2d3635a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  z: 0
+  y: 0
