@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Oculus.Voice.Dictation;
 using Meta.WitAi.TTS.Utilities;
 using Meta.WitAi.TTS.Data;
+using System;
 
 public class ChatGPTManager : MonoBehaviour
 {
@@ -30,14 +31,14 @@ public class ChatGPTManager : MonoBehaviour
     private OpenAIApi openAI;
 
     // System prompt fijo
-    private ChatMessage _systemMessage;
+    private ChatMessage systemMessage;
 
     // Historial de chat
-    private List<ChatMessage> _messages = new List<ChatMessage>();
+    private List<ChatMessage> messages = new List<ChatMessage>();
 
     // Cola de fragmentos para TTS con su emoción
-    private List<(string text, string emotion)> _fragmentQueue = new List<(string, string)>();
-    private int _currentFragmentIndex = 0;
+    private List<(string text, string emotion)> fragmentQueue = new List<(string, string)>();
+    private int currentFragmentIndex = 0;
 
     void Awake()
     {
@@ -46,7 +47,7 @@ public class ChatGPTManager : MonoBehaviour
         var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
         openAI = new OpenAIApi(auth.api_key.Trim());
 
-        _systemMessage = new ChatMessage
+        systemMessage = new ChatMessage
         {
             Role = "system",
             Content =
@@ -86,26 +87,21 @@ public class ChatGPTManager : MonoBehaviour
 
     public async void AskChatGPT(string newText)
     {
-        // Reconstruye el prompt del sistema cada vez
-        _systemMessage = new ChatMessage
+        systemMessage = new ChatMessage
         {
             Role = "system",
             Content = BuildFullSystemPrompt()
         };
 
-        _messages.Add(new ChatMessage { Role = "user", Content = newText });
+        messages.Add(new ChatMessage { Role = "user", Content = newText });
 
-        const int maxTurns = 8 * 2;
-        var req = new List<ChatMessage> { _systemMessage };
-        int start = Mathf.Max(0, _messages.Count - maxTurns);
-        for (int i = start; i < _messages.Count; i++)
-            req.Add(_messages[i]);
-
+        var req = BuildRequestMessages();
         var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
         {
             Model = "gpt-4.1-mini",
             Messages = req
         });
+
         if (response.Choices == null || response.Choices.Count == 0) return;
 
         string raw = response.Choices[0].Message.Content;
@@ -113,145 +109,155 @@ public class ChatGPTManager : MonoBehaviour
 
         if (useVoiceFriendly)
         {
-            string written = "";
-            string voiceOnly = "";
-
-            var escMatch = Regex.Match(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)",
-                                       RegexOptions.Singleline);
-            var vozMatch = Regex.Match(raw, @"\*\*VOZ:\*\*(.+)\z",
-                                       RegexOptions.Singleline);
-
-            if (escMatch.Success && vozMatch.Success)
-            {
-                written = escMatch.Groups[1].Value.Trim();
-                voiceOnly = vozMatch.Groups[1].Value.Trim();
-            }
-            else
-            {
-                var parts = raw.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
-                if (parts.Length == 2)
-                {
-                    written = parts[0].Trim();
-                    voiceOnly = parts[1].Trim();
-                }
-                else
-                {
-                    written = raw.Trim();
-                    voiceOnly = "";
-                }
-            }
-            if (string.IsNullOrWhiteSpace(voiceOnly))
-            {
-                voiceOnly = written;
-            }
-
-            //  UI: solo la parte escrita
-            onResponse.Invoke(written);
-
-            EnqueueVoice(voiceOnly);
+            HandleVoiceFriendlyResponse(raw);
         }
         else
         {
-            string emoraw = response.Choices[0].Message.Content;
-            // 4) Extrae emociones con Regex
-            var regex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]",
-                                  RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-            Debug.Log(emoraw);
-            // 5) Limpia texto plano
-            string clean = regex.Replace(emoraw, "").Trim();
-
-            // 6) Dispara tus acciones por keyword
-            foreach (var act in actions)
-                if (clean.Contains(act.actionKeyword))
-                {
-                    clean = clean.Replace(act.actionKeyword, "");
-                    act.actionEvent.Invoke();
-                }
-
-            // 7) Guarda IA en historial
-            _messages.Add(new ChatMessage
-            {
-                Role = "assistant",
-                Content = clean
-            });
-
-            // 8) Callback de texto
-            onResponse.Invoke(clean);
-
-            // 9) Genera cola de (frase, emoción)
-            _fragmentQueue.Clear();
-            _currentFragmentIndex = 0;
-            var fragments = Regex.Split(clean, @"(?<=[\.!?])\s+");
-            string tempRaw = emoraw;
-            foreach (var frag in fragments)
-            {
-                if (string.IsNullOrWhiteSpace(frag)) continue;
-                var m = regex.Match(tempRaw);
-                string emo = m.Success ? m.Groups[1].Value.Trim() : null;
-                if (m.Success)
-                    tempRaw = tempRaw.Substring(m.Index + m.Length);
-                _fragmentQueue.Add((frag.Trim(), emo));
-            }
-
-            // 10) Detén audio previo
-            ttsSpeaker.Stop();
-            // ttsSpeaker.StopAllQueued(); // si existe
-
-            // 11) Inicia reproducción secuencial
-            PlayNextFragment();
+            HandleStandardResponse(raw);
         }
 
-        // 6) Guarda la respuesta (raw) para gestionar el historial
-        _messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+        // Guardar la respuesta cruda para historial
+        messages.Add(new ChatMessage { Role = "assistant", Content = raw });
     }
 
-    // Divide un texto en frases, ignora emociones (ya disparadas) y encola
+    private List<ChatMessage> BuildRequestMessages()
+    {
+        const int maxTurns = 16;
+        var req = new List<ChatMessage> { systemMessage };
+        int start = Mathf.Max(0, messages.Count - maxTurns);
+
+        for (int i = start; i < messages.Count; i++)
+            req.Add(messages[i]);
+
+        return req;
+    }
+
+    private void HandleVoiceFriendlyResponse(string raw)
+    {
+        var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)");
+        var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*(.+)\z");
+
+        if (string.IsNullOrWhiteSpace(written) && string.IsNullOrWhiteSpace(voiceOnly))
+        {
+            var parts = raw.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
+            written = parts.Length > 0 ? parts[0].Trim() : raw.Trim();
+            voiceOnly = parts.Length > 1 ? parts[1].Trim() : written;
+        }
+
+        if (string.IsNullOrWhiteSpace(voiceOnly))
+            voiceOnly = written;
+
+        onResponse.Invoke(written);
+        EnqueueVoice(voiceOnly);
+    }
+
+    private void HandleStandardResponse(string emoraw)
+    {
+        var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
+        Debug.Log(emoraw);
+
+        string clean = emotionRegex.Replace(emoraw, "").Trim();
+
+        TriggerActionsFromKeywords(clean);
+
+        messages.Add(new ChatMessage
+        {
+            Role = "assistant",
+            Content = clean
+        });
+
+        onResponse.Invoke(clean);
+        EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
+        ttsSpeaker.Stop();
+        PlayNextFragment();
+    }
+
+    private void TriggerActionsFromKeywords(string text)
+    {
+        foreach (var act in actions)
+        {
+            if (text.Contains(act.actionKeyword))
+            {
+                text = text.Replace(act.actionKeyword, "");
+                act.actionEvent.Invoke();
+            }
+        }
+    }
+
+    private void EnqueueFragmentsWithEmotions(string cleanText, string rawText, Regex emotionRegex)
+    {
+        fragmentQueue.Clear();
+        currentFragmentIndex = 0;
+
+        var fragments = Regex.Split(cleanText, @"(?<=[\.!?])\s+");
+        string tempRaw = rawText;
+
+        foreach (var frag in fragments)
+        {
+            if (string.IsNullOrWhiteSpace(frag)) continue;
+
+            var match = emotionRegex.Match(tempRaw);
+            string emotion = match.Success ? match.Groups[1].Value.Trim() : null;
+
+            if (match.Success)
+                tempRaw = tempRaw.Substring(match.Index + match.Length);
+
+            fragmentQueue.Add((frag.Trim(), emotion));
+        }
+    }
+
     private void EnqueueVoice(string text)
     {
-        // Detiene audio anterior
         ttsSpeaker.Stop();
 
-        // Extrae y dispara emociones inline si quedara alguna
-        var emoRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]",
-                                 RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-        foreach (Match m in emoRegex.Matches(text))
+        var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
+
+        foreach (Match match in emotionRegex.Matches(text))
         {
-            string key = m.Groups[1].Value.Trim();
-            foreach (var emo in emotionActions)
-                if (emo.emotionKeyword.Equals(key, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    emo.emotionEvent.Invoke();
-                    break;
-                }
+            string emotion = match.Groups[1].Value.Trim();
+            TriggerEmotion(emotion);
         }
-        // Limpia etiquetas
-        text = emoRegex.Replace(text, "").Trim();
 
-        // Prepara la cola de fragments
-        _fragmentQueue.Clear();
-        _currentFragmentIndex = 0;
-        var frags = Regex.Split(text, @"(?<=[\.!?])\s+");
-        foreach (var f in frags)
-            if (!string.IsNullOrWhiteSpace(f))
-                _fragmentQueue.Add((f.Trim(), null));
+        string cleaned = emotionRegex.Replace(text, "").Trim();
 
-        // Empieza a hablar
+        fragmentQueue.Clear();
+        currentFragmentIndex = 0;
+
+        var fragments = Regex.Split(cleaned, @"(?<=[\.!?])\s+");
+        foreach (var frag in fragments)
+            if (!string.IsNullOrWhiteSpace(frag))
+                fragmentQueue.Add((frag.Trim(), null));
+
         PlayNextFragment();
+    }
+
+    private void TriggerEmotion(string key)
+    {
+        foreach (var emo in emotionActions)
+            if (emo.emotionKeyword.Equals(key, StringComparison.OrdinalIgnoreCase))
+            {
+                emo.emotionEvent.Invoke();
+                break;
+            }
     }
 
     private void PlayNextFragment()
     {
-        if (_currentFragmentIndex >= _fragmentQueue.Count) return;
-        var (t, emo) = _fragmentQueue[_currentFragmentIndex];
-        if (!string.IsNullOrEmpty(emo))
-            foreach (var e in emotionActions)
-                if (e.emotionKeyword.Equals(emo, System.StringComparison.OrdinalIgnoreCase))
-                {
-                    e.emotionEvent.Invoke();
-                    break;
-                }
-        ttsSpeaker.Speak(t);
-        _currentFragmentIndex++;
+        if (currentFragmentIndex >= fragmentQueue.Count) return;
+
+        var (text, emotion) = fragmentQueue[currentFragmentIndex];
+
+        if (!string.IsNullOrEmpty(emotion))
+            TriggerEmotion(emotion);
+
+        ttsSpeaker.Speak(text);
+        currentFragmentIndex++;
+    }
+
+    private string ExtractBetween(string input, string pattern)
+    {
+        var match = Regex.Match(input, pattern, RegexOptions.Singleline);
+        return match.Success ? match.Groups[1].Value.Trim() : null;
     }
 
     private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)

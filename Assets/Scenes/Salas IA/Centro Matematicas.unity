@@ -855,18 +855,22 @@ PrefabInstance:
         llamada x) est\xE1 al cuadrado.  \r\nTiene esta forma general:  \r\na x\xB2
         + b x + c = 0  \r\ndonde a, b y c son n\xFAmeros y a no puede ser cero.\r\n\r\n**VOZ:** 
         \r\nDebes repetir **l\xEDnea por l\xEDnea** TODO el contenido del bloque
-        ESCRITA, en el mismo orden y con el mismo texto, **pero**:  \r\n- Cambia
-        \u201Cx\xB2\u201D por \u201Cpor equis al cuadrado\u201D.  \r\n- Cambia \u201C+\u201D
-        por \u201Cm\xE1s\u201D.  \r\n- Cambia \u201C=\u201D por \u201Cigual a\u201D. 
-        \r\n- No omitas, no a\xF1adas y no reordenes nada.  \r\n\r\nEjemplo de salida:\r\n\r\n**ESCRITA:** 
+        ESCRITA, en el mismo orden y con el mismo texto, **pero**:\r\n- Para cualquier
+        t\xE9rmino de la forma `letra\xB2` (por ejemplo `x\xB2`, `a\xB2`, `b\xB2`,
+        `c\xB2`), reempl\xE1zalo por \u201C<letra> al cuadrado\u201D (ej. `c\xB2`
+        \u2192 \u201Cc al cuadrado\u201D, `a\xB2` \u2192 \u201Ca al cuadrado\u201D).\r\n-
+        Cambia \u201C+\u201D por \u201Cm\xE1s\u201D.\r\n- Cambia \u201C=\u201D por
+        \u201Cigual a\u201D.\r\n- No omitas, no a\xF1adas y no reordenes nada.\r\n\r\n\r\nEjemplo
+        de salida:\r\n\r\n**ESCRITA:**  \r\nUna ecuaci\xF3n cuadr\xE1tica es una
+        expresi\xF3n matem\xE1tica donde la inc\xF3gnita (normalmente llamada x)
+        est\xE1 al cuadrado.  \r\nTiene esta forma general:  \r\na x\xB2 + b x +
+        c = 0  \r\ndonde a, b y c son n\xFAmeros y a no puede ser cero.\r\n\r\n**VOZ:** 
         \r\nUna ecuaci\xF3n cuadr\xE1tica es una expresi\xF3n matem\xE1tica donde
-        la inc\xF3gnita (normalmente llamada x) est\xE1 al cuadrado.  \r\nTiene esta
-        forma general:  \r\na x\xB2 + b x + c = 0  \r\ndonde a, b y c son n\xFAmeros
-        y a no puede ser cero.\r\n\r\n**VOZ:**  \r\nUna ecuaci\xF3n cuadr\xE1tica
-        es una expresi\xF3n matem\xE1tica donde la inc\xF3gnita (normalmente llamada
-        equis) est\xE1 al cuadrado.  \r\nTiene esta forma general:  \r\na por equis
-        al cuadrado m\xE1s b por equis m\xE1s c igual a cero.  \r\ndonde a, b y c
-        son n\xFAmeros y a no puede ser cero."
+        la inc\xF3gnita (normalmente llamada equis) est\xE1 al cuadrado.  \r\nTiene
+        esta forma general:  \r\na por equis al cuadrado m\xE1s b por equis m\xE1s
+        c igual a cero.  \r\ndonde a, b y c son n\xFAmeros y a no puede ser cero.\n\n**ESCRITA:** 
+        \r\nc\xB2 = a\xB2 + b\xB2\r\n\r\n**VOZ:**  \r\nc al cuadrado igual a a al
+        cuadrado m\xE1s b al cuadrado."
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
