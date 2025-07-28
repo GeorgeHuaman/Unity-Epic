@@ -40,6 +40,8 @@ public class ChatGPTManager : MonoBehaviour
     private List<(string text, string emotion)> fragmentQueue = new List<(string, string)>();
     private int currentFragmentIndex = 0;
 
+    public int uses = 0;
+
     void Awake()
     {
         // Carga credenciales
@@ -71,18 +73,13 @@ public class ChatGPTManager : MonoBehaviour
     {
         voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
         ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
+        
     }
 
     private void OnDestroy()
     {
         voiceToText.DictationEvents.OnFullTranscription.RemoveListener(AskChatGPT);
         ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            voiceToText.Activate();
     }
 
     public async void AskChatGPT(string newText)
@@ -118,6 +115,7 @@ public class ChatGPTManager : MonoBehaviour
 
         // Guardar la respuesta cruda para historial
         messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+        AddUsesInExcell();
     }
 
     private List<ChatMessage> BuildRequestMessages()
@@ -296,6 +294,17 @@ public class ChatGPTManager : MonoBehaviour
             extraInstruction + "\n\n" +
             buildActionInstruction() + "\n\n";
     }
+
+    public void AddUsesInExcell()
+    {
+        int actualUse = int.Parse(UserSession.Instance.usosIA);
+        uses++;
+        int totalUses = actualUse + uses;
+        int fila = UserSession.Instance.sheetRowNumber;
+        string celda = "U" + fila;
+        GoogleSheetsAPI.instance.WriteDataFor(celda, celda, totalUses);
+    }
+
     [System.Serializable]
     public struct NPCAction
     {

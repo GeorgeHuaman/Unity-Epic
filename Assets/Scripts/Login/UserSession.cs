@@ -19,6 +19,7 @@ public class UserSession : MonoBehaviour
     public string Rol => cells.Count > 5 ? cells[5] : "";
     public string GradoEducativo => cells.Count > 6 ? cells[6] : "";
     public string TiempoDeJuego => cells.Count > 7 ? cells[7] : "";
+    public string usosIA => cells.Count > 20 ? cells[20] : "";
 
     // Temas 1…12 están en I (índice 8) hasta T (índice 19)
     public string Tema(int n)
@@ -34,6 +35,10 @@ public class UserSession : MonoBehaviour
     public float Percentage(int tema)
     {
         return float.Parse(cells[tema + 7]);
+    }
+    public float UseIA(int UsosIA)
+    {
+        return float.Parse(cells[UsosIA + 7]);
     }
     void Awake()
     {

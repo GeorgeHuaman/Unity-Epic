@@ -52,10 +52,10 @@ public class LoginManager : MonoBehaviour
         int sheetRowNum = rowIndex + 2;
 
         // 4) Leer toda la fila A–T de esa fila
-        List<string> fullRow = sheetsApi.ReadRow(sheetRowNum, "A", "T");
+        List<string> fullRow = sheetsApi.ReadRow(sheetRowNum, "A", "U");
 
         // 5) Rellenar con cadenas vacías si Sheets no devolvió columnas finales vacías
-        int expectedCols = 20; // A→T
+        int expectedCols = 21; // A→T
         if (fullRow.Count < expectedCols)
         {
             int missing = expectedCols - fullRow.Count;
