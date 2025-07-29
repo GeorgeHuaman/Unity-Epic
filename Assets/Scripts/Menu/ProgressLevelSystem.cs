@@ -24,18 +24,19 @@ public class ProgressLevelSystem : MonoBehaviour
                 }
             }
         }
+        Debug.Log(levels.Count);
     }
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance == null && instance != this)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
     public void IdentifyLevel(string level, LevelData version)
@@ -99,20 +100,19 @@ public class ProgressLevelSystem : MonoBehaviour
 
     public void UpdatePercentage(float percentage)
     {
-        ProgressLevel moment = null;
         int level = 0;
-        for (int i = 0; i <= levels.Count; i++)
+        Debug.Log(levels.Count);
+        for (int i = 0; i < levels.Count; i++)
         {
             if (levels[i].levelData == currentLevelVersion)
             {
-                moment = levels[i];
                 level = i+1;
                 break;
             }
         }
+        Debug.LogWarning(level);
         if (percentage > UserSession.Instance.Percentage(level))
         {
-            moment.percentage = percentage;
             SaveExcell(percentage.ToString(), level);
         }
     }
@@ -125,6 +125,7 @@ public class ProgressLevelSystem : MonoBehaviour
     }
     string GetLetraPorIndice(int index)
     {
+        Debug.Log(index);
         if (index >= 1 && index <= abec.Length)
         {
             Debug.Log(abec[index + 7].ToString() + "---");

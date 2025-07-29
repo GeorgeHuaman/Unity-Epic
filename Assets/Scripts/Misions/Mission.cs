@@ -19,11 +19,11 @@ public class Mission : MonoBehaviour
 
     [ReadOnly]public bool started;
     [ReadOnly]public bool completed;
-    [HideInInspector] private ProgressLevelSystem progressLevelSystem;
+    public ProgressLevelSystem progressLevelSystem;
 
     private void Start()
     {
-        progressLevelSystem = FindObjectOfType<ProgressLevelSystem>();
+        progressLevelSystem = ProgressLevelSystem.instance;
         if (startAutomatically)
         {
             StartMission();
@@ -67,6 +67,7 @@ public class Mission : MonoBehaviour
 
         task.StartTask();
         task.CompleteTask();
+        Debug.Log(progressLevelSystem.name);
         progressLevelSystem.UpdatePercentage(this.tasks[taskId].percentage);
         TryStartNextTask();
 
