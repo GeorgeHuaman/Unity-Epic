@@ -259,7 +259,7 @@ public class GoogleSheetsAPI : MonoBehaviour
             listExcel.gameTime = values[0][7].ToString();
             for (int i = 0; i < 12; i++)
             {
-                listExcel.listProgressTema.Add(values[0][8+i].ToString());
+                listExcel.listProgressTema.Add((values[0][8+i].ToString()));
             }
         }
         return listExcel;

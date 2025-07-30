@@ -61,10 +61,10 @@ public class InterfazProgressLevel : MonoBehaviour
 
     public string TextVerifyTem(ProgressLevel level)
     {
-        if(systemProgressLevel.VerifyTemCompleted(level))
-        {
-            return "Completed!!!";
-        }
+        //if(systemProgressLevel.VerifyTemCompleted(level))
+        //{
+        //    return "Completed!!!";
+        //}
         return "Missing";
     }
     public void PanelOpenOff()

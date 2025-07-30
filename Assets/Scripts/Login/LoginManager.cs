@@ -66,9 +66,9 @@ public class LoginManager : MonoBehaviour
         // 6) Guardar en la sesión
         UserSession.Instance.sheetRowNumber = sheetRowNum;
         UserSession.Instance.cells = fullRow;
-
         onLoginSuccess?.Invoke();
         Debug.Log($"[LoginManager] Fila {sheetRowNum} cargada: {string.Join(", ", fullRow)}");
         GameTime.instance.Init();
+        UserSession.Instance.VerifyRol();
     }
 }

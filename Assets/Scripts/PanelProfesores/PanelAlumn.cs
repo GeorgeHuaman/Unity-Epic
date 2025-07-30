@@ -44,34 +44,17 @@ public class PanelAlumn : MonoBehaviour
                     TextMeshProUGUI text = child.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                     text.text = systemProgressLevel.levels[i].name;
                 }
-                string textLevel = TextVerifyTem(systemProgressLevel.levels[i]);
-                if (textLevel == "Completed!!!")
-                {
-                    Transform childSlider = temaProgress[i].transform.GetChild(1);
-                    Slider slider = childSlider.GetComponent<Slider>();
-                    slider.value = 1;
-                }
-                if (textLevel == "Missing")
-                {
-                    Transform childSlider = temaProgress[i].transform.GetChild(1);
-                    Slider slider = childSlider.GetComponent<Slider>();
-                    slider.value = 0;
-                }
+                Transform childSlider = temaProgress[i].transform.GetChild(1);
+                Slider slider = childSlider.GetComponent<Slider>();
+                slider.value = float.Parse(listExcel.listProgressTema[i]) / 100f;
+
                 if (j == 2)
                 {
                     Transform child = tem.transform.GetChild(j);
                     TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-                    text.text = TextVerifyTem(systemProgressLevel.levels[i]);
+                    text.text = listExcel.listProgressTema[i] + "%";
                 }
             }
         }
-    }
-    public string TextVerifyTem(ProgressLevel level)
-    {
-        if (systemProgressLevel.VerifyTemCompleted(level))
-        {
-            return "Completed!!!";
-        }
-        return "Missing";
     }
 }

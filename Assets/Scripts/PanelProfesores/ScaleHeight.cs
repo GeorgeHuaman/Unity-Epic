@@ -9,10 +9,12 @@ public class ScaleHeight : MonoBehaviour
     private RectTransform targetRectAlumns;
     [SerializeField]
     private RectTransform targetRectPerfil;
+    public GameObject panelMaster;
 
     void Start()
     {
         thisRect = GetComponent<RectTransform>();
+        panelMaster.SetActive(false);
     }
 
     // Update is called once per frame

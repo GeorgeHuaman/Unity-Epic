@@ -10,8 +10,20 @@ public class CreateButtonAlumn : MonoBehaviour
     public GameObject parent;
     public GameObject prefab;
     public PanelAlumn panelAlumn;
+    public static CreateButtonAlumn Instance;
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
+
+    public void CreateButton()
     {
         for (int i = 0; i < dataBaseAlumn.ExcelList.Count; i++)
         {

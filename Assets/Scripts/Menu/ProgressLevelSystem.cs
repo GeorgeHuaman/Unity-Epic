@@ -86,18 +86,6 @@ public class ProgressLevelSystem : MonoBehaviour
             }
         }
     }
-    public bool VerifyTemCompleted(ProgressLevel level)
-    {
-        for (int i = 0; i < level.levelDataVerify.Count; i++)
-        {
-            if (level.levelDataVerify[i].end)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void UpdatePercentage(float percentage)
     {
         int level = 0;
@@ -113,6 +101,7 @@ public class ProgressLevelSystem : MonoBehaviour
         Debug.LogWarning(level);
         if (percentage > UserSession.Instance.Percentage(level))
         {
+            levels[level-1].percentage = percentage;
             SaveExcell(percentage.ToString(), level);
         }
     }
