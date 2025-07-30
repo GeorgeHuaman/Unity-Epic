@@ -18,16 +18,6 @@ public class PanelAlumn : MonoBehaviour
     {
         systemProgressLevel = ProgressLevelSystem.instance;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnValidate()
-    {
-    }
-
     public void UpdateInfo()
     {
         timeGame.SetActive(true);

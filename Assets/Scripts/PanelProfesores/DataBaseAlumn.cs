@@ -31,7 +31,7 @@ public class DataBaseAlumn : MonoBehaviour
         int length = GoogleSheetsAPI.LimitUsser();
         for (int i = 0; i < length; i++)
         {
-            if (UserSession.Instance.cells[4].ToString() == GoogleSheetsAPI.FilterEducation("E" +(i+2), "E",i) && GoogleSheetsAPI.FilterEducation("F"+(i+2),"F",i) != "Profesor")
+            if (UserSession.Instance.cells[4].ToString() == GoogleSheetsAPI.FilterEducation("E" +(i+2), "E",i) && GoogleSheetsAPI.FilterEducation("F"+(i+2),"F",i) != "Profesor" && UserSession.Instance.cells[5].ToString() == "Profesor")
             {
                 ExcelList.Add(GoogleSheetsAPI.AddAlumn("A"+(i+2),"T"));
             }

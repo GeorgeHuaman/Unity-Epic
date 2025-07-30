@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using System;
 
 public class ManagerPanels : MonoBehaviour
 {
@@ -8,7 +10,11 @@ public class ManagerPanels : MonoBehaviour
     public GameObject time;
     public GameObject panelAlumns;
     public GameObject panelMaster;
+    public TextMeshProUGUI nameColegio;
 
+    private void Start()
+    {
+    }
     public void ButtonBack()
     {
         if(panelMaster.activeSelf)
@@ -21,8 +27,14 @@ public class ManagerPanels : MonoBehaviour
             {
                 panelInfo.SetActive(false);
                 time.SetActive(false);
+                NameColegio();
                 panelAlumns.SetActive(true);
             }
         }
+    }
+    public void NameColegio()
+    {
+        Debug.Log(UserSession.Instance.NameColegio());
+        nameColegio.text = UserSession.Instance.NameColegio();
     }
 }

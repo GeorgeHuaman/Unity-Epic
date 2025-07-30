@@ -42,6 +42,7 @@ public class CreateButtonAlumn : MonoBehaviour
         }
     }
 
+
     public void SeePanelAlumn(int i)
     {
         panelAlumn.listExcel = dataBaseAlumn.ExcelList[i];

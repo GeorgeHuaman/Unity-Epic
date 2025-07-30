@@ -48,6 +48,12 @@ public class UserSession : MonoBehaviour
             DataBaseAlumn.Instance.CreateList();
         }
     }
+
+    public string NameColegio()
+    {
+        Debug.Log(cells[5].ToString());
+        return cells[4];
+    }
     void Awake()
     {
         if (Instance == null)
