@@ -208,6 +208,8 @@ public class ChatGPTManager : MonoBehaviour
     {
         ttsSpeaker.Stop();
 
+        text = Regex.Replace(text, @"\b[cC]\b", "ce");
+
         var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
 
         foreach (Match match in emotionRegex.Matches(text))
