@@ -257,6 +257,10 @@ public class GoogleSheetsAPI : MonoBehaviour
             listExcel.rol = values[0][5].ToString();
             listExcel.gradeEducation = values[0][6].ToString();
             listExcel.gameTime = values[0][7].ToString();
+            for (int i = 0; i < 12; i++)
+            {
+                listExcel.listProgressTema.Add(values[0][8+i].ToString());
+            }
         }
         return listExcel;
     }

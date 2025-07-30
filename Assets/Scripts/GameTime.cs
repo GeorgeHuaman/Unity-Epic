@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameTime : MonoBehaviour
 {
     public static GameTime instance;
-    [SerializeField]private string timeActual;
+    public string timeActual;
     [SerializeField] private float tiempoInicial;
     [SerializeField] private float tiempo;
     public bool login = false;

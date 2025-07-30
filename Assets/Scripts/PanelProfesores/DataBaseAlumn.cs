@@ -21,7 +21,7 @@ public class DataBaseAlumn : MonoBehaviour
         {
             if ("Grado" == GoogleSheetsAPI.FilterEducation("E" +(i+2), "E",i))
             {
-                ExcelList.Add(GoogleSheetsAPI.AddAlumn("A"+(i+2),"H"));
+                ExcelList.Add(GoogleSheetsAPI.AddAlumn("A"+(i+2),"T"));
             }
         }
     }
@@ -37,6 +37,6 @@ public class ListExcel
     public string rol;
     public string gradeEducation;
     public string gameTime;
-    public List<string> listProgressTema;
+    public List<string> listProgressTema = new List<string>(12);
 
 }
