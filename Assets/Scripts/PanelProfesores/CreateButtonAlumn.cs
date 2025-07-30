@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,27 +10,42 @@ public class CreateButtonAlumn : MonoBehaviour
     public GameObject parent;
     public GameObject prefab;
     public PanelAlumn panelAlumn;
+    public static CreateButtonAlumn Instance;
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
+
+    public void CreateButton()
     {
         for (int i = 0; i < dataBaseAlumn.ExcelList.Count; i++)
         {
+            int j = i;
             ListExcel excel = dataBaseAlumn.ExcelList[i];
             GameObject go = Instantiate(prefab, parent.transform);
 
             TextMeshProUGUI text = go.GetComponentInChildren<TextMeshProUGUI>();
             text.text = $"{excel.name} {excel.lastName}";
-            Debug.Log(i);
             go.GetComponent<Button>().onClick.AddListener(() =>
             {
-                Debug.Log(i);
-                SeePanelAlumn(i);
+                SeePanelAlumn(j);
+                panelAlumn.gameObject.SetActive(true);
+                this.gameObject.SetActive(false);
             });
         }
     }
 
+
     public void SeePanelAlumn(int i)
     {
         panelAlumn.listExcel = dataBaseAlumn.ExcelList[i];
+        panelAlumn.UpdateInfo();
     }
 }

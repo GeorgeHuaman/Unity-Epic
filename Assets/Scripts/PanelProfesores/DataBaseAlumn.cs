@@ -9,20 +9,37 @@ public class DataBaseAlumn : MonoBehaviour
     public GoogleSheetsAPI GoogleSheetsAPI;
     public string abeced = "ABCDEFGH";
     public UserSession userSession;
-
+    public static DataBaseAlumn Instance;
+    private CreateButtonAlumn CreateButtonAlumn;
+    private bool buttonCreate = false;
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
     private void Start()
     {
-        CreateList();
+        CreateButtonAlumn = CreateButtonAlumn.Instance;
     }
     public void CreateList()
     {
+        ExcelList.Clear();
         int length = GoogleSheetsAPI.LimitUsser();
         for (int i = 0; i < length; i++)
         {
-            if ("Grado" == GoogleSheetsAPI.FilterEducation("E" +(i+2), "E",i))
+            if (UserSession.Instance.cells[4].ToString() == GoogleSheetsAPI.FilterEducation("E" +(i+2), "E",i) && GoogleSheetsAPI.FilterEducation("F"+(i+2),"F",i) != "Profesor" && UserSession.Instance.cells[5].ToString() == "Profesor")
             {
-                ExcelList.Add(GoogleSheetsAPI.AddAlumn("A"+(i+2),"H"));
+                ExcelList.Add(GoogleSheetsAPI.AddAlumn("A"+(i+2),"T"));
             }
+        }
+        if (!buttonCreate)
+        {
+            buttonCreate = true;
+            CreateButtonAlumn.CreateButton();
         }
     }
 }
@@ -37,6 +54,6 @@ public class ListExcel
     public string rol;
     public string gradeEducation;
     public string gameTime;
-    public List<string> listProgressTema;
+    public List<string> listProgressTema = new List<string>();
 
 }

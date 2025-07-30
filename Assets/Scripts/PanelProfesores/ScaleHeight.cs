@@ -6,18 +6,31 @@ public class ScaleHeight : MonoBehaviour
 {
     private RectTransform thisRect;
     [SerializeField]
-    private RectTransform targetRect;
+    private RectTransform targetRectAlumns;
+    [SerializeField]
+    private RectTransform targetRectPerfil;
+    public GameObject panelMaster;
 
     void Start()
     {
         thisRect = GetComponent<RectTransform>();
+        panelMaster.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float size = targetRect.rect.height;
-        Vector2 rec = new Vector2(thisRect.sizeDelta.x, targetRect.sizeDelta.y);
-        thisRect.sizeDelta = rec;
+        if (targetRectAlumns.gameObject.activeSelf)
+        {
+            float size = targetRectAlumns.rect.height;
+            Vector2 rec = new Vector2(thisRect.sizeDelta.x, targetRectAlumns.sizeDelta.y);
+            thisRect.sizeDelta = rec;
+        }
+        else
+        {
+            float size = targetRectPerfil.rect.height;
+            Vector2 rec = new Vector2(thisRect.sizeDelta.x, targetRectPerfil.sizeDelta.y);
+            thisRect.sizeDelta = rec;
+        }
     }
 }

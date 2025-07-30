@@ -40,6 +40,20 @@ public class UserSession : MonoBehaviour
     {
         return float.Parse(cells[UsosIA + 7]);
     }
+
+    public void VerifyRol()
+    {
+        if (cells[5].ToString() == "Profesor")
+        {
+            DataBaseAlumn.Instance.CreateList();
+        }
+    }
+
+    public string NameColegio()
+    {
+        Debug.Log(cells[5].ToString());
+        return cells[4];
+    }
     void Awake()
     {
         if (Instance == null)

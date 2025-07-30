@@ -16,7 +16,7 @@ public class InterfazProgressLevel : MonoBehaviour
 
     private void Awake()
     {
-        systemProgressLevel = FindAnyObjectByType<ProgressLevelSystem>();
+        systemProgressLevel = ProgressLevelSystem.instance;
     }
     void Start()
     {
@@ -25,7 +25,6 @@ public class InterfazProgressLevel : MonoBehaviour
 
     public void InstanceEmpty()
     {
-        Debug.Log(systemProgressLevel.levels.Count.ToString());
         for (int i = 0; i < systemProgressLevel.levels.Count; i++)
         {
             GameObject tem = Instantiate(prefabTema,parent.transform);
@@ -62,10 +61,10 @@ public class InterfazProgressLevel : MonoBehaviour
 
     public string TextVerifyTem(ProgressLevel level)
     {
-        if(systemProgressLevel.VerifyTemCompleted(level))
-        {
-            return "Completed!!!";
-        }
+        //if(systemProgressLevel.VerifyTemCompleted(level))
+        //{
+        //    return "Completed!!!";
+        //}
         return "Missing";
     }
     public void PanelOpenOff()
