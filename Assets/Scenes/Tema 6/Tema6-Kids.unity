@@ -754,7 +754,7 @@ MonoBehaviour:
   triggeringTag: Player
   targetMission: {fileID: 1961924056}
   action: 1
-  selectedTaskIndex: 0
+  selectedTaskIndex: 3
   onTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -828,7 +828,7 @@ MonoBehaviour:
   triggeringTag: Player
   targetMission: {fileID: 1961924056}
   action: 1
-  selectedTaskIndex: 0
+  selectedTaskIndex: 3
   onTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1170,7 +1170,7 @@ MonoBehaviour:
   triggeringTag: Player
   targetMission: {fileID: 1961924056}
   action: 1
-  selectedTaskIndex: 0
+  selectedTaskIndex: 3
   onTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   triggeringTag: Player
   targetMission: {fileID: 1961924056}
   action: 1
-  selectedTaskIndex: 0
+  selectedTaskIndex: 3
   onTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1746,6 +1746,7 @@ MonoBehaviour:
   tasks:
   - type: 0
     taskName: Entra al cine
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -1758,6 +1759,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: Encuentra la Torre Eifel
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -1782,6 +1784,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: Encuentra la pista en la imagen de los Lumiere
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -1794,6 +1797,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 1
     taskName: Encuentra las palabras ocultas
+    percentage: 0
     progressSteps: 6
     onStart:
       m_PersistentCalls:
@@ -1818,6 +1822,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: "Encuentra el carrete de la pel\xEDcula"
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -1842,6 +1847,7 @@ MonoBehaviour:
     currentProgress: 0
   - type: 0
     taskName: "Busca las expectativas de cumplir la misi\xF3n"
+    percentage: 0
     progressSteps: 0
     onStart:
       m_PersistentCalls:
@@ -1854,6 +1860,7 @@ MonoBehaviour:
     currentProgress: 0
   started: 0
   completed: 0
+  progressLevelSystem: {fileID: 0}
 --- !u!4 &1961924057
 Transform:
   m_ObjectHideFlags: 0
@@ -1940,7 +1947,7 @@ MonoBehaviour:
   triggeringTag: Player
   targetMission: {fileID: 1961924056}
   action: 1
-  selectedTaskIndex: 0
+  selectedTaskIndex: 3
   onTriggerEnterEvent:
     m_PersistentCalls:
       m_Calls:
