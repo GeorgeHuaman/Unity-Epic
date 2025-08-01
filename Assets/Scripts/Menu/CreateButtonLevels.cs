@@ -52,5 +52,6 @@ public class CreateButtonLevels : MonoBehaviour
     void SendInfoLevel(string nameScene,LevelData version)
     {
         systemProgressLevel.IdentifyLevel(nameScene,version);
+        GameManager.Instance.SetIsCanvasOpen(false);
     }
 }

@@ -16,6 +16,15 @@ public class LoginManager : MonoBehaviour
     [Header("Eventos")]
     public UnityEvent onLoginSuccess;
     public UnityEvent onLoginFailure;
+
+    public GameObject panelLogin;
+    private void Start()
+    {
+        if (UserSession.Instance.isLoged)
+        {
+            panelLogin.SetActive(false);
+        }
+    }
     public void OnLoginButtonPressed()
     {
         sheetsApi.DataFromGoogleSheets.rows.Clear();
@@ -71,5 +80,6 @@ public class LoginManager : MonoBehaviour
         GameTime.instance.Init();
         UserSession.Instance.VerifyRol();
         CreateInfoAlumn.Instance.UpdateInfo();
+        UserSession.Instance.isLoged = true;
     }
 }

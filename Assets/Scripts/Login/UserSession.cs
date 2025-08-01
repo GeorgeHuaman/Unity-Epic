@@ -5,6 +5,7 @@ using UnityEngine;
 public class UserSession : MonoBehaviour
 {
     public static UserSession Instance { get; private set; }
+    public bool isLoged;
 
     public int sheetRowNumber;
 
