@@ -46,6 +46,11 @@ public class UserSession : MonoBehaviour
         if (cells[5].ToString() == "Profesor")
         {
             DataBaseAlumn.Instance.CreateList();
+            DataBaseAlumn.Instance.ButtonActive(true);
+        }
+        else
+        {
+            DataBaseAlumn.Instance.ButtonActive(false);
         }
     }
 
@@ -53,6 +58,21 @@ public class UserSession : MonoBehaviour
     {
         Debug.Log(cells[5].ToString());
         return cells[4];
+    }
+    public ListExcel InfoAlumn()
+    {
+        ListExcel listExcel = new ListExcel();
+        listExcel.name = cells[2].ToString();
+        listExcel.lastName = cells[3].ToString();
+        listExcel.school = cells[4].ToString();
+        listExcel.rol = cells[5].ToString();
+        listExcel.gradeEducation = cells[6].ToString();
+        listExcel.gameTime = cells[7].ToString(); 
+        for (int i = 0; i < 12; i++)
+        {
+            listExcel.listProgressTema.Add((cells[8+i].ToString()));
+        }
+        return listExcel;
     }
     void Awake()
     {
