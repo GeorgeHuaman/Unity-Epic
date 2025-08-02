@@ -20,6 +20,8 @@ public class PanelAlumn : MonoBehaviour
     }
     public void UpdateInfo()
     {
+        if (systemProgressLevel == null)
+            systemProgressLevel = ProgressLevelSystem.instance;
         timeGame.SetActive(true);
         name.text = $"{listExcel.name} {listExcel.lastName}";
         timeGame.GetComponentInChildren<TextMeshProUGUI>().text = $"{listExcel.gameTime}";

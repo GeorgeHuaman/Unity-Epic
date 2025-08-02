@@ -31,6 +31,9 @@ public class CreateInfoAlumn : MonoBehaviour
 
     public void UpdateInfo()
     {
+        if(systemProgressLevel == null)
+            systemProgressLevel = ProgressLevelSystem.instance;
+
         listExcel = UserSession.Instance.InfoAlumn();
         name.text = $"{listExcel.name} {listExcel.lastName}";
         timeGame.GetComponentInChildren<TextMeshProUGUI>().text = $"{listExcel.gameTime}";

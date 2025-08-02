@@ -23,9 +23,14 @@ public class CreateButtonAlumn : MonoBehaviour
         }
         else Destroy(gameObject);
     }
+    private void Start()
+    {
+        dataBaseAlumn = DataBaseAlumn.Instance;
+    }
 
     public void CreateButton()
     {
+        dataBaseAlumn = DataBaseAlumn.Instance;
         for (int i = 0; i < dataBaseAlumn.ExcelList.Count; i++)
         {
             int j = i;
