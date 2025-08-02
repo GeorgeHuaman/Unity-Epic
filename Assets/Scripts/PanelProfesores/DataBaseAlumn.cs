@@ -14,6 +14,7 @@ public class DataBaseAlumn : MonoBehaviour
     private bool buttonCreate = false;
     public GameObject buttonProfesor;
     public GameObject buttonAlumn;
+    private bool init;
     void Awake()
     {
         if (Instance == null)
@@ -26,6 +27,8 @@ public class DataBaseAlumn : MonoBehaviour
     private void Start()
     {
         CreateButtonAlumn = CreateButtonAlumn.Instance;
+        if(ProgressLevelSystem.instance.currentLevelVersion != null)
+        UserSession.Instance.VerifyRol();
     }
     public void CreateList()
     {
@@ -53,6 +56,7 @@ public class DataBaseAlumn : MonoBehaviour
         }
         else
         {
+            CreateInfoAlumn.Instance.UpdateInfo();
             buttonProfesor.SetActive(false);
         }
     }
