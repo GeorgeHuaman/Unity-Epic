@@ -265,6 +265,23 @@ public class GoogleSheetsAPI : MonoBehaviour
         return listExcel;
     }
 
+    public string PercentageTema(int i)
+    {
+        string percentage = string.Empty;
+        ListExcel listExcel = new ListExcel();
+        if (googleSheetService == null)
+        {
+            Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
+            return null;
+        }
+        string range = $"{sheetID}!{"A"+ UserSession.Instance.sheetRowNumber}:{"T"}";
+        var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
+        var response = request.Execute();
+        var values = response.Values;
+        percentage = values[0][i].ToString();
+        return percentage;
+    }
+
     public int LimitUsser()
     {
         int limit = 0;

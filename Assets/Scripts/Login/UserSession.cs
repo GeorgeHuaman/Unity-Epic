@@ -71,7 +71,7 @@ public class UserSession : MonoBehaviour
         listExcel.gameTime = cells[7].ToString(); 
         for (int i = 0; i < 12; i++)
         {
-            listExcel.listProgressTema.Add((cells[8+i].ToString()));
+            listExcel.listProgressTema.Add((GoogleSheetsAPI.instance.PercentageTema(8+i)));
         }
         return listExcel;
     }
