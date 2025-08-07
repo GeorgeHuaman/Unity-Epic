@@ -37,7 +37,7 @@ public class GrabObject : MonoBehaviour
     public void VerifyPedestal(GameObject pedestal)
     {
         Pedestal_Tema8 pedest = pedestal.GetComponent<Pedestal_Tema8>();
-        if(pedest.pedestal.objectType == types.objectType)
+        if(pedest.pedestal.objectType == types.objectType && pedest.pedestal != null)
         {
             pedest.Correct();
             types.Object.transform.SetParent(null, false);
@@ -48,7 +48,10 @@ public class GrabObject : MonoBehaviour
         }
         else
         {
-            pedest.Incorrect();
+            if (!pedest.finish)
+            {
+                pedest.Incorrect();
+            }
             Drop(types);
         }
         

@@ -10,6 +10,7 @@ public class Pedestal_Tema8 : MonoBehaviour
     public GameObject incorrect;
     public GameObject letter;
     public ObjectTypes pedestal;
+    public bool finish = false;
     ConfirmPedestal confirm;
     public bool red = false;
     public bool yellow = false;
@@ -25,6 +26,7 @@ public class Pedestal_Tema8 : MonoBehaviour
     {
         incorrect.SetActive(false);
         correct.SetActive(true);
+        finish = true;
         letter.SetActive(true);
         gameObject.GetComponent<Pedestal_Tema8>().enabled = false;
         if (red)
@@ -35,7 +37,7 @@ public class Pedestal_Tema8 : MonoBehaviour
         if (yellow) 
         { 
             confirm.Yellow();
-            mision.CompleteTask(6);
+            mision.CompleteTask(5);
         }
         if (blue) 
         { 
@@ -45,12 +47,13 @@ public class Pedestal_Tema8 : MonoBehaviour
         if (green) 
         {
             confirm.Green();
-            mision.CompleteTask(5);
+            mision.CompleteTask(6);
         }
     }
 
     public void Incorrect()
     {
+        incorrect.SetActive(false);
         incorrect.SetActive(true);
     }
 }
