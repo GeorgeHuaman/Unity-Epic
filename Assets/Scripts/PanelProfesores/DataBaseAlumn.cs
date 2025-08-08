@@ -33,14 +33,41 @@ public class DataBaseAlumn : MonoBehaviour
     public void CreateList()
     {
         ExcelList.Clear();
-        int length = GoogleSheetsAPI.LimitUsser();
-        for (int i = 0; i < length; i++)
+
+        GoogleSheetsAPI.instance.ReadDataFrom("A2", "T");
+
+        foreach (var row in GoogleSheetsAPI.instance.DataFromGoogleSheets.rows)
         {
-            if (UserSession.Instance.cells[4].ToString() == GoogleSheetsAPI.FilterEducation("E" +(i+2), "E",i) && GoogleSheetsAPI.FilterEducation("F"+(i+2),"F",i) != "Profesor" && UserSession.Instance.cells[5].ToString() == "Profesor")
+            if (row.cellData.Count < 7) continue;
+
+            string school = row.cellData[4];
+            string rol = row.cellData[5];
+
+            if (UserSession.Instance.cells[4] == school &&
+                rol != "Profesor" &&
+                UserSession.Instance.cells[5] == "Profesor")
             {
-                ExcelList.Add(GoogleSheetsAPI.AddAlumn("A"+(i+2),"T"));
+                ListExcel alumno = new ListExcel
+                {
+                    email = row.cellData[0],
+                    password = row.cellData[1],
+                    name = row.cellData[2],
+                    lastName = row.cellData[3],
+                    school = school,
+                    rol = rol,
+                    gradeEducation = row.cellData[6],
+                    gameTime = row.cellData[7]
+                };
+
+                for (int i = 8; i < 20 && i < row.cellData.Count; i++)
+                {
+                    alumno.listProgressTema.Add(row.cellData[i]);
+                }
+
+                ExcelList.Add(alumno);
             }
         }
+
         if (!buttonCreate)
         {
             buttonCreate = true;
