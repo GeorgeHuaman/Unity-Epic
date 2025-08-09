@@ -211,29 +211,29 @@ public class GoogleSheetsAPI : MonoBehaviour
         var deleteData = googleSheetService.Spreadsheets.Values.Clear(new ClearValuesRequest(), spreadSheetID, range);
         deleteData.Execute();
     }
-    public string FilterEducation(string row, string columns, int numberRows)
-    {
-        if(googleSheetService == null)
-        {
-            Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
-            return null;
-        }
-        string range = $"{sheetID}!{row}:{columns}";
-        var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
-        var response = request.Execute();
-        var values = response.Values;
+    //public string FilterEducation(string row, string columns, int numberRows)
+    //{
+    //    if(googleSheetService == null)
+    //    {
+    //        Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
+    //        return null;
+    //    }
+    //    string range = $"{sheetID}!{row}:{columns}";
+    //    var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
+    //    var response = request.Execute();
+    //    var values = response.Values;
 
-        if (values != null && values.Count > 0)
-        {
-            string colegio = values[0][0].ToString();
-            return colegio;
-        }
-        else
-        {
-            Debug.LogWarning("[GoogleSheetsAPI] No hay datos en el rango especificado.");
-        }
-        return null;
-    }
+    //    if (values != null && values.Count > 0)
+    //    {
+    //        string colegio = values[0][0].ToString();
+    //        return colegio;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("[GoogleSheetsAPI] No hay datos en el rango especificado.");
+    //    }
+    //    return null;
+    //}
 
     public ListExcel AddAlumn(string row,string columns)
     {
@@ -282,39 +282,39 @@ public class GoogleSheetsAPI : MonoBehaviour
         return percentage;
     }
 
-    public int LimitUsser()
-    {
-        int limit = 0;
-        if (googleSheetService == null)
-        {
-            Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
-            return 0;
-        }
-        string range = $"{sheetID}!{"A2"}:{"A"}";
-        var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
-        var response = request.Execute();
-        var values = response.Values;
+    //public int LimitUsser()
+    //{
+    //    int limit = 0;
+    //    if (googleSheetService == null)
+    //    {
+    //        Debug.LogError("[GoogleSheetsAPI] Servicio no inicializado.");
+    //        return 0;
+    //    }
+    //    string range = $"{sheetID}!{"A2"}:{"A"}";
+    //    var request = googleSheetService.Spreadsheets.Values.Get(spreadSheetID, range);
+    //    var response = request.Execute();
+    //    var values = response.Values;
 
-        if (values != null && values.Count > 0)
-        {
-            for (int i = 0; i < values.Count; i++)
-            {
-                var row = values[i];
-                var newRow = new Row();
-                foreach (var cell in row)
-                {
-                    limit += 1;
-                }
-                DataFromGoogleSheets.rows.Add(newRow);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("[GoogleSheetsAPI] No hay datos en el rango especificado.");
-        }
+    //    if (values != null && values.Count > 0)
+    //    {
+    //        for (int i = 0; i < values.Count; i++)
+    //        {
+    //            var row = values[i];
+    //            var newRow = new Row();
+    //            foreach (var cell in row)
+    //            {
+    //                limit += 1;
+    //            }
+    //            DataFromGoogleSheets.rows.Add(newRow);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("[GoogleSheetsAPI] No hay datos en el rango especificado.");
+    //    }
 
-        return limit;
-    }
+    //    return limit;
+    //}
     [Serializable]
     public class Row
     {

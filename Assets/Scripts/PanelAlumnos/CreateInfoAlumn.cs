@@ -40,7 +40,7 @@ public class CreateInfoAlumn : MonoBehaviour
         for (int i = 0; i < listExcel.listProgressTema.Count; i++)
         {
             GameObject tem = temaProgress[i];
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < 2; j++)
             {
                 if (j == 0)
                 {
@@ -52,10 +52,10 @@ public class CreateInfoAlumn : MonoBehaviour
                 Slider slider = childSlider.GetComponent<Slider>();
                 slider.value = float.Parse(listExcel.listProgressTema[i]) / 100f;
 
-                if (j == 2)
+                if (j == 1)
                 {
                     Transform child = tem.transform.GetChild(j);
-                    TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI text = child.GetChild(3).GetComponent<TextMeshProUGUI>();
                     text.text = listExcel.listProgressTema[i] + "%";
                 }
             }

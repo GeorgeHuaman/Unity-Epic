@@ -11,6 +11,7 @@ public class CreateButtonAlumn : MonoBehaviour
     public GameObject prefab;
     public GameObject textPanelAlumn;
     public PanelAlumn panelAlumn;
+    public GameObject father;
     public static CreateButtonAlumn Instance;
     // Start is called before the first frame update
 
@@ -44,7 +45,7 @@ public class CreateButtonAlumn : MonoBehaviour
                 SeePanelAlumn(j);
                 panelAlumn.gameObject.SetActive(true);
                 textPanelAlumn.gameObject.SetActive(true);
-                this.gameObject.SetActive(false);
+                father.gameObject.SetActive(false);
             });
         }
     }

@@ -20,7 +20,7 @@ public class ScaleHeight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (targetRectAlumns.gameObject.activeSelf)
+        if (targetRectAlumns.transform.parent.gameObject.activeSelf)
         {
             float size = targetRectAlumns.rect.height;
             Vector2 rec = new Vector2(thisRect.sizeDelta.x, targetRectAlumns.sizeDelta.y);
