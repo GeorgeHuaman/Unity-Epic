@@ -37,6 +37,10 @@ public class UserSession : MonoBehaviour
     {
         return float.Parse(cells[tema + 7]);
     }
+    public string PercentageString(int tema)
+    {
+        return cells[tema+8];
+    }
     public float UseIA(int UsosIA)
     {
         return float.Parse(cells[UsosIA + 7]);
@@ -71,7 +75,8 @@ public class UserSession : MonoBehaviour
         listExcel.gameTime = cells[7].ToString(); 
         for (int i = 0; i < 12; i++)
         {
-            listExcel.listProgressTema.Add((GoogleSheetsAPI.instance.PercentageTema(8+i)));
+            listExcel.listProgressTema.Add(PercentageString(i));
+            //listExcel.listProgressTema.Add((GoogleSheetsAPI.instance.PercentageTema(8+i)));
         }
         return listExcel;
     }
