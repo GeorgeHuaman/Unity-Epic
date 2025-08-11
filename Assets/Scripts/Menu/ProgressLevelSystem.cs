@@ -102,7 +102,10 @@ public class ProgressLevelSystem : MonoBehaviour
         if (percentage > UserSession.Instance.Percentage(level))
         {
             levels[level-1].percentage = percentage;
-            SaveExcell(percentage.ToString(), level);
+            Debug.Log(percentage.ToString());
+            Debug.Log(level);
+            UserSession.Instance.UpdatePercentaje(level, percentage.ToString());
+            SaveExcell(percentage.ToString(), level);//Guardar Progreso en Excel
         }
     }
     void SaveExcell(string percentage, int level)

@@ -46,6 +46,12 @@ public class UserSession : MonoBehaviour
         return float.Parse(cells[UsosIA + 7]);
     }
 
+    public void UpdatePercentaje(int tema,  string percentaje)
+    {
+        cells[7+tema] = percentaje;
+        Debug.Log(cells[tema]);
+    }
+
     public void VerifyRol()
     {
         if (cells[5].ToString() == "Profesor")
