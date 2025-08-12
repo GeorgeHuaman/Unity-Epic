@@ -33,10 +33,15 @@ public class Mission : MonoBehaviour
 
     private void AssignPercentageTask()
     {
-        for (int i = 0; i < tasks.Count; i++)
+        int count = tasks.Count;
+        if (count == 0) return;
+
+        for (int i = 0; i < count; i++)
         {
-            tasks[i].percentage = (((float)i+1) / tasks.Count) * 100f;
+            tasks[i].percentage = (int)((((float)i + 1) / count) * 100f); // truncar
         }
+
+        tasks[count - 1].percentage = 100; // garantizar que el total llegue a 100
     }
 
     public void StartMission()
