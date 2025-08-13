@@ -7,6 +7,7 @@ public class VideoPlayerManager : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
+    public RenderTexture renderTexture;
 
     public void PlayAndPause()
     {
@@ -26,6 +27,7 @@ public class VideoPlayerManager : MonoBehaviour
     {
         VerifyVideoPlayer();
         videoPlayer.Stop();
+        renderTexture.Release();
     }
 
     public void PlayLoadVideo()
@@ -51,5 +53,15 @@ public class VideoPlayerManager : MonoBehaviour
             videoPlayer.EnableAudioTrack(0, true);
             videoPlayer.SetTargetAudioSource(0, audioSource);
         }
+    }
+
+    public void CleanRenderTexture()
+    {
+        renderTexture.Release();
+    }
+
+    private void OnApplicationQuit()
+    {
+        CleanRenderTexture();
     }
 }

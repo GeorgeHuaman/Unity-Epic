@@ -6,7 +6,7 @@ public class TPCentralHub : MonoBehaviour
 {
     public Transform player;
 
-    public Transform temas, centroIA, centro;
+    public Transform temas, centroIA, centro, cine;
 
     public GameObject panelMapa;
 
@@ -28,7 +28,11 @@ public class TPCentralHub : MonoBehaviour
         player.position = centro.position;
         StartCoroutine(WaitAndOpenMap());
     }
-
+    public void TpCine()
+    {
+        player.position = cine.position;
+        StartCoroutine(WaitAndOpenMap());
+    }
     public void ButtonMapa()
     {
         GameManager gm = GameManager.Instance;
