@@ -1769,6 +1769,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1047074019}
     m_Modifications:
+    - target: {fileID: 1833104925377645983, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833104925377645983, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_ControlledAudioTrackCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833104925377645983, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_DirectAudioMutes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833104925377645983, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_DirectAudioVolumes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833104925377645983, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_EnabledAudioTracks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833104925377645983, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_TargetAudioSources.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2411326903701412675, guid: 8ab51fb55a5b82945915ed15df0f1117,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1887,17 +1917,17 @@ PrefabInstance:
     - target: {fileID: 3755052765980569020, guid: 8ab51fb55a5b82945915ed15df0f1117,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 22.0706
+      value: 14.4537
       objectReference: {fileID: 0}
     - target: {fileID: 3755052765980569020, guid: 8ab51fb55a5b82945915ed15df0f1117,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 8.1861
+      value: 8.1302
       objectReference: {fileID: 0}
     - target: {fileID: 3755052765980569020, guid: 8ab51fb55a5b82945915ed15df0f1117,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.05
+      value: 8.82
       objectReference: {fileID: 0}
     - target: {fileID: 3755052765980569020, guid: 8ab51fb55a5b82945915ed15df0f1117,
         type: 3}
@@ -1908,6 +1938,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 4.2079
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351647005040437537, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351647005040437537, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351647005040437537, guid: 8ab51fb55a5b82945915ed15df0f1117,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7213248759488273708, guid: 8ab51fb55a5b82945915ed15df0f1117,
         type: 3}
@@ -2436,7 +2481,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 121342453}
         m_TargetAssemblyTypeName: TPCentralHub, Assembly-CSharp
-        m_MethodName: TpCentro
+        m_MethodName: TpCine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7888,7 +7933,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1872453610}
+        m_TargetAssemblyTypeName: Reposition, Assembly-CSharp
+        m_MethodName: Teleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
