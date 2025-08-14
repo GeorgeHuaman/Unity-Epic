@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerAudios : MonoBehaviour
+public class ControllerAudio : MonoBehaviour
 {
     public List<NPC> npcs = new List<NPC>();
     public List<AudioSource> sources;
-    public Coroutine coroutine; 
+    public Coroutine coroutine;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     public void StopAudios()
     {
@@ -18,7 +29,7 @@ public class ControllerAudios : MonoBehaviour
         {
             sources[i].Stop();
             npcs[i].startDialogue = false;
-
+            
         }
     }
 }
