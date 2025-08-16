@@ -32,12 +32,18 @@ public class CreateButtonLevels : MonoBehaviour
                     int index = i; // Necesario para capturar correctamente el índice en la lambda
                     Transform child = go.transform.GetChild(index);
                     child.GetComponent<Button>().onClick.AddListener(() => {
-                        LoadScene(levelData.versions[index - 1].versionName); // -1 porque el primer hijo (i==0) era el título
+                        if(index >= 0 && index <= 2)
+                        LoadScene(levelData.versions[0].versionName); // -1 porque el primer hijo (i==0) era el título
+                        else
+                            LoadScene(levelData.versions[1].versionName);
 
                     });
                     child.GetComponent<Button>().onClick.AddListener(() =>
                     {
-                        SendInfoLevel(levelData.versions[index - 1].versionName, levelData);
+                        if (index >= 0 && index <= 2)
+                            SendInfoLevel(levelData.versions[0].versionName,levelData); // -1 porque el primer hijo (i==0) era el título
+                        else
+                            SendInfoLevel(levelData.versions[1].versionName, levelData);
                     });
                 }
             }

@@ -20,7 +20,7 @@ public class ProgressLevelSystem : MonoBehaviour
             {
                 for (int i = 0; i < levels.levelData.versions.Count; i++)
                 {
-                    levels.levelDataVerify.Add(new LevelDataVerify(levels.levelData.versions[i].versionName, false));
+                    levels.levelDataVerify.Add(new LevelDataVerify(levels.levelData.versions[i].versionName));
                 }
             }
         }
@@ -44,34 +44,34 @@ public class ProgressLevelSystem : MonoBehaviour
         currentLevelName = level;
         currentLevelVersion = version;
     }
-    public void LevelEnd()
-    {
-        int bools = 0;
-        for (int i = 0; i < levels.Count; i++)
-        {
-            for (int j = 0; j < levels[i].levelDataVerify.Count; j++)
-            {
-                if (levels[i].levelDataVerify[j].name == currentLevelName && levels[i].levelDataVerify[j].end)
-                {
-                    Debug.Log(levels[i].levelDataVerify[j].name);
-                    bools = 2;
-                    break;
-                }
-                if (levels[i].levelDataVerify[j].name == currentLevelName && !levels[i].levelDataVerify[j].end)
-                {
-                    levels[i].levelDataVerify[j].end = true;
-                }
-                if (levels[i].levelDataVerify[j].name != currentLevelName && levels[i].levelDataVerify[j].end)
-                {
-                    bools++;
-                }
-            }
-        }
-        if(bools ==0)
-        {
-            UpdateLevel();
-        }
-    }
+    //public void LevelEnd()
+    //{
+    //    int bools = 0;
+    //    for (int i = 0; i < levels.Count; i++)
+    //    {
+    //        for (int j = 0; j < levels[i].levelDataVerify.Count; j++)
+    //        {
+    //            if (levels[i].levelDataVerify[j].name == currentLevelName && levels[i].levelDataVerify[j].end)
+    //            {
+    //                Debug.Log(levels[i].levelDataVerify[j].name);
+    //                bools = 2;
+    //                break;
+    //            }
+    //            if (levels[i].levelDataVerify[j].name == currentLevelName && !levels[i].levelDataVerify[j].end)
+    //            {
+    //                levels[i].levelDataVerify[j].end = true;
+    //            }
+    //            if (levels[i].levelDataVerify[j].name != currentLevelName && levels[i].levelDataVerify[j].end)
+    //            {
+    //                bools++;
+    //            }
+    //        }
+    //    }
+    //    if(bools ==0)
+    //    {
+    //        UpdateLevel();
+    //    }
+    //}
     private void UpdateLevel()
     {
         for (int i = 0; i < levels.Count; i++)
@@ -145,7 +145,7 @@ public class ProgressLevelSystem : MonoBehaviour
             for (int j = 0; j < levels[i].levelDataVerify.Count; j++)
             {
                 levels[i].levelDataVerify[j].name = system.name[k + j];
-                levels[i].levelDataVerify[j].end = system.end[k + j];
+                //levels[i].levelDataVerify[j].end = system.end[k + j];
             }
             k += 4;
         }
@@ -188,11 +188,11 @@ public class ProgressLevel
 public class LevelDataVerify
 {
     public string name;
-    public bool end;
+    //public bool end;
 
-    public LevelDataVerify(string name, bool end)
+    public LevelDataVerify(string name)
     {
         this.name = name;
-        this.end = end;
+        //this.end = end;
     }
 }

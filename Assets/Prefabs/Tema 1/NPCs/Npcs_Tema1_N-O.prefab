@@ -518,7 +518,7 @@ AudioSource:
   m_GameObject: {fileID: 80628315766702487}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6bf3ea9f7dc1708499c2437d699541fe, type: 3}
   m_PlayOnAwake: 0
@@ -1997,7 +1997,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5521366206453685130}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2434,7 +2446,7 @@ AudioSource:
   m_GameObject: {fileID: 612814523796988425}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c419bd093ee77d042ba6077462ffd1af, type: 3}
   m_PlayOnAwake: 0
@@ -2563,7 +2575,7 @@ AudioSource:
   m_GameObject: {fileID: 640367158248144716}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6bf3ea9f7dc1708499c2437d699541fe, type: 3}
   m_PlayOnAwake: 0
@@ -3072,6 +3084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3615981054511245988}
   - component: {fileID: 6603279340639944703}
+  - component: {fileID: 3605369831255515253}
   m_Layer: 0
   m_Name: Jeff Besos
   m_TagString: Untagged
@@ -3119,6 +3132,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3605369831255515253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712093515152571396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 62a2479d73bca5c40ae324901af71b02, type: 3}
+    text: 
+  audioSource: {fileID: 1074736246352633813}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &715665050918634980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,7 +3269,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 539297801622754924}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3389,6 +3434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370249015886177810}
   - component: {fileID: 5030655042941879764}
+  - component: {fileID: 8306436248926354516}
   m_Layer: 0
   m_Name: NPC Hombre 4
   m_TagString: Untagged
@@ -3436,6 +3482,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8306436248926354516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847634754359683253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: c268fa921fa52cd4ea9d74a7a93b6562, type: 3}
+    text: 
+  audioSource: {fileID: 4507619323670796245}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &849020788963955083
 GameObject:
   m_ObjectHideFlags: 0
@@ -8466,6 +8532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8169153460569009477}
   - component: {fileID: 680726415297894840}
+  - component: {fileID: 2629934485138882571}
   m_Layer: 0
   m_Name: NPC Mujer 2
   m_TagString: Untagged
@@ -8513,6 +8580,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2629934485138882571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2245144696629591466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: dd41d7da1a89c8043ae2e00f130aebc5, type: 3}
+    text: 
+  audioSource: {fileID: 6505867397159919183}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &2249847672230002205
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,7 +8813,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2629934485138882571}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -8790,7 +8889,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5404543350491701276}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -9259,6 +9370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6633008910655559178}
   - component: {fileID: 6130310328330642820}
+  - component: {fileID: 5521366206453685130}
   m_Layer: 0
   m_Name: NPC Mujer
   m_TagString: Untagged
@@ -9306,6 +9418,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5521366206453685130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395488352041187445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 6bf3ea9f7dc1708499c2437d699541fe, type: 3}
+    text: 
+  audioSource: {fileID: 5387304716907300243}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &2407614995985054854
 GameObject:
   m_ObjectHideFlags: 0
@@ -10246,6 +10378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6930764229155743090}
   - component: {fileID: 8784295790231269139}
+  - component: {fileID: 3098414189623562781}
   m_Layer: 0
   m_Name: Steve
   m_TagString: Untagged
@@ -10293,6 +10426,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3098414189623562781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635774352962315440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 034b06303e0659846b117f58bb8be945, type: 3}
+    text: 
+  audioSource: {fileID: 2033526514521135600}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &2636947883281970681
 GameObject:
   m_ObjectHideFlags: 0
@@ -10696,7 +10849,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2689085476678051955}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -13394,7 +13559,7 @@ AudioSource:
   m_GameObject: {fileID: 3582267654697505476}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: dd41d7da1a89c8043ae2e00f130aebc5, type: 3}
   m_PlayOnAwake: 0
@@ -13651,7 +13816,7 @@ AudioSource:
   m_GameObject: {fileID: 3660861456097499256}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c268fa921fa52cd4ea9d74a7a93b6562, type: 3}
   m_PlayOnAwake: 0
@@ -13844,6 +14009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6322975162448511585}
   - component: {fileID: 3157805784735520124}
+  - component: {fileID: 8982831207669035447}
   m_Layer: 0
   m_Name: NPC Mujer 5
   m_TagString: Untagged
@@ -13891,6 +14057,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8982831207669035447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724245402790252328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 6b448c732d28aa24faeacdb87fe66ca3, type: 3}
+    text: 
+  audioSource: {fileID: 8283565786422105991}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &3727899792559340141
 GameObject:
   m_ObjectHideFlags: 0
@@ -14155,7 +14341,7 @@ AudioSource:
   m_GameObject: {fileID: 3798820594807290506}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c268fa921fa52cd4ea9d74a7a93b6562, type: 3}
   m_PlayOnAwake: 0
@@ -14424,7 +14610,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8306436248926354516}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -15023,7 +15221,7 @@ AudioSource:
   m_GameObject: {fileID: 4009316942400154599}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c268fa921fa52cd4ea9d74a7a93b6562, type: 3}
   m_PlayOnAwake: 0
@@ -18064,6 +18262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1090120046184743834}
   - component: {fileID: 8081939578780402719}
+  - component: {fileID: 5404543350491701276}
   m_Layer: 0
   m_Name: NPC Hombre
   m_TagString: Untagged
@@ -18111,6 +18310,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5404543350491701276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645039005227907594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: e18a85e545eebb9498175e4810049f48, type: 3}
+    text: 
+  audioSource: {fileID: 1771962609454621856}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &4663009093248747538
 GameObject:
   m_ObjectHideFlags: 0
@@ -18645,7 +18864,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7043026567389624876}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -19153,7 +19384,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3098414189623562781}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -19237,7 +19480,7 @@ AudioSource:
   m_GameObject: {fileID: 4911528519142081676}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6b448c732d28aa24faeacdb87fe66ca3, type: 3}
   m_PlayOnAwake: 0
@@ -21515,6 +21758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6046032125556145876}
   - component: {fileID: 5419955201673893214}
+  - component: {fileID: 2689085476678051955}
   m_Layer: 0
   m_Name: NPC Mujer (1)
   m_TagString: Untagged
@@ -21562,6 +21806,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2689085476678051955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524784346506127293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 6bf3ea9f7dc1708499c2437d699541fe, type: 3}
+    text: 
+  audioSource: {fileID: 4312008452597168707}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &5530980870509618033
 GameObject:
   m_ObjectHideFlags: 0
@@ -25221,6 +25485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6206196287465335902}
   - component: {fileID: 595558326620649860}
+  - component: {fileID: 7043026567389624876}
   m_Layer: 0
   m_Name: NPC Hombre 4 (2)
   m_TagString: Untagged
@@ -25268,6 +25533,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7043026567389624876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485841122184794232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: c268fa921fa52cd4ea9d74a7a93b6562, type: 3}
+    text: 
+  audioSource: {fileID: 6879250216095363524}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &6495413743842919709
 GameObject:
   m_ObjectHideFlags: 0
@@ -28635,7 +28920,7 @@ AudioSource:
   m_GameObject: {fileID: 7223255790485181838}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: dd41d7da1a89c8043ae2e00f130aebc5, type: 3}
   m_PlayOnAwake: 0
@@ -29445,7 +29730,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3605369831255515253}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -29541,7 +29838,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7050424389927482157}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -30331,6 +30640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6595985911078426579}
   - component: {fileID: 6052611337901977724}
+  - component: {fileID: 539297801622754924}
   m_Layer: 0
   m_Name: NPC Mujer 3
   m_TagString: Untagged
@@ -30378,6 +30688,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &539297801622754924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647568454226687716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 3dc3271be40841c4da796271927ce275, type: 3}
+    text: 
+  audioSource: {fileID: 6670955031868959007}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &7647891674482398353
 GameObject:
   m_ObjectHideFlags: 0
@@ -31637,6 +31967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306353014021339729}
   - component: {fileID: 783233829701963036}
+  - component: {fileID: 4581664674979944670}
   m_Layer: 0
   m_Name: Elonk Mass
   m_TagString: Untagged
@@ -31684,6 +32015,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4581664674979944670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981116660012022919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 7a16005f54206a744b0182f11efed2e2, type: 3}
+    text: 
+  audioSource: {fileID: 5765261471262194397}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &7981255091970635754
 GameObject:
   m_ObjectHideFlags: 0
@@ -32724,6 +33075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5884631571985436595}
   - component: {fileID: 3428791142401901880}
+  - component: {fileID: 5269317846965216473}
   m_Layer: 0
   m_Name: Npcs_Tema1_N-O
   m_TagString: Untagged
@@ -32771,19 +33123,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  sources: []
+  - {fileID: 5521366206453685130}
+  - {fileID: 8306436248926354516}
+  - {fileID: 8982831207669035447}
+  - {fileID: 3098414189623562781}
+  - {fileID: 2629934485138882571}
+  - {fileID: 2689085476678051955}
+  - {fileID: 4581664674979944670}
+  - {fileID: 7043026567389624876}
+  - {fileID: 7050424389927482157}
+  - {fileID: 3605369831255515253}
+  - {fileID: 5404543350491701276}
+  - {fileID: 539297801622754924}
+  sources:
+  - {fileID: 5387304716907300243}
+  - {fileID: 4507619323670796245}
+  - {fileID: 8283565786422105991}
+  - {fileID: 2033526514521135600}
+  - {fileID: 6505867397159919183}
+  - {fileID: 4312008452597168707}
+  - {fileID: 5765261471262194397}
+  - {fileID: 6879250216095363524}
+  - {fileID: 8623728325912708347}
+  - {fileID: 1074736246352633813}
+  - {fileID: 1771962609454621856}
+  - {fileID: 6670955031868959007}
+--- !u!114 &5269317846965216473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8253395659666308591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4df9ab96dec4c47b9f671ee341b125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8266112712411972211
 GameObject:
   m_ObjectHideFlags: 0
@@ -33179,6 +33555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8497566155384556294}
   - component: {fileID: 407094068834456543}
+  - component: {fileID: 7050424389927482157}
   m_Layer: 0
   m_Name: NPC Mujer 2 (1)
   m_TagString: Untagged
@@ -33226,6 +33603,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7050424389927482157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394807055226130748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: dd41d7da1a89c8043ae2e00f130aebc5, type: 3}
+    text: 
+  audioSource: {fileID: 8623728325912708347}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 3428791142401901880}
 --- !u!1 &8397430926375554958
 GameObject:
   m_ObjectHideFlags: 0
@@ -33330,7 +33727,7 @@ AudioSource:
   m_GameObject: {fileID: 8417498386932738035}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3dc3271be40841c4da796271927ce275, type: 3}
   m_PlayOnAwake: 0
@@ -33685,7 +34082,7 @@ AudioSource:
   m_GameObject: {fileID: 8501481616444974037}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c419bd093ee77d042ba6077462ffd1af, type: 3}
   m_PlayOnAwake: 0
@@ -35243,7 +35640,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8982831207669035447}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -35358,7 +35767,7 @@ AudioSource:
   m_GameObject: {fileID: 8833519793104125172}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8663463407411171230, guid: 0461beb79fbfa4735867cac3f1f81cd2,
+  OutputAudioMixerGroup: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e18a85e545eebb9498175e4810049f48, type: 3}
   m_PlayOnAwake: 0
@@ -35562,7 +35971,19 @@ MonoBehaviour:
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4581664674979944670}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAnimEvent:
     m_PersistentCalls:
       m_Calls: []

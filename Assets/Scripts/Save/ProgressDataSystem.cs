@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProgressDataSystem
 {
     public string[] name;
-    public bool[] end;
+    //public bool[] end;
 
     public ProgressDataSystem(ProgressLevelSystem system)
     {
@@ -18,7 +18,7 @@ public class ProgressDataSystem
                 count++;
             }
         }
-        end = new bool[count];
+        //end = new bool[count];
         name = new string[count];
 
         int k = 0;
@@ -27,7 +27,7 @@ public class ProgressDataSystem
             for (int j = 0; j < system.levels[i].levelDataVerify.Count; j++)
             {
                 name[k + j] = system.levels[i].levelDataVerify[j].name;
-                end[k+j] = system.levels[i].levelDataVerify[j].end;
+                //end[k+j] = system.levels[i].levelDataVerify[j].end;
             }
             k += 4;
         }

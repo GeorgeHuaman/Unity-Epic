@@ -13,7 +13,7 @@ public class NPC : MonoBehaviour
     [HideInInspector] public GameObject player;
     public float delayEntreLineas = 1f;
     private int indiceActual = 0;
-    public ControllerAudio controller;
+    public ControllerAudios controller;
     // Start is called before the first frame update
     void Start()
     {

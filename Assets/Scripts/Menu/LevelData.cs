@@ -8,6 +8,8 @@ public class LevelVersion
 {
     public string versionName;
     public Sprite thumbnail;
+    [Tooltip("0 = Npcs Kids Genuine y 1 = Npcs Next Old y 2 = Ninguno"),Range(0,2)]
+    public int npcs = 2;
 }
 
 [CreateAssetMenu(menuName = "Level Data")]
