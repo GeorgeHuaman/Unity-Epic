@@ -391,6 +391,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 385ab87f34f79814a9e073b40b3a5475,
         type: 2}
+    - target: {fileID: 236678551119090792, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: levelsData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 620c38417b637e447a3d49f5ceb02ff2,
+        type: 2}
     - target: {fileID: 526173371390002750, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_IsActive
@@ -8081,7 +8087,7 @@ MonoBehaviour:
     progressText: {fileID: 0}
   - name: Tema 2
     currentLevel: 0
-    levelData: {fileID: 11400000, guid: 7d78ee596ac431a4c90ee6effcd7de11, type: 2}
+    levelData: {fileID: 11400000, guid: 620c38417b637e447a3d49f5ceb02ff2, type: 2}
     percentage: 0
     levelDataVerify: []
     progressBar: {fileID: 0}
@@ -8158,6 +8164,8 @@ MonoBehaviour:
     progressText: {fileID: 0}
   currentLevelName: 
   currentLevelVersion: {fileID: 0}
+  currentNpcsNumber: 0
+  currentCartelIndex: 0
 --- !u!114 &1875382869
 MonoBehaviour:
   m_ObjectHideFlags: 0

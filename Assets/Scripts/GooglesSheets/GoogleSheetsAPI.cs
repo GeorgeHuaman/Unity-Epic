@@ -121,7 +121,7 @@ public class GoogleSheetsAPI : MonoBehaviour
                     newRow.cellData.Add(cell.ToString());
                 }
                 DataFromGoogleSheets.rows.Add(newRow);
-                Debug.Log($"[GoogleSheetsAPI] Fila {i}: {string.Join(", ", newRow.cellData)}");
+                //Debug.Log($"[GoogleSheetsAPI] Fila {i}: {string.Join(", ", newRow.cellData)}");
             }
         }
         else

@@ -10,6 +10,8 @@ public class ProgressLevelSystem : MonoBehaviour
     public static ProgressLevelSystem instance;
     public string currentLevelName;
     public LevelData currentLevelVersion;
+    public int currentNpcsNumber;
+    public int currentCartelIndex;
     private string abec = "ABCDEFGHIJKLMNOPQRST";
 
     private void Start()
@@ -24,7 +26,6 @@ public class ProgressLevelSystem : MonoBehaviour
                 }
             }
         }
-        Debug.Log(levels.Count);
     }
 
     private void Awake()
@@ -39,10 +40,12 @@ public class ProgressLevelSystem : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void IdentifyLevel(string level, LevelData version)
+    public void IdentifyLevel(string level, LevelData version, int npcs,int index)
     {
         currentLevelName = level;
         currentLevelVersion = version;
+        currentNpcsNumber = npcs;
+        currentCartelIndex = index;
     }
     //public void LevelEnd()
     //{

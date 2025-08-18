@@ -41,9 +41,9 @@ public class CreateButtonLevels : MonoBehaviour
                     child.GetComponent<Button>().onClick.AddListener(() =>
                     {
                         if (index >= 0 && index <= 2)
-                            SendInfoLevel(levelData.versions[0].versionName,levelData); // -1 porque el primer hijo (i==0) era el título
+                            SendInfoLevel(levelData.versions[0].versionName,levelData, levelData.versions[0].npcs,index); // -1 porque el primer hijo (i==0) era el título
                         else
-                            SendInfoLevel(levelData.versions[1].versionName, levelData);
+                            SendInfoLevel(levelData.versions[1].versionName, levelData, levelData.versions[1].npcs, index);
                     });
                 }
             }
@@ -55,9 +55,9 @@ public class CreateButtonLevels : MonoBehaviour
         SceneManager.LoadScene(nameScene);
     }
 
-    void SendInfoLevel(string nameScene,LevelData version)
+    void SendInfoLevel(string nameScene,LevelData version, int npcs, int index)
     {
-        systemProgressLevel.IdentifyLevel(nameScene,version);
+        systemProgressLevel.IdentifyLevel(nameScene,version,npcs, index);
         GameManager.Instance.SetIsCanvasOpen(false);
     }
 }
