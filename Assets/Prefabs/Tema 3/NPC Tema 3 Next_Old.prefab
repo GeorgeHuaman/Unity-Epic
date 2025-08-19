@@ -1574,8 +1574,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1577606215273680722}
-  - component: {fileID: 5877556694592584660}
   - component: {fileID: 7204755134598369581}
+  - component: {fileID: 5659723924131849741}
   m_Layer: 0
   m_Name: NPC Mujer 5 (1)
   m_TagString: Untagged
@@ -1602,29 +1602,6 @@ Transform:
   - {fileID: 5781481313806859522}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5877556694592584660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264400259646781333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 2062869858291452117}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: bcd7286f64b801a469543de8a9bc707b, type: 3}
-    text: 
-  audioSource: {fileID: 1996302557842449201}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &7204755134598369581
 Animator:
   serializedVersion: 5
@@ -1646,6 +1623,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5659723924131849741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264400259646781333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &265452234960986468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,8 +1842,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5858099622487541290}
-  - component: {fileID: 9072122755744522069}
   - component: {fileID: 3939270571859185759}
+  - component: {fileID: 4042006712237916149}
   m_Layer: 0
   m_Name: NPC Hombre 5
   m_TagString: Untagged
@@ -1875,29 +1870,6 @@ Transform:
   - {fileID: 8281304070514698424}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: -92.596, z: 0}
---- !u!114 &9072122755744522069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304280481882515956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 1644704597022035688}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 9418601edaa9b56489a5acb879601514, type: 3}
-    text: 
-  audioSource: {fileID: 4973602962820355509}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &3939270571859185759
 Animator:
   serializedVersion: 5
@@ -1919,6 +1891,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4042006712237916149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304280481882515956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &305078080745231897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4097,7 +4087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8607225531734975716}
   - component: {fileID: 6518473606530419259}
-  - component: {fileID: 2057306642954176844}
+  - component: {fileID: 2850401804878000833}
   m_Layer: 0
   m_Name: NPC Hombre 2
   m_TagString: Untagged
@@ -4145,7 +4135,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2057306642954176844
+--- !u!114 &2850401804878000833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4154,17 +4144,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 783096110126107162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 1174444276569935685}
-  dialogueTextGameObject: {fileID: 0}
   startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 152391c2dedccc74983ec393998b6b61, type: 3}
-    text: 
-  audioSource: {fileID: 3606526143381845301}
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 0}
@@ -7241,7 +7226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8092835588817134972}
   - component: {fileID: 216292112246481317}
-  - component: {fileID: 4202139137960219451}
+  - component: {fileID: 4268885813826817846}
   m_Layer: 0
   m_Name: NPC Mujer
   m_TagString: Untagged
@@ -7289,7 +7274,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4202139137960219451
+--- !u!114 &4268885813826817846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7298,17 +7283,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1524154166065683217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 4225440113761608120}
-  dialogueTextGameObject: {fileID: 0}
   startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 2d203a97bd9d81147b00bbbc4597760e, type: 3}
-    text: 
-  audioSource: {fileID: 3236019238001045395}
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 0}
@@ -9965,8 +9945,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6232932710640168831}
-  - component: {fileID: 647514930901211045}
   - component: {fileID: 823548935047181857}
+  - component: {fileID: 8349449857925216002}
   m_Layer: 0
   m_Name: NPC Mujer 2
   m_TagString: Untagged
@@ -9993,29 +9973,6 @@ Transform:
   - {fileID: 5373090110211738153}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: -37.924, z: 0}
---- !u!114 &647514930901211045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056253479755964050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 1346037504752990320}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 2c2dfe660eddc7542ae210a07e791445, type: 3}
-    text: 
-  audioSource: {fileID: 3302264682113371283}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &823548935047181857
 Animator:
   serializedVersion: 5
@@ -10037,6 +9994,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8349449857925216002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056253479755964050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &2057935961494121388
 GameObject:
   m_ObjectHideFlags: 0
@@ -12776,7 +12751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3730331750138662294}
   - component: {fileID: 6163345693611062848}
-  - component: {fileID: 8225883240960612887}
+  - component: {fileID: 5441549477526963070}
   m_Layer: 0
   m_Name: NPC Mujer 3
   m_TagString: Untagged
@@ -12824,7 +12799,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8225883240960612887
+--- !u!114 &5441549477526963070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12833,17 +12808,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2631098821097511539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 3147722822341584586}
-  dialogueTextGameObject: {fileID: 0}
   startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 1e2d69717bc752b41b0800b98f2f3f46, type: 3}
-    text: 
-  audioSource: {fileID: 5150075349899009636}
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 0}
@@ -12888,8 +12858,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4922305888516264466}
-  - component: {fileID: 4519335996107280173}
   - component: {fileID: 7220054247723975747}
+  - component: {fileID: 5832634394076309895}
   m_Layer: 0
   m_Name: NPC Mujer 5
   m_TagString: Untagged
@@ -12916,29 +12886,6 @@ Transform:
   - {fileID: 180258910027614611}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4519335996107280173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655515252149504294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 1023597406695686270}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: ff414ef62e949f144837a73eb0fe1fbb, type: 3}
-    text: 
-  audioSource: {fileID: 8196345321859421158}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &7220054247723975747
 Animator:
   serializedVersion: 5
@@ -12960,6 +12907,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5832634394076309895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655515252149504294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &2655560676065481458
 GameObject:
   m_ObjectHideFlags: 0
@@ -26197,8 +26162,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2839356048620626365}
-  - component: {fileID: 3826667351219007856}
   - component: {fileID: 8241423270536074099}
+  - component: {fileID: 7335453958225987136}
   m_Layer: 0
   m_Name: NPC Hombre 5
   m_TagString: Untagged
@@ -26225,29 +26190,6 @@ Transform:
   - {fileID: 8121013561662151830}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3826667351219007856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5648919905364020409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 8342179358792714228}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 0}
-    text: 
-  audioSource: {fileID: 4384829612958997634}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &8241423270536074099
 Animator:
   serializedVersion: 5
@@ -26269,6 +26211,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7335453958225987136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5648919905364020409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &5656954048519073824
 GameObject:
   m_ObjectHideFlags: 0
@@ -31493,8 +31453,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2521312996018494787}
-  - component: {fileID: 4077426536371093596}
   - component: {fileID: 2635624131703089147}
+  - component: {fileID: 6874484477937376701}
   m_Layer: 0
   m_Name: NPC Hombre 5 (1)
   m_TagString: Untagged
@@ -31521,29 +31481,6 @@ Transform:
   - {fileID: 6264981212741470125}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: -93.733, z: 0}
---- !u!114 &4077426536371093596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6803309842556097281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 3293051134993283834}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 578479a1161570943b590d095c6de4bf, type: 3}
-    text: 
-  audioSource: {fileID: 8230431025666546576}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &2635624131703089147
 Animator:
   serializedVersion: 5
@@ -31565,6 +31502,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6874484477937376701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803309842556097281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &6803759118231486866
 GameObject:
   m_ObjectHideFlags: 0
@@ -31861,7 +31816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6205958353619462326}
   - component: {fileID: 3748325474628661489}
-  - component: {fileID: 5228139184354466780}
+  - component: {fileID: 3738350685279896649}
   m_Layer: 0
   m_Name: NPC Hombre 4
   m_TagString: Untagged
@@ -31909,7 +31864,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5228139184354466780
+--- !u!114 &3738350685279896649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31918,17 +31873,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6887043713587752093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 2194589564374439269}
-  dialogueTextGameObject: {fileID: 0}
   startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 2cb91c40c597d5c4f96078916326e345, type: 3}
-    text: 
-  audioSource: {fileID: 3513577980214082439}
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 0}
@@ -33959,7 +33909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8502343531573056881}
   - component: {fileID: 3050283295170720414}
-  - component: {fileID: 8552051646723818768}
+  - component: {fileID: 5316996550970591786}
   m_Layer: 0
   m_Name: NPC Hombre 2 (1)
   m_TagString: Untagged
@@ -34007,7 +33957,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8552051646723818768
+--- !u!114 &5316996550970591786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34016,17 +33966,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7262457168817337454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 6286304597849252848}
-  dialogueTextGameObject: {fileID: 0}
   startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: dfbb311cb5b6a374398bc5860f7ff9d6, type: 3}
-    text: 
-  audioSource: {fileID: 662710073788220893}
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 0}
@@ -36060,7 +36005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6890985894406140475}
   - component: {fileID: 8587453465779328795}
-  - component: {fileID: 1915030220567063381}
+  - component: {fileID: 1378410672904532020}
   m_Layer: 0
   m_Name: NPC Mujer
   m_TagString: Untagged
@@ -36108,7 +36053,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1915030220567063381
+--- !u!114 &1378410672904532020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36117,17 +36062,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7734121510183237875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: {fileID: 6158645480508514586}
-  dialogueTextGameObject: {fileID: 0}
   startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: cf0497459cb3af3478fbf72112de7ced, type: 3}
-    text: 
-  audioSource: {fileID: 259726667001660520}
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 0}
@@ -40632,8 +40572,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5437626710523728444}
-  - component: {fileID: 2894694140147092094}
   - component: {fileID: 3311737197575172191}
+  - component: {fileID: 7655225767332086340}
   m_Layer: 0
   m_Name: NPC Hombre
   m_TagString: Untagged
@@ -40660,29 +40600,6 @@ Transform:
   - {fileID: 2003520275138703022}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: -53.805, z: 0}
---- !u!114 &2894694140147092094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8612360991758185556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 1452016324000317802}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: d5e2ec02b1c60ad49995448a31096032, type: 3}
-    text: 
-  audioSource: {fileID: 3120633567567192132}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &3311737197575172191
 Animator:
   serializedVersion: 5
@@ -40704,6 +40621,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7655225767332086340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612360991758185556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &8621514195076419779
 GameObject:
   m_ObjectHideFlags: 0
@@ -41069,8 +41004,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723727468794631390}
-  - component: {fileID: 2648159632414284089}
   - component: {fileID: 7340802476670089268}
+  - component: {fileID: 6644845298087836824}
   m_Layer: 0
   m_Name: NPC Mujer 2 (1)
   m_TagString: Untagged
@@ -41097,29 +41032,6 @@ Transform:
   - {fileID: 5634802041632602845}
   m_Father: {fileID: 269112481271928809}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &2648159632414284089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8694166393050379755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 3324149024007102060}
-  dialogueTextGameObject: {fileID: 0}
-  startDialogue: 0
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: 72fe5c2c1934ea34db6abf47f3be8d4c, type: 3}
-    text: 
-  audioSource: {fileID: 4094546048286178823}
-  player: {fileID: 0}
-  delayEntreLineas: 1
-  controller: {fileID: 0}
 --- !u!95 &7340802476670089268
 Animator:
   serializedVersion: 5
@@ -41141,6 +41053,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6644845298087836824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694166393050379755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo: []
+  audioSource: {fileID: 0}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 0}
 --- !u!1 &8718315350876212617
 GameObject:
   m_ObjectHideFlags: 0

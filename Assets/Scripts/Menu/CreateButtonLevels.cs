@@ -25,7 +25,7 @@ public class CreateButtonLevels : MonoBehaviour
                 {
                     RectTransform child = go.GetComponentInChildren<RectTransform>();
                     TMP_Text temaText = child.GetComponentInChildren<TMP_Text>();
-                    temaText.text = levelData.name;
+                    temaText.text = levelData.levelName;
                 }
                 else
                 {
