@@ -20,11 +20,16 @@ public class VersionInstances : MonoBehaviour
     void Start()
     {
         instance = this;
-        var asyncReferencOne = _assetReferenceOne.LoadAssetAsync<GameObject>();
-        var asyncReferenctwo = _assetReferenceTwo.LoadAssetAsync<GameObject>();
+        if (_assetReferenceOne != null)
+        {
+            var asyncReferencOne = _assetReferenceOne.LoadAssetAsync<GameObject>();
+        }
+        if (_assetReferenceTwo != null)
+        {
+            var asyncReferenctwo = _assetReferenceTwo.LoadAssetAsync<GameObject>();
+        }
         version = ProgressLevelSystem.instance.currentNpcsNumber;
         index = ProgressLevelSystem.instance.currentCartelIndex-1;
-        Debug.Log(index);
         Instance();
         SetCartel(index);
     }
