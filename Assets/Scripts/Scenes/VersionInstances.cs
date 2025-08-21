@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class VersionInstances : MonoBehaviour
 {
     [Tooltip("0 = Npcs Kids Genuine y 1 = Npcs Next Old y 2 = Ninguno")]
-    public int version;
+    [HideInInspector]public int version;
     public AssetReference _assetReferenceOne;
     public AssetReference _assetReferenceTwo;
     [HideInInspector]public GameObject gameObject; // El Objeto creado se instancia hacia esta variable
