@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2800222485229083564}
+  - component: {fileID: 8661887574411470587}
+  - component: {fileID: 7588761102843326837}
   m_Layer: 0
   m_Name: ProgressLevel
   m_TagString: Untagged
@@ -31,3 +33,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8661887574411470587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165835067738272906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6948d1797238bd14c97f32f1c185425c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - name: Tema 1
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 385ab87f34f79814a9e073b40b3a5475, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 2
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 620c38417b637e447a3d49f5ceb02ff2, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 3
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 75529d499699f834890c6938ce80839b, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 4
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 3c975ef584b323349b746b9f07fef777, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 5
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: df2e537c63439b245bc3383a3bb7e020, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 6
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: bcc8349f7e69e78478b1695191884e76, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 7
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 34961f50232d5bc44904dccde73cd8fc, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 8
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 665835dfbaa18c949ad5c31e7de98bb9, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 9
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 7ae5ae00687fee84883b92821b9677cf, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 10
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: e782c5a6a4786c9498816b4042992a78, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 11
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: c28213cce24cee84886613fef5060437, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  - name: Tema 12
+    currentLevel: 0
+    levelData: {fileID: 11400000, guid: 2d0c6f15d14354d4d8ec528bf592c446, type: 2}
+    percentage: 0
+    levelDataVerify: []
+    progressBar: {fileID: 0}
+    progressText: {fileID: 0}
+  currentLevelName: 
+  currentLevelVersion: {fileID: 0}
+  currentNpcsNumber: 0
+  currentCartelIndex: 0
+--- !u!114 &7588761102843326837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165835067738272906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b50227592327354ebde932994fe96aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeActual: 
+  tiempoInicial: 0
+  tiempo: 0
+  login: 0
