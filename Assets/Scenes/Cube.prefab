@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3535614567084521554}
   - component: {fileID: 7537369714455379707}
   - component: {fileID: 3269508344370043025}
-  - component: {fileID: 8689389567027331466}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -126,19 +125,21 @@ MonoBehaviour:
   interactableRadius: 4
   interactableRadiusVisibility: 12
   player: {fileID: 0}
-  range: 0
   inputButton: 0
-  button: {fileID: 2140166320054479749}
+  animator: {fileID: 0}
   iconType: 0
-  unityEvent:
+  onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-  animatorEvent:
+  onAnimEvent:
     m_PersistentCalls:
       m_Calls: []
-  questEvent:
+  onExitEvent:
     m_PersistentCalls:
       m_Calls: []
+  prefabCanvasButton: {fileID: 0}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!54 &7537369714455379707
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -262,27 +263,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8689389567027331466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384415872078556707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bde04823304424aa74a7cfe9786988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 3535614567084521554}
-  dialogueTextGameObject: {fileID: 0}
-  dialogueText: {fileID: 0}
-  lineasDeDialogo:
-  - clip: {fileID: 8300000, guid: dd41d7da1a89c8043ae2e00f130aebc5, type: 3}
-    text: asdasdasdasd
-  audioSource: {fileID: 3269508344370043025}
-  player: {fileID: 0}
-  delayEntreLineas: 1
 --- !u!1 &697356153606348430
 GameObject:
   m_ObjectHideFlags: 0
