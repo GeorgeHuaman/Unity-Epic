@@ -14,7 +14,9 @@ public class PlayerFusion : NetworkBehaviour
     [SerializeField] private float jumpImpulse = 10f;
 
     public bool isReady = true;
-
+    private float pitch;        // acumulador real del pitch
+    private float smoothPitch;  // pitch suavizado
+    [SerializeField] private float cameraSmooth = 10f; // velocidad de interpolación
     [Networked] private NetworkButtons previousButtons { get; set; }
     public override void Spawned()
     {
@@ -27,14 +29,23 @@ public class PlayerFusion : NetworkBehaviour
 
             CameraFollow.singleton.SetTarget(camTarget);
         }
+        pitch = 0f;
     }
 
     public override void FixedUpdateNetwork()
     {
-        if(GetInput(out NetInput input))
+        if (GetInput(out NetInput input))
         {
-            kcc.AddLookRotation(input.lookDelta * sensibility);
-            UpdateCamera();
+            Vector2 lookDelta = input.lookDelta * sensibility;
+
+            // --- YAW ---
+            kcc.AddLookRotation(new Vector2(0, lookDelta.y));
+
+            // --- PITCH ---
+            pitch += lookDelta.x;
+            pitch = Mathf.Clamp(pitch, -80f, 80f);
+
+            // --- MOVIMIENTO ---
             Vector3 worldDirection = kcc.TransformRotation * new Vector3(input.direction.x, 0f, input.direction.y);
             float jump = 0;
 
@@ -46,13 +57,15 @@ public class PlayerFusion : NetworkBehaviour
         }
     }
 
-    //public override void Render()
-    //{
-    //    UpdateCamera();
-    //}
+    public override void Render()
+    {
+        UpdateCamera();
+    }
     private void UpdateCamera()
     {
-        camTarget.localRotation = Quaternion.Euler(kcc.GetLookRotation().x, 0, 0);
+        smoothPitch = Mathf.Lerp(smoothPitch, pitch, Time.deltaTime * cameraSmooth);
+
+        camTarget.localRotation = Quaternion.Euler(smoothPitch, 0, 0);
     }
 
     public void Teleport(Vector3 position, Quaternion rotation)

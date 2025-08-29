@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Fusion;
 using Fusion.Menu;
 using Fusion.Sockets;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,7 +46,6 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
             Vector2 lookRotationDelta = new(-mouseDelta.y, mouseDelta.x);
             accumulatedInput.lookDelta += lookRotationDelta;
         }
-
 
         if (keyboard != null)
         {
