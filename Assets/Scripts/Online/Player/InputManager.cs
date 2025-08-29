@@ -40,6 +40,15 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
 
         NetworkButtons buttons = default;
 
+        Mouse mouse = Mouse.current;
+        if (mouse != null)
+        {
+            Vector2 mouseDelta = mouse.delta.ReadValue();
+            Vector2 lookRotationDelta = new(-mouseDelta.y, mouseDelta.x);
+            accumulatedInput.lookDelta += lookRotationDelta;
+        }
+
+
         if (keyboard != null)
         {
             Vector2 moveDirection = Vector2.zero;
@@ -79,6 +88,8 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         accumulatedInput.direction.Normalize();
         input.Set(accumulatedInput);
         resetInput = true;
+
+        accumulatedInput.lookDelta = default;
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input){}

@@ -13,4 +13,5 @@ public struct NetInput: INetworkInput
 {
     public NetworkButtons Buttons;
     public Vector2 direction;
+    public Vector2 lookDelta;
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fusion;
@@ -7,7 +8,58 @@ using UnityEngine;
 public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
 {
     [SerializeField] private NetworkPrefabRef playerPrefab;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform SpawnPointPivot;
+
     [Networked, Capacity(40)] private NetworkDictionary<PlayerRef, PlayerFusion> Players => default;
+
+
+    private void UnReadyAll()
+    {
+        foreach(KeyValuePair<PlayerRef,PlayerFusion> player in Players)
+            player.Value.isReady = false;
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        if(Players.Count <= 1)
+            return;
+
+        bool areAllReady = true;
+
+        foreach (KeyValuePair<PlayerRef, PlayerFusion> player in Players)
+        {
+            if (!player.Value.isReady)
+            {
+                areAllReady = false;
+                break;
+            }
+        }
+
+        if (areAllReady)
+        {
+            //Variable de estado para inicio
+            PreparePlayers();
+        }
+
+    }
+
+    private void PreparePlayers()
+    {
+        float spaceAngle = 360 / Players.Count;
+        spawnPoint.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0, 360f), 0);
+        foreach (KeyValuePair<PlayerRef, PlayerFusion> player in Players)
+        {
+            GetNextSpawnPoint(spaceAngle, out Vector3 position, out Quaternion rotation);
+            player.Value.Teleport(position, rotation);
+        }
+    }
+    private void GetNextSpawnPoint(float spaceAngle,out Vector3 position, out Quaternion rotation)
+    {
+        position = transform.position;
+        rotation = transform.rotation;
+        spawnPoint.Rotate(0f, spaceAngle, 0f);
+    }
 
     public void PlayerJoined(PlayerRef player)
     {
