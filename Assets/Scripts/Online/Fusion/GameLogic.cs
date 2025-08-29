@@ -22,7 +22,7 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
 
     public override void FixedUpdateNetwork()
     {
-        if(Players.Count <= 1)
+        if (Players.Count <= 1)
             return;
 
         bool areAllReady = true;
@@ -38,8 +38,8 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
 
         if (areAllReady)
         {
-            //Variable de estado para inicio
             PreparePlayers();
+            //Variable de estado para inicio
         }
 
     }
@@ -47,7 +47,7 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     private void PreparePlayers()
     {
         float spaceAngle = 360 / Players.Count;
-        spawnPoint.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0, 360f), 0);
+        SpawnPointPivot.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0, 360f), 0);
         foreach (KeyValuePair<PlayerRef, PlayerFusion> player in Players)
         {
             GetNextSpawnPoint(spaceAngle, out Vector3 position, out Quaternion rotation);
@@ -56,16 +56,17 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     }
     private void GetNextSpawnPoint(float spaceAngle,out Vector3 position, out Quaternion rotation)
     {
-        position = transform.position;
-        rotation = transform.rotation;
-        spawnPoint.Rotate(0f, spaceAngle, 0f);
+        position = spawnPoint.position;
+        rotation = spawnPoint.rotation;
+        SpawnPointPivot.Rotate(0f, spaceAngle, 0f);
     }
 
     public void PlayerJoined(PlayerRef player)
     {
         if(HasStateAuthority)
         {
-            NetworkObject playerObject = Runner.Spawn(playerPrefab, Vector3.up, quaternion.identity, player);
+            GetNextSpawnPoint(90f, out Vector3 position, out Quaternion rotation);
+            NetworkObject playerObject = Runner.Spawn(playerPrefab, position, rotation, player);
             Players.Add(player, playerObject.GetComponent<PlayerFusion>());
         }
     }
