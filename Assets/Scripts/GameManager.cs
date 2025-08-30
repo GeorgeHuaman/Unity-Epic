@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        Cursor.lockState = isCursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+        //Cursor.lockState = isCursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
 
         if (isCanvasOpen)
         {

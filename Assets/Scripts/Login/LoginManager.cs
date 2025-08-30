@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using System;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LoginManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class LoginManager : MonoBehaviour
     [Header("Eventos")]
     public UnityEvent onLoginSuccess;
     public UnityEvent onLoginFailure;
+
+    [SerializeField] private string nameScene;
 
     public GameObject panelLogin;
     private void Start()
@@ -81,5 +84,6 @@ public class LoginManager : MonoBehaviour
         UserSession.Instance.VerifyRol();
         CreateInfoAlumn.Instance.UpdateInfo();
         UserSession.Instance.isLoged = true;
+        SceneManager.LoadScene(nameScene);
     }
 }

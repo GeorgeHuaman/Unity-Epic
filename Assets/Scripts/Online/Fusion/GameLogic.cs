@@ -1,9 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Fusion;
 using Unity.Mathematics;
 using UnityEngine;
+
+public enum GameState
+{
+    Wait,
+    Playing,
+    Win,
+}
 
 public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
 {
@@ -11,7 +19,20 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform SpawnPointPivot;
 
+    [SerializeField] private PlayerFusion winner;
+    [SerializeField, OnChangedRender(nameof(GameStateChange))] private GameState state { get; set; }
+
+
     [Networked, Capacity(40)] private NetworkDictionary<PlayerRef, PlayerFusion> Players => default;
+
+
+    public override void Spawned()
+    {
+        winner = null;
+        state = GameState.Wait;
+        UIManager.singleton.SetWait(state, winner);
+        Runner.SetIsSimulated(Object, true);
+    }
 
 
     private void UnReadyAll()
@@ -24,22 +45,28 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
     {
         if (Players.Count <= 1)
             return;
-
-        bool areAllReady = true;
-
-        foreach (KeyValuePair<PlayerRef, PlayerFusion> player in Players)
+        if (Runner.IsServer && state == GameState.Wait)
         {
-            if (!player.Value.isReady)
+            bool areAllReady = true;
+
+            foreach (KeyValuePair<PlayerRef, PlayerFusion> player in Players)
             {
-                areAllReady = false;
-                break;
+                if (!player.Value.isReady)
+                {
+                    areAllReady = false;
+                    break;
+                }
             }
-        }
 
-        if (areAllReady)
-        {
-            PreparePlayers();
-            //Variable de estado para inicio
+            if (areAllReady)
+            {
+                winner = null;
+                state = GameState.Playing;
+                PreparePlayers();
+                //Variable de estado para inicio
+            }
+            if(state == GameState.Playing && !Runner.IsResimulation)
+                UIManager.singleton.UpdateLeaderBoard(Players.OrderByDescending(p =>p.Value.score).ToArray());
         }
 
     }
@@ -54,6 +81,12 @@ public class GameLogic : NetworkBehaviour, IPlayerJoined, IPlayerLeft
             player.Value.Teleport(position, rotation);
         }
     }
+
+    private void GameStateChange()
+    {
+        UIManager.singleton.SetWait(state,winner );
+    }
+
     private void GetNextSpawnPoint(float spaceAngle,out Vector3 position, out Quaternion rotation)
     {
         position = spawnPoint.position;

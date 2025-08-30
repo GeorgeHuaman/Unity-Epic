@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 
 public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCallbacks
 {
+    public PlayerFusion localplayer;
     private NetInput accumulatedInput;
     private bool resetInput;
     public void BeforeUpdate()
@@ -25,7 +26,7 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         {
             if (Cursor.lockState == CursorLockMode.Locked)
             {
-                Cursor.lockState = CursorLockMode.None ;
+                Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true ;
             }
             else
@@ -49,6 +50,8 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
 
         if (keyboard != null)
         {
+            if (keyboard.rKey.wasPressedThisFrame && localplayer != null)
+                localplayer.RPC_SetReady();
             Vector2 moveDirection = Vector2.zero;
 
             if(keyboard.wKey.isPressed)
