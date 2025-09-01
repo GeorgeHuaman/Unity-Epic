@@ -61,7 +61,7 @@ public class PlayerFusion : NetworkBehaviour
         if (HasInputAuthority)
             UIManager.singleton.DidSetReady();
     }
-        public override void Render()
+    public override void Render()
     {
         Vector2 lookToRender;
 
