@@ -193,7 +193,6 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 3710151844743433863}
   - {fileID: 7783425608043168326}
-  - {fileID: 4666396583200623783}
   ForceRemoteRenderTimeframe: 0
 --- !u!54 &-545883588036950509
 Rigidbody:
@@ -237,6 +236,7 @@ MonoBehaviour:
   modelParts: []
   kcc: {fileID: 7783425608043168326}
   camTarget: {fileID: 3845806615169098057}
+  maxPitch: 85
   sensibility: 0.15
   jumpImpulse: {x: 0, y: 10, z: 0}
   isReady: 1
@@ -260,17 +260,20 @@ MonoBehaviour:
     Radius: 0.35
     Height: 1.8
     Extent: 0.035
-    ColliderLayer: 0
+    ColliderLayer: 10
     CollisionLayerMask:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 1025
     Features: -1
     InputAuthorityBehavior: 0
     StateAuthorityBehavior: 0
     ProxyInterpolationMode: 0
-    ForcePredictedLookRotation: 0
+    ForcePredictedLookRotation: 1
     AllowClientTeleports: 0
-    Processors: []
+    Processors:
+    - {fileID: 389697490274729942, guid: 773cc0f66ef276f4299de1b068b963a8, type: 3}
+    - {fileID: 561824206424634091, guid: 68c4081a63f1dfd469da9c95bea22158, type: 3}
+    - {fileID: 8306782452827789390, guid: 6d976f9777012db4aa55e7e6b1991afe, type: 3}
     MaxPenetrationSteps: 8
     CCDRadiusMultiplier: 0.75
     AntiJitterDistance: {x: 0.025, y: 0.01}
@@ -14916,7 +14919,6 @@ GameObject:
   - component: {fileID: 8769076573188313185}
   - component: {fileID: 3857891967580282447}
   - component: {fileID: 2020536489558945027}
-  - component: {fileID: 4666396583200623783}
   m_Layer: 2
   m_Name: XR Origin (XR Rig)
   m_TagString: Player
@@ -15081,23 +15083,6 @@ MonoBehaviour:
     m_Bits: 281
   joystickDigital: {fileID: 8713268211159254996}
   buttonJump: {fileID: 6020625335635242326}
---- !u!114 &4666396583200623783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8556085720950329092}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateAuthorityChangeErrorCorrectionDelta: 0
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
 --- !u!1 &8697990664576058100
 GameObject:
   m_ObjectHideFlags: 0

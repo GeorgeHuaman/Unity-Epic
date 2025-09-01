@@ -10,12 +10,14 @@ public class PlayerFusion : NetworkBehaviour
     [SerializeField] private MeshRenderer[] modelParts;
     [SerializeField] private KCC kcc;
     [SerializeField] private Transform camTarget;
+    [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float sensibility = 0.15f;
     [SerializeField] private Vector3 jumpImpulse = new(0f,10f, 0f);
+    [SerializeField] private float doubleJumpMultiplier = 0.75f;
+    [SerializeField] private bool haveDoubleJump = true;
 
     public double score => Math.Round(transform.position.y, 1);
     public bool isReady = true;
-    private float maxPitch;
 
     [Networked] public string name { get; private set; }
     [Networked] private NetworkButtons previousButtons { get; set; }
@@ -42,13 +44,16 @@ public class PlayerFusion : NetworkBehaviour
         if (GetInput(out NetInput input))
         {
             CheckJump(input);
-            Vector2 lookDelta = input.lookDelta * sensibility;
             kcc.AddLookRotation(input.lookDelta * sensibility, -maxPitch, maxPitch);
             UpdateCamera();
 
             SetInputDirection(input);
             previousButtons = input.Buttons;
             baseLookRotation = kcc.GetLookRotation();
+        }
+        if (kcc.FixedData.IsGrounded)
+        {
+            haveDoubleJump = true;
         }
     }
 
@@ -80,17 +85,27 @@ public class PlayerFusion : NetworkBehaviour
 
     private void CheckJump(NetInput input)
     {
-        if(input.Buttons.WasPressed(previousButtons, InputButton.Jump) && kcc.FixedData.IsGrounded)
+        if(input.Buttons.WasPressed(previousButtons, InputButton.Jump))
         {
-            kcc.Jump(jumpImpulse);
+            if (kcc.FixedData.IsGrounded)
+                kcc.Jump(jumpImpulse);
+            else if (haveDoubleJump)
+            {
+                kcc.Jump(jumpImpulse * doubleJumpMultiplier);
+                haveDoubleJump = false;
+            }
         }
     }
-
+    public void ResetCooldowns()
+    {
+        haveDoubleJump = true;
+    }
     private void SetInputDirection(NetInput input)
     {
         Vector3 worldDirection = kcc.FixedData.TransformRotation * input.direction.X0Y();
         kcc.SetInputDirection(worldDirection);
     }
+
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
     private void RPC_PlayerName(string name)
     {
