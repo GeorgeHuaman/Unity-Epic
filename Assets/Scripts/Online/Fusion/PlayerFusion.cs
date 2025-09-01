@@ -35,7 +35,6 @@ public class PlayerFusion : NetworkBehaviour
             name = PlayerPrefs.GetString("Photon.Menu.Username");
             RPC_PlayerName(name);
             CameraFollow.singleton.SetTarget(camTarget);
-            kcc.Settings.ForcePredictedLookRotation = true;
         }
     }
 
@@ -45,16 +44,14 @@ public class PlayerFusion : NetworkBehaviour
         {
             CheckJump(input);
             kcc.AddLookRotation(input.lookDelta * sensibility, -maxPitch, maxPitch);
-            UpdateCamera();
 
             SetInputDirection(input);
             previousButtons = input.Buttons;
             baseLookRotation = kcc.GetLookRotation();
         }
+
         if (kcc.FixedData.IsGrounded)
-        {
             haveDoubleJump = true;
-        }
     }
 
     [Rpc(RpcSources.InputAuthority,RpcTargets.StateAuthority | RpcTargets.InputAuthority)]
@@ -64,17 +61,26 @@ public class PlayerFusion : NetworkBehaviour
         if (HasInputAuthority)
             UIManager.singleton.DidSetReady();
     }
-    public override void Render()
+        public override void Render()
     {
-        if (kcc.Settings.ForcePredictedLookRotation)
+        Vector2 lookToRender;
+
+        if (kcc.IsPredictingLookRotation)
         {
             Vector2 predictedLookRotation = baseLookRotation + inputManager.AccumulatedMouseDelta * sensibility;
             kcc.SetLookRotation(predictedLookRotation);
+            lookToRender = predictedLookRotation;
         }
-    }
-    private void UpdateCamera()
-    {
-        camTarget.localRotation = Quaternion.Euler(kcc.GetLookRotation().x, 0f, 0f);
+        else
+        {
+            lookToRender = kcc.GetLookRotation();
+        }
+
+        Quaternion targetRot = Quaternion.Euler(lookToRender.x, 0f, 0f);
+        camTarget.localRotation = Quaternion.Slerp(camTarget.localRotation, targetRot, Mathf.Clamp01(15f * Time.deltaTime));
+
+        // sin suavizado:
+        // camTarget.localRotation = targetRot;
     }
 
     public void Teleport(Vector3 position, Quaternion rotation)

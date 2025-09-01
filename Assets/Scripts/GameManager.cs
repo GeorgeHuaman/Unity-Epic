@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             exit.SetActive(false);
         }
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 120;
+        //Application.targetFrameRate = 120;
     }
     private void Update()
     {
