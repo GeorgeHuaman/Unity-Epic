@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         for(int i = 0;i < leaderBoardItems.Length;i++)
         {
             LeaderBoardItem item = leaderBoardItems[i];
-            if(i< player.Length)
+            if(i < player.Length)
             {
                 item.nameText.text = player[i].Value.name;
                 item.hightText.text = $"{player[i].Value.score}M";

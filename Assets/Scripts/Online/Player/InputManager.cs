@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Fusion;
+using Fusion.Addons.KCC;
 using Fusion.Menu;
 using Fusion.Sockets;
 using UnityEngine;
@@ -11,9 +12,11 @@ using UnityEngine.InputSystem;
 public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCallbacks
 {
     public PlayerFusion localplayer;
+    public Vector2 AccumulatedMouseDelta => mouseDeltaAccumulator.AccumulatedValue;
     private NetInput accumulatedInput;
+    private Vector2Accumulator mouseDeltaAccumulator = new() { SmoothingWindow = 0.025f };
     private bool resetInput;
-    public void BeforeUpdate()
+    void IBeforeUpdate.BeforeUpdate()
     {
         if(resetInput)
         {
@@ -45,13 +48,14 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         {
             Vector2 mouseDelta = mouse.delta.ReadValue();
             Vector2 lookRotationDelta = new(-mouseDelta.y, mouseDelta.x);
-            accumulatedInput.lookDelta += lookRotationDelta;
+            mouseDeltaAccumulator.Accumulate(lookRotationDelta);
         }
 
         if (keyboard != null)
         {
             if (keyboard.rKey.wasPressedThisFrame && localplayer != null)
                 localplayer.RPC_SetReady();
+
             Vector2 moveDirection = Vector2.zero;
 
             if(keyboard.wKey.isPressed)
@@ -71,35 +75,34 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         accumulatedInput.Buttons = new NetworkButtons(accumulatedInput.Buttons.Bits | buttons.Bits);
     }
 
-    public void OnConnectedToServer(NetworkRunner runner) { }
+    void INetworkRunnerCallbacks.OnConnectedToServer(NetworkRunner runner) { }
 
-    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
+    void INetworkRunnerCallbacks.OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
 
 
-    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
+    void INetworkRunnerCallbacks.OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
 
-    public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) {}
+    void INetworkRunnerCallbacks.OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) {}
 
-    public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason) { }
+    void INetworkRunnerCallbacks.OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason) { }
 
-    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken){}
+    void INetworkRunnerCallbacks.OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken){}
 
-    public void OnInput(NetworkRunner runner, NetworkInput input) 
+    void INetworkRunnerCallbacks.OnInput(NetworkRunner runner, NetworkInput input) 
     { 
         accumulatedInput.direction.Normalize();
+        accumulatedInput.lookDelta = mouseDeltaAccumulator.ConsumeTickAligned(runner);
         input.Set(accumulatedInput);
         resetInput = true;
-
-        accumulatedInput.lookDelta = default;
     }
 
-    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input){}
+    void INetworkRunnerCallbacks.OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input){}
 
-    public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
+    void INetworkRunnerCallbacks.OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
 
-    public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
+    void INetworkRunnerCallbacks.OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    void INetworkRunnerCallbacks.OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (player == runner.LocalPlayer)
         {
@@ -108,19 +111,19 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         }
     }
 
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
+    void INetworkRunnerCallbacks.OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
 
-    public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress) { }
+    void INetworkRunnerCallbacks.OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress) { }
 
-    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data){}
+    void INetworkRunnerCallbacks.OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data){}
 
-    public void OnSceneLoadDone(NetworkRunner runner){}
+    void INetworkRunnerCallbacks.OnSceneLoadDone(NetworkRunner runner){}
 
-    public void OnSceneLoadStart(NetworkRunner runner){}
+    void INetworkRunnerCallbacks.OnSceneLoadStart(NetworkRunner runner){}
 
-    public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList){}
+    void INetworkRunnerCallbacks.OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList){}
 
-    public async void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
+    async void INetworkRunnerCallbacks.OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -131,5 +134,5 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         }
     }
 
-    public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message){}
+    void INetworkRunnerCallbacks.OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message){}
 }
