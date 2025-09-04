@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using Fusion.Addons.KCC;
+using ReadyPlayerMe.Samples.QuickStart;
 using UnityEngine;
 
 public class PlayerFusion : NetworkBehaviour
 {
     [SerializeField] private MeshRenderer[] modelParts;
-    [SerializeField] private KCC kcc;
+    [SerializeField] public KCC kcc;
     [SerializeField] private Transform camTarget;
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float sensibility = 0.15f;
@@ -23,6 +24,9 @@ public class PlayerFusion : NetworkBehaviour
     [Networked] private NetworkButtons previousButtons { get; set; }
     private InputManager inputManager;
     private Vector2 baseLookRotation;
+    private float verticalVelocity;
+
+    [SerializeField] private AnimationController animationController;
     public override void Spawned()
     {
         if(HasInputAuthority)
@@ -93,6 +97,8 @@ public class PlayerFusion : NetworkBehaviour
     {
         if(input.Buttons.WasPressed(previousButtons, InputButton.Jump))
         {
+            animationController.OnJump();
+
             if (kcc.FixedData.IsGrounded)
                 kcc.Jump(jumpImpulse);
             else if (haveDoubleJump)
