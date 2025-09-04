@@ -145,7 +145,9 @@ GameObject:
   - component: {fileID: 261980200783699516}
   - component: {fileID: -545883588036950509}
   - component: {fileID: 3710151844743433863}
+  - component: {fileID: 9179669097630140293}
   - component: {fileID: 7783425608043168326}
+  - component: {fileID: 1556311493984298459}
   m_Layer: 0
   m_Name: PlayerOnline
   m_TagString: Untagged
@@ -243,6 +245,19 @@ MonoBehaviour:
   haveDoubleJump: 1
   isReady: 1
   _name: 
+  animationController: {fileID: 9179669097630140293}
+--- !u!114 &9179669097630140293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112791931917135453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02ab792edbb2db4d8c352717ef48265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7783425608043168326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +299,22 @@ MonoBehaviour:
     CompressNetworkPosition: 0
     ForceSingleOverlapQuery: 0
     SuppressConvexMeshColliders: 0
+--- !u!114 &1556311493984298459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112791931917135453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b55567c61714541acc585a03d0ea7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarUrl: 'https://models.readyplayer.me/63e9b2126f759e4d1dfabc6d.glb '
+  animatorController: {fileID: 9100000, guid: bea63b6083163f247878bb28fe8da8be, type: 2}
+  loadOnStart: 1
+  previewAvatar: {fileID: 0}
 --- !u!1 &144743215154660154
 GameObject:
   m_ObjectHideFlags: 0
