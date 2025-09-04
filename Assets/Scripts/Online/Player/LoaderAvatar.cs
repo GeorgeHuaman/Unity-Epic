@@ -4,8 +4,25 @@ using ReadyPlayerMe.Core;
 using UnityEngine;
 using System;
 using ReadyPlayerMe.Samples.QuickStart;
+using Unity.VisualScripting;
 public class LoaderAvatar : MonoBehaviour
 {
+    public static LoaderAvatar singleton
+    {
+        get => _singleton;
+        set
+        {
+            if (value == null)
+                _singleton = null;
+            else if (_singleton == null)
+                _singleton = value;
+            else if (_singleton != value)
+            {
+                Destroy(value);
+            }
+        }
+    }
+
     private readonly Vector3 avatarPositionOffset = new Vector3(0, -0.08f, 0);
 
     [SerializeField]
@@ -24,6 +41,11 @@ public class LoaderAvatar : MonoBehaviour
     private GameObject previewAvatar;
 
     public event Action OnLoadComplete;
+    private static LoaderAvatar _singleton;
+    private void Awake()
+    {
+        singleton = this;
+    }
     private void Start()
     {
         avatarObjectLoader = new AvatarObjectLoader();
