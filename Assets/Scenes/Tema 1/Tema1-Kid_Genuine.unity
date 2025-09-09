@@ -817,6 +817,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1271564665}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1329965126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1329965127}
+  - component: {fileID: 1329965128}
+  m_Layer: 0
+  m_Name: Inicio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1329965127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329965126}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33.858, y: 3.86, z: 27.652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1329965128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329965126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf27c36442587f4cbb8ce1429146703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1381700474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8157121796699397769, guid: 7458aa3d20e4c7242af5ce3980565250,
@@ -1351,6 +1395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Interaction Hands Setup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892066167880600508, guid: 515713fade637bd448a76ebfa5ee910f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4909430786510113770, guid: 515713fade637bd448a76ebfa5ee910f,
         type: 3}
@@ -2737,3 +2786,4 @@ SceneRoots:
   - {fileID: 1751833363}
   - {fileID: 1362627363836040916}
   - {fileID: 9099460353878285927}
+  - {fileID: 1329965127}

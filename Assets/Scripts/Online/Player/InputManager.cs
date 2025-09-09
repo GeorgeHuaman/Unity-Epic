@@ -25,21 +25,21 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
         }
 
         Keyboard keyboard = Keyboard.current;
-        if (keyboard != null && (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame || keyboard.escapeKey.wasPressedThisFrame))
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true ;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
-        if (Cursor.lockState != CursorLockMode.Locked)
-            return;
+        //if (keyboard != null && (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame || keyboard.escapeKey.wasPressedThisFrame))
+        //{
+        //    if (Cursor.lockState == CursorLockMode.Locked)
+        //    {
+        //        Cursor.lockState = CursorLockMode.None;
+        //        Cursor.visible = true ;
+        //    }
+        //    else
+        //    {
+        //        Cursor.lockState = CursorLockMode.Locked;
+        //        Cursor.visible = false;
+        //    }
+        //}
+        //if (Cursor.lockState != CursorLockMode.Locked)
+        //    return;
 
         NetworkButtons buttons = default;
 
@@ -106,8 +106,8 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
     {
         if (player == runner.LocalPlayer)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
         }
     }
 
@@ -125,8 +125,8 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
 
     async void INetworkRunnerCallbacks.OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
         if (shutdownReason == ShutdownReason.DisconnectedByPluginLogic)
         {
             await FindFirstObjectByType<FusionMenuConnectionBehaviour>(FindObjectsInactive.Include).DisconnectAsync(ConnectFailReason.Disconnect);

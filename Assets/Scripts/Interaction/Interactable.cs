@@ -37,6 +37,9 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+
+        if(player == null )
+            ManagerInteractuable.singleton.interactables.Add(this.GetComponent<Interactable>());
         AssignEvent();
        
         if (gameObject.GetComponent<Animator>() != null)
@@ -63,24 +66,29 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (RangeVisibility())
+        if (player == null)
+        { return; }
+        else
         {
-            if (buttonParent)
-                buttonParent.SetActive(true);
-            Vector3 lookDir = Camera.main.transform.position - transform.position;
-            lookDir.y = 0f;
-            if (buttonParent)
-                buttonParent.transform.forward = -lookDir;
-        }
-        else if (buttonParent)
-        {
-            buttonParent.SetActive(false);
-        }
+            if (RangeVisibility())
+            {
+                if (buttonParent)
+                    buttonParent.SetActive(true);
+                Vector3 lookDir = Camera.main.transform.position - transform.position;
+                lookDir.y = 0f;
+                if (buttonParent)
+                    buttonParent.transform.forward = -lookDir;
+            }
+            else if (buttonParent)
+            {
+                buttonParent.SetActive(false);
+            }
 
-        if (RangePlayer() && !GameManager.Instance.IsCanvasOpen())
-        {
-            if (Input.GetKeyDown(KeyCode.F) || inputButton)
-                EnterEvent();
+            if (RangePlayer() && !GameManager.Instance.IsCanvasOpen())
+            {
+                if (Input.GetKeyDown(KeyCode.F) || inputButton)
+                    EnterEvent();
+            }
         }
     }
     

@@ -8,10 +8,7 @@ using UnityEngine.UI;
 public class OnLoadAvatar : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI openPersonalAvatarPanelButtonText;
-    [SerializeField] private Button openPersonalAvatarPanelButton;
     [SerializeField] private TMP_InputField avatarUrlField;
-    [SerializeField] private GameObject avatarLoading;
 
     [Header("Character Managers")]
     [SerializeField] public LoaderAvatar loaderAvatar;
@@ -29,7 +26,6 @@ public class OnLoadAvatar : MonoBehaviour
         SetActiveLoading(true, "Loading...");
 
         loaderAvatar.LoadAvatar(avatarUrlField.text);
-        this.gameObject.SetActive(false);
         AnalyticsRuntimeLogger.EventLogger.LogPersonalAvatarLoading(avatarUrlField.text);
     }
     private void OnLoadComplete()

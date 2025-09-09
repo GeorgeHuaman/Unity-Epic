@@ -17,10 +17,6 @@ public class AnimationController : MonoBehaviour
     private Animator animator;
     private bool inputEnabled = true;
     private bool isInitialized;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
     private void Init()
     {
         playerFusion = GetComponent<PlayerFusion>();

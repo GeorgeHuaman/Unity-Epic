@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using ReadyPlayerMe.Samples.QuickStart;
 using Unity.VisualScripting;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 public class LoaderAvatar : MonoBehaviour
 {
     public static LoaderAvatar singleton
@@ -44,7 +45,16 @@ public class LoaderAvatar : MonoBehaviour
     private static LoaderAvatar _singleton;
     private void Awake()
     {
-        singleton = this;
+        singleton = this; 
+        //if (singleton == null && singleton != this)
+        //{
+        //    singleton = this;
+        //    DontDestroyOnLoad(this.gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
     private void Start()
     {

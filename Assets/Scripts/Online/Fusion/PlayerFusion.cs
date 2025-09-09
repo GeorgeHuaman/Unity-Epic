@@ -39,6 +39,8 @@ public class PlayerFusion : NetworkBehaviour
             name = PlayerPrefs.GetString("Photon.Menu.Username");
             RPC_PlayerName(name);
             CameraFollow.singleton.SetTarget(camTarget);
+            ManagerInteractuable.singleton.player = this.gameObject;
+            ManagerInteractuable.singleton.DistribuidEmptyPlayer();
         }
     }
 
