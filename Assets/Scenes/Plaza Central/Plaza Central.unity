@@ -4754,6 +4754,7 @@ GameObject:
   - component: {fileID: 419978269}
   - component: {fileID: 419978268}
   - component: {fileID: 419978270}
+  - component: {fileID: 419978271}
   m_Layer: 0
   m_Name: Supabase
   m_TagString: Untagged
@@ -4804,6 +4805,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cuentaInput: {fileID: 144739413}
   passwordInput: {fileID: 494174347}
+--- !u!114 &419978271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419978267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9049abf22d742c41927ac8c684a08b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &436444932
 GameObject:
   m_ObjectHideFlags: 0
@@ -14436,7 +14449,7 @@ PrefabInstance:
     - target: {fileID: 1185893008904345645, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1208115510257917857, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
