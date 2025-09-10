@@ -26,6 +26,7 @@ public class AuthManager : MonoBehaviour
             if (session?.User != null)
             {
                 Debug.Log($"Logeado: {session.User.Id} ({session.User.Email})");
+                _ = ProfileService.instance.LoadProfileAsync();
                 return true;
             }
             else
