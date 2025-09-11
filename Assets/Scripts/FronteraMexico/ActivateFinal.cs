@@ -6,6 +6,11 @@ public class ActivateFinal : MonoBehaviour
 {
     public List<FragPos> objects = new List<FragPos>();
     public GameObject interactFinal;
+    public static ActivateFinal instance;
+    private void Start()
+    {
+        instance = this;
+    }
     public void AreAllComplete()
     {
         foreach (FragPos obj in objects)

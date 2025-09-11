@@ -91,7 +91,12 @@ public class Interactable : MonoBehaviour
             }
         }
     }
-    
+
+    public void Disable()
+    {
+        interactButton.gameObject.SetActive(false);
+        buttonParent.gameObject.SetActive(false);
+    }
     public void EnterEvent()
     {
         inputButton = false;

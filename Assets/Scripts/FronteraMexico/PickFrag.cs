@@ -37,8 +37,10 @@ public class PickFrag : MonoBehaviour
             return;
 
         currentObject = obj;
-        interactable = currentObject.GetComponent<Interactable>();
+        interactable = currentObject.GetComponentInChildren<Interactable>();
         interactable.enabled = false;
+        interactable.interactButton.gameObject.SetActive(false);
+        interactable.buttonParent.SetActive(false);
         isMoving = true;
         objectName.text = "Seleccionado: " + obj.name;
 

@@ -20,6 +20,7 @@ public class FragPos : MonoBehaviour
             StartCoroutine(MoveToPosition(pickUp.currentObject, pos));
             pickUp.Release();
             completed = true;
+            ActivateFinal.instance.AreAllComplete();
             interactable.enabled = false;
         }
     }
