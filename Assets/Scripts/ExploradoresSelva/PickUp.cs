@@ -16,11 +16,11 @@ public class PickUp : MonoBehaviour
             return;
 
         currentObject = obj;
-        interactable = currentObject.GetComponent<Interactable>();
-        interactable.enabled = false;
+        interactable = currentObject.GetComponentInChildren<Interactable>();
+        interactable.Disable();
         objectName.text = "Seleccionado: " + obj.name;
 
-        TypeObject typeObj = obj.GetComponent<TypeObject>();
+        TypeObject typeObj = obj.GetComponentInChildren<TypeObject>();
         if (typeObj != null)
         {
             currentType = typeObj.type;

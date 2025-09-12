@@ -30,7 +30,9 @@ public class Urn : MonoBehaviour
             if (objects.Count >= quantityNeedle)
             {
                 interactable.enabled = false;
+                interactable.Disable();
                 interactableFinal.enabled = true;
+                interactableFinal.gameObject.SetActive(true);
             }
         }
     }

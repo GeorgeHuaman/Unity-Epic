@@ -96,6 +96,7 @@ public class Interactable : MonoBehaviour
     {
         interactButton.gameObject.SetActive(false);
         buttonParent.gameObject.SetActive(false);
+        this.GetComponent<Interactable>().enabled = false;
     }
     public void EnterEvent()
     {
