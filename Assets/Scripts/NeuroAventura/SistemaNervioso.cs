@@ -8,6 +8,7 @@ public class SistemaNervioso : MonoBehaviour
     public GameObject[] esferas;
     public Button boton;
     public Mission quest;
+    public GameObject teleport;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +54,7 @@ public class SistemaNervioso : MonoBehaviour
                 esferas[i].SetActive(true);
             }
         }
-        quest.tasks[3].CompleteTask();
         boton.interactable = true;
+        teleport.SetActive(true);
     }
 }
