@@ -9,7 +9,6 @@ public class AuthManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_InputField cuentaInput;
     [SerializeField] private TMP_InputField passwordInput;
-
     public async Task<bool> SignIn(string email, string password)
     {
         try
@@ -27,7 +26,7 @@ public class AuthManager : MonoBehaviour
             {
                 Debug.Log($"Logeado: {session.User.Id} ({session.User.Email})");
                 _ = ProfileService.instance.LoadProfileAsync();
-                LoadUserProgressForDefaultTopic();
+                _ = TopicProgressService.Instance.LoadProgressForDefaultTopicAsync();
                 return true;
             }
             else
@@ -72,29 +71,6 @@ public class AuthManager : MonoBehaviour
         else
         {
             Debug.Log("OnSignInButton: credenciales inválidas o error.");
-        }
-    }
-
-    private async void LoadUserProgressForDefaultTopic()
-    {
-        try
-        {
-            var topic = await TopicProgressService.Instance.GetTopicBySlug("emprendimiento");
-            if (topic == null)
-            {
-                Debug.LogWarning("Topic 'emprendimiento' no encontrado.");
-                return;
-            }
-
-            var progress = await TopicProgressService.Instance.GetProgressForTopic(topic.Id);
-
-            Debug.Log($"Cargado progreso para topic {topic.Slug}. Niveles recibidos: {(progress?.Count ?? 0)}");
-
-
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error cargando progreso por defecto: " + ex);
         }
     }
 }

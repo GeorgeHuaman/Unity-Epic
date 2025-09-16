@@ -9,6 +9,15 @@ using Postgrest;
 public class TopicProgressService : MonoBehaviour
 {
     public static TopicProgressService Instance { get; private set; }
+
+    public Topic CurrentTopic { get; private set; }
+    public List<UserTopicProgress> CurrentProgress { get; private set; }
+    public event Action<List<UserTopicProgress>> OnProgressLoaded;
+
+    [Header("Pruebas Supabase")]
+    public string slug;
+    public short level;
+    public int progress;
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -16,6 +25,16 @@ public class TopicProgressService : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            string s = string.IsNullOrEmpty(slug) ? "emprendimiento" : slug;
+            short lev = level;
+            decimal prog = (decimal)progress;
+            _ = UpdateLevelProgressBySlug_UpdateOnly(s, lev, prog);
+        }
+    }
     public async Task<Topic> GetTopicBySlug(string slug)
     {
         var client = SupabaseInit.supabaseClient;
@@ -71,62 +90,129 @@ public class TopicProgressService : MonoBehaviour
         }
     }
 
-    public async Task<bool> UpsertLevelProgress(string topicId, short level, decimal progress)
+    public async Task<List<UserTopicProgress>> LoadProgressForDefaultTopicAsync(string slug = "emprendimiento")
     {
+        if (Instance == null)
+        {
+            var go = new GameObject("TopicProgressService");
+            Instance = go.AddComponent<TopicProgressService>();
+            DontDestroyOnLoad(go);
+        }
+
+        // 1) Verificar cliente y sesión
         var client = SupabaseInit.supabaseClient;
-        var user = client?.Auth?.CurrentUser;
-        if (client == null || user == null) { Debug.LogWarning("Cliente o usuario no disponible"); return false; }
+        if (client == null)
+        {
+            Debug.LogWarning("Supabase no inicializado.");
+            return null;
+        }
+
+        var user = client.Auth.CurrentUser;
+        if (user == null)
+        {
+            Debug.LogWarning("No hay usuario logueado. No se puede cargar progreso.");
+            return null;
+        }
 
         try
         {
-            var updateModel = new UserTopicProgress
+            // 2) Obtener el topic por slug
+            var topic = await GetTopicBySlug(slug);
+            if (topic == null)
             {
-                Progress = progress,
-                Completed = (progress >= 100.0M),
-                UpdatedAt = DateTime.UtcNow
-            };
+                Debug.LogWarning($"Topic '{slug}' no encontrado.");
+                CurrentTopic = null;
+                CurrentProgress = null;
+                OnProgressLoaded?.Invoke(CurrentProgress);
+                return null;
+            }
+
+            CurrentTopic = topic;
+
+            var progress = await GetProgressForTopic(topic.Id);
+            if (progress == null)
+            {
+                Debug.Log("No se encontró progreso o hubo error al obtenerlo.");
+                CurrentProgress = null;
+                OnProgressLoaded?.Invoke(CurrentProgress);
+                return null;
+            }
+
+            CurrentProgress = progress;
+            OnProgressLoaded?.Invoke(CurrentProgress);
+
+            Debug.Log($"Progress cargado: {progress.Count} niveles para topic '{topic.Name}'.");
+            return CurrentProgress;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error en LoadProgressForDefaultTopicAsync: " + ex);
+            CurrentProgress = null;
+            OnProgressLoaded?.Invoke(CurrentProgress);
+            return null;
+        }
+    }
+    public async Task<bool> UpdateLevelProgressBySlug_UpdateOnly(string topicSlug, short level, decimal progressValue)
+    {
+        try
+        {
+            var topic = await GetTopicBySlug(topicSlug);
+            if (topic == null)
+            {
+                Debug.LogWarning($"UpdateOnly: topic '{topicSlug}' no encontrado.");
+                return false;
+            }
+
+            var client = SupabaseInit.supabaseClient;
+            var user = client?.Auth?.CurrentUser;
+            if (client == null || user == null)
+            {
+                Debug.LogWarning("UpdateOnly: cliente o usuario no disponible.");
+                return false;
+            }
+
+            string userId = user.Id.ToString();
+            string topicId = topic.Id.ToString();
+            int levelInt = (int)level;
+
+            var getResp = await client.From<UserTopicProgress>()
+                                      .Filter("user_id", Constants.Operator.Equals, userId)
+                                      .Filter("topic_id", Constants.Operator.Equals, topicId)
+                                      .Filter("level", Constants.Operator.Equals, levelInt)
+                                      .Get();
+
+            var existing = getResp?.Models?.FirstOrDefault();
+            if (existing == null)
+            {
+                Debug.Log($"UpdateOnly: No existe fila para user={userId}, topic={topicSlug}, level={level} — nothing to update.");
+                return false;
+            }
+
+            existing.Progress = progressValue;
+            existing.Completed = progressValue >= 100.0M;
+            existing.UpdatedAt = DateTime.UtcNow;
 
             var updateResp = await client.From<UserTopicProgress>()
-                                         .Filter("user_id", Postgrest.Constants.Operator.Equals, user.Id)
-                                         .Filter("topic_id", Postgrest.Constants.Operator.Equals, topicId)
-                                         .Filter("level", Postgrest.Constants.Operator.Equals, level)
-                                         .Update(updateModel);
+                                          .Filter("level", Constants.Operator.Equals, levelInt)  
+                                         .Update(existing); // pasa la instancia del tipo correcto
 
-            if (updateResp.Models != null && updateResp.Models.Count > 0)
+            if (updateResp?.Models != null && updateResp.Models.Count > 0)
             {
-                Debug.Log($"Level {level} updated for user {user.Id} (topic {topicId}).");
+                Debug.Log($"UpdateOnly: Nivel {level} actualizado para usuario {userId} (topic {topicSlug}).");
                 return true;
             }
 
-            //  de prueba, mejor no crear tablas en la version final desde Unity
-            var newRow = new UserTopicProgress
-            {
-                UserId = user.Id,
-                TopicId = topicId,
-                Level = level,
-                Progress = progress,
-                Completed = progress >= 100.0M,
-                UpdatedAt = DateTime.UtcNow
-            };
-
-            var insertResp = await client.From<UserTopicProgress>().Insert(newRow);
-            if (insertResp.Models != null && insertResp.Models.Count > 0)
-            {
-                Debug.Log($"Level {level} inserted for user {user.Id} (topic {topicId}).");
-                return true;
-            }
-
-            Debug.LogWarning("Upsert did not return any rows.");
+            Debug.LogWarning("UpdateOnly: la actualización no devolvió filas.");
             return false;
         }
         catch (Postgrest.RequestException rex)
         {
-            Debug.LogWarning("RequestException UpsertLevelProgress: " + rex.Message);
+            Debug.LogWarning("UpdateOnly RequestException: " + rex.Message);
             return false;
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error UpsertLevelProgress: " + ex);
+            Debug.LogError("UpdateOnly Error: " + ex);
             return false;
         }
     }
