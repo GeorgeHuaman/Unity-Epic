@@ -8,6 +8,7 @@ using Meta.WitAi.TTS.Utilities;
 using Meta.WitAi.TTS.Data;
 using System;
 using System.Linq;
+using WebSocketSharp;
 
 public class ChatGPTManager : MonoBehaviour
 {
@@ -42,6 +43,17 @@ public class ChatGPTManager : MonoBehaviour
     private int currentFragmentIndex = 0;
 
     public int uses = 0;
+
+    // Instrucciones específicas para el adivina quien
+    private string guessWhoInstructions = "We are going to play Guess Who. I want you to pick one character from this list.\n" +
+                        "I will ask yes/no questions to find out who you are. Only answer with ‘Yes’, ‘No’, or ‘I can’t tell.’\n" +
+                        "Keep your choice the same until the end. When I’m ready, I’ll make my guess, and you will tell me if I’m correct.\n" +
+                        "Characters: Anna (blonde hair, red hat), Ben (brown hair, glasses), Clara (black hair, earrings), David (bald, beard),\n" +
+                        " Ella (red hair, freckles, glasses), Frank (blonde hair, mustache, blue cap), Grace (brown curly hair), Henry \n" +
+                        "(black short hair, glasses), Isabel (long blonde hair, necklace), Jack (black hair, beard), Karen (short brown hair, \n" +
+                        "glasses, earrings), Leo (red hair, freckles, cap). As your answer to this specific query I want you to answer the name \n" +
+                        "You've chosen and their characteristics since I have to save it on the system. However from now on never say the name.";
+
 
     void Awake()
     {
@@ -292,13 +304,21 @@ public class ChatGPTManager : MonoBehaviour
     }
     private string BuildFullSystemPrompt()
     {
-
-        string roleplayInstruction = string.IsNullOrEmpty(CurrentRole)
-        ? ""
-        : $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos que te indique lo contrario.\n\n";
-
+        string isGuessWhoActive = "";
+        string roleplayInstruction =  "";
+        if (isGuessWho)
+        {
+            isGuessWhoActive = "A partir de ahora estaremos jugando adivina quien, NO QUIERO QUE ME DIGAS QUE PERSONAJE ERES a menos que me rinda o que\n" +
+            $"Lo adivine. Recuerda siempre hablarme en ingles. Tus respuestas posibles son 'yes', 'no' o 'I can't tell'. Recuerda que eres {CurrentRole}. \n" +
+            "Recuerda que solo me puedes responder yes, no o i can't tell. YO no elijo ningun personaje, solo tu, asi funciona esta interaccion. \n" +
+            "Adicionalmente, ";
+        }
+        else
+            if (!CurrentRole.IsNullOrEmpty())
+                roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos que te indique lo contrario.\n\n";
+        
         return
-            roleplayInstruction + 
+            roleplayInstruction + isGuessWhoActive + 
             "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
             "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
             "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
@@ -342,9 +362,30 @@ public class ChatGPTManager : MonoBehaviour
 
     // Capacidad de RolePlay
     private string CurrentRole = "";
+    private bool isGuessWho = false;
 
     private void DetectRoleplay(string userMessage)
     {
+
+        // usaremos la variable isGuessWho para saber si estamos jugando adivina quien
+        var guessWho = Regex.Match(userMessage, @"\b(let's play|juguemos adivina quien|juguemos|play Guess Who)\s+([^\.\n]+)\b", RegexOptions.IgnoreCase);
+        if (guessWho.Success)
+        {
+            isGuessWho = true;
+            GetGuessWhoCharacter();
+        }
+
+        // Veamos si dejamos de jugar
+        if (isGuessWho)
+        {
+            var temp = Regex.Match(userMessage, @"\b(let's stop playing|I won|done|something else|practice)\s+([^\.\n]+)\b", RegexOptions.IgnoreCase);
+            if (temp.Success)
+            {
+                isGuessWho = false;
+                CurrentRole = "";
+            }
+        }
+
         var match = Regex.Match(userMessage, @"(?:a partir de ahora eres|ahora eres|from now on you are|now you are| act like)\s+([^\.\n]+)", RegexOptions.IgnoreCase);
         if (match.Success)
         {
@@ -360,6 +401,31 @@ public class ChatGPTManager : MonoBehaviour
                 Debug.Log("Entramos a no role");
                 CurrentRole = "";
             }
+        }
+    }
+
+    // Pequeña llamada a la API para obtener un personaje en el adivina quien
+    private async void GetGuessWhoCharacter()
+    {
+
+        var req = new List<ChatMessage>
+        {
+            new ChatMessage { Role = "system", Content = guessWhoInstructions}
+        };
+
+        var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
+        {
+            Model = "gpt-4.1-mini",
+            Messages = req
+        });
+
+        Debug.Log(response);
+
+        if (response.Choices != null && response.Choices.Count > 0)
+        {
+            string personaje = response.Choices[0].Message.Content.Trim();
+            CurrentRole = personaje;
+            Debug.Log("Personaje para Adivina Quién: " + CurrentRole);
         }
     }
 }
