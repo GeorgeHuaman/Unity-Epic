@@ -7,6 +7,7 @@ using Oculus.Voice.Dictation;
 using Meta.WitAi.TTS.Utilities;
 using Meta.WitAi.TTS.Data;
 using System;
+using System.Linq;
 
 public class ChatGPTManager : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class ChatGPTManager : MonoBehaviour
     {
         voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
         ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
-        
+
     }
 
     private void OnDestroy()
@@ -84,15 +85,21 @@ public class ChatGPTManager : MonoBehaviour
 
     public async void AskChatGPT(string newText)
     {
+
+        DetectRoleplay(newText);
+
         systemMessage = new ChatMessage
         {
             Role = "system",
             Content = BuildFullSystemPrompt()
         };
 
+        Debug.Log(systemMessage.Content);
+
         messages.Add(new ChatMessage { Role = "user", Content = newText });
 
         var req = BuildRequestMessages();
+
         var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
         {
             Model = "gpt-4.1-mini",
@@ -102,7 +109,7 @@ public class ChatGPTManager : MonoBehaviour
         if (response.Choices == null || response.Choices.Count == 0) return;
 
         string raw = response.Choices[0].Message.Content;
-        Debug.Log(raw);
+        // Debug.Log(raw);
 
         if (useVoiceFriendly)
         {
@@ -123,7 +130,6 @@ public class ChatGPTManager : MonoBehaviour
         const int maxTurns = 16;
         var req = new List<ChatMessage> { systemMessage };
         int start = Mathf.Max(0, messages.Count - maxTurns);
-
         for (int i = start; i < messages.Count; i++)
             req.Add(messages[i]);
 
@@ -152,17 +158,20 @@ public class ChatGPTManager : MonoBehaviour
     private void HandleStandardResponse(string emoraw)
     {
         var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
-        Debug.Log(emoraw);
+        // Debug.Log(emoraw);
 
         string clean = emotionRegex.Replace(emoraw, "").Trim();
 
         TriggerActionsFromKeywords(clean);
 
-        messages.Add(new ChatMessage
-        {
-            Role = "assistant",
-            Content = clean
-        });
+
+        // Comentamos este add para que no se añanda doble al historial
+
+        // messages.Add(new ChatMessage
+        // {
+        //     Role = "assistant",
+        //     Content = clean
+        // });
 
         onResponse.Invoke(clean);
         EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
@@ -250,6 +259,7 @@ public class ChatGPTManager : MonoBehaviour
         if (!string.IsNullOrEmpty(emotion))
             TriggerEmotion(emotion);
 
+
         ttsSpeaker.Speak(text);
         currentFragmentIndex++;
     }
@@ -282,7 +292,13 @@ public class ChatGPTManager : MonoBehaviour
     }
     private string BuildFullSystemPrompt()
     {
+
+        string roleplayInstruction = string.IsNullOrEmpty(CurrentRole)
+        ? ""
+        : $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos que te indique lo contrario.\n\n";
+
         return
+            roleplayInstruction + 
             "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
             "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
             "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
@@ -323,4 +339,27 @@ public class ChatGPTManager : MonoBehaviour
     }
 
     [System.Serializable] public class AuthData { public string api_key; public string organization; }
+
+    // Capacidad de RolePlay
+    private string CurrentRole = "";
+
+    private void DetectRoleplay(string userMessage)
+    {
+        var match = Regex.Match(userMessage, @"(?:a partir de ahora eres|ahora eres|from now on you are|now you are| act like)\s+([^\.\n]+)", RegexOptions.IgnoreCase);
+        if (match.Success)
+        {
+            CurrentRole = match.Groups[1].Value.Trim();
+        }
+        else
+        {
+            Debug.Log("mensaje del usuario:" + userMessage);
+            // Ahora para cancelar el roleplay
+            var noRole = Regex.Match(userMessage, @"\b(Vuelve a ser tú|Sé tú|be yourself again)\b", RegexOptions.IgnoreCase);
+            if (noRole.Success)
+            {
+                Debug.Log("Entramos a no role");
+                CurrentRole = "";
+            }
+        }
+    }
 }
