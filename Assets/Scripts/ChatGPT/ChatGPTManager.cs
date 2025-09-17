@@ -15,6 +15,9 @@ public class ChatGPTManager : MonoBehaviour
     [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
     [TextArea(5, 20)] public string extraInstruction;
+
+    // Instrucciones específicas para el adivina quien
+    [TextArea(5, 20)] public string guessWhoInstructions;
     public int maxResponseWordLimit = 15;
     public bool useVoiceFriendly = false;
     public OnResponseEvent onResponse;
@@ -43,16 +46,6 @@ public class ChatGPTManager : MonoBehaviour
     private int currentFragmentIndex = 0;
 
     public int uses = 0;
-
-    // Instrucciones específicas para el adivina quien
-    private string guessWhoInstructions = "We are going to play Guess Who. I want you to pick one character from this list.\n" +
-                        "I will ask yes/no questions to find out who you are. Only answer with ‘Yes’, ‘No’, or ‘I can’t tell.’\n" +
-                        "Keep your choice the same until the end. When I’m ready, I’ll make my guess, and you will tell me if I’m correct.\n" +
-                        "Characters: Anna (blonde hair, red hat), Ben (brown hair, glasses), Clara (black hair, earrings), David (bald, beard),\n" +
-                        " Ella (red hair, freckles, glasses), Frank (blonde hair, mustache, blue cap), Grace (brown curly hair), Henry \n" +
-                        "(black short hair, glasses), Isabel (long blonde hair, necklace), Jack (black hair, beard), Karen (short brown hair, \n" +
-                        "glasses, earrings), Leo (red hair, freckles, cap). As your answer to this specific query I want you to answer the name \n" +
-                        "You've chosen and their characteristics since I have to save it on the system. However from now on never say the name.";
 
 
     void Awake()
@@ -133,12 +126,13 @@ public class ChatGPTManager : MonoBehaviour
         }
 
         // Guardar la respuesta cruda para historial
-        messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+        // messages.Add(new ChatMessage { Role = "assistant", Content = raw });
         AddUsesInExcell();
     }
 
     private List<ChatMessage> BuildRequestMessages()
     {
+        // revisar si el MaxTurns puede aumentarse
         const int maxTurns = 16;
         var req = new List<ChatMessage> { systemMessage };
         int start = Mathf.Max(0, messages.Count - maxTurns);
@@ -179,11 +173,11 @@ public class ChatGPTManager : MonoBehaviour
 
         // Comentamos este add para que no se añanda doble al historial
 
-        // messages.Add(new ChatMessage
-        // {
-        //     Role = "assistant",
-        //     Content = clean
-        // });
+        messages.Add(new ChatMessage
+        {
+            Role = "assistant",
+            Content = clean
+        });
 
         onResponse.Invoke(clean);
         EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
@@ -315,10 +309,11 @@ public class ChatGPTManager : MonoBehaviour
         }
         else
             if (!CurrentRole.IsNullOrEmpty())
-                roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos que te indique lo contrario.\n\n";
-        
+                roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
+                "que te indique lo contrario.\n\n";
+
         return
-            roleplayInstruction + isGuessWhoActive + 
+            roleplayInstruction + isGuessWhoActive +
             "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
             "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
             "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
@@ -330,7 +325,9 @@ public class ChatGPTManager : MonoBehaviour
             "Aquí está la información del Tema:\n" + info + "\n\n" +
             "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
             extraInstruction + "\n\n" +
-            buildActionInstruction() + "\n\n";
+            buildActionInstruction() + "\n\n" +
+            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" + 
+            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
     }
 
     public void AddUsesInExcell()
@@ -368,7 +365,7 @@ public class ChatGPTManager : MonoBehaviour
     {
 
         // usaremos la variable isGuessWho para saber si estamos jugando adivina quien
-        var guessWho = Regex.Match(userMessage, @"\b(let's play|juguemos adivina quien|juguemos|play Guess Who)\s+([^\.\n]+)\b", RegexOptions.IgnoreCase);
+        var guessWho = Regex.Match(userMessage, @"\b(let's play|juguemos adivina quien|juguemos|play guess who)\s+([^\.\n]+)\b", RegexOptions.IgnoreCase);
         if (guessWho.Success)
         {
             isGuessWho = true;
@@ -386,7 +383,7 @@ public class ChatGPTManager : MonoBehaviour
             }
         }
 
-        var match = Regex.Match(userMessage, @"(?:a partir de ahora eres|ahora eres|from now on you are|now you are| act like)\s+([^\.\n]+)", RegexOptions.IgnoreCase);
+        var match = Regex.Match(userMessage, @"(?:a partir de ahora eres|ahora eres|from now on you are|now you are|act like)\s+([^\.\n]+)", RegexOptions.IgnoreCase);
         if (match.Success)
         {
             CurrentRole = match.Groups[1].Value.Trim();
@@ -398,7 +395,6 @@ public class ChatGPTManager : MonoBehaviour
             var noRole = Regex.Match(userMessage, @"\b(Vuelve a ser tú|Sé tú|be yourself again)\b", RegexOptions.IgnoreCase);
             if (noRole.Success)
             {
-                Debug.Log("Entramos a no role");
                 CurrentRole = "";
             }
         }
