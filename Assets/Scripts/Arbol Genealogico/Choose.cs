@@ -2,26 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FragPos : MonoBehaviour
+public class Choose : MonoBehaviour
 {
-    public FragType.ObjectType fragtype;
-    public PickFrag pickUp;
-    public Transform pos;
+    public ObjectType.Type objectType;
+    public Pick pick;
     public float moveSpeed = 3f;
+    public Transform pos;
     [HideInInspector] public bool completed;
     public Interactable interactable;
+
+    [Header("Arbol")]
+    public GameObject textIncompleted;
+    public GameObject textCompleted;
     public void TryPlaceObject()
     {
-        if (pickUp == null)
+        if (pick == null)
             return;
 
-        if (pickUp.currentObject != null && pickUp.currentType == fragtype)
+        if (pick.currentObject != null && pick.currentType == objectType)
         {
-            StartCoroutine(MoveToPosition(pickUp.currentObject, pos));
-            pickUp.Release();
+            StartCoroutine(MoveToPosition(pick.currentObject, pos));
+            pick.Release();
             completed = true;
             ActivateFinalArbol.instance.AreAllComplete();
             interactable.enabled = false;
+            textIncompleted.SetActive(false);
+            textCompleted.SetActive(true);
         }
     }
 
@@ -42,6 +48,7 @@ public class FragPos : MonoBehaviour
         {
             obj.transform.position = target.position;
             obj.transform.SetParent(target);
+            obj.transform.rotation = Quaternion.LookRotation(-target.forward, Vector3.up);
         }
     }
 }
