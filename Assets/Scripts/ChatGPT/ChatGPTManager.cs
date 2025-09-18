@@ -115,7 +115,7 @@ public class ChatGPTManager : MonoBehaviour
         if (response.Choices == null || response.Choices.Count == 0) return;
 
         string raw = response.Choices[0].Message.Content;
-        // Debug.Log(raw);
+        Debug.Log("mensaje raw" + raw);
 
         if (useVoiceFriendly)
         {
@@ -128,7 +128,7 @@ public class ChatGPTManager : MonoBehaviour
 
         // Guardar la respuesta cruda para historial
         messages.Add(new ChatMessage { Role = "assistant", Content = raw });
-        AddUsesInExcell();
+        // AddUsesInExcell();
     }
 
     private List<ChatMessage> BuildRequestMessages()
@@ -150,8 +150,12 @@ public class ChatGPTManager : MonoBehaviour
 
     private void HandleVoiceFriendlyResponse(string raw)
     {
-        var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)");
-        var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*(.+)\z");
+        // var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)");
+        // var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*(.+)\z");
+        //Regex un poco mas tolerante con espacios y saltos de linea
+        var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*\s*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+        var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*\s*(.+)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
 
         if (string.IsNullOrWhiteSpace(written) && string.IsNullOrWhiteSpace(voiceOnly))
         {
@@ -162,6 +166,7 @@ public class ChatGPTManager : MonoBehaviour
 
         if (string.IsNullOrWhiteSpace(voiceOnly))
             voiceOnly = written;
+
 
         onResponse.Invoke(written);
         EnqueueVoice(voiceOnly);
@@ -276,9 +281,10 @@ public class ChatGPTManager : MonoBehaviour
         currentFragmentIndex++;
     }
 
-    private string ExtractBetween(string input, string pattern)
+    // Extraer texto entre patrones más robusto
+    private string ExtractBetween(string input, string pattern, RegexOptions options = RegexOptions.Singleline)
     {
-        var match = Regex.Match(input, pattern, RegexOptions.Singleline);
+        var match = Regex.Match(input, pattern, options);
         return match.Success ? match.Groups[1].Value.Trim() : null;
     }
 
@@ -337,15 +343,15 @@ public class ChatGPTManager : MonoBehaviour
             "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
     }
 
-    public void AddUsesInExcell()
-    {
-        int actualUse = int.Parse(UserSession.Instance.usosIA);
-        uses++;
-        int totalUses = actualUse + uses;
-        int fila = UserSession.Instance.sheetRowNumber;
-        string celda = "U" + fila;
-        GoogleSheetsAPI.instance.WriteDataFor(celda, celda, totalUses);
-    }
+    // public void AddUsesInExcell()
+    // {
+    //     int actualUse = int.Parse(UserSession.Instance.usosIA);
+    //     uses++;
+    //     int totalUses = actualUse + uses;
+    //     int fila = UserSession.Instance.sheetRowNumber;
+    //     string celda = "U" + fila;
+    //     GoogleSheetsAPI.instance.WriteDataFor(celda, celda, totalUses);
+    // }
 
     [System.Serializable]
     public struct NPCAction
@@ -370,8 +376,6 @@ public class ChatGPTManager : MonoBehaviour
 
     private void DetectRoleplay(string userMessage)
     {
-        Debug.Log("Detectando roleplay en: " + userMessage);
-        Debug.Log(!guessWhoInstructions.IsNullOrEmpty());
         // usaremos la variable isGuessWho para saber si estamos jugando adivina quien, sin embargo si no hay valor la variable, que sea inaccesible
         var guessWho = Regex.Match(userMessage, @"\b(juguemos adivina quien|play guess who)\b", RegexOptions.IgnoreCase);
         if (guessWho.Success && !guessWhoInstructions.IsNullOrEmpty())
@@ -379,14 +383,12 @@ public class ChatGPTManager : MonoBehaviour
             isGuessWho = true;
             GetGuessWhoCharacter();
         }
-        Debug.Log("isGuessWho: " + isGuessWho);
         // Veamos si dejamos de jugar
         if (isGuessWho)
         {
             var temp = Regex.Match(userMessage, @"\b(let's stop playing|I won|done|something else|practice)\b", RegexOptions.IgnoreCase);
             if (temp.Success)
             {
-                Debug.Log("Saliendo de adivina quien");
                 isGuessWho = false;
                 CurrentRole = "";
             }
@@ -423,13 +425,11 @@ public class ChatGPTManager : MonoBehaviour
             Messages = req
         });
 
-        Debug.Log(response);
 
         if (response.Choices != null && response.Choices.Count > 0)
         {
             string personaje = response.Choices[0].Message.Content.Trim();
             CurrentRole = personaje;
-            Debug.Log("Personaje para Adivina Quién: " + CurrentRole);
         }
     }
 }
