@@ -18,6 +18,7 @@ public class ChatGPTManager : MonoBehaviour
 
     // Instrucciones específicas para el adivina quien
     [TextArea(5, 20)] public string guessWhoInstructions;
+
     public int maxResponseWordLimit = 15;
     public bool useVoiceFriendly = false;
     public OnResponseEvent onResponse;
@@ -126,7 +127,7 @@ public class ChatGPTManager : MonoBehaviour
         }
 
         // Guardar la respuesta cruda para historial
-        // messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+        messages.Add(new ChatMessage { Role = "assistant", Content = raw });
         AddUsesInExcell();
     }
 
@@ -138,7 +139,12 @@ public class ChatGPTManager : MonoBehaviour
         int start = Mathf.Max(0, messages.Count - maxTurns);
         for (int i = start; i < messages.Count; i++)
             req.Add(messages[i]);
-
+        
+        // debug log de todo el historial
+        // Debug.Log("Historial de mensajes:");
+        // foreach (var msg in req)
+        //     Debug.Log($"{msg.Role}: {msg.Content}");
+        
         return req;
     }
 
@@ -164,7 +170,7 @@ public class ChatGPTManager : MonoBehaviour
     private void HandleStandardResponse(string emoraw)
     {
         var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
-        // Debug.Log(emoraw);
+        // Debug.Log("emoraw" + emoraw);
 
         string clean = emotionRegex.Replace(emoraw, "").Trim();
 
@@ -173,11 +179,11 @@ public class ChatGPTManager : MonoBehaviour
 
         // Comentamos este add para que no se añanda doble al historial
 
-        messages.Add(new ChatMessage
-        {
-            Role = "assistant",
-            Content = clean
-        });
+        // messages.Add(new ChatMessage
+        // {
+        //     Role = "assistant",
+        //     Content = clean
+        // });
 
         onResponse.Invoke(clean);
         EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
@@ -363,36 +369,37 @@ public class ChatGPTManager : MonoBehaviour
 
     private void DetectRoleplay(string userMessage)
     {
-
-        // usaremos la variable isGuessWho para saber si estamos jugando adivina quien
-        var guessWho = Regex.Match(userMessage, @"\b(let's play|juguemos adivina quien|juguemos|play guess who)\s+([^\.\n]+)\b", RegexOptions.IgnoreCase);
-        if (guessWho.Success)
+        Debug.Log("Detectando roleplay en: " + userMessage);
+        Debug.Log(!guessWhoInstructions.IsNullOrEmpty());
+        // usaremos la variable isGuessWho para saber si estamos jugando adivina quien, sin embargo si no hay valor la variable, que sea inaccesible
+        var guessWho = Regex.Match(userMessage, @"\b(juguemos adivina quien|play guess who)\b", RegexOptions.IgnoreCase);
+        if (guessWho.Success && !guessWhoInstructions.IsNullOrEmpty())
         {
             isGuessWho = true;
             GetGuessWhoCharacter();
         }
-
+        Debug.Log("isGuessWho: " + isGuessWho);
         // Veamos si dejamos de jugar
         if (isGuessWho)
         {
-            var temp = Regex.Match(userMessage, @"\b(let's stop playing|I won|done|something else|practice)\s+([^\.\n]+)\b", RegexOptions.IgnoreCase);
+            var temp = Regex.Match(userMessage, @"\b(let's stop playing|I won|done|something else|practice)\b", RegexOptions.IgnoreCase);
             if (temp.Success)
             {
+                Debug.Log("Saliendo de adivina quien");
                 isGuessWho = false;
                 CurrentRole = "";
             }
         }
 
-        var match = Regex.Match(userMessage, @"(?:a partir de ahora eres|ahora eres|from now on you are|now you are|act like)\s+([^\.\n]+)", RegexOptions.IgnoreCase);
+        var match = Regex.Match(userMessage, @"(?:a partir de ahora eres|ahora eres|actua como|from now on you are|now you are|act like)\s+([^\.\n]+)", RegexOptions.IgnoreCase);
         if (match.Success)
         {
             CurrentRole = match.Groups[1].Value.Trim();
         }
         else
         {
-            Debug.Log("mensaje del usuario:" + userMessage);
             // Ahora para cancelar el roleplay
-            var noRole = Regex.Match(userMessage, @"\b(Vuelve a ser tú|Sé tú|be yourself again)\b", RegexOptions.IgnoreCase);
+            var noRole = Regex.Match(userMessage, @"\b(vuelve a ser tú|Sé tú|deja de ser|be yourself again)\b", RegexOptions.IgnoreCase);
             if (noRole.Success)
             {
                 CurrentRole = "";
