@@ -316,7 +316,8 @@ public class ChatGPTManager : MonoBehaviour
         else
             if (!CurrentRole.IsNullOrEmpty())
                 roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
-                "que te indique lo contrario.\n\n";
+                "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo\n" +
+                "Preguntar 'que mas quieres saber de mi?' \n";
 
         return
             roleplayInstruction + isGuessWhoActive +
