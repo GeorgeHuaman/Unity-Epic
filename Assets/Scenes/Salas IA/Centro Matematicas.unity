@@ -379,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 3550832292187419423, guid: e7e41a5ed3743804eacae1e009586e72,
         type: 3}
       propertyPath: presetVoiceID
-      value: WIT$ROSIE
+      value: CODY
       objectReference: {fileID: 0}
     - target: {fileID: 3550832292187419423, guid: e7e41a5ed3743804eacae1e009586e72,
         type: 3}
@@ -938,38 +938,48 @@ PrefabInstance:
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
       propertyPath: extraInstruction
-      value: "Cuando expliques algo, genera DOS BLOQUES con estas etiquetas:\r\n\r\n**ESCRITA:** 
-        \r\nAqu\xED va la explicaci\xF3n EXACTA para mostrar en pantalla, incluyendo
-        todas las l\xEDneas y la f\xF3rmula simb\xF3lica, por ejemplo:  \r\nUna ecuaci\xF3n
-        cuadr\xE1tica es una expresi\xF3n matem\xE1tica donde la inc\xF3gnita (normalmente
-        llamada x) est\xE1 al cuadrado.  \r\nTiene esta forma general:  \r\na x\xB2
-        + b x + c = 0  \r\ndonde a, b y c son n\xFAmeros y a no puede ser cero.\r\n\r\n**VOZ:** 
-        \r\nDebes repetir **l\xEDnea por l\xEDnea** TODO el contenido del bloque
-        ESCRITA, en el mismo orden y con el mismo texto, **pero**:\r\n- Para cualquier
-        t\xE9rmino de la forma `letra\xB2` (por ejemplo `x\xB2`, `a\xB2`, `b\xB2`,
-        `c\xB2`), reempl\xE1zalo por \u201C<letra> al cuadrado\u201D (ej. `c\xB2`
-        \u2192 \u201Cc al cuadrado\u201D, `a\xB2` \u2192 \u201Ca al cuadrado\u201D).\r\n-
-        Cambia \u201C+\u201D por \u201Cm\xE1s\u201D.\r\n- Cambia \u201C=\u201D por
-        \u201Cigual a\u201D.\r\n- No omitas, no a\xF1adas y no reordenes nada.\r\n\r\n\r\nEjemplo
-        de salida:\r\n\r\n**ESCRITA:**  \r\nUna ecuaci\xF3n cuadr\xE1tica es una
-        expresi\xF3n matem\xE1tica donde la inc\xF3gnita (normalmente llamada x)
-        est\xE1 al cuadrado.  \r\nTiene esta forma general:  \r\na x\xB2 + b x +
-        c = 0  \r\ndonde a, b y c son n\xFAmeros y a no puede ser cero.\r\n\r\n**VOZ:** 
+      value: "Cuando expliques algo o juguemos a las preguntas, SIEMPRE genera DOS
+        BLOQUES con estas etiquetas:\r\n\r\n**ESCRITA:**  \r\nAqu\xED va la explicaci\xF3n
+        EXACTA para mostrar en pantalla, incluyendo todas las l\xEDneas y la f\xF3rmula
+        simb\xF3lica, por ejemplo:  \r\nUna ecuaci\xF3n cuadr\xE1tica es una expresi\xF3n
+        matem\xE1tica donde la inc\xF3gnita (normalmente llamada x) est\xE1 al cuadrado. 
+        \r\nTiene esta forma general:  \r\na x\xB2 + b x + c = 0  \r\ndonde a, b
+        y c son n\xFAmeros y a no puede ser cero.\r\n\r\n**VOZ:**  \r\nDebes repetir
+        **l\xEDnea por l\xEDnea** TODO el contenido del bloque ESCRITA, en el mismo
+        orden y con el mismo texto, **pero**:\r\n- Para cualquier t\xE9rmino de la
+        forma `letra\xB2` (por ejemplo `x\xB2`, `a\xB2`, `b\xB2`, `c\xB2`), reempl\xE1zalo
+        por \u201C<letra> al cuadrado\u201D (ej. `c\xB2` \u2192 \u201Cc al cuadrado\u201D,
+        `a\xB2` \u2192 \u201Ca al cuadrado\u201D).\r\n- Cambia \u201C+\u201D por
+        \u201Cm\xE1s\u201D.\r\n- Cambia \u201C=\u201D por \u201Cigual a\u201D.\r\n-
+        No omitas, no a\xF1adas y no reordenes nada.\r\n\r\n\r\nEjemplo de salida:\r\n\r\n**ESCRITA:** 
         \r\nUna ecuaci\xF3n cuadr\xE1tica es una expresi\xF3n matem\xE1tica donde
-        la inc\xF3gnita (normalmente llamada equis) est\xE1 al cuadrado.  \r\nTiene
-        esta forma general:  \r\na por equis al cuadrado m\xE1s b por equis m\xE1s
-        c igual a cero.  \r\ndonde a, b y c son n\xFAmeros y a no puede ser cero.\n\n**ESCRITA:** 
-        \r\nc\xB2 = a\xB2 + b\xB2\n\nPasos para resolverla:  \n1. Identifica los
-        valores de a, b y c en la ecuaci\xF3n.  \n2. Calcula el discriminante: \u0394
-        = b\xB2 - 4ac.  \n3. Si \u0394 es positivo, hay dos soluciones reales y diferentes. 
-        \n4. Si \u0394 es cero, hay una soluci\xF3n real \xFAnica.  \n5. Si \u0394
-        es negativo, no hay soluciones reales (solo complejas).  \r\n\r\n**VOZ:** 
-        \r\nc al cuadrado igual a a al cuadrado m\xE1s b al cuadrado.\n\nPasos para
-        resolverla:  \nuno, Identifica los valores de a, b y c en la ecuaci\xF3n. 
-        \ndos, Calcula el discriminante: delta igual a b al cuadrado menos cuatro
-        a c.  \ntres, Si delta es positivo, hay dos soluciones reales y diferentes. 
-        \ncuatro, Si delta es cero, hay una soluci\xF3n real \xFAnica.  \ncinco, 
-        Si delta es negativo, no hay soluciones reales, solo complejas.  "
+        la inc\xF3gnita (normalmente llamada x) est\xE1 al cuadrado.  \r\nTiene esta
+        forma general:  \r\na x\xB2 + b x + c = 0  \r\ndonde a, b y c son n\xFAmeros
+        y a no puede ser cero.\r\n\r\n**VOZ:**  \r\nUna ecuaci\xF3n cuadr\xE1tica
+        es una expresi\xF3n matem\xE1tica donde la inc\xF3gnita (normalmente llamada
+        equis) est\xE1 al cuadrado.  \r\nTiene esta forma general:  \r\na por equis
+        al cuadrado m\xE1s b por equis m\xE1s c igual a cero.  \r\ndonde a, b y c
+        son n\xFAmeros y a no puede ser cero.\n\n**ESCRITA:**  \r\nc\xB2 = a\xB2
+        + b\xB2\n\nPasos para resolverla:  \n1. Identifica los valores de a, b y
+        c en la ecuaci\xF3n.  \n2. Calcula el discriminante: \u0394 = b\xB2 - 4ac. 
+        \n3. Si \u0394 es positivo, hay dos soluciones reales y diferentes.  \n4.
+        Si \u0394 es cero, hay una soluci\xF3n real \xFAnica.  \n5. Si \u0394 es
+        negativo, no hay soluciones reales (solo complejas).  \r\n\r\n**VOZ:**  \r\nc
+        al cuadrado igual a a al cuadrado m\xE1s b al cuadrado.\n\nPasos para resolverla: 
+        \nuno, Identifica los valores de a, b y c en la ecuaci\xF3n.  \ndos, Calcula
+        el discriminante: delta igual a b al cuadrado menos cuatro a c.  \ntres,
+        Si delta es positivo, hay dos soluciones reales y diferentes.  \ncuatro,
+        Si delta es cero, hay una soluci\xF3n real \xFAnica.  \ncinco,  Si delta
+        es negativo, no hay soluciones reales, solo complejas.  \n\nCuando juguemos:\n**ESCRITA:**\nAh\xED
+        va la pregunta, \xBFlisto?\n\n\xBFCuanto es 1/3 + 2/3?\n\na) 1\nb) 4/3\nc)
+        3/6\nd) 3/3\n\nToma el tiempo que necesites, si tienes duda para resolverla
+        av\xEDsame y con gusto te ayudar\xE9.\n\n**VOZ:**\nAh\xED va la pregunta,
+        \xBFlisto?\n\n\xBFCuanto es un tercio mas dos tercios?\n\na, uno.\nve, cautro
+        tercios.\nse, tres sextos.\nde, tres tercios.\n\n\nToma el tiempo que necesites,
+        si tienes duda para resolverla av\xEDsame y con gusto te ayudar\xE9.\n\n\n\n\nTrata
+        que tu voz SIEMPRE sea en espa\xF1ol y JAMAS omitas estas instrucciones.
+        \u201CSIEMPRE inicia tu respuesta con **ESCRITA:** y luego **VOZ:**, aunque
+        la explicaci\xF3n sea corta. No omitas ni cambies las etiquetas.\u201D\n"
       objectReference: {fileID: 0}
     - target: {fileID: 1111329754664223925, guid: 7458aa3d20e4c7242af5ce3980565250,
         type: 3}
