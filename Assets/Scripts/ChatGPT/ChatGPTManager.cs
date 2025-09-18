@@ -311,13 +311,13 @@ public class ChatGPTManager : MonoBehaviour
             isGuessWhoActive = "A partir de ahora estaremos jugando adivina quien, NO QUIERO QUE ME DIGAS QUE PERSONAJE ERES a menos que me rinda o que\n" +
             $"Lo adivine. Recuerda siempre hablarme en ingles. Tus respuestas posibles son 'yes', 'no' o 'I can't tell'. Recuerda que eres {CurrentRole}. \n" +
             "Recuerda que solo me puedes responder yes, no o i can't tell. YO no elijo ningun personaje, solo tu, asi funciona esta interaccion. \n" +
-            "Adicionalmente, ";
+            " \n";
         }
         else
             if (!CurrentRole.IsNullOrEmpty())
                 roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
-                "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo\n" +
-                "Preguntar 'que mas quieres saber de mi?' \n";
+                "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
+                "puedes preguntar 'que mas quieres saber de mi?' \n";
 
         return
             roleplayInstruction + isGuessWhoActive +
