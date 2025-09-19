@@ -9,6 +9,8 @@ using Meta.WitAi.TTS.Data;
 using System;
 using System.Linq;
 using WebSocketSharp;
+using System.Collections;
+
 
 public class ChatGPTManager : MonoBehaviour
 {
@@ -47,6 +49,8 @@ public class ChatGPTManager : MonoBehaviour
     private int currentFragmentIndex = 0;
 
     public int uses = 0;
+
+
 
 
     void Awake()
@@ -91,6 +95,15 @@ public class ChatGPTManager : MonoBehaviour
 
     public async void AskChatGPT(string newText)
     {
+
+         // Revisamos si se pide una imagen mediante regex
+        var imageMatch = Regex.Match(newText, @"(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\s+(.+)", RegexOptions.IgnoreCase);
+        if (imageMatch.Success)
+        {
+            string prompt = imageMatch.Groups[2].Value.Trim();
+            GenerateImageFromDalle(prompt);
+            return; // No sigas con el flujo de chat
+        }
 
         DetectRoleplay(newText);
 
@@ -432,4 +445,87 @@ public class ChatGPTManager : MonoBehaviour
             CurrentRole = personaje;
         }
     }
+
+
+
+
+
+
+
+    /*
+        Prueba de creacion de imagenes
+
+        En el Centro matematicas hay un RawImage llamado "DalleCanvas", ahi es donde podré las imágenes generadas
+
+    */
+
+    public UnityEngine.UI.RawImage DalleCanvas;
+
+    public async void GenerateImageFromDalle(string prompt)
+    {
+        string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt + 
+        "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
+        // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
+
+        /* LA LIBRERÍA DE OPENAI QUE SE USA ACTUALMENTE NO PERMITE
+        *  ELEGIR UN MODELO PARA LA GENERACIÓN DE IMÁGENES, ASÍ QUE
+        *  SE CREARÁ UN HANDLER PROPIO. 
+        */ 
+        var response = await openAI.CreateImage(new CreateImageRequest
+        {
+            // Model = "gpt-image-1",
+            Prompt = completeImagePrompt,
+            Size = "512x512"
+        });
+
+        if (response.Data != null && response.Data.Count > 0)
+        {
+            string imageUrl = response.Data[0].Url;
+            StartCoroutine(LoadImageFromUrl(imageUrl));
+        }
+    }
+
+  
+    }
+
+    private IEnumerator LoadImageFromUrl(string url)
+    {
+        using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Imagen descargada con éxito.");
+                Texture2D texture = UnityEngine.Networking.DownloadHandlerTexture.GetContent(uwr);
+                DalleCanvas.texture = texture;
+                DalleCanvas.color = Color.white; // Asegúrate de que la imagen sea visible
+            }
+            else
+            {
+                Debug.LogError("Error al descargar la imagen: " + uwr.error);
+            }
+        }
+    }
+
+// Clase auxiliar para deserializar la respuesta de OpenAI
+[Serializable]
+private class ImageResponse
+{
+    public ImageData[] data;
+}
+
+[Serializable]
+private class ImageData
+{
+    public string url;
+}
+
+[Serializable]
+private class ImageRequest
+{
+    public string model;
+    public string prompt;
+    public int n;
+    public string size;
+}
 }
