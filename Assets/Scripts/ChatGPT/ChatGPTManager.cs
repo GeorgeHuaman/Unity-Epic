@@ -10,6 +10,7 @@ using System;
 using System.Linq;
 using WebSocketSharp;
 using System.Collections;
+using OpenAI.Images;
 
 
 public class ChatGPTManager : MonoBehaviour
@@ -467,25 +468,28 @@ public class ChatGPTManager : MonoBehaviour
         "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
         // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
 
-        /* LA LIBRERÍA DE OPENAI QUE SE USA ACTUALMENTE NO PERMITE
-        *  ELEGIR UN MODELO PARA LA GENERACIÓN DE IMÁGENES, ASÍ QUE
-        *  SE CREARÁ UN HANDLER PROPIO. 
-        */ 
-        var response = await openAI.CreateImage(new CreateImageRequest
-        {
-            // Model = "gpt-image-1",
-            Prompt = completeImagePrompt,
-            Size = "512x512"
-        });
+        var credAsset = Resources.Load<TextAsset>("auth");
+        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
+        ImageClient client = new("dall-e-3", auth.api_key.Trim());
+        // ImageGenerationOptions options = new()
+        // {
+        //     Quality = GeneratedImageQuality.High,
+        //     Size = GeneratedImageSize.W1792xH1024,
+        //     Style = GeneratedImageStyle.Vivid
+        // };
 
-        if (response.Data != null && response.Data.Count > 0)
+        GeneratedImage image = await client.GenerateImageAsync(completeImagePrompt);
+        if (image!= null)
         {
-            string imageUrl = response.Data[0].Url;
+            Debug.Log("Imagen generada con éxito." + image.ImageUri);
+            string imageUrl = image.ImageUri.ToString();
+            Debug.Log("URL de la imagen generada: " + imageUrl);
             StartCoroutine(LoadImageFromUrl(imageUrl));
         }
-    }
-
-  
+        else
+        {
+            Debug.LogError("No se generó ninguna imagen.");
+        }
     }
 
     private IEnumerator LoadImageFromUrl(string url)
@@ -506,26 +510,4 @@ public class ChatGPTManager : MonoBehaviour
             }
         }
     }
-
-// Clase auxiliar para deserializar la respuesta de OpenAI
-[Serializable]
-private class ImageResponse
-{
-    public ImageData[] data;
-}
-
-[Serializable]
-private class ImageData
-{
-    public string url;
-}
-
-[Serializable]
-private class ImageRequest
-{
-    public string model;
-    public string prompt;
-    public int n;
-    public string size;
-}
 }
