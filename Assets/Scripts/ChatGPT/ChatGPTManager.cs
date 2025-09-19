@@ -51,9 +51,6 @@ public class ChatGPTManager : MonoBehaviour
 
     public int uses = 0;
 
-
-
-
     void Awake()
     {
         // Carga credenciales
