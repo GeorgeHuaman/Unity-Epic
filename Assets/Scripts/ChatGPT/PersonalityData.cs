@@ -9,6 +9,11 @@ public class PersonalityData : ScriptableObject
 {
     public string nombre;
 
+    [TextArea(3, 10)] public string Voz = "Staccato, rápida, enérgica y rítmica, con el carisma clásico de un subastador experimentado.";
+    [TextArea(3, 10)] public string Tono = "Emocionante, de alta energía y persuasivo, creando urgencia y anticipación.";
+    [TextArea(3, 10)] public string EstiloDeEntrega = "Rápido pero claro, con inflexiones dinámicas para mantener el compromiso y el impulso.";
+    [TextArea(3, 10)] public string Pronunciacion = "Nítida y precisa, con énfasis en palabras clave de acción como 'puja', 'compra', 'finalizar' y 'vendido' para generar urgencia.";
+    
     [Tooltip("Prompt que define la personalidad de la IA. De preferencia incluye restricciones como su tono, muletillas si aplica, etc.")]
     [TextArea(3, 10)] public string PromptPersonalidad;
 

@@ -4,13 +4,15 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 using Oculus.Voice.Dictation;
-using Meta.WitAi.TTS.Utilities;
-using Meta.WitAi.TTS.Data;
+// using Meta.WitAi.TTS.Utilities;
+// using Meta.WitAi.TTS.Data;
 using System;
 using System.Linq;
 using WebSocketSharp;
 using System.Collections;
 using OpenAI.Images;
+using OpenAI.Audio;
+using System.IO;
 
 
 public class ChatGPTManager : MonoBehaviour
@@ -28,7 +30,7 @@ public class ChatGPTManager : MonoBehaviour
     [System.Serializable] public class OnResponseEvent : UnityEvent<string> { }
 
     public AppDictationExperience voiceToText;
-    public TTSSpeaker ttsSpeaker;
+    // public TTSSpeaker ttsSpeaker;
     public GameObject panelIA;
 
     [Header("Actions NPC")]
@@ -51,12 +53,19 @@ public class ChatGPTManager : MonoBehaviour
 
     public int uses = 0;
 
+
+    string getApiKey()
+    {
+        var credAsset = Resources.Load<TextAsset>("auth");
+        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
+        return auth.api_key.Trim();
+    }
+
+
     void Awake()
     {
         // Carga credenciales
-        var credAsset = Resources.Load<TextAsset>("auth");
-        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
-        openAI = new OpenAIApi(auth.api_key.Trim());
+        openAI = new OpenAIApi(getApiKey());
 
         systemMessage = new ChatMessage
         {
@@ -81,20 +90,20 @@ public class ChatGPTManager : MonoBehaviour
     private void Start()
     {
         voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
-        ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
+        // ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
 
     }
 
     private void OnDestroy()
     {
         voiceToText.DictationEvents.OnFullTranscription.RemoveListener(AskChatGPT);
-        ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
+        // ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
     }
 
     public async void AskChatGPT(string newText)
     {
 
-         // Revisamos si se pide una imagen mediante regex
+        // Revisamos si se pide una imagen mediante regex
         var imageMatch = Regex.Match(newText, @"(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\s+(.+)", RegexOptions.IgnoreCase);
         if (imageMatch.Success)
         {
@@ -150,12 +159,12 @@ public class ChatGPTManager : MonoBehaviour
         int start = Mathf.Max(0, messages.Count - maxTurns);
         for (int i = start; i < messages.Count; i++)
             req.Add(messages[i]);
-        
+
         // debug log de todo el historial
         // Debug.Log("Historial de mensajes:");
         // foreach (var msg in req)
         //     Debug.Log($"{msg.Role}: {msg.Content}");
-        
+
         return req;
     }
 
@@ -203,7 +212,7 @@ public class ChatGPTManager : MonoBehaviour
 
         onResponse.Invoke(clean);
         EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
-        ttsSpeaker.Stop();
+        Voz.Stop();
         PlayNextFragment();
     }
 
@@ -243,7 +252,7 @@ public class ChatGPTManager : MonoBehaviour
 
     private void EnqueueVoice(string text)
     {
-        ttsSpeaker.Stop();
+        Voz.Stop();
 
         text = Regex.Replace(text, @"\b[cC]\b", "ce");
 
@@ -288,7 +297,7 @@ public class ChatGPTManager : MonoBehaviour
             TriggerEmotion(emotion);
 
 
-        ttsSpeaker.Speak(text);
+        SpeakWithOpenAITTS(text);
         currentFragmentIndex++;
     }
 
@@ -299,10 +308,33 @@ public class ChatGPTManager : MonoBehaviour
         return match.Success ? match.Groups[1].Value.Trim() : null;
     }
 
-    private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
+    // private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
+    // {
+    //     if (clipData.loadState != TTSClipLoadState.Error)
+    //         PlayNextFragment();
+    // }
+
+    private void PlayAudioAndContinue(AudioClip clip)
     {
-        if (clipData.loadState != TTSClipLoadState.Error)
-            PlayNextFragment();
+        if (Voz == null)
+        {
+            Debug.LogError("No se ha asignado el AudioSource 'Voz' en el Inspector.");
+            return;
+        }
+
+        Voz.clip = clip;
+        Voz.Play();
+        StartCoroutine(WaitForAudioToEnd());
+    }
+
+    private IEnumerator WaitForAudioToEnd()
+    {
+        // Espera a que termine el audio
+        while (Voz.isPlaying)
+            yield return null;
+
+        // Cuando termina, reproduce el siguiente fragmento si hay
+        PlayNextFragment();
     }
 
     public string buildActionInstruction()
@@ -322,7 +354,7 @@ public class ChatGPTManager : MonoBehaviour
     private string BuildFullSystemPrompt()
     {
         string isGuessWhoActive = "";
-        string roleplayInstruction =  "";
+        string roleplayInstruction = "";
         if (isGuessWho)
         {
             isGuessWhoActive = "A partir de ahora estaremos jugando adivina quien, NO QUIERO QUE ME DIGAS QUE PERSONAJE ERES a menos que me rinda o que\n" +
@@ -332,9 +364,9 @@ public class ChatGPTManager : MonoBehaviour
         }
         else
             if (!CurrentRole.IsNullOrEmpty())
-                roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
-                "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
-                "puedes preguntar 'que mas quieres saber de mi?' \n";
+            roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
+            "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
+            "puedes preguntar 'que mas quieres saber de mi?' \n";
 
         return
             roleplayInstruction + isGuessWhoActive +
@@ -350,7 +382,7 @@ public class ChatGPTManager : MonoBehaviour
             "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
             extraInstruction + "\n\n" +
             buildActionInstruction() + "\n\n" +
-            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" + 
+            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
             "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
     }
 
@@ -461,13 +493,12 @@ public class ChatGPTManager : MonoBehaviour
 
     public async void GenerateImageFromDalle(string prompt)
     {
-        string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt + 
+        string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt +
         "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
         // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
 
-        var credAsset = Resources.Load<TextAsset>("auth");
-        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
-        ImageClient client = new("dall-e-3", auth.api_key.Trim());
+      
+        ImageClient client = new("dall-e-3", getApiKey());
         // ImageGenerationOptions options = new()
         // {
         //     Quality = GeneratedImageQuality.High,
@@ -476,7 +507,7 @@ public class ChatGPTManager : MonoBehaviour
         // };
 
         GeneratedImage image = await client.GenerateImageAsync(completeImagePrompt);
-        if (image!= null)
+        if (image != null)
         {
             Debug.Log("Imagen generada con éxito." + image.ImageUri);
             string imageUrl = image.ImageUri.ToString();
@@ -504,6 +535,63 @@ public class ChatGPTManager : MonoBehaviour
             else
             {
                 Debug.LogError("Error al descargar la imagen: " + uwr.error);
+            }
+        }
+    }
+
+
+
+    // TTS de OpenAI
+
+
+    [Header("Voz de la IA")]
+    /*
+        Las posibles voces son:
+        - alloy
+        - ash
+        - ballad
+        - coral
+        - echo
+        - fable
+        - nova
+        - onyx
+        - sage
+        -shimmer
+        Puedes probarlas en: https://www.openai.fm/
+    */
+    public string openAIVoice = "alloy"; // Puedes cambiar la voz predeterminada aquí
+    public AudioSource Voz;
+    
+    public void SpeakWithOpenAITTS(string texto, string selectedVoice = null, string model = "gpt-4o-mini-tts")
+    {
+        string voice = string.IsNullOrEmpty(selectedVoice) ? openAIVoice : selectedVoice;
+        StartCoroutine(OpenAITTSRequest(texto, voice, model));
+    }
+
+    private IEnumerator OpenAITTSRequest(string texto, string voice, string model)
+    {
+        AudioClient audioClient = new(model, getApiKey());
+        BinaryData speech = audioClient.GenerateSpeech(texto, voice);
+        string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
+        File.WriteAllBytes(tempPath, speech.ToArray());
+
+        // Carga el archivo como AudioClip y reprodúcelo
+        using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestMultimedia.GetAudioClip("file://" + tempPath, AudioType.MPEG))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                AudioClip clip = UnityEngine.Networking.DownloadHandlerAudioClip.GetContent(uwr);
+                if (Voz == null)
+                    Debug.LogError("No se ha asignado el AudioSource 'Voz' en el Inspector.");
+                else
+                {
+                    PlayAudioAndContinue(clip);
+                }
+            }
+            else
+            {
+                Debug.LogError("Error al reproducir el audio: " + uwr.error);
             }
         }
     }
