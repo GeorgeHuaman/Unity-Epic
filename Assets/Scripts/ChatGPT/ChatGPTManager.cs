@@ -497,7 +497,7 @@ public class ChatGPTManager : MonoBehaviour
         "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
         // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
 
-      
+        // usar gpt-image-1 es inviable debido al costo y poca documentacion del mismo.
         ImageClient client = new("dall-e-3", getApiKey());
         // ImageGenerationOptions options = new()
         // {
@@ -507,9 +507,12 @@ public class ChatGPTManager : MonoBehaviour
         // };
 
         GeneratedImage image = await client.GenerateImageAsync(completeImagePrompt);
+
+        Debug.Log("Imagen generada: " + image);
+
         if (image != null)
         {
-            Debug.Log("Imagen generada con éxito." + image.ImageUri);
+            Debug.Log("Imagen generada con éxito: " + image.ImageUri);
             string imageUrl = image.ImageUri.ToString();
             Debug.Log("URL de la imagen generada: " + imageUrl);
             StartCoroutine(LoadImageFromUrl(imageUrl));
