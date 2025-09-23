@@ -39,7 +39,7 @@ public class ChatGPTManager : MonoBehaviour
     [Header("Emotion Actions")]
     public List<EmotionAction> emotionActions;
 
-    private OpenAIApi openAI;
+    private OpenAIApi openAI; // desinstalar una vez eliminado del flujo
 
     // System prompt fijo
     private ChatMessage systemMessage;
@@ -50,8 +50,8 @@ public class ChatGPTManager : MonoBehaviour
     // Cola de fragmentos para TTS con su emoción
     private List<(string text, string emotion)> fragmentQueue = new List<(string, string)>();
     private int currentFragmentIndex = 0;
-
     public int uses = 0;
+    public string modeloTexto = "gpt-4.1-mini";
 
 
     string getApiKey()
@@ -67,24 +67,6 @@ public class ChatGPTManager : MonoBehaviour
         // Carga credenciales
         openAI = new OpenAIApi(getApiKey());
 
-        systemMessage = new ChatMessage
-        {
-            Role = "system",
-            Content =
-                "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
-                "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
-                "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
-                "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a'.\n" +
-                "Usa un lenguaje claro, natural y fluido.\n\n" +
-                "Responde de forma breve y concreta por defecto.\n" +
-                "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
-                "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos y oraciones cortas.\n\n" +
-                "Aquí está la información del Tema:\n" + info + "\n\n" +
-                "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
-                extraInstruction + "\n\n" +
-                buildActionInstruction() + "\n\n"
-
-        };
     }
 
     private void Start()
@@ -104,7 +86,7 @@ public class ChatGPTManager : MonoBehaviour
     {
 
         // Revisamos si se pide una imagen mediante regex
-        var imageMatch = Regex.Match(newText, @"(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\s+(.+)", RegexOptions.IgnoreCase);
+        var imageMatch = Regex.Match(newText, @"\b(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\b\s+(.+)", RegexOptions.IgnoreCase);
         if (imageMatch.Success)
         {
             string prompt = imageMatch.Groups[2].Value.Trim();
@@ -128,7 +110,7 @@ public class ChatGPTManager : MonoBehaviour
 
         var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
         {
-            Model = "gpt-4.1-mini",
+            Model = modeloTexto,
             Messages = req
         });
 
@@ -454,6 +436,27 @@ public class ChatGPTManager : MonoBehaviour
     }
 
     // Pequeña llamada a la API para obtener un personaje en el adivina quien
+    // Implementacion oficial
+    //   private void GetGuessWhoCharacter()
+    // {
+    //     ChatClient client = new(modeloTexto, getApiKey());
+
+    //     var req = new List<ChatMessage>
+    //     {
+    //         new SystemChatMessage(guessWhoInstructions)
+    //     };
+
+    //     ChatCompletion completion = client.CompleteChat(req);
+
+    //     var response = completion;
+
+    //     if (response.Content != null && response.Content.Count > 0)
+    //     {
+    //         string personaje = response.Content[0].Text.Trim();
+    //         CurrentRole = personaje;
+    //     }
+    // }
+
     private async void GetGuessWhoCharacter()
     {
 
@@ -464,7 +467,7 @@ public class ChatGPTManager : MonoBehaviour
 
         var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
         {
-            Model = "gpt-4.1-mini",
+            Model = modeloTexto,
             Messages = req
         });
 
@@ -483,12 +486,13 @@ public class ChatGPTManager : MonoBehaviour
 
 
     /*
-        Prueba de creacion de imagenes
+        Creacion de imagenes
 
         En el Centro matematicas hay un RawImage llamado "DalleCanvas", ahi es donde podré las imágenes generadas
 
     */
-
+    [Header("Generación de imagenes")]
+    public string modeloImagen = "dall-e-3";
     public UnityEngine.UI.RawImage DalleCanvas;
 
     public async void GenerateImageFromDalle(string prompt)
@@ -498,7 +502,7 @@ public class ChatGPTManager : MonoBehaviour
         // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
 
         // usar gpt-image-1 es inviable debido al costo y poca documentacion del mismo.
-        ImageClient client = new("dall-e-3", getApiKey());
+        ImageClient client = new(modeloImagen, getApiKey());
         // ImageGenerationOptions options = new()
         // {
         //     Quality = GeneratedImageQuality.High,
@@ -544,7 +548,12 @@ public class ChatGPTManager : MonoBehaviour
 
 
 
-    // TTS de OpenAI
+    /*
+        Text to Speech con OpenAI TTS
+
+        Usamos el modelo gpt-4o-mini-tts
+        Documentacion: https://platform.openai.com/docs/guides/speech-to-text/text
+    */
 
 
     [Header("Voz de la IA")]
@@ -563,11 +572,14 @@ public class ChatGPTManager : MonoBehaviour
         Puedes probarlas en: https://www.openai.fm/
     */
     public string openAIVoice = "alloy"; // Puedes cambiar la voz predeterminada aquí
+    public string modeloVoz = "gpt-4o-mini-tts";
     public AudioSource Voz;
     
-    public void SpeakWithOpenAITTS(string texto, string selectedVoice = null, string model = "gpt-4o-mini-tts")
+    public void SpeakWithOpenAITTS(string texto, string selectedVoice = null, string model = null)
     {
         string voice = string.IsNullOrEmpty(selectedVoice) ? openAIVoice : selectedVoice;
+        if (string.IsNullOrEmpty(model))
+            model = this.modeloVoz;
         StartCoroutine(OpenAITTSRequest(texto, voice, model));
     }
 
