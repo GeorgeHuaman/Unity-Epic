@@ -1,4 +1,4 @@
-﻿using OpenAI;
+﻿// using OpenAI;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -12,6 +12,7 @@ using WebSocketSharp;
 using System.Collections;
 using OpenAI.Images;
 using OpenAI.Audio;
+using OpenAI.Chat;
 using System.IO;
 
 
@@ -52,6 +53,14 @@ public class ChatGPTManager : MonoBehaviour
     private int currentFragmentIndex = 0;
     public int uses = 0;
     public string modeloTexto = "gpt-4.1-mini";
+
+
+    /*
+        Modelos usados actualmente:
+        - texto: gpt-4.1-mini
+        - imagenes: dall-e-3
+        - voz / TTS: gpt-4o-mini-tts
+    */
 
 
     string getApiKey()
