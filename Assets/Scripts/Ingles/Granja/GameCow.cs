@@ -23,8 +23,8 @@ public class GameCow : MonoBehaviour
     }
     public void CowInteractuable(Interactable interactable)
     {
-        interactable.enabled = false;
         objectMilk.GetComponent<MilkCollect>().interactable = interactable;
+        interactable.Disable();
     }
     public void AgreeMilk()
     {

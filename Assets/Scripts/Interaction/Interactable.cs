@@ -31,6 +31,7 @@ public class Interactable : MonoBehaviour
     public UnityEvent onExitEvent;
 
     public GameObject prefabCanvasButton;
+    private GameObject prefabCopy;
     public Button interactButton;
     public GameObject buttonParent;
 
@@ -48,8 +49,8 @@ public class Interactable : MonoBehaviour
         }
         if (prefabCanvasButton != null)
         {
-            GameObject prefab = Instantiate(prefabCanvasButton, transform.position, Quaternion.identity);
-            interactButton = prefab.GetComponentInChildren<Button>();
+            prefabCopy = Instantiate(prefabCanvasButton, transform.position, Quaternion.identity);
+            interactButton = prefabCopy.GetComponentInChildren<Button>();
             buttonParent = interactButton.transform.parent.gameObject;
             interactButton.onClick.AddListener(EnterEvent);
 
@@ -94,9 +95,18 @@ public class Interactable : MonoBehaviour
 
     public void Disable()
     {
-        interactButton.gameObject.SetActive(false);
-        buttonParent.gameObject.SetActive(false);
+        prefabCopy.SetActive(false);
         this.GetComponent<Interactable>().enabled = false;
+    }
+    public void Enable()
+    {
+        prefabCopy.SetActive(true);
+        this.GetComponent<Interactable>().enabled = true;
+    }
+    public void Destroy()
+    {
+        Destroy(gameObject);
+        Destroy(prefabCopy);
     }
     public void EnterEvent()
     {

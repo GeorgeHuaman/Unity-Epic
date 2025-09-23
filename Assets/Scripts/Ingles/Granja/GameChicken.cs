@@ -7,7 +7,7 @@ public class GameChicken : MonoBehaviour
 {
     public int[] egg;
     public List<Transform> eggGameOject = new List<Transform>();
-    public List<Transform> eggGameOjects = new List<Transform>();
+    [HideInInspector]public List<Transform> eggGameOjects = new List<Transform>();
     public GameObject prefabEgg;
     public Interactable interactable;
     private int maxEggs;
@@ -26,6 +26,7 @@ public class GameChicken : MonoBehaviour
         uiChicken.SetActive(true);
         interactable.enabled = false;
         maxEggs = egg[Random.Range(0, egg.Length)];
+        quest.tasks[0].progressSteps = maxEggs; 
         eggGameOjects = eggGameOject;
        for (int i = 0; i< maxEggs;i++)
        {
@@ -45,6 +46,6 @@ public class GameChicken : MonoBehaviour
         actualEggs++;
         UpdateText();
         if(actualEggs >= maxEggs)
-            quest.tasks[1].CompleteTask();
+            quest.tasks[0].CompleteTask();
     }
 }

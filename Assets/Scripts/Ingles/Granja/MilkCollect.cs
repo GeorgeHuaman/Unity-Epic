@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MilkCollect : MonoBehaviour
 {
-    public Interactable interactable;
+   public Interactable interactable;
     public void milkCollect()
     {
-        interactable.enabled = true;
+        interactable.Enable();
+        GetComponentInChildren<Interactable>().Destroy() ;
         GameCow.instance.AgreeMilk();
         Destroy(gameObject);
     }
