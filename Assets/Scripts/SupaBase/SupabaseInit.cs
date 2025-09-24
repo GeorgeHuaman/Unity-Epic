@@ -10,8 +10,8 @@ public class SupabaseInit : MonoBehaviour
     public static Client supabaseClient { get; private set; }
 
     [Header("Config")]
-    public string url = "https://fkisykairhnoicwucemk.supabase.co";
-    public string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZraXN5a2Fpcmhub2ljd3VjZW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0NDA1ODEsImV4cCI6MjA3MzAxNjU4MX0.9M7amF-0Zef0IDlYLP46g39soEVIUkistt8M36mWxZg";
+    public string url = "https://vlkhyeiasecfbuakenfm.supabase.co";
+    public string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsa2h5ZWlhc2VjZmJ1YWtlbmZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3MzU2MzksImV4cCI6MjA3NDMxMTYzOX0.jWsRoY3BLkgloBvnbiCZxGGsFYoXlvfAP4BUVDjBgEw";
 
     async void Start()
     {

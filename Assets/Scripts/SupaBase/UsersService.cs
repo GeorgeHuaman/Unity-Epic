@@ -4,14 +4,14 @@ using UnityEngine;
 using Postgrest;
 using System;
 
-public class ProfileService : MonoBehaviour
+public class UsersService : MonoBehaviour
 {
-    public static ProfileService instance { get; private set; }
+    public static UsersService instance { get; private set; }
 
-    public Profile currentProfile { get; private set; }
+    public Users currentUser { get; private set; }
 
-    public event Action<Profile> onProfileLoad;
-    public string Username => currentProfile?.Username;
+    public event Action<Users> onProfileLoad;
+    //public string Username => currentProfile?.email;
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class ProfileService : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    public async Task<Profile> LoadProfileAsync()
+    public async Task<Users> LoadProfileAsync()
     {
         var client = SupabaseInit.supabaseClient;
         if (client == null)
@@ -41,21 +41,23 @@ public class ProfileService : MonoBehaviour
 
         try
         {
-            var resp = await client.From<Profile>()
-                                   .Filter("id", Postgrest.Constants.Operator.Equals, myId)
+            var resp = await client.From<Users>()
+                                   .Filter("UID", Constants.Operator.Equals, myId)
                                    .Get();
 
             var profile = resp.Models.FirstOrDefault();
 
-            currentProfile = profile;
-            if (currentProfile != null)
+            currentUser = profile;
+            if (currentUser != null)
             {
-                onProfileLoad?.Invoke(currentProfile);
-                //Debug.Log(ProfileService.instance.currentProfile.Username); usaremos esto para cargar datos a futuro.
+                onProfileLoad?.Invoke(currentUser);
+                Debug.Log(currentUser.UID);
+                Debug.Log(currentUser.Email);
+                Debug.Log(currentUser.Display_Name); //usaremos esto para cargar datos a futuro.
             }
                 
 
-            return currentProfile;
+            return currentUser;
         }
         catch (RequestException rex)
         {
@@ -70,7 +72,7 @@ public class ProfileService : MonoBehaviour
     }
     public void Clear()
     {
-        currentProfile = null;
+        currentUser = null;
         onProfileLoad = null;
     }
 }
