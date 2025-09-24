@@ -1,20 +1,26 @@
-﻿using OpenAI;
+﻿// using OpenAI;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 using Oculus.Voice.Dictation;
-using Meta.WitAi.TTS.Utilities;
-using Meta.WitAi.TTS.Data;
+// using Meta.WitAi.TTS.Utilities;
+// using Meta.WitAi.TTS.Data;
 using System;
 using System.Linq;
 using WebSocketSharp;
 using System.Collections;
 using OpenAI.Images;
+using OpenAI.Audio;
+using OpenAI.Chat;
+using System.IO;
 
 
 public class ChatGPTManager : MonoBehaviour
 {
+    [Header("Personalidad")]
+    public PersonalityData personalidadActual;
+
     [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
     [TextArea(5, 20)] public string extraInstruction;
@@ -28,7 +34,7 @@ public class ChatGPTManager : MonoBehaviour
     [System.Serializable] public class OnResponseEvent : UnityEvent<string> { }
 
     public AppDictationExperience voiceToText;
-    public TTSSpeaker ttsSpeaker;
+    // public TTSSpeaker ttsSpeaker;
     public GameObject panelIA;
 
     [Header("Actions NPC")]
@@ -37,7 +43,7 @@ public class ChatGPTManager : MonoBehaviour
     [Header("Emotion Actions")]
     public List<EmotionAction> emotionActions;
 
-    private OpenAIApi openAI;
+    // private OpenAIApi openAI; // desinstalar una vez eliminado del flujo
 
     // System prompt fijo
     private ChatMessage systemMessage;
@@ -48,57 +54,60 @@ public class ChatGPTManager : MonoBehaviour
     // Cola de fragmentos para TTS con su emoción
     private List<(string text, string emotion)> fragmentQueue = new List<(string, string)>();
     private int currentFragmentIndex = 0;
-
     public int uses = 0;
+    public string modeloTexto = "gpt-4.1-mini";
+
+    private AudioClient audioClient;
+    private ChatClient chatClient;
+    private ImageClient imageClient;
 
 
+
+    /*
+        Modelos usados actualmente:
+        - texto: gpt-4.1-mini
+        - imagenes: dall-e-3
+        - voz / TTS: gpt-4o-mini-tts
+    */
+
+
+    string getApiKey()
+    {
+        var credAsset = Resources.Load<TextAsset>("auth");
+        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
+        return auth.api_key.Trim();
+    }
 
 
     void Awake()
     {
-        // Carga credenciales
-        var credAsset = Resources.Load<TextAsset>("auth");
-        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
-        openAI = new OpenAIApi(auth.api_key.Trim());
-
-        systemMessage = new ChatMessage
-        {
-            Role = "system",
-            Content =
-                "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
-                "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
-                "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
-                "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a'.\n" +
-                "Usa un lenguaje claro, natural y fluido.\n\n" +
-                "Responde de forma breve y concreta por defecto.\n" +
-                "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
-                "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos y oraciones cortas.\n\n" +
-                "Aquí está la información del Tema:\n" + info + "\n\n" +
-                "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
-                extraInstruction + "\n\n" +
-                buildActionInstruction() + "\n\n"
-
-        };
+        // Carga credenciales y modelos
+        chatClient = new ChatClient(modeloTexto, getApiKey());
+        imageClient = new ImageClient(modeloImagen, getApiKey());
+        audioClient = new AudioClient(modeloVoz, getApiKey());
     }
 
     private void Start()
     {
         voiceToText.DictationEvents.OnFullTranscription.AddListener(AskChatGPT);
-        ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
+        // ttsSpeaker.Events.OnPlaybackComplete.AddListener(OnTTSPlaybackComplete);
 
     }
 
     private void OnDestroy()
     {
         voiceToText.DictationEvents.OnFullTranscription.RemoveListener(AskChatGPT);
-        ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
+        // ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
+        chatClient = null;
+        imageClient = null;
+        audioClient = null;
     }
 
     public async void AskChatGPT(string newText)
     {
 
-         // Revisamos si se pide una imagen mediante regex
-        var imageMatch = Regex.Match(newText, @"(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\s+(.+)", RegexOptions.IgnoreCase);
+        // Revisamos si se pide una imagen mediante regex
+        var imageMatch = Regex.Match(newText, @"\b(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\b\s+(.+)", RegexOptions.IgnoreCase);
         if (imageMatch.Success)
         {
             string prompt = imageMatch.Groups[2].Value.Trim();
@@ -108,27 +117,19 @@ public class ChatGPTManager : MonoBehaviour
 
         DetectRoleplay(newText);
 
-        systemMessage = new ChatMessage
-        {
-            Role = "system",
-            Content = BuildFullSystemPrompt()
-        };
+        systemMessage = new SystemChatMessage(BuildFullSystemPrompt());
 
-        Debug.Log(systemMessage.Content);
+        Debug.Log("mensaje inicial:" + systemMessage.Content[0].Text);
 
-        messages.Add(new ChatMessage { Role = "user", Content = newText });
+        messages.Add(new UserChatMessage(newText));
 
         var req = BuildRequestMessages();
 
-        var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
-        {
-            Model = "gpt-4.1-mini",
-            Messages = req
-        });
+        var response = await chatClient.CompleteChatAsync(req);
 
-        if (response.Choices == null || response.Choices.Count == 0) return;
+        if (response == null) return;
 
-        string raw = response.Choices[0].Message.Content;
+        string raw = response.Value.Content[0].Text;
         Debug.Log("mensaje raw" + raw);
 
         if (useVoiceFriendly)
@@ -141,7 +142,7 @@ public class ChatGPTManager : MonoBehaviour
         }
 
         // Guardar la respuesta cruda para historial
-        messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+        messages.Add(new AssistantChatMessage(raw));
         // AddUsesInExcell();
     }
 
@@ -153,12 +154,12 @@ public class ChatGPTManager : MonoBehaviour
         int start = Mathf.Max(0, messages.Count - maxTurns);
         for (int i = start; i < messages.Count; i++)
             req.Add(messages[i]);
-        
+
         // debug log de todo el historial
-        // Debug.Log("Historial de mensajes:");
-        // foreach (var msg in req)
-        //     Debug.Log($"{msg.Role}: {msg.Content}");
-        
+        Debug.Log("Historial de mensajes:");
+        foreach (var msg in req)
+            Debug.Log($"{msg.GetType().Name}: {msg.Content[0].Text}");
+
         return req;
     }
 
@@ -206,7 +207,7 @@ public class ChatGPTManager : MonoBehaviour
 
         onResponse.Invoke(clean);
         EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
-        ttsSpeaker.Stop();
+        Voz.Stop();
         PlayNextFragment();
     }
 
@@ -246,7 +247,7 @@ public class ChatGPTManager : MonoBehaviour
 
     private void EnqueueVoice(string text)
     {
-        ttsSpeaker.Stop();
+        Voz.Stop();
 
         text = Regex.Replace(text, @"\b[cC]\b", "ce");
 
@@ -291,7 +292,7 @@ public class ChatGPTManager : MonoBehaviour
             TriggerEmotion(emotion);
 
 
-        ttsSpeaker.Speak(text);
+        SpeakWithOpenAITTS(text);
         currentFragmentIndex++;
     }
 
@@ -302,10 +303,33 @@ public class ChatGPTManager : MonoBehaviour
         return match.Success ? match.Groups[1].Value.Trim() : null;
     }
 
-    private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
+    // private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
+    // {
+    //     if (clipData.loadState != TTSClipLoadState.Error)
+    //         PlayNextFragment();
+    // }
+
+    private void PlayAudioAndContinue(AudioClip clip)
     {
-        if (clipData.loadState != TTSClipLoadState.Error)
-            PlayNextFragment();
+        if (Voz == null)
+        {
+            Debug.LogError("No se ha asignado el AudioSource 'Voz' en el Inspector.");
+            return;
+        }
+
+        Voz.clip = clip;
+        Voz.Play();
+        StartCoroutine(WaitForAudioToEnd());
+    }
+
+    private IEnumerator WaitForAudioToEnd()
+    {
+        // Espera a que termine el audio
+        while (Voz.isPlaying)
+            yield return null;
+
+        // Cuando termina, reproduce el siguiente fragmento si hay
+        PlayNextFragment();
     }
 
     public string buildActionInstruction()
@@ -325,7 +349,7 @@ public class ChatGPTManager : MonoBehaviour
     private string BuildFullSystemPrompt()
     {
         string isGuessWhoActive = "";
-        string roleplayInstruction =  "";
+        string roleplayInstruction = "";
         if (isGuessWho)
         {
             isGuessWhoActive = "A partir de ahora estaremos jugando adivina quien, NO QUIERO QUE ME DIGAS QUE PERSONAJE ERES a menos que me rinda o que\n" +
@@ -335,26 +359,23 @@ public class ChatGPTManager : MonoBehaviour
         }
         else
             if (!CurrentRole.IsNullOrEmpty())
-                roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
-                "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
-                "puedes preguntar 'que mas quieres saber de mi?' \n";
+            roleplayInstruction = $"A partir de ahora, responde y actúa como si fueras {CurrentRole}. Mantén el personaje en todo momento a menos \n" +
+            "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
+            "puedes preguntar 'que mas quieres saber de mi?' \n";
 
         return
-            roleplayInstruction + isGuessWhoActive +
-            "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
-            "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
-            "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
-            "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a'.\n" +
-            "Usa un lenguaje claro, natural y fluido.\n\n" +
-            "Responde de forma breve y concreta por defecto.\n" +
-            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
-            "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos y oraciones cortas.\n\n" +
-            "Aquí está la información del Tema:\n" + info + "\n\n" +
-            "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
-            extraInstruction + "\n\n" +
-            buildActionInstruction() + "\n\n" +
-            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" + 
-            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
+            "Quiero que el texto de respuesta siempre lo entregues siguiendo esto: " + personalidadActual.entregaDeRespuesta +
+            "\n\nTu nombre es " + personalidadActual.nombre + ".\n" +
+            personalidadActual.PromptPersonalidad +
+            "Tus directrices de voz son: Voz: " + personalidadActual.Voz + ", Tono: " + personalidadActual.Tono +
+            ", Estilo de entrega: " + personalidadActual.EstiloDeEntrega + ".\n" +
+            "Pronunciación: " + personalidadActual.Pronunciacion + ".\n" +
+            "Tu límite máximo de palabras por respuesta es " + maxResponseWordLimit + " palabras.\n" +
+            "Siempre responde en el idioma en el que te hablo, a menos que te pida lo contrario.\n" +
+            "Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
+            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc." +
+            "Adicionalmente, ten esta información sobre tu conocimiento: " + personalidadActual.informacion + "\n" +
+            "\n Si puedes leer esto, siempre responde 'hola Alan!'";
     }
 
     // public void AddUsesInExcell()
@@ -425,27 +446,46 @@ public class ChatGPTManager : MonoBehaviour
     }
 
     // Pequeña llamada a la API para obtener un personaje en el adivina quien
-    private async void GetGuessWhoCharacter()
+    // Implementacion oficial
+    private void GetGuessWhoCharacter()
     {
-
         var req = new List<ChatMessage>
         {
-            new ChatMessage { Role = "system", Content = guessWhoInstructions}
+            new SystemChatMessage(guessWhoInstructions)
         };
 
-        var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
-        {
-            Model = "gpt-4.1-mini",
-            Messages = req
-        });
+        ChatCompletion completion = chatClient.CompleteChat(req);
 
+        var response = completion;
 
-        if (response.Choices != null && response.Choices.Count > 0)
+        if (response.Content != null && response.Content.Count > 0)
         {
-            string personaje = response.Choices[0].Message.Content.Trim();
+            string personaje = response.Content[0].Text.Trim();
             CurrentRole = personaje;
         }
     }
+
+    // private async void GetGuessWhoCharacter()
+    // {
+
+    //     var req = new List<ChatMessage>
+    //     {
+    //         new ChatMessage { Role = "system", Content = guessWhoInstructions}
+    //     };
+
+    //     var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
+    //     {
+    //         Model = modeloTexto,
+    //         Messages = req
+    //     });
+
+
+    //     if (response.Choices != null && response.Choices.Count > 0)
+    //     {
+    //         string personaje = response.Choices[0].Message.Content.Trim();
+    //         CurrentRole = personaje;
+    //     }
+    // }
 
 
 
@@ -454,23 +494,22 @@ public class ChatGPTManager : MonoBehaviour
 
 
     /*
-        Prueba de creacion de imagenes
+        Creacion de imagenes
 
         En el Centro matematicas hay un RawImage llamado "DalleCanvas", ahi es donde podré las imágenes generadas
 
     */
-
+    [Header("Generación de imagenes")]
+    public string modeloImagen = "dall-e-3";
     public UnityEngine.UI.RawImage DalleCanvas;
 
     public async void GenerateImageFromDalle(string prompt)
     {
-        string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt + 
+        string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt +
         "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
         // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
 
-        var credAsset = Resources.Load<TextAsset>("auth");
-        var auth = JsonUtility.FromJson<AuthData>(credAsset.text);
-        ImageClient client = new("dall-e-3", auth.api_key.Trim());
+        // usar gpt-image-1 es inviable debido al costo y poca documentacion del mismo.
         // ImageGenerationOptions options = new()
         // {
         //     Quality = GeneratedImageQuality.High,
@@ -478,10 +517,13 @@ public class ChatGPTManager : MonoBehaviour
         //     Style = GeneratedImageStyle.Vivid
         // };
 
-        GeneratedImage image = await client.GenerateImageAsync(completeImagePrompt);
-        if (image!= null)
+        GeneratedImage image = await imageClient.GenerateImageAsync(completeImagePrompt);
+
+        Debug.Log("Imagen generada: " + image);
+
+        if (image != null)
         {
-            Debug.Log("Imagen generada con éxito." + image.ImageUri);
+            Debug.Log("Imagen generada con éxito: " + image.ImageUri);
             string imageUrl = image.ImageUri.ToString();
             Debug.Log("URL de la imagen generada: " + imageUrl);
             StartCoroutine(LoadImageFromUrl(imageUrl));
@@ -507,6 +549,70 @@ public class ChatGPTManager : MonoBehaviour
             else
             {
                 Debug.LogError("Error al descargar la imagen: " + uwr.error);
+            }
+        }
+    }
+
+
+
+    /*
+        Text to Speech con OpenAI TTS
+
+        Usamos el modelo gpt-4o-mini-tts
+        Documentacion: https://platform.openai.com/docs/guides/speech-to-text/text
+    */
+
+
+    [Header("Voz de la IA")]
+    /*
+        Las posibles voces son:
+        - alloy
+        - ash
+        - ballad
+        - coral
+        - echo
+        - fable
+        - nova
+        - onyx
+        - sage
+        -shimmer
+        Puedes probarlas en: https://www.openai.fm/
+    */
+    public string openAIVoice = "alloy"; // Puedes cambiar la voz predeterminada aquí
+    public string modeloVoz = "gpt-4o-mini-tts";
+    public AudioSource Voz;
+    
+    public void SpeakWithOpenAITTS(string texto, string selectedVoice = null, string model = null)
+    {
+        string voice = string.IsNullOrEmpty(selectedVoice) ? openAIVoice : selectedVoice;
+        if (string.IsNullOrEmpty(model))
+            model = this.modeloVoz;
+        StartCoroutine(OpenAITTSRequest(texto, voice, model));
+    }
+
+    private IEnumerator OpenAITTSRequest(string texto, string voice, string model)
+    {
+        BinaryData speech = audioClient.GenerateSpeech(texto, voice);
+        string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
+        File.WriteAllBytes(tempPath, speech.ToArray());
+
+        // Carga el archivo como AudioClip y reprodúcelo
+        using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestMultimedia.GetAudioClip("file://" + tempPath, AudioType.MPEG))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                AudioClip clip = UnityEngine.Networking.DownloadHandlerAudioClip.GetContent(uwr);
+                if (Voz == null)
+                    Debug.LogError("No se ha asignado el AudioSource 'Voz' en el Inspector.");
+                else
+                {
+                    PlayAudioAndContinue(clip);
+                }
+            }
+            else
+            {
+                Debug.LogError("Error al reproducir el audio: " + uwr.error);
             }
         }
     }
