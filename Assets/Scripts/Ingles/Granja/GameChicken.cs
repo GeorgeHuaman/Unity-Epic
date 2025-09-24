@@ -46,6 +46,6 @@ public class GameChicken : MonoBehaviour
         actualEggs++;
         UpdateText();
         if(actualEggs >= maxEggs)
-            quest.tasks[0].CompleteTask();
+            quest.tasks[3].CompleteTask();
     }
 }

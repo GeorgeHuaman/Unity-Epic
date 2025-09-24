@@ -2154,7 +2154,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2180,7 +2180,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243703940283072516, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b87aadc235d5dd542997b9a8242b534e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -12911,7 +12911,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12937,7 +12937,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243703940283072516, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b87aadc235d5dd542997b9a8242b534e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -13429,7 +13429,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13455,7 +13455,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243703940283072516, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b87aadc235d5dd542997b9a8242b534e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -15654,7 +15654,7 @@ MonoBehaviour:
   questName: 
   description: 
   startAutomatically: 1
-  taskAreOrdered: 0
+  taskAreOrdered: 1
   onMissionStart:
     m_PersistentCalls:
       m_Calls: []
@@ -15662,6 +15662,45 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   tasks:
+  - type: 0
+    taskName: Talk to the Farmer
+    percentage: 0
+    progressSteps: 10
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 1
+    taskName: Find 10 Pigs
+    percentage: 0
+    progressSteps: 10
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
+  - type: 0
+    taskName: Go to the barn and see the chickens
+    percentage: 0
+    progressSteps: 10
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    started: 0
+    completed: 0
+    currentProgress: 0
   - type: 1
     taskName: Find All The Eggs
     percentage: 0
@@ -15675,8 +15714,8 @@ MonoBehaviour:
     started: 0
     completed: 0
     currentProgress: 0
-  - type: 1
-    taskName: Find 10 Pigs
+  - type: 0
+    taskName: Find the camera near the lake and take a photo
     percentage: 0
     progressSteps: 10
     onStart:
@@ -15702,20 +15741,7 @@ MonoBehaviour:
     completed: 0
     currentProgress: 0
   - type: 0
-    taskName: Sell Milk
-    percentage: 0
-    progressSteps: 10
-    onStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onComplete:
-      m_PersistentCalls:
-        m_Calls: []
-    started: 0
-    completed: 0
-    currentProgress: 0
-  - type: 0
-    taskName: Take a Picture of the Horses
+    taskName: Look for the store to sell the milk
     percentage: 0
     progressSteps: 10
     onStart:
@@ -17849,7 +17875,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17875,7 +17901,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243703940283072516, guid: 89ef2123a31ebe547959c299198012c1,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b87aadc235d5dd542997b9a8242b534e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
