@@ -6973,7 +6973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4540349440225164993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9793,7 +9793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7209505397026151949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9975,9 +9975,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613d6b9c7c3905c479fb1a1fdc56ef7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personalidadActual: {fileID: 0}
   info: 
   scene: 
   extraInstruction: 
+  guessWhoInstructions: 
   maxResponseWordLimit: 700
   useVoiceFriendly: 0
   onResponse:
@@ -9996,11 +9998,16 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   voiceToText: {fileID: 5413783061415597732}
-  ttsSpeaker: {fileID: 2913183988584532162}
   panelIA: {fileID: 7762935444372042195}
   actions: []
   emotionActions: []
   uses: 0
+  modeloTexto: gpt-4.1-mini
+  modeloImagen: dall-e-3
+  DalleCanvas: {fileID: 0}
+  openAIVoice: alloy
+  modeloVoz: gpt-4o-mini-tts
+  Voz: {fileID: 0}
 --- !u!1 &7688234099210922203
 GameObject:
   m_ObjectHideFlags: 0
@@ -13686,18 +13693,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1813440261166922717}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2913183988584532162 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3550832292187419423, guid: e7e41a5ed3743804eacae1e009586e72,
-    type: 3}
-  m_PrefabInstance: {fileID: 1813440261166922717}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15403450229c3a4b8455a61d6143a6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2327423154589443163
 PrefabInstance:
   m_ObjectHideFlags: 0
