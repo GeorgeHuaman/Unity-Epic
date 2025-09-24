@@ -52,8 +52,8 @@ public class UsersService : MonoBehaviour
             {
                 onProfileLoad?.Invoke(currentUser);
                 Debug.Log(currentUser.UID);
-                Debug.Log(currentUser.Email);
-                Debug.Log(currentUser.Display_Name); //usaremos esto para cargar datos a futuro.
+                Debug.Log(currentUser.email);
+                Debug.Log(currentUser.full_name); //usaremos esto para cargar datos a futuro.
             }
                 
 
