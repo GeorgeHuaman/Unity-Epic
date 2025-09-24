@@ -18,6 +18,9 @@ using System.IO;
 
 public class ChatGPTManager : MonoBehaviour
 {
+    [Header("Personalidad")]
+    public PersonalityData personalidadActual;
+
     [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
     [TextArea(5, 20)] public string extraInstruction;
@@ -40,7 +43,7 @@ public class ChatGPTManager : MonoBehaviour
     [Header("Emotion Actions")]
     public List<EmotionAction> emotionActions;
 
-    private OpenAIApi openAI; // desinstalar una vez eliminado del flujo
+    // private OpenAIApi openAI; // desinstalar una vez eliminado del flujo
 
     // System prompt fijo
     private ChatMessage systemMessage;
@@ -53,6 +56,11 @@ public class ChatGPTManager : MonoBehaviour
     private int currentFragmentIndex = 0;
     public int uses = 0;
     public string modeloTexto = "gpt-4.1-mini";
+
+    private AudioClient audioClient;
+    private ChatClient chatClient;
+    private ImageClient imageClient;
+
 
 
     /*
@@ -73,9 +81,10 @@ public class ChatGPTManager : MonoBehaviour
 
     void Awake()
     {
-        // Carga credenciales
-        openAI = new OpenAIApi(getApiKey());
-
+        // Carga credenciales y modelos
+        chatClient = new ChatClient(modeloTexto, getApiKey());
+        imageClient = new ImageClient(modeloImagen, getApiKey());
+        audioClient = new AudioClient(modeloVoz, getApiKey());
     }
 
     private void Start()
@@ -89,6 +98,9 @@ public class ChatGPTManager : MonoBehaviour
     {
         voiceToText.DictationEvents.OnFullTranscription.RemoveListener(AskChatGPT);
         // ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
+        chatClient = null;
+        imageClient = null;
+        audioClient = null;
     }
 
     public async void AskChatGPT(string newText)
@@ -105,27 +117,19 @@ public class ChatGPTManager : MonoBehaviour
 
         DetectRoleplay(newText);
 
-        systemMessage = new ChatMessage
-        {
-            Role = "system",
-            Content = BuildFullSystemPrompt()
-        };
+        systemMessage = new SystemChatMessage(BuildFullSystemPrompt());
 
-        Debug.Log(systemMessage.Content);
+        Debug.Log("mensaje inicial:" + systemMessage.Content[0].Text);
 
-        messages.Add(new ChatMessage { Role = "user", Content = newText });
+        messages.Add(new UserChatMessage(newText));
 
         var req = BuildRequestMessages();
 
-        var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
-        {
-            Model = modeloTexto,
-            Messages = req
-        });
+        var response = await chatClient.CompleteChatAsync(req);
 
-        if (response.Choices == null || response.Choices.Count == 0) return;
+        if (response == null) return;
 
-        string raw = response.Choices[0].Message.Content;
+        string raw = response.Value.Content[0].Text;
         Debug.Log("mensaje raw" + raw);
 
         if (useVoiceFriendly)
@@ -138,7 +142,7 @@ public class ChatGPTManager : MonoBehaviour
         }
 
         // Guardar la respuesta cruda para historial
-        messages.Add(new ChatMessage { Role = "assistant", Content = raw });
+        messages.Add(new AssistantChatMessage(raw));
         // AddUsesInExcell();
     }
 
@@ -152,9 +156,9 @@ public class ChatGPTManager : MonoBehaviour
             req.Add(messages[i]);
 
         // debug log de todo el historial
-        // Debug.Log("Historial de mensajes:");
-        // foreach (var msg in req)
-        //     Debug.Log($"{msg.Role}: {msg.Content}");
+        Debug.Log("Historial de mensajes:");
+        foreach (var msg in req)
+            Debug.Log($"{msg.GetType().Name}: {msg.Content[0].Text}");
 
         return req;
     }
@@ -360,21 +364,18 @@ public class ChatGPTManager : MonoBehaviour
             "puedes preguntar 'que mas quieres saber de mi?' \n";
 
         return
-            roleplayInstruction + isGuessWhoActive +
-            "Actúa como una asistente y profesora pensada para ayudar a los niños en sus preguntas.\n" +
-            "Tu estilo es casual, eficiente y educada, con un tono seguro, calmado y con humor sutil cuando sea apropiado.\n\n" +
-            "Tu objetivo es responder al mensaje del jugador o continuar la conversación.\n" +
-            "Eres consciente de que las respuestas serán convertidas a voz, así que evita saludos genéricos como 'usuario/a'.\n" +
-            "Usa un lenguaje claro, natural y fluido.\n\n" +
-            "Responde de forma breve y concreta por defecto.\n" +
-            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
-            "Explica siempre los conceptos de modo que un niño pueda entenderlos: usa ejemplos sencillos y oraciones cortas.\n\n" +
-            "Aquí está la información del Tema:\n" + info + "\n\n" +
-            "Aquí está la información sobre la escena que te rodea:\n" + scene + "\n\n" +
-            extraInstruction + "\n\n" +
-            buildActionInstruction() + "\n\n" +
-            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
-            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
+            "Quiero que el texto de respuesta siempre lo entregues siguiendo esto: " + personalidadActual.entregaDeRespuesta +
+            "\n\nTu nombre es " + personalidadActual.nombre + ".\n" +
+            personalidadActual.PromptPersonalidad +
+            "Tus directrices de voz son: Voz: " + personalidadActual.Voz + ", Tono: " + personalidadActual.Tono +
+            ", Estilo de entrega: " + personalidadActual.EstiloDeEntrega + ".\n" +
+            "Pronunciación: " + personalidadActual.Pronunciacion + ".\n" +
+            "Tu límite máximo de palabras por respuesta es " + maxResponseWordLimit + " palabras.\n" +
+            "Siempre responde en el idioma en el que te hablo, a menos que te pida lo contrario.\n" +
+            "Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
+            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc." +
+            "Adicionalmente, ten esta información sobre tu conocimiento: " + personalidadActual.informacion + "\n" +
+            "\n Si puedes leer esto, siempre responde 'hola Alan!'";
     }
 
     // public void AddUsesInExcell()
@@ -446,47 +447,45 @@ public class ChatGPTManager : MonoBehaviour
 
     // Pequeña llamada a la API para obtener un personaje en el adivina quien
     // Implementacion oficial
-    //   private void GetGuessWhoCharacter()
-    // {
-    //     ChatClient client = new(modeloTexto, getApiKey());
-
-    //     var req = new List<ChatMessage>
-    //     {
-    //         new SystemChatMessage(guessWhoInstructions)
-    //     };
-
-    //     ChatCompletion completion = client.CompleteChat(req);
-
-    //     var response = completion;
-
-    //     if (response.Content != null && response.Content.Count > 0)
-    //     {
-    //         string personaje = response.Content[0].Text.Trim();
-    //         CurrentRole = personaje;
-    //     }
-    // }
-
-    private async void GetGuessWhoCharacter()
+    private void GetGuessWhoCharacter()
     {
-
         var req = new List<ChatMessage>
         {
-            new ChatMessage { Role = "system", Content = guessWhoInstructions}
+            new SystemChatMessage(guessWhoInstructions)
         };
 
-        var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
-        {
-            Model = modeloTexto,
-            Messages = req
-        });
+        ChatCompletion completion = chatClient.CompleteChat(req);
 
+        var response = completion;
 
-        if (response.Choices != null && response.Choices.Count > 0)
+        if (response.Content != null && response.Content.Count > 0)
         {
-            string personaje = response.Choices[0].Message.Content.Trim();
+            string personaje = response.Content[0].Text.Trim();
             CurrentRole = personaje;
         }
     }
+
+    // private async void GetGuessWhoCharacter()
+    // {
+
+    //     var req = new List<ChatMessage>
+    //     {
+    //         new ChatMessage { Role = "system", Content = guessWhoInstructions}
+    //     };
+
+    //     var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
+    //     {
+    //         Model = modeloTexto,
+    //         Messages = req
+    //     });
+
+
+    //     if (response.Choices != null && response.Choices.Count > 0)
+    //     {
+    //         string personaje = response.Choices[0].Message.Content.Trim();
+    //         CurrentRole = personaje;
+    //     }
+    // }
 
 
 
@@ -511,7 +510,6 @@ public class ChatGPTManager : MonoBehaviour
         // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
 
         // usar gpt-image-1 es inviable debido al costo y poca documentacion del mismo.
-        ImageClient client = new(modeloImagen, getApiKey());
         // ImageGenerationOptions options = new()
         // {
         //     Quality = GeneratedImageQuality.High,
@@ -519,7 +517,7 @@ public class ChatGPTManager : MonoBehaviour
         //     Style = GeneratedImageStyle.Vivid
         // };
 
-        GeneratedImage image = await client.GenerateImageAsync(completeImagePrompt);
+        GeneratedImage image = await imageClient.GenerateImageAsync(completeImagePrompt);
 
         Debug.Log("Imagen generada: " + image);
 
@@ -594,7 +592,6 @@ public class ChatGPTManager : MonoBehaviour
 
     private IEnumerator OpenAITTSRequest(string texto, string voice, string model)
     {
-        AudioClient audioClient = new(model, getApiKey());
         BinaryData speech = audioClient.GenerateSpeech(texto, voice);
         string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
         File.WriteAllBytes(tempPath, speech.ToArray());
