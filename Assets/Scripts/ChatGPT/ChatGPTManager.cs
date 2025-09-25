@@ -567,55 +567,56 @@ public class ChatGPTManager : MonoBehaviour
     public string modeloVoz = "gpt-4o-mini-tts";
     public AudioSource Voz;
     
-    public void SpeakWithOpenAITTS(string texto, string selectedVoice = null, string model = null)
+    public async System.Threading.Tasks.Task SpeakWithOpenAITTS(string texto, string selectedVoice = null, string model = null)
     {
         string voice = string.IsNullOrEmpty(selectedVoice) ? openAIVoice : selectedVoice;
         if (string.IsNullOrEmpty(model))
             model = this.modeloVoz;
-        StartCoroutine(OpenAITTSRequest(texto, voice, model));
+        await OpenAITTSRequest(texto, voice, model);
     }
 
-    private IEnumerator OpenAITTSRequest(string texto, string voice, string model)
-    {
-        string textoFinal = "voz: " + personalidadActual.Voz + ". \n" +
-        "tono: " + personalidadActual.Tono + ". \n" +
-        "estilo de entrega: " + personalidadActual.EstiloDeEntrega + ". \n" +
-        "pronunciacion: " + personalidadActual.Pronunciacion + ". \n";
+private async System.Threading.Tasks.Task OpenAITTSRequest(string texto, string voice, string model)
+{
+    string textoFinal = "voz: " + personalidadActual.Voz + ". \n" +
+    "tono: " + personalidadActual.Tono + ". \n" +
+    "estilo de entrega: " + personalidadActual.EstiloDeEntrega + ". \n" +
+    "pronunciacion: " + personalidadActual.Pronunciacion + ". \n";
 
-    #pragma warning disable
-    var options = new SpeechGenerationOptions
-    {
-        Instructions = textoFinal
-    };
+#pragma warning disable
+var options = new SpeechGenerationOptions
+{
+    Instructions = textoFinal
+};
 #pragma warning restore
-    
-    BinaryData speech = audioClient.GenerateSpeech(
+
+    BinaryData speech = await audioClient.GenerateSpeechAsync(
         texto,
         voice,
         options
     );
-        string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
-        File.WriteAllBytes(tempPath, speech.ToArray());
+    string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
+    File.WriteAllBytes(tempPath, speech.ToArray());
 
-        // Carga el archivo como AudioClip y reprodúcelo
-        using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestMultimedia.GetAudioClip("file://" + tempPath, AudioType.MPEG))
+    // Carga el archivo como AudioClip y reprodúcelo
+    using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestMultimedia.GetAudioClip("file://" + tempPath, AudioType.MPEG))
+    {
+        var asyncOp = uwr.SendWebRequest();
+        while (!asyncOp.isDone)
+            await System.Threading.Tasks.Task.Yield();
+
+        if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
         {
-            yield return uwr.SendWebRequest();
-            if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
-            {
-                AudioClip clip = UnityEngine.Networking.DownloadHandlerAudioClip.GetContent(uwr);
-                if (Voz == null)
-                    Debug.LogError("No se ha asignado el AudioSource 'Voz' en el Inspector.");
-                else
-                {
-                    PlayAudioAndContinue(clip);
-                }
-            }
+            AudioClip clip = UnityEngine.Networking.DownloadHandlerAudioClip.GetContent(uwr);
+            if (Voz == null)
+                Debug.LogError("No se ha asignado el AudioSource 'Voz' en el Inspector.");
             else
-            {
-                Debug.LogError("Error al reproducir el audio: " + uwr.error);
-            }
+                PlayAudioAndContinue(clip);
+        }
+        else
+        {
+            Debug.LogError("Error al reproducir el audio: " + uwr.error);
         }
     }
+}
 }
 
