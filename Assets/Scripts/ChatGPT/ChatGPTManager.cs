@@ -4,8 +4,6 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 using Oculus.Voice.Dictation;
-// using Meta.WitAi.TTS.Utilities;
-// using Meta.WitAi.TTS.Data;
 using System;
 using System.Linq;
 using WebSocketSharp;
@@ -14,6 +12,7 @@ using OpenAI.Images;
 using OpenAI.Audio;
 using OpenAI.Chat;
 using System.IO;
+using Unity.VisualScripting;
 
 
 public class ChatGPTManager : MonoBehaviour
@@ -21,9 +20,9 @@ public class ChatGPTManager : MonoBehaviour
     [Header("Personalidad")]
     public PersonalityData personalidadActual;
 
-    [TextArea(5, 20)] public string info;
-    [TextArea(5, 20)] public string scene;
-    [TextArea(5, 20)] public string extraInstruction;
+    // [TextArea(5, 20)] public string info;
+    // [TextArea(5, 20)] public string scene;
+    // [TextArea(5, 20)] public string extraInstruction;
 
     // Instrucciones específicas para el adivina quien
     [TextArea(5, 20)] public string guessWhoInstructions;
@@ -363,19 +362,32 @@ public class ChatGPTManager : MonoBehaviour
             "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
             "puedes preguntar 'que mas quieres saber de mi?' \n";
 
-        return
-            "Quiero que el texto de respuesta siempre lo entregues siguiendo esto: " + personalidadActual.entregaDeRespuesta +
-            "\n\nTu nombre es " + personalidadActual.nombre + ".\n" +
-            personalidadActual.PromptPersonalidad +
-            "Tus directrices de voz son: Voz: " + personalidadActual.Voz + ", Tono: " + personalidadActual.Tono +
-            ", Estilo de entrega: " + personalidadActual.EstiloDeEntrega + ".\n" +
-            "Pronunciación: " + personalidadActual.Pronunciacion + ".\n" +
-            "Tu límite máximo de palabras por respuesta es " + maxResponseWordLimit + " palabras.\n" +
-            "Siempre responde en el idioma en el que te hablo, a menos que te pida lo contrario.\n" +
-            "Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
-            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc." +
-            "Adicionalmente, ten esta información sobre tu conocimiento: " + personalidadActual.informacion + "\n" +
-            "\n Si puedes leer esto, siempre responde 'hola Alan!'";
+        if (!string.IsNullOrEmpty(CurrentRole) || isGuessWho)
+        {
+            return
+            isGuessWhoActive + roleplayInstruction +
+            "Adicional a eso, recuerda que funcionas como " + personalidadActual.PromptPersonalidad + "\n\n" +
+            "La forma en la que regresas las respuestaas debe ser la siguiente: \n\n" + personalidadActual.entregaDeRespuesta + "\n\n" +
+            "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
+            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
+            "También quiero que respondas con estos valores de voz: " + personalidadActual.Voz + "\n\n" +
+            "Tono: " + personalidadActual.Tono + "\n\n" +
+            "Estilo de Entrega: " + personalidadActual.EstiloDeEntrega + "\n\n" +
+            "pronunciacion: " + personalidadActual.Pronunciacion + "\n\n" +
+            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
+            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
+        }
+        else
+        {
+            return
+            "Tu nombre es " + personalidadActual.nombre + ". " +
+            "funcionas como " + personalidadActual.PromptPersonalidad + "\n\n" +
+            "La forma en la que regresas las respuestaas debe ser la siguiente: \n\n" + personalidadActual.entregaDeRespuesta + "\n\n" +
+            "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
+            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
+            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
+            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
+        }
     }
 
     // public void AddUsesInExcell()
@@ -464,33 +476,6 @@ public class ChatGPTManager : MonoBehaviour
             CurrentRole = personaje;
         }
     }
-
-    // private async void GetGuessWhoCharacter()
-    // {
-
-    //     var req = new List<ChatMessage>
-    //     {
-    //         new ChatMessage { Role = "system", Content = guessWhoInstructions}
-    //     };
-
-    //     var response = await openAI.CreateChatCompletion(new CreateChatCompletionRequest
-    //     {
-    //         Model = modeloTexto,
-    //         Messages = req
-    //     });
-
-
-    //     if (response.Choices != null && response.Choices.Count > 0)
-    //     {
-    //         string personaje = response.Choices[0].Message.Content.Trim();
-    //         CurrentRole = personaje;
-    //     }
-    // }
-
-
-
-
-
 
 
     /*
@@ -592,7 +577,23 @@ public class ChatGPTManager : MonoBehaviour
 
     private IEnumerator OpenAITTSRequest(string texto, string voice, string model)
     {
-        BinaryData speech = audioClient.GenerateSpeech(texto, voice);
+        string textoFinal = "voz: " + personalidadActual.Voz + ". \n" +
+        "tono: " + personalidadActual.Tono + ". \n" +
+        "estilo de entrega: " + personalidadActual.EstiloDeEntrega + ". \n" +
+        "pronunciacion: " + personalidadActual.Pronunciacion + ". \n";
+
+    #pragma warning disable
+    var options = new SpeechGenerationOptions
+    {
+        Instructions = textoFinal
+    };
+#pragma warning restore
+    
+    BinaryData speech = audioClient.GenerateSpeech(
+        texto,
+        voice,
+        options
+    );
         string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
         File.WriteAllBytes(tempPath, speech.ToArray());
 
@@ -617,3 +618,4 @@ public class ChatGPTManager : MonoBehaviour
         }
     }
 }
+
