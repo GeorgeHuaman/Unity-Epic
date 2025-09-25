@@ -131,14 +131,43 @@ public class ChatGPTManager : MonoBehaviour
         string raw = response.Value.Content[0].Text;
         Debug.Log("mensaje raw" + raw);
 
-        if (useVoiceFriendly)
+        // Limpia los marcadores de emoción
+        var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
+        if (!emotionRegex.IsMatch(raw))
         {
-            HandleVoiceFriendlyResponse(raw);
+            var (textComplete, voiceComplete) = textHandler(raw);
+
+            // 1. TTS con texto limpio
+            await SpeakWithOpenAITTS(voiceComplete);
+
+            // 2. Mostrar texto limpio en pantalla
+            onResponse.Invoke(textComplete);
         }
         else
         {
-            HandleStandardResponse(raw);
+            string textComplete = emotionRegex.Replace(raw, "").Trim();
+
+            // 2. Mostrar texto limpio en pantalla
+            onResponse.Invoke(textComplete);
+            // 1. TTS con texto limpio
+
+            await SpeakWithOpenAITTS(textComplete);
+            foreach (Match match in emotionRegex.Matches(raw))
+            {
+                string emotion = match.Groups[1].Value.Trim();
+                TriggerEmotion(emotion);
+            }
+
         }
+
+        // if (useVoiceFriendly)
+        // {
+        //     HandleVoiceFriendlyResponse(raw);
+        // }
+        // else
+        // {
+        //     HandleStandardResponse(raw);
+        // }
 
         // Guardar la respuesta cruda para historial
         messages.Add(new AssistantChatMessage(raw));
@@ -155,36 +184,53 @@ public class ChatGPTManager : MonoBehaviour
             req.Add(messages[i]);
 
         // debug log de todo el historial
-        Debug.Log("Historial de mensajes:");
-        foreach (var msg in req)
-            Debug.Log($"{msg.GetType().Name}: {msg.Content[0].Text}");
+        // Debug.Log("Historial de mensajes:");
+        // foreach (var msg in req)
+        //     Debug.Log($"{msg.GetType().Name}: {msg.Content[0].Text}");
 
         return req;
     }
 
-    private void HandleVoiceFriendlyResponse(string raw)
+    private (string written, string voiceOnly) textHandler(string text)
     {
-        // var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)");
-        // var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*(.+)\z");
-        //Regex un poco mas tolerante con espacios y saltos de linea
-        var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*\s*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
-        var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*\s*(.+)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
-
-
+        // Primero revisemos regex de emocion
+        var written = ExtractBetween(text, @"\*\*ESCRITA:\*\*\s*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+        var voiceOnly = ExtractBetween(text, @"\*\*VOZ:\*\*\s*(.+)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
         if (string.IsNullOrWhiteSpace(written) && string.IsNullOrWhiteSpace(voiceOnly))
         {
-            var parts = raw.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
-            written = parts.Length > 0 ? parts[0].Trim() : raw.Trim();
+            var parts = text.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
+            written = parts.Length > 0 ? parts[0].Trim() : text.Trim();
             voiceOnly = parts.Length > 1 ? parts[1].Trim() : written;
         }
-
         if (string.IsNullOrWhiteSpace(voiceOnly))
             voiceOnly = written;
-
-
-        onResponse.Invoke(written);
-        EnqueueVoice(voiceOnly);
+        
+        return (written, voiceOnly);
     }
+
+    // private void HandleVoiceFriendlyResponse(string raw)
+    // {
+    //     // var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)");
+    //     // var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*(.+)\z");
+    //     //Regex un poco mas tolerante con espacios y saltos de linea
+    //     var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*\s*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+    //     var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*\s*(.+)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+
+    //     if (string.IsNullOrWhiteSpace(written) && string.IsNullOrWhiteSpace(voiceOnly))
+    //     {
+    //         var parts = raw.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
+    //         written = parts.Length > 0 ? parts[0].Trim() : raw.Trim();
+    //         voiceOnly = parts.Length > 1 ? parts[1].Trim() : written;
+    //     }
+
+    //     if (string.IsNullOrWhiteSpace(voiceOnly))
+    //         voiceOnly = written;
+
+
+    //     onResponse.Invoke(written);
+    //     EnqueueVoice(voiceOnly);
+    // }
 
     private void HandleStandardResponse(string emoraw)
     {
@@ -365,17 +411,17 @@ public class ChatGPTManager : MonoBehaviour
         if (!string.IsNullOrEmpty(CurrentRole) || isGuessWho)
         {
             return
-            isGuessWhoActive + roleplayInstruction +
-            "Adicional a eso, recuerda que funcionas como " + personalidadActual.PromptPersonalidad + "\n\n" +
-            "La forma en la que regresas las respuestaas debe ser la siguiente: \n\n" + personalidadActual.entregaDeRespuesta + "\n\n" +
-            "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
-            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
-            "También quiero que respondas con estos valores de voz: " + personalidadActual.Voz + "\n\n" +
-            "Tono: " + personalidadActual.Tono + "\n\n" +
-            "Estilo de Entrega: " + personalidadActual.EstiloDeEntrega + "\n\n" +
-            "pronunciacion: " + personalidadActual.Pronunciacion + "\n\n" +
-            " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
-            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
+            isGuessWhoActive + roleplayInstruction;
+            // "Adicional a eso, recuerda que funcionas como " + personalidadActual.PromptPersonalidad + "\n\n" +
+            // "La forma en la que regresas las respuestaas debe ser la siguiente: \n\n" + personalidadActual.entregaDeRespuesta + "\n\n" +
+            // "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
+            // "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
+            // "También quiero que respondas con estos valores de voz: " + personalidadActual.Voz + "\n\n" +
+            // "Tono: " + personalidadActual.Tono + "\n\n" +
+            // "Estilo de Entrega: " + personalidadActual.EstiloDeEntrega + "\n\n" +
+            // "pronunciacion: " + personalidadActual.Pronunciacion + "\n\n" +
+            // " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
+            // "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
         }
         else
         {
@@ -575,25 +621,27 @@ public class ChatGPTManager : MonoBehaviour
         await OpenAITTSRequest(texto, voice, model);
     }
 
-private async System.Threading.Tasks.Task OpenAITTSRequest(string texto, string voice, string model)
-{
-    string textoFinal = "voz: " + personalidadActual.Voz + ". \n" +
-    "tono: " + personalidadActual.Tono + ". \n" +
-    "estilo de entrega: " + personalidadActual.EstiloDeEntrega + ". \n" +
-    "pronunciacion: " + personalidadActual.Pronunciacion + ". \n";
+    private async System.Threading.Tasks.Task OpenAITTSRequest(string texto, string voice, string model)
+    {
+        string textoFinal = "voz: " + personalidadActual.Voz + ". \n" +
+        "tono: " + personalidadActual.Tono + ". \n" +
+        "estilo de entrega: " + personalidadActual.EstiloDeEntrega + ". \n" +
+        "pronunciacion: " + personalidadActual.Pronunciacion + ". \n";
 
-#pragma warning disable
-var options = new SpeechGenerationOptions
-{
-    Instructions = textoFinal
-};
-#pragma warning restore
+    #pragma warning disable
+    var options = new SpeechGenerationOptions
+    {
+        Instructions = textoFinal
+    };
+    #pragma warning restore
 
+    Debug.Log("Instrucciones TTS: " + texto);
     BinaryData speech = await audioClient.GenerateSpeechAsync(
         texto,
         voice,
         options
     );
+
     string tempPath = Path.Combine(Application.persistentDataPath, "openai_tts.mp3");
     File.WriteAllBytes(tempPath, speech.ToArray());
 
