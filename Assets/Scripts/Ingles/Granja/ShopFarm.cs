@@ -16,9 +16,9 @@ public class ShopFarm : MonoBehaviour
             moneyText.text = $"{GameCow.instance.milkCount * 2}";
             GameCow.instance.milkCount = 0;
             GameCow.instance.UpdateText();
-            no.gameObject.SetActive(false   );
+            no.gameObject.SetActive(false);
             vendido.gameObject.SetActive(true);
-            quest.tasks[4].CompleteTask();
+            quest.tasks[6].CompleteTask();
         }
         else
         {
