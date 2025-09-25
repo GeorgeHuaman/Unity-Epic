@@ -5,7 +5,7 @@ using UnityEngine;
 using System;
 using ReadyPlayerMe.Samples.QuickStart;
 using Unity.VisualScripting;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+// using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 public class LoaderAvatar : MonoBehaviour
 {
     public static LoaderAvatar singleton
