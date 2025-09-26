@@ -20,9 +20,7 @@ public class ChatGPTManager : MonoBehaviour
     [Header("Personalidad")]
     public PersonalityData personalidadActual;
 
-    // [TextArea(5, 20)] public string info;
     [TextArea(5, 20)] public string scene;
-    // [TextArea(5, 20)] public string extraInstruction;
 
     // Instrucciones específicas para el adivina quien
     [TextArea(5, 20)] public string guessWhoInstructions;
@@ -48,10 +46,9 @@ public class ChatGPTManager : MonoBehaviour
     // Historial de chat
     private List<ChatMessage> messages = new List<ChatMessage>();
 
-    // Cola de fragmentos para TTS con su emoción
-    private List<(string text, string emotion)> fragmentQueue = new List<(string, string)>();
-    private int currentFragmentIndex = 0;
     public int uses = 0;
+    private string TextToShow;
+
     public string modeloTexto = "gpt-4.1-mini";
 
     private AudioClient audioClient;
@@ -129,7 +126,6 @@ public class ChatGPTManager : MonoBehaviour
     }
 
 
-    private string TextToShow;
     private void ShowResponse(string text)
     {
         onResponse.Invoke(text);
@@ -197,18 +193,8 @@ public class ChatGPTManager : MonoBehaviour
 
         }
 
-        // if (useVoiceFriendly)
-        // {
-        //     HandleVoiceFriendlyResponse(raw);
-        // }
-        // else
-        // {
-        //     HandleStandardResponse(raw);
-        // }
-
         // Guardar la respuesta cruda para historial
         messages.Add(new AssistantChatMessage(raw));
-        // AddUsesInExcell();
     }
 
     private List<ChatMessage> BuildRequestMessages()
@@ -245,115 +231,6 @@ public class ChatGPTManager : MonoBehaviour
         return (written, voiceOnly);
     }
 
-    // private void HandleVoiceFriendlyResponse(string raw)
-    // {
-    //     // var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)");
-    //     // var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*(.+)\z");
-    //     //Regex un poco mas tolerante con espacios y saltos de linea
-    //     var written = ExtractBetween(raw, @"\*\*ESCRITA:\*\*\s*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
-    //     var voiceOnly = ExtractBetween(raw, @"\*\*VOZ:\*\*\s*(.+)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
-
-
-    //     if (string.IsNullOrWhiteSpace(written) && string.IsNullOrWhiteSpace(voiceOnly))
-    //     {
-    //         var parts = raw.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
-    //         written = parts.Length > 0 ? parts[0].Trim() : raw.Trim();
-    //         voiceOnly = parts.Length > 1 ? parts[1].Trim() : written;
-    //     }
-
-    //     if (string.IsNullOrWhiteSpace(voiceOnly))
-    //         voiceOnly = written;
-
-
-    //     onResponse.Invoke(written);
-    //     EnqueueVoice(voiceOnly);
-    // }
-
-    // private void HandleStandardResponse(string emoraw)
-    // {
-    //     var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
-    //     // Debug.Log("emoraw" + emoraw);
-
-    //     string clean = emotionRegex.Replace(emoraw, "").Trim();
-
-    //     TriggerActionsFromKeywords(clean);
-
-
-    //     // Comentamos este add para que no se añanda doble al historial
-
-    //     // messages.Add(new ChatMessage
-    //     // {
-    //     //     Role = "assistant",
-    //     //     Content = clean
-    //     // });
-
-    //     onResponse.Invoke(clean);
-    //     EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
-    //     Voz.Stop();
-    //     PlayNextFragment();
-    // }
-
-    // private void TriggerActionsFromKeywords(string text)
-    // {
-    //     foreach (var act in actions)
-    //     {
-    //         if (text.Contains(act.actionKeyword))
-    //         {
-    //             text = text.Replace(act.actionKeyword, "");
-    //             act.actionEvent.Invoke();
-    //         }
-    //     }
-    // }
-
-    // private void EnqueueFragmentsWithEmotions(string cleanText, string rawText, Regex emotionRegex)
-    // {
-    //     fragmentQueue.Clear();
-    //     currentFragmentIndex = 0;
-
-    //     var fragments = Regex.Split(cleanText, @"(?<=[\.!?])\s+");
-    //     string tempRaw = rawText;
-
-    //     foreach (var frag in fragments)
-    //     {
-    //         if (string.IsNullOrWhiteSpace(frag)) continue;
-
-    //         var match = emotionRegex.Match(tempRaw);
-    //         string emotion = match.Success ? match.Groups[1].Value.Trim() : null;
-
-    //         if (match.Success)
-    //             tempRaw = tempRaw.Substring(match.Index + match.Length);
-
-    //         fragmentQueue.Add((frag.Trim(), emotion));
-    //     }
-    // }
-
-    // private void EnqueueVoice(string text)
-    // {
-    //     Voz.Stop();
-
-    //     text = Regex.Replace(text, @"\b[cC]\b", "ce");
-
-    //     var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
-
-    //     foreach (Match match in emotionRegex.Matches(text))
-    //     {
-    //         string emotion = match.Groups[1].Value.Trim();
-    //         TriggerEmotion(emotion);
-    //     }
-
-    //     string cleaned = emotionRegex.Replace(text, "").Trim();
-
-    //     fragmentQueue.Clear();
-    //     currentFragmentIndex = 0;
-
-    //     var fragments = Regex.Split(cleaned, @"(?<=[\.!?])\s+");
-    //     foreach (var frag in fragments)
-    //         if (!string.IsNullOrWhiteSpace(frag))
-    //             fragmentQueue.Add((frag.Trim(), null));
-
-    //     PlayNextFragment();
-    // }
-
     private void TriggerEmotion(string key)
     {
         foreach (var emo in emotionActions)
@@ -364,19 +241,6 @@ public class ChatGPTManager : MonoBehaviour
             }
     }
 
-    // private void PlayNextFragment()
-    // {
-    //     if (currentFragmentIndex >= fragmentQueue.Count) return;
-
-    //     var (text, emotion) = fragmentQueue[currentFragmentIndex];
-
-    //     if (!string.IsNullOrEmpty(emotion))
-    //         TriggerEmotion(emotion);
-
-
-    //     SpeakWithOpenAITTS(text);
-    //     currentFragmentIndex++;
-    // }
 
     // Extraer texto entre patrones más robusto
     private string ExtractBetween(string input, string pattern, RegexOptions options = RegexOptions.Singleline)
@@ -385,11 +249,6 @@ public class ChatGPTManager : MonoBehaviour
         return match.Success ? match.Groups[1].Value.Trim() : null;
     }
 
-    // private void OnTTSPlaybackComplete(TTSSpeaker speaker, TTSClipData clipData)
-    // {
-    //     if (clipData.loadState != TTSClipLoadState.Error)
-    //         PlayNextFragment();
-    // }
 
     private void PlayAudioAndContinue(AudioClip clip)
     {
@@ -407,16 +266,6 @@ public class ChatGPTManager : MonoBehaviour
         ShowResponse(TextToShow);
         // StartCoroutine(WaitForAudioToEnd());
     }
-
-    // private IEnumerator WaitForAudioToEnd()
-    // {
-    //     // Espera a que termine el audio
-    //     while (Voz.isPlaying)
-    //         yield return null;
-
-    //     // Cuando termina, reproduce el siguiente fragmento si hay
-    //     PlayNextFragment();
-    // }
 
     public string buildActionInstruction()
     {
@@ -471,16 +320,6 @@ public class ChatGPTManager : MonoBehaviour
             "En la escena tienes esto:\n" + scene + "\n\n";
         }
     }
-
-    // public void AddUsesInExcell()
-    // {
-    //     int actualUse = int.Parse(UserSession.Instance.usosIA);
-    //     uses++;
-    //     int totalUses = actualUse + uses;
-    //     int fila = UserSession.Instance.sheetRowNumber;
-    //     string celda = "U" + fila;
-    //     GoogleSheetsAPI.instance.WriteDataFor(celda, celda, totalUses);
-    // }
 
     [System.Serializable]
     public struct NPCAction
@@ -540,7 +379,6 @@ public class ChatGPTManager : MonoBehaviour
     }
 
     // Pequeña llamada a la API para obtener un personaje en el adivina quien
-    // Implementacion oficial
     private void GetGuessWhoCharacter()
     {
         var req = new List<ChatMessage>
@@ -694,4 +532,3 @@ public class ChatGPTManager : MonoBehaviour
     }
 }
 }
-
