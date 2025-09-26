@@ -26,12 +26,7 @@ public class ManagerInteractuable : MonoBehaviour
 
     private void Awake()
     {
-        singleton = this;
-    }
-    private void OnDestroy()
-    {
-        if (singleton == this)
-            singleton = null;
+        _singleton = this;
     }
 
     public void DistribuidEmptyPlayer()

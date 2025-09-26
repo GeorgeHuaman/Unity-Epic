@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         if(player == null )
-            ManagerInteractuable.singleton.interactables.Add(this.GetComponent<Interactable>());
+            ManagerInteractuable._singleton.interactables.Add(this.GetComponent<Interactable>());
         AssignEvent();
        
         if (gameObject.GetComponent<Animator>() != null)

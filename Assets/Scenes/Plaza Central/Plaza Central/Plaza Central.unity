@@ -1090,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: 1033041599641922436, guid: 44d1424396c1b0b4cadc36f0c228855e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1247173250428324112, guid: 44d1424396c1b0b4cadc36f0c228855e,
         type: 3}
@@ -1378,6 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2011975571}
+  playerOnline: {fileID: 0}
   temas: {fileID: 950663087}
   centroIA: {fileID: 1410540119}
   centro: {fileID: 1655809960}
@@ -4774,8 +4775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8b80cee279ceb43b9e5f7ac5d31124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://fkisykairhnoicwucemk.supabase.co
-  anonKey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZraXN5a2Fpcmhub2ljd3VjZW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0NDA1ODEsImV4cCI6MjA3MzAxNjU4MX0.9M7amF-0Zef0IDlYLP46g39soEVIUkistt8M36mWxZg
+  url: https://vlkhyeiasecfbuakenfm.supabase.co
+  anonKey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsa2h5ZWlhc2VjZmJ1YWtlbmZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3MzU2MzksImV4cCI6MjA3NDMxMTYzOX0.jWsRoY3BLkgloBvnbiCZxGGsFYoXlvfAP4BUVDjBgEw
 --- !u!4 &419978269
 Transform:
   m_ObjectHideFlags: 0
@@ -7607,7 +7608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &681237308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7755,7 +7756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &689922052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21310,6 +21311,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1765387566}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1780902596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5165835067738272906, guid: e4a3786d5351b094e95a34c37fc44628,
+    type: 3}
+  m_PrefabInstance: {fileID: 1875382865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1808285242
 GameObject:
   m_ObjectHideFlags: 0
@@ -21571,7 +21578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1846265535
 Transform:
   m_ObjectHideFlags: 0
@@ -22024,7 +22031,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 538282110}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5165835067738272906, guid: e4a3786d5351b094e95a34c37fc44628,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1875382870}
   m_SourcePrefab: {fileID: 100100000, guid: e4a3786d5351b094e95a34c37fc44628, type: 3}
 --- !u!4 &1875382867 stripped
 Transform:
@@ -22038,12 +22049,26 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1875382865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1780902596}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948d1797238bd14c97f32f1c185425c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1875382870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780902596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae315ef45bf9674b88443f7f2e5b010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactables: []
+  player: {fileID: 0}
 --- !u!4 &1935144399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5715433575701862552, guid: 37a04dc822feaa248a48b87a5fb9f1ba,
@@ -22855,7 +22880,7 @@ PrefabInstance:
     - target: {fileID: 3892066167880600508, guid: 515713fade637bd448a76ebfa5ee910f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4909430786510113770, guid: 515713fade637bd448a76ebfa5ee910f,
         type: 3}

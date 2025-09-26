@@ -39,8 +39,8 @@ public class PlayerFusion : NetworkBehaviour
             name = PlayerPrefs.GetString("Photon.Menu.Username");
             RPC_PlayerName(name);
             CameraFollow.singleton.SetTarget(camTarget);
-            ManagerInteractuable.singleton.player = this.gameObject;
-            ManagerInteractuable.singleton.DistribuidEmptyPlayer();
+            ManagerInteractuable._singleton.player = this.gameObject;
+            ManagerInteractuable._singleton.DistribuidEmptyPlayer();
         }
     }
 
@@ -92,6 +92,7 @@ public class PlayerFusion : NetworkBehaviour
     public void Teleport(Vector3 position, Quaternion rotation)
     {
         kcc.SetPosition(position);
+        Debug.Log(position);
         kcc.SetLookRotation(rotation);
     }
 
