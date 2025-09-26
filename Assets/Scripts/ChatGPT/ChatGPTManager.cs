@@ -21,7 +21,7 @@ public class ChatGPTManager : MonoBehaviour
     public PersonalityData personalidadActual;
 
     // [TextArea(5, 20)] public string info;
-    // [TextArea(5, 20)] public string scene;
+    [TextArea(5, 20)] public string scene;
     // [TextArea(5, 20)] public string extraInstruction;
 
     // Instrucciones específicas para el adivina quien
@@ -41,8 +41,6 @@ public class ChatGPTManager : MonoBehaviour
 
     [Header("Emotion Actions")]
     public List<EmotionAction> emotionActions;
-
-    // private OpenAIApi openAI; // desinstalar una vez eliminado del flujo
 
     // System prompt fijo
     private ChatMessage systemMessage;
@@ -101,9 +99,46 @@ public class ChatGPTManager : MonoBehaviour
         imageClient = null;
         audioClient = null;
     }
+    
+
+    private IEnumerator AnimateThinking()
+    {
+        string baseText = "";
+        string[] dots = { ".", "..", "..." };
+        int i = 0;
+        while (true)
+        {
+            onResponse.Invoke(baseText + dots[i % dots.Length]);
+            i++;
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    Coroutine thinkingCoroutine;
+    void ShowThinking()
+    {
+        if (thinkingCoroutine != null)
+            StopCoroutine(thinkingCoroutine);
+        thinkingCoroutine = StartCoroutine(AnimateThinking());
+    }
+    void HideThinking()
+    {
+        if (thinkingCoroutine != null)
+            StopCoroutine(thinkingCoroutine);
+        thinkingCoroutine = null;
+    }
+
+
+    private string TextToShow;
+    private void ShowResponse(string text)
+    {
+        onResponse.Invoke(text);
+    }
 
     public async void AskChatGPT(string newText)
     {
+
+        ShowThinking();
 
         // Revisamos si se pide una imagen mediante regex
         var imageMatch = Regex.Match(newText, @"\b(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\b\s+(.+)", RegexOptions.IgnoreCase);
@@ -137,26 +172,28 @@ public class ChatGPTManager : MonoBehaviour
         {
             var (textComplete, voiceComplete) = textHandler(raw);
 
+            TextToShow = textComplete;
+
             // 1. TTS con texto limpio
             await SpeakWithOpenAITTS(voiceComplete);
 
-            // 2. Mostrar texto limpio en pantalla
-            onResponse.Invoke(textComplete);
         }
         else
         {
+            ShowThinking();
+
             string textComplete = emotionRegex.Replace(raw, "").Trim();
 
-            // 2. Mostrar texto limpio en pantalla
-            onResponse.Invoke(textComplete);
-            // 1. TTS con texto limpio
+            TextToShow = textComplete;
 
+            // 1. TTS con texto limpio
             await SpeakWithOpenAITTS(textComplete);
             foreach (Match match in emotionRegex.Matches(raw))
             {
                 string emotion = match.Groups[1].Value.Trim();
                 TriggerEmotion(emotion);
             }
+
 
         }
 
@@ -232,90 +269,90 @@ public class ChatGPTManager : MonoBehaviour
     //     EnqueueVoice(voiceOnly);
     // }
 
-    private void HandleStandardResponse(string emoraw)
-    {
-        var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
-        // Debug.Log("emoraw" + emoraw);
+    // private void HandleStandardResponse(string emoraw)
+    // {
+    //     var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
+    //     // Debug.Log("emoraw" + emoraw);
 
-        string clean = emotionRegex.Replace(emoraw, "").Trim();
+    //     string clean = emotionRegex.Replace(emoraw, "").Trim();
 
-        TriggerActionsFromKeywords(clean);
+    //     TriggerActionsFromKeywords(clean);
 
 
-        // Comentamos este add para que no se añanda doble al historial
+    //     // Comentamos este add para que no se añanda doble al historial
 
-        // messages.Add(new ChatMessage
-        // {
-        //     Role = "assistant",
-        //     Content = clean
-        // });
+    //     // messages.Add(new ChatMessage
+    //     // {
+    //     //     Role = "assistant",
+    //     //     Content = clean
+    //     // });
 
-        onResponse.Invoke(clean);
-        EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
-        Voz.Stop();
-        PlayNextFragment();
-    }
+    //     onResponse.Invoke(clean);
+    //     EnqueueFragmentsWithEmotions(clean, emoraw, emotionRegex);
+    //     Voz.Stop();
+    //     PlayNextFragment();
+    // }
 
-    private void TriggerActionsFromKeywords(string text)
-    {
-        foreach (var act in actions)
-        {
-            if (text.Contains(act.actionKeyword))
-            {
-                text = text.Replace(act.actionKeyword, "");
-                act.actionEvent.Invoke();
-            }
-        }
-    }
+    // private void TriggerActionsFromKeywords(string text)
+    // {
+    //     foreach (var act in actions)
+    //     {
+    //         if (text.Contains(act.actionKeyword))
+    //         {
+    //             text = text.Replace(act.actionKeyword, "");
+    //             act.actionEvent.Invoke();
+    //         }
+    //     }
+    // }
 
-    private void EnqueueFragmentsWithEmotions(string cleanText, string rawText, Regex emotionRegex)
-    {
-        fragmentQueue.Clear();
-        currentFragmentIndex = 0;
+    // private void EnqueueFragmentsWithEmotions(string cleanText, string rawText, Regex emotionRegex)
+    // {
+    //     fragmentQueue.Clear();
+    //     currentFragmentIndex = 0;
 
-        var fragments = Regex.Split(cleanText, @"(?<=[\.!?])\s+");
-        string tempRaw = rawText;
+    //     var fragments = Regex.Split(cleanText, @"(?<=[\.!?])\s+");
+    //     string tempRaw = rawText;
 
-        foreach (var frag in fragments)
-        {
-            if (string.IsNullOrWhiteSpace(frag)) continue;
+    //     foreach (var frag in fragments)
+    //     {
+    //         if (string.IsNullOrWhiteSpace(frag)) continue;
 
-            var match = emotionRegex.Match(tempRaw);
-            string emotion = match.Success ? match.Groups[1].Value.Trim() : null;
+    //         var match = emotionRegex.Match(tempRaw);
+    //         string emotion = match.Success ? match.Groups[1].Value.Trim() : null;
 
-            if (match.Success)
-                tempRaw = tempRaw.Substring(match.Index + match.Length);
+    //         if (match.Success)
+    //             tempRaw = tempRaw.Substring(match.Index + match.Length);
 
-            fragmentQueue.Add((frag.Trim(), emotion));
-        }
-    }
+    //         fragmentQueue.Add((frag.Trim(), emotion));
+    //     }
+    // }
 
-    private void EnqueueVoice(string text)
-    {
-        Voz.Stop();
+    // private void EnqueueVoice(string text)
+    // {
+    //     Voz.Stop();
 
-        text = Regex.Replace(text, @"\b[cC]\b", "ce");
+    //     text = Regex.Replace(text, @"\b[cC]\b", "ce");
 
-        var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
+    //     var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
 
-        foreach (Match match in emotionRegex.Matches(text))
-        {
-            string emotion = match.Groups[1].Value.Trim();
-            TriggerEmotion(emotion);
-        }
+    //     foreach (Match match in emotionRegex.Matches(text))
+    //     {
+    //         string emotion = match.Groups[1].Value.Trim();
+    //         TriggerEmotion(emotion);
+    //     }
 
-        string cleaned = emotionRegex.Replace(text, "").Trim();
+    //     string cleaned = emotionRegex.Replace(text, "").Trim();
 
-        fragmentQueue.Clear();
-        currentFragmentIndex = 0;
+    //     fragmentQueue.Clear();
+    //     currentFragmentIndex = 0;
 
-        var fragments = Regex.Split(cleaned, @"(?<=[\.!?])\s+");
-        foreach (var frag in fragments)
-            if (!string.IsNullOrWhiteSpace(frag))
-                fragmentQueue.Add((frag.Trim(), null));
+    //     var fragments = Regex.Split(cleaned, @"(?<=[\.!?])\s+");
+    //     foreach (var frag in fragments)
+    //         if (!string.IsNullOrWhiteSpace(frag))
+    //             fragmentQueue.Add((frag.Trim(), null));
 
-        PlayNextFragment();
-    }
+    //     PlayNextFragment();
+    // }
 
     private void TriggerEmotion(string key)
     {
@@ -327,19 +364,19 @@ public class ChatGPTManager : MonoBehaviour
             }
     }
 
-    private void PlayNextFragment()
-    {
-        if (currentFragmentIndex >= fragmentQueue.Count) return;
+    // private void PlayNextFragment()
+    // {
+    //     if (currentFragmentIndex >= fragmentQueue.Count) return;
 
-        var (text, emotion) = fragmentQueue[currentFragmentIndex];
+    //     var (text, emotion) = fragmentQueue[currentFragmentIndex];
 
-        if (!string.IsNullOrEmpty(emotion))
-            TriggerEmotion(emotion);
+    //     if (!string.IsNullOrEmpty(emotion))
+    //         TriggerEmotion(emotion);
 
 
-        SpeakWithOpenAITTS(text);
-        currentFragmentIndex++;
-    }
+    //     SpeakWithOpenAITTS(text);
+    //     currentFragmentIndex++;
+    // }
 
     // Extraer texto entre patrones más robusto
     private string ExtractBetween(string input, string pattern, RegexOptions options = RegexOptions.Singleline)
@@ -364,18 +401,22 @@ public class ChatGPTManager : MonoBehaviour
 
         Voz.clip = clip;
         Voz.Play();
-        StartCoroutine(WaitForAudioToEnd());
+
+        // Nos aseguramos de que el thinking se oculte y el texto se muestre al iniciar el audio
+        HideThinking();
+        ShowResponse(TextToShow);
+        // StartCoroutine(WaitForAudioToEnd());
     }
 
-    private IEnumerator WaitForAudioToEnd()
-    {
-        // Espera a que termine el audio
-        while (Voz.isPlaying)
-            yield return null;
+    // private IEnumerator WaitForAudioToEnd()
+    // {
+    //     // Espera a que termine el audio
+    //     while (Voz.isPlaying)
+    //         yield return null;
 
-        // Cuando termina, reproduce el siguiente fragmento si hay
-        PlayNextFragment();
-    }
+    //     // Cuando termina, reproduce el siguiente fragmento si hay
+    //     PlayNextFragment();
+    // }
 
     public string buildActionInstruction()
     {
@@ -401,6 +442,7 @@ public class ChatGPTManager : MonoBehaviour
             $"Lo adivine. Recuerda siempre hablarme en ingles. Tus respuestas posibles son 'yes', 'no' o 'I can't tell'. Recuerda que eres {CurrentRole}. \n" +
             "Recuerda que solo me puedes responder yes, no o i can't tell. YO no elijo ningun personaje, solo tu, asi funciona esta interaccion. \n" +
             " \n";
+            
         }
         else
             if (!CurrentRole.IsNullOrEmpty())
@@ -408,20 +450,13 @@ public class ChatGPTManager : MonoBehaviour
             "que te indique lo contrario. Trata de que a partir de ahora las conversaciones ronden a tu personaje o se relacionen a el. Por ejemplo \n" +
             "puedes preguntar 'que mas quieres saber de mi?' \n";
 
+            else
+            roleplayInstruction = "";
+
         if (!string.IsNullOrEmpty(CurrentRole) || isGuessWho)
         {
             return
             isGuessWhoActive + roleplayInstruction;
-            // "Adicional a eso, recuerda que funcionas como " + personalidadActual.PromptPersonalidad + "\n\n" +
-            // "La forma en la que regresas las respuestaas debe ser la siguiente: \n\n" + personalidadActual.entregaDeRespuesta + "\n\n" +
-            // "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
-            // "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
-            // "También quiero que respondas con estos valores de voz: " + personalidadActual.Voz + "\n\n" +
-            // "Tono: " + personalidadActual.Tono + "\n\n" +
-            // "Estilo de Entrega: " + personalidadActual.EstiloDeEntrega + "\n\n" +
-            // "pronunciacion: " + personalidadActual.Pronunciacion + "\n\n" +
-            // " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
-            // "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
         }
         else
         {
@@ -432,7 +467,8 @@ public class ChatGPTManager : MonoBehaviour
             "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
             "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
             " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
-            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc.";
+            "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc. \n\n" +
+            "En la escena tienes esto:\n" + scene + "\n\n";
         }
     }
 
@@ -538,15 +574,6 @@ public class ChatGPTManager : MonoBehaviour
     {
         string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt +
         "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
-        // " Jamas olvides tus parametros de informacion: " + info + " y " + scene + " y " + extraInstruction;
-
-        // usar gpt-image-1 es inviable debido al costo y poca documentacion del mismo.
-        // ImageGenerationOptions options = new()
-        // {
-        //     Quality = GeneratedImageQuality.High,
-        //     Size = GeneratedImageSize.W1792xH1024,
-        //     Style = GeneratedImageStyle.Vivid
-        // };
 
         GeneratedImage image = await imageClient.GenerateImageAsync(completeImagePrompt);
 
