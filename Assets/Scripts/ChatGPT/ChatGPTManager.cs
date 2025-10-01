@@ -149,7 +149,7 @@ public class ChatGPTManager : MonoBehaviour
 
         systemMessage = new SystemChatMessage(BuildFullSystemPrompt());
 
-        Debug.Log("mensaje inicial:" + systemMessage.Content[0].Text);
+        // Debug.Log("mensaje inicial:" + systemMessage.Content[0].Text);
 
         messages.Add(new UserChatMessage(newText));
 
@@ -160,13 +160,16 @@ public class ChatGPTManager : MonoBehaviour
         if (response == null) return;
 
         string raw = response.Value.Content[0].Text;
-        Debug.Log("mensaje raw" + raw);
+        // Debug.Log("mensaje raw" + raw);
 
         // Limpia los marcadores de emoción
         var emotionRegex = new Regex(@"\[(?:EMOCIÓN|EMOCION|EMOTION):\s*(.*?)\]", RegexOptions.IgnoreCase);
         if (!emotionRegex.IsMatch(raw))
         {
             var (textComplete, voiceComplete) = textHandler(raw);
+
+            // Debug.Log("Texto para pantalla: " + textComplete);
+            // Debug.Log("Texto para voz: " + voiceComplete);
 
             TextToShow = textComplete;
 
@@ -219,12 +222,17 @@ public class ChatGPTManager : MonoBehaviour
         // Primero revisemos regex de emocion
         var written = ExtractBetween(text, @"\*\*ESCRITA:\*\*\s*(.+?)(?=\r?\n\*\*VOZ:\*\*|\z)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
         var voiceOnly = ExtractBetween(text, @"\*\*VOZ:\*\*\s*(.+)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+        
+        // Si no encontramos marcas explícitas de ESCRITA y VOZ, usar todo el texto
         if (string.IsNullOrWhiteSpace(written) && string.IsNullOrWhiteSpace(voiceOnly))
         {
-            var parts = text.Split(new string[] { "\n\n" }, 2, System.StringSplitOptions.None);
-            written = parts.Length > 0 ? parts[0].Trim() : text.Trim();
-            voiceOnly = parts.Length > 1 ? parts[1].Trim() : written;
+            // Limpiar el texto completo preservando saltos de línea
+            string cleanText = text.Trim(' ', '\t');
+            written = cleanText;
+            voiceOnly = cleanText;
         }
+        
+        // Fallback: si voiceOnly está vacío, usar written
         if (string.IsNullOrWhiteSpace(voiceOnly))
             voiceOnly = written;
         
@@ -246,7 +254,12 @@ public class ChatGPTManager : MonoBehaviour
     private string ExtractBetween(string input, string pattern, RegexOptions options = RegexOptions.Singleline)
     {
         var match = Regex.Match(input, pattern, options);
-        return match.Success ? match.Groups[1].Value.Trim() : null;
+        if (match.Success)
+        {
+            // Solo eliminamos espacios del inicio y final, pero preservamos saltos de línea internos
+            return match.Groups[1].Value.Trim(' ', '\t');
+        }
+        return null;
     }
 
 
@@ -500,7 +513,6 @@ public class ChatGPTManager : MonoBehaviour
     };
     #pragma warning restore
 
-    Debug.Log("Instrucciones TTS: " + texto);
     BinaryData speech = await audioClient.GenerateSpeechAsync(
         texto,
         voice,
