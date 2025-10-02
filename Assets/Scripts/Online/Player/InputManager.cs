@@ -53,8 +53,8 @@ public class InputManager : SimulationBehaviour, IBeforeUpdate, INetworkRunnerCa
 
         if (keyboard != null)
         {
-            if (keyboard.rKey.wasPressedThisFrame && localplayer != null)
-                localplayer.RPC_SetReady();
+            //if (keyboard.rKey.wasPressedThisFrame && localplayer != null)
+            //    localplayer.RPC_SetReady();
 
             Vector2 moveDirection = Vector2.zero;
 

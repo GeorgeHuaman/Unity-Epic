@@ -12,7 +12,7 @@ public class AnimationController : MonoBehaviour
     private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
 
     private RuntimeAnimatorController runtimeAnimator;
-    private GameObject avatar;
+    [HideInInspector] public GameObject avatar;
     private PlayerFusion playerFusion;
     private Animator animator;
     private bool inputEnabled = true;

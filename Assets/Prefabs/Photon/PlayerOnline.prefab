@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 9179669097630140293}
   - component: {fileID: 7783425608043168326}
   - component: {fileID: 1556311493984298459}
+  - component: {fileID: 7199319334881070292}
   m_Layer: 0
   m_Name: PlayerOnline
   m_TagString: Untagged
@@ -244,6 +245,8 @@ MonoBehaviour:
   haveDoubleJump: 1
   isReady: 1
   _name: 
+  teleportSpeedMultiplier: 200
+  stopDistance: 4
   animationController: {fileID: 9179669097630140293}
 --- !u!114 &9179669097630140293
 MonoBehaviour:
@@ -257,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02ab792edbb2db4d8c352717ef48265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatar: {fileID: 0}
 --- !u!114 &7783425608043168326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +283,7 @@ MonoBehaviour:
     ColliderLayer: 10
     CollisionLayerMask:
       serializedVersion: 2
-      m_Bits: 1025
+      m_Bits: 1153
     Features: -1
     InputAuthorityBehavior: 0
     StateAuthorityBehavior: 0
@@ -314,6 +318,20 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: bea63b6083163f247878bb28fe8da8be, type: 2}
   loadOnStart: 1
   previewAvatar: {fileID: 0}
+--- !u!114 &7199319334881070292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112791931917135453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4518e03f7998114b8529f35b54f5896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationController: {fileID: 9179669097630140293}
+  model: {fileID: 0}
 --- !u!1 &144743215154660154
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using TMPro;
 using UnityEngine;
 
@@ -24,9 +25,13 @@ public class UIManager : MonoBehaviour
     }
 
     private static UIManager _singleton;
+    [Header("ScreenLoad")]
+    public GameObject p_ScreenLoad;
+    [Space]
     [SerializeField] private TextMeshProUGUI gameStateText;
     [SerializeField] private TextMeshProUGUI instructionText;
     [SerializeField] private LeaderBoardItem[] leaderBoardItems;
+
 
     private void Awake()
     {
@@ -74,6 +79,11 @@ public class UIManager : MonoBehaviour
 
             }
         }
+    }
+
+    public void ScreenLoadActive(bool active)
+    {
+        p_ScreenLoad.GetComponent<Animator>().SetBool("Screen",active);
     }
     [Serializable]
     public struct LeaderBoardItem
