@@ -31,6 +31,7 @@ public class ManagerInteractuable : MonoBehaviour
 
     public void DistribuidEmptyPlayer()
     {
+        Debug.Log("wwwwwww");
         for (int i = 0; i < interactables.Count; i++)
         {
             interactables[i].player = player;

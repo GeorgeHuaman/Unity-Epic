@@ -61,6 +61,7 @@ public class TPCentralOnline : MonoBehaviour
         {
             Debug.Log($"[TPCentralOnline] Teleportando a TEMAS - Posición: {temas.position}");
             localPlayer.RequestTeleport(temas.position, temas.rotation);
+            StartCoroutine(WaitAndOpenMap());
         }
         else
         {
@@ -77,6 +78,7 @@ public class TPCentralOnline : MonoBehaviour
         {
             Debug.Log($"[TPCentralOnline] Teleportando a CENTRO IA - Posición: {centroIA.position}");
             localPlayer.RequestTeleport(centroIA.position, centroIA.rotation);
+            StartCoroutine(WaitAndOpenMap());
         }
         else
         {
@@ -93,6 +95,7 @@ public class TPCentralOnline : MonoBehaviour
         {
             Debug.Log($"[TPCentralOnline] Teleportando a CENTRO - Posición: {centro.position}");
             localPlayer.RequestTeleport(centro.position, centro.rotation);
+            StartCoroutine(WaitAndOpenMap());
         }
         else
         {
@@ -109,6 +112,7 @@ public class TPCentralOnline : MonoBehaviour
         {
             Debug.Log($"[TPCentralOnline] Teleportando a CINE - Posición: {cine.position}");
             localPlayer.RequestTeleport(cine.position, cine.rotation);
+            StartCoroutine(WaitAndOpenMap());
         }
         else
         {
@@ -137,6 +141,11 @@ public class TPCentralOnline : MonoBehaviour
             Debug.LogWarning("[TPCentralOnline] Teleport genérico falló - Jugador: " + (localPlayer != null ? "OK" : "NULL") + 
                            " | Target: " + (targetTransform != null ? "OK" : "NULL"));
         }
+    }
+    private IEnumerator WaitAndOpenMap()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ButtonMapa();
     }
 }
 

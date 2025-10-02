@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Fusion;
 using Fusion.Addons.KCC;
 using ReadyPlayerMe.Samples.QuickStart;
@@ -16,7 +17,6 @@ public class PlayerFusion : NetworkBehaviour
     [SerializeField] private Vector3 jumpImpulse = new(0f,10f, 0f);
     [SerializeField] private float doubleJumpMultiplier = 0.75f;
     [SerializeField] private bool haveDoubleJump = true;
-    [SerializeField] private float teleportSpeedMultiplier = 200f; // Velocidad del teleport (ajustable desde inspector)
 
     public double score => Math.Round(transform.position.y, 1);
     public bool isReady = true;
@@ -33,11 +33,21 @@ public class PlayerFusion : NetworkBehaviour
     private Vector2 baseLookRotation;
     private float verticalVelocity;
 
+    // --- Referencias/cache ---
+    Rigidbody rb;
+    Collider[] cachedColliders;
+    bool[] cachedColliderStates;
+    bool collidersDisabledForTeleport = false;
+    // --- Ajustables ---
+    [SerializeField] private float teleportSpeedMultiplier = 200f; // Velocidad del teleport (ajustable desde inspector)
+    public float stopDistance = 4f;
     [SerializeField] private AnimationController animationController;
     public override void Spawned()
     {
         if(HasInputAuthority)
         {
+            rb = GetComponent<Rigidbody>();
+
             foreach (MeshRenderer render in modelParts) 
                 render.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 
@@ -45,88 +55,68 @@ public class PlayerFusion : NetworkBehaviour
             inputManager.localplayer = this;
             name = PlayerPrefs.GetString("Photon.Menu.Username");
             RPC_PlayerName(name);
+            cachedColliders = GetComponentsInChildren<Collider>(true);
+            cachedColliderStates = cachedColliders.Select(c => c.enabled).ToArray();
             CameraFollow.singleton.SetTarget(camTarget);
             ManagerInteractuable._singleton.player = this.gameObject;
             ManagerInteractuable._singleton.DistribuidEmptyPlayer();
         }
     }
-
     public override void FixedUpdateNetwork()
     {
-        // Si estamos teleportando, usar movimiento directo con KCC activo
         if (isTeleporting)
         {
+            
             Vector3 currentPosition = transform.position;
-            Vector3 direction = (teleportPosition - currentPosition).normalized;
-            float distance = Vector3.Distance(currentPosition, teleportPosition);
-            
-            Debug.Log($"[TELEPORT] Teleport directo con KCC activo - Distancia: {distance:F2} para {name}");
-            
-            // Si estamos muy cerca del destino, completar el teleport
-            if (distance < 4.0f)
+            Vector3 toTarget = teleportPosition - currentPosition;
+            float distance = toTarget.magnitude;
+            Vector3 direction = toTarget.normalized;
+
+
+            if (distance < stopDistance)
             {
-                // Establecer la posición exacta
-                transform.position = teleportPosition;
-                transform.rotation = teleportRotation;
-                
-                // Asegurar que el Rigidbody también esté en la posición correcta
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.position = teleportPosition;
-                    rb.rotation = teleportRotation;
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                }
-                
-                // Detener cualquier movimiento del KCC
+                UIManager.singleton.ScreenLoadActive(false);
+                ComponentPlayerOnline.singleton.ModelIsActive(true);
+                // --- Teleport finalizado ---
                 if (kcc != null)
                 {
                     kcc.SetInputDirection(Vector3.zero);
                 }
-                
+                else
+                {
+                    transform.position = teleportPosition;
+                    transform.rotation = teleportRotation;
+                }
+
                 isTeleporting = false;
-                Debug.Log($"[TELEPORT] Teleport completado para {name} en posición: {teleportPosition}");
+                return;
             }
-            else
+
+            // --- Movimiento usando únicamente el inputDirection del KCC ---
+            if (kcc != null)
             {
-                // Mover directamente hacia el destino con velocidad real (KCC permanece activo)
-                Vector3 movement = direction * teleportSpeedMultiplier * Runner.DeltaTime;
-                transform.position += movement;
-                
-                // También actualizar el Rigidbody para sincronización
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.position = transform.position;
-                    rb.velocity = direction * teleportSpeedMultiplier;
-                }
-                
-                // Rotar hacia la dirección destino
-                if (direction != Vector3.zero)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Runner.DeltaTime);
-                }
-                
-                // Detener cualquier input del KCC para evitar interferencias
-                if (kcc != null)
-                {
-                    kcc.SetInputDirection(Vector3.zero);
-                }
-                
-                Debug.Log($"Distancia: {distance}");
-                Debug.Log($"[TELEPORT] Movimiento directo aplicado: {movement} (velocidad real: {teleportSpeedMultiplier}) con KCC activo para {name}");
+                UIManager.singleton.ScreenLoadActive(true);
+                ComponentPlayerOnline.singleton.ModelIsActive(false);
+                // El KCC normalmente espera dirección normalizada (0..1)
+                Vector3 inputDir = new Vector3(direction.x, 0f, direction.z).normalized;
+                kcc.SetInputDirection(inputDir * teleportSpeedMultiplier);
             }
-            
+
+            // Rotar mirando al destino
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Runner.DeltaTime);
+            }
+
             return;
         }
 
+        // --- flujo normal ---
         if (GetInput(out NetInput input))
         {
             CheckJump(input);
             kcc.AddLookRotation(input.lookDelta * sensibility, -maxPitch, maxPitch);
-
             SetInputDirection(input);
             previousButtons = input.Buttons;
             baseLookRotation = kcc.GetLookRotation();
@@ -135,14 +125,13 @@ public class PlayerFusion : NetworkBehaviour
         if (kcc.FixedData.IsGrounded)
             haveDoubleJump = true;
     }
-
-    [Rpc(RpcSources.InputAuthority,RpcTargets.StateAuthority | RpcTargets.InputAuthority)]
-    public void RPC_SetReady()
-    {
-        isReady = true;
-        if (HasInputAuthority)
-            UIManager.singleton.DidSetReady();
-    }
+    //[Rpc(RpcSources.InputAuthority,RpcTargets.StateAuthority | RpcTargets.InputAuthority)]
+    //public void RPC_SetReady()
+    //{
+    //    isReady = true;
+    //    if (HasInputAuthority)
+    //        UIManager.singleton.DidSetReady();
+    //}
     public override void Render()
     {
         Vector2 lookToRender;
