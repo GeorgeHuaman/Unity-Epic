@@ -16,7 +16,7 @@ public class Pedestal_Tema8 : MonoBehaviour
     public bool yellow = false;
     public bool blue = false;
     public bool green = false;
-
+    public Interactable interactable;
     private void Start()
     {
         confirm = ConfirmPedestal.instance;
@@ -28,6 +28,7 @@ public class Pedestal_Tema8 : MonoBehaviour
         correct.SetActive(true);
         finish = true;
         letter.SetActive(true);
+        interactable.Disable();
         gameObject.GetComponent<Pedestal_Tema8>().enabled = false;
         if (red)
         { 
