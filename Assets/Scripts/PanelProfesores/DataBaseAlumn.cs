@@ -27,8 +27,8 @@ public class DataBaseAlumn : MonoBehaviour
     private void Start()
     {
         CreateButtonAlumn = CreateButtonAlumn.Instance;
-        if(ProgressLevelSystem.instance.currentLevelVersion != null)
-        UserSession.Instance.VerifyRol();
+        //if(ProgressLevelSystem.instance.currentLevelVersion != null)
+        //UserSession.Instance.VerifyRol(); Funciones para saber si es alumno o profe para el panel de informacion
     }
     public void CreateList()
     {

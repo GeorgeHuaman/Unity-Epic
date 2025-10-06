@@ -72,8 +72,8 @@ public class Mission : MonoBehaviour
 
         task.StartTask();
         task.CompleteTask();
-        Debug.Log(progressLevelSystem.name);
-        progressLevelSystem.UpdatePercentage(this.tasks[taskId].percentage);
+        //Debug.Log(progressLevelSystem.name); Sirve para subir porcentaje al excel
+        //progressLevelSystem.UpdatePercentage(this.tasks[taskId].percentage);
         TryStartNextTask();
 
         if (!completed && tasks.TrueForAll(t => t.completed))
