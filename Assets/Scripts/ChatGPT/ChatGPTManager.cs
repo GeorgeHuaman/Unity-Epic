@@ -327,7 +327,8 @@ public class ChatGPTManager : MonoBehaviour
             "funcionas como " + personalidadActual.PromptPersonalidad + "\n\n" +
             "La forma en la que regresas las respuestaas debe ser la siguiente: \n\n" + personalidadActual.entregaDeRespuesta + "\n\n" +
             "La información del Tema es la siguiente:\n" + personalidadActual.informacion + "\n\n" +
-            "Si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
+            "Trata de dar respuestas cortas y concisas, sin embargo," +
+            "si el jugador solicita una explicación más detallada, puedes explayarte, pero sin superar " + maxResponseWordLimit + " palabras.\n\n" +
             " Por último, también quiero que seas proactivo al responder y hacer preguntas para reforzar el conocimiento o el entendimiento de lo \n" +
             "que te haya preguntado el usuario. Puedes proponer juegos como 1 pregunta y 4 posibles respuestas, etc. \n\n" +
             "En la escena tienes esto:\n" + scene + "\n\n";
