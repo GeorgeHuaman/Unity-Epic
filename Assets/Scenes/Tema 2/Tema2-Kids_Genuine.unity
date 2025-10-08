@@ -530,7 +530,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
+      objectReference: {fileID: 243599824091497972, guid: 89ef2123a31ebe547959c299198012c1,
         type: 2}
     - target: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
         type: 3}
@@ -610,6 +610,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 150228849}
+    - targetCorrespondingSourceObject: {fileID: 6686206527220944715, guid: 20f766c90df86a540bfda5770efc8dd8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 150228851}
   m_SourcePrefab: {fileID: 100100000, guid: 20f766c90df86a540bfda5770efc8dd8, type: 3}
 --- !u!1 &150228847 stripped
 GameObject:
@@ -645,9 +649,9 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 150228848}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 150228851}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -667,6 +671,26 @@ MonoBehaviour:
     type: 3}
   interactButton: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!114 &150228851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150228847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 9f68f053a50b87d4f8cb5f1a2df35c5d, type: 3}
+    text: 
+  audioSource: {fileID: 150228848}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 476920182}
 --- !u!1001 &214174280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2148,6 +2172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 476920181}
+  - component: {fileID: 476920182}
   m_Layer: 0
   m_Name: Estrellas
   m_TagString: Untagged
@@ -2172,9 +2197,30 @@ Transform:
   - {fileID: 952180957}
   - {fileID: 1055659160}
   - {fileID: 556197245}
-  - {fileID: 576537976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476920182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476920180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c7fb0b03f79704cb7f5a1f52f23468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcs:
+  - {fileID: 1252056618}
+  - {fileID: 1903170347}
+  - {fileID: 150228851}
+  - {fileID: 1133989059}
+  sources:
+  - {fileID: 1252056615}
+  - {fileID: 1903170344}
+  - {fileID: 150228848}
+  - {fileID: 1133989056}
 --- !u!1 &516126601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,12 +3232,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
     type: 3}
   m_PrefabInstance: {fileID: 1133989054}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &576537976 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1552423136}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &783042739
 PrefabInstance:
@@ -4951,7 +4991,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
+      objectReference: {fileID: 243599824091497972, guid: 89ef2123a31ebe547959c299198012c1,
         type: 2}
     - target: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
         type: 3}
@@ -5031,6 +5071,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1133989057}
+    - targetCorrespondingSourceObject: {fileID: 6686206527220944715, guid: 20f766c90df86a540bfda5770efc8dd8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1133989059}
   m_SourcePrefab: {fileID: 100100000, guid: 20f766c90df86a540bfda5770efc8dd8, type: 3}
 --- !u!1 &1133989055 stripped
 GameObject:
@@ -5066,9 +5110,9 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1133989056}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 1133989059}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5084,9 +5128,30 @@ MonoBehaviour:
   onExitEvent:
     m_PersistentCalls:
       m_Calls: []
-  prefabCanvasButton: {fileID: 0}
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
   interactButton: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!114 &1133989059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133989055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: e6b4ee056bc57a14a9fc9b36d3d68177, type: 3}
+    text: 
+  audioSource: {fileID: 1133989056}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 476920182}
 --- !u!1 &1146253933
 GameObject:
   m_ObjectHideFlags: 0
@@ -5398,6 +5463,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
         type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243599824091497972, guid: 89ef2123a31ebe547959c299198012c1,
+        type: 2}
+    - target: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
+        type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
@@ -5469,6 +5540,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1252056616}
+    - targetCorrespondingSourceObject: {fileID: 6686206527220944715, guid: 20f766c90df86a540bfda5770efc8dd8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1252056618}
   m_SourcePrefab: {fileID: 100100000, guid: 20f766c90df86a540bfda5770efc8dd8, type: 3}
 --- !u!1 &1252056614 stripped
 GameObject:
@@ -5504,9 +5579,9 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1252056615}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 1252056618}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5526,6 +5601,26 @@ MonoBehaviour:
     type: 3}
   interactButton: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!114 &1252056618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252056614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: d1d12ec7ebbc2704f85ab5cecf4a3f19, type: 3}
+    text: 
+  audioSource: {fileID: 1252056615}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 476920182}
 --- !u!1001 &1375968643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5948,143 +6043,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1523051060}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1552423136
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 476920181}
-    m_Modifications:
-    - target: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 493897866279252199, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.093
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047876635615874819, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387669346251216313, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      propertyPath: m_Name
-      value: gold star (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6686206527220944715, guid: 20f766c90df86a540bfda5770efc8dd8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1552423139}
-  m_SourcePrefab: {fileID: 100100000, guid: 20f766c90df86a540bfda5770efc8dd8, type: 3}
---- !u!1 &1552423137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6686206527220944715, guid: 20f766c90df86a540bfda5770efc8dd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1552423136}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1552423138 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1552423136}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1552423139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552423137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactableID: 
-  interactableRadius: 2.5
-  interactableRadiusVisibility: 5
-  player: {fileID: 0}
-  inputButton: 0
-  animator: {fileID: 0}
-  iconType: 0
-  onEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1552423138}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onAnimEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  prefabCanvasButton: {fileID: 0}
-  interactButton: {fileID: 0}
-  buttonParent: {fileID: 0}
 --- !u!1 &1586652769
 GameObject:
   m_ObjectHideFlags: 0
@@ -6948,7 +6906,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 243825205954821534, guid: 89ef2123a31ebe547959c299198012c1,
+      objectReference: {fileID: 243599824091497972, guid: 89ef2123a31ebe547959c299198012c1,
         type: 2}
     - target: {fileID: 243041930769452999, guid: 20f766c90df86a540bfda5770efc8dd8,
         type: 3}
@@ -7028,6 +6986,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1903170345}
+    - targetCorrespondingSourceObject: {fileID: 6686206527220944715, guid: 20f766c90df86a540bfda5770efc8dd8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1903170347}
   m_SourcePrefab: {fileID: 100100000, guid: 20f766c90df86a540bfda5770efc8dd8, type: 3}
 --- !u!1 &1903170343 stripped
 GameObject:
@@ -7063,9 +7025,9 @@ MonoBehaviour:
   onEnterEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1903170344}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 1903170347}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: Audio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7085,6 +7047,26 @@ MonoBehaviour:
     type: 3}
   interactButton: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!114 &1903170347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903170343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857bab03a42e9194c99fb04250f3cb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: 0
+  lineasDeDialogo:
+  - clip: {fileID: 8300000, guid: 6c07f1a9a4dcebf418f2753d0defb2dc, type: 3}
+    text: 
+  audioSource: {fileID: 1903170344}
+  player: {fileID: 0}
+  delayEntreLineas: 1
+  controller: {fileID: 476920182}
 --- !u!1001 &1936681267
 PrefabInstance:
   m_ObjectHideFlags: 0
