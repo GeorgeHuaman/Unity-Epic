@@ -21,11 +21,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_AmbientEquatorColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+  m_AmbientGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_AmbientIntensity: 0.6
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: af2d2a2a660be874c90136ad895499ba, type: 2}
   m_HaloStrength: 0.5
@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: f5bf1ce7817af1f47bf87d99734db8d8,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: dcdcf05dff529644eb7b381a5ad04ecf,
     type: 2}
 --- !u!196 &4
@@ -258,6 +257,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2140347866}
         m_TargetAssemblyTypeName: Return, Assembly-CSharp
         m_MethodName: Data
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6269915}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2470,7 +2481,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8018868, g: 0.79164755, b: 0.631675, a: 1}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2510,12 +2521,12 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 4164
-  m_UseColorTemperature: 1
+  m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -2952,6 +2963,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1522285402}
         m_TargetAssemblyTypeName: Return, Assembly-CSharp
         m_MethodName: Data
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 267081693}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4442,6 +4465,7 @@ MonoBehaviour:
   yellow: 0
   blue: 0
   green: 1
+  interactable: {fileID: 59552021}
 --- !u!1 &464018238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6782131213954659307, guid: a9cdcbb21c79f4e45b0e8099be69291f,
@@ -8789,6 +8813,18 @@ MonoBehaviour:
       - m_Target: {fileID: 182090878}
         m_TargetAssemblyTypeName: Return, Assembly-CSharp
         m_MethodName: Data
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 856266810}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19942,15 +19978,14 @@ PrefabInstance:
     - {fileID: 3351212683194501809, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 1187369398221220820, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 0}
-    - {fileID: 5355426709098919474, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 1656127638770365202, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 1656127638770365200, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 966363894702974837, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 966363894702974843, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 1503653754863005248, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 1503653754863005254, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 8514005414844291323, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 8514005414844291317, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 5355426710111965736, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 5355426710249575837, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 5355426708504002224, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
@@ -19968,23 +20003,23 @@ PrefabInstance:
     - {fileID: 5355426709686141595, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 5355426710188020497, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
     - {fileID: 5355426710061983651, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 6782131213473526181, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 8019232722102022054, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 8019232722098487766, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 424328484712024089, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 424328483894391676, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 424328485777713557, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 9090929472281005232, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 9090929472186345955, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 9090929470672505347, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 5283134545408828087, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 5283134545769871874, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 5283134545720151466, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 6782131213069731905, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 6782131212320907931, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 6782131214248919842, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 6782131212619275367, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
-    - {fileID: 424328485245666458, guid: a9cdcbb21c79f4e45b0e8099be69291f, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6454855748047721705, guid: a9cdcbb21c79f4e45b0e8099be69291f,
@@ -20195,6 +20230,7 @@ MonoBehaviour:
   yellow: 1
   blue: 0
   green: 0
+  interactable: {fileID: 1262288991}
 --- !u!114 &1643555697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20219,6 +20255,7 @@ MonoBehaviour:
   yellow: 0
   blue: 0
   green: 0
+  interactable: {fileID: 859324250}
 --- !u!114 &1643555698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20243,6 +20280,7 @@ MonoBehaviour:
   yellow: 0
   blue: 1
   green: 0
+  interactable: {fileID: 1185448732}
 --- !u!1 &1647658412
 GameObject:
   m_ObjectHideFlags: 0
@@ -20512,6 +20550,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1880136742}
         m_TargetAssemblyTypeName: Return, Assembly-CSharp
         m_MethodName: Data
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1680855078}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

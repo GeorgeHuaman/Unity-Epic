@@ -18,8 +18,8 @@ public class Rotate : MonoBehaviour
     void Update()
     {
         if(z)
-        transform.Rotate(0, 0, +1f);
+        transform.Rotate(0, 0, +0.5f);
         if(y)
-            transform.Rotate(0, +1f,0f);
+            transform.Rotate(0, +0.5f,0f);
     }
 }
