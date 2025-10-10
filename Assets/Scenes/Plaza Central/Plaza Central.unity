@@ -2477,9 +2477,34 @@ PrefabInstance:
       objectReference: {fileID: 1410540119}
     - target: {fileID: 8767690110359646035, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767690110359646035, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767690110359646035, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 185253940}
+    - target: {fileID: 8767690110359646035, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1198338469}
+    - target: {fileID: 8767690110359646035, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767690110359646035, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ManagerPanelCentral, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8891287765519801691, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2504,7 +2529,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 4
       addedObject: {fileID: 514771161}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 657109144534415011, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 185253940}
   m_SourcePrefab: {fileID: 100100000, guid: f04879c0abd63e649b9af47253168996, type: 3}
 --- !u!1 &185253937 stripped
 GameObject:
@@ -2518,6 +2547,30 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 185253936}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &185253939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 657109144534415011, guid: f04879c0abd63e649b9af47253168996,
+    type: 3}
+  m_PrefabInstance: {fileID: 185253936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &185253940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185253939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b4f3d6ba6109844ab629c3414a964a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  central: {fileID: 514771160}
+  temas:
+  - {fileID: 276829271}
+  - {fileID: 859789726}
+  - {fileID: 626524714}
+  - {fileID: 1211324444}
 --- !u!1001 &220908579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11363,22 +11416,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859789726}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1198338469}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetIsCanvasOpen
-        m_Mode: 6
+      - m_Target: {fileID: 185253940}
+        m_TargetAssemblyTypeName: ManagerPanelCentral, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11508,22 +11549,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1211324444}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1198338469}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetIsCanvasOpen
-        m_Mode: 6
+      - m_Target: {fileID: 185253940}
+        m_TargetAssemblyTypeName: ManagerPanelCentral, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15492,22 +15521,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 626524714}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1198338469}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetIsCanvasOpen
-        m_Mode: 6
+      - m_Target: {fileID: 185253940}
+        m_TargetAssemblyTypeName: ManagerPanelCentral, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26128,10 +26145,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 514771160}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 185253940}
+        m_TargetAssemblyTypeName: ManagerPanelCentral, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
