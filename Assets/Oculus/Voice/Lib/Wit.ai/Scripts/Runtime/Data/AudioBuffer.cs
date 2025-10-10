@@ -19,17 +19,26 @@ namespace Meta.WitAi.Data
     {
         #region Singleton
         private static AudioBuffer _instance;
+        private static bool applicationIsQuitting = false;
+
         public static AudioBuffer Instance
         {
             get
             {
+                if (applicationIsQuitting) return null;
+
                 if (!_instance && Application.isPlaying)
                 {
                     _instance = FindObjectOfType<AudioBuffer>();
                     if (!_instance)
                     {
+                        // Opción A: NO crear automáticamente — devolver null y forzar creación explícita
+                        // return null;
+
+                        // Opción B: Si quieres auto-crear, crear y marcar DontDestroyOnLoad
                         var audioBufferObject = new GameObject("AudioBuffer");
                         _instance = audioBufferObject.AddComponent<AudioBuffer>();
+                        DontDestroyOnLoad(audioBufferObject);
                     }
                 }
                 return _instance;
@@ -88,7 +97,16 @@ namespace Meta.WitAi.Data
 
         private void Awake()
         {
-            _instance = this;
+            if (_instance == null)
+            {
+                _instance = this;
+            }
+            else if (_instance != this)
+            {
+                // Evitar duplicados
+                Destroy(gameObject);
+                return;
+            }
 
             InitializeMicDataBuffer();
         }
@@ -106,6 +124,17 @@ namespace Meta.WitAi.Data
             MicInput.OnSampleReady -= OnMicSampleReady;
 
             if (alwaysRecording) StopRecording(this);
+        }
+        private void OnDestroy()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
+            }
+        }
+        private void OnApplicationQuit()
+        {
+            applicationIsQuitting = true;
         }
 
         // Callback for mic sample ready
