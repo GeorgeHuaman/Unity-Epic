@@ -50,11 +50,11 @@ public class GameTime : MonoBehaviour
         string celda = "H" + fila;
         GoogleSheetsAPI.instance.WriteDataFor(celda, celda, time);
     }
-    void OnApplicationQuit()
-    {
-        TimeSpan tiempo = TimeSpan.FromSeconds(tiempoInicial); 
-        string tiempoTexto = tiempo.ToString(@"hh\:mm\:ss");
-        UserSession.Instance.TimeGame(tiempoTexto);
-        SaveExcell(tiempoTexto);
-    }
+    //void OnApplicationQuit()
+    //{
+    //    TimeSpan tiempo = TimeSpan.FromSeconds(tiempoInicial); 
+    //    string tiempoTexto = tiempo.ToString(@"hh\:mm\:ss");
+    //    UserSession.Instance.TimeGame(tiempoTexto);
+    //    SaveExcell(tiempoTexto);
+    //}
 }

@@ -80,7 +80,7 @@ public class LoginManager : MonoBehaviour
         UserSession.Instance.cells = fullRow;
         onLoginSuccess?.Invoke();
         Debug.Log($"[LoginManager] Fila {sheetRowNum} cargada: {string.Join(", ", fullRow)}");
-        GameTime.instance.Init();
+        //GameTime.instance.Init();
         UserSession.Instance.VerifyRol();
         CreateInfoAlumn.Instance.UpdateInfo();
         UserSession.Instance.isLoged = true;
