@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public bool inputButton;
     public Animator animator;
     private float distance;
+    [SerializeField] private bool disable;
 
     public enum type
     {
@@ -121,6 +122,8 @@ public class Interactable : MonoBehaviour
         onEnterEvent?.Invoke();
         yield return null;
         onExitEvent?.Invoke();
+        if(disable)
+            Disable();
     }
     #region Animation
     public void SetAnimatorBoolTrue(string parameterName)
