@@ -53,7 +53,7 @@ public class ChatGPTManager : MonoBehaviour
 
     private AudioClient audioClient;
     private ChatClient chatClient;
-    private ImageClient imageClient;
+    // private ImageClient imageClient;
 
 
 
@@ -77,7 +77,7 @@ public class ChatGPTManager : MonoBehaviour
     {
         // Carga credenciales y modelos
         chatClient = new ChatClient(modeloTexto, getApiKey());
-        imageClient = new ImageClient(modeloImagen, getApiKey());
+        // imageClient = new ImageClient(modeloImagen, getApiKey());
         audioClient = new AudioClient(modeloVoz, getApiKey());
     }
 
@@ -93,7 +93,7 @@ public class ChatGPTManager : MonoBehaviour
         voiceToText.DictationEvents.OnFullTranscription.RemoveListener(AskChatGPT);
         // ttsSpeaker.Events.OnPlaybackComplete.RemoveListener(OnTTSPlaybackComplete);
         chatClient = null;
-        imageClient = null;
+        // imageClient = null;
         audioClient = null;
     }
     
@@ -136,14 +136,14 @@ public class ChatGPTManager : MonoBehaviour
 
         ShowThinking();
 
-        // Revisamos si se pide una imagen mediante regex
-        var imageMatch = Regex.Match(newText, @"\b(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\b\s+(.+)", RegexOptions.IgnoreCase);
-        if (imageMatch.Success)
-        {
-            string prompt = imageMatch.Groups[2].Value.Trim();
-            GenerateImageFromDalle(prompt);
-            return; // No sigas con el flujo de chat
-        }
+        // // Revisamos si se pide una imagen mediante regex
+        // var imageMatch = Regex.Match(newText, @"\b(genera una imagen de|dibuja|haz un dibujo de|create an image of|draw)\b\s+(.+)", RegexOptions.IgnoreCase);
+        // if (imageMatch.Success)
+        // {
+        //     string prompt = imageMatch.Groups[2].Value.Trim();
+        //     GenerateImageFromDalle(prompt);
+        //     return; // No sigas con el flujo de chat
+        // }
 
         DetectRoleplay(newText);
 
@@ -417,51 +417,55 @@ public class ChatGPTManager : MonoBehaviour
 
         En el Centro matematicas hay un RawImage llamado "DalleCanvas", ahi es donde podré las imágenes generadas
 
+        **UPDATE**
+        Debido a costos y que el modelo no cumple con el estándar, esta función se deshabilita hasta previo
+        aviso.
+
     */
-    [Header("Generación de imagenes")]
-    public string modeloImagen = "dall-e-3";
-    public UnityEngine.UI.RawImage DalleCanvas;
+    // [Header("Generación de imagenes")]
+    // public string modeloImagen = "dall-e-3";
+    // public UnityEngine.UI.RawImage DalleCanvas;
 
-    public async void GenerateImageFromDalle(string prompt)
-    {
-        string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt +
-        "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
+    // public async void GenerateImageFromDalle(string prompt)
+    // {
+    //     string completeImagePrompt = "quiero que hagas una imagen de esto: " + prompt +
+    //     "\n\n Siempre cumple con las politicas y jamás generes contenido no permitido.";
 
-        GeneratedImage image = await imageClient.GenerateImageAsync(completeImagePrompt);
+    //     GeneratedImage image = await imageClient.GenerateImageAsync(completeImagePrompt);
 
-        Debug.Log("Imagen generada: " + image);
+    //     Debug.Log("Imagen generada: " + image);
 
-        if (image != null)
-        {
-            Debug.Log("Imagen generada con éxito: " + image.ImageUri);
-            string imageUrl = image.ImageUri.ToString();
-            Debug.Log("URL de la imagen generada: " + imageUrl);
-            StartCoroutine(LoadImageFromUrl(imageUrl));
-        }
-        else
-        {
-            Debug.LogError("No se generó ninguna imagen.");
-        }
-    }
+    //     if (image != null)
+    //     {
+    //         Debug.Log("Imagen generada con éxito: " + image.ImageUri);
+    //         string imageUrl = image.ImageUri.ToString();
+    //         Debug.Log("URL de la imagen generada: " + imageUrl);
+    //         StartCoroutine(LoadImageFromUrl(imageUrl));
+    //     }
+    //     else
+    //     {
+    //         Debug.LogError("No se generó ninguna imagen.");
+    //     }
+    // }
 
-    private IEnumerator LoadImageFromUrl(string url)
-    {
-        using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestTexture.GetTexture(url))
-        {
-            yield return uwr.SendWebRequest();
-            if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Imagen descargada con éxito.");
-                Texture2D texture = UnityEngine.Networking.DownloadHandlerTexture.GetContent(uwr);
-                DalleCanvas.texture = texture;
-                DalleCanvas.color = Color.white; // Asegúrate de que la imagen sea visible
-            }
-            else
-            {
-                Debug.LogError("Error al descargar la imagen: " + uwr.error);
-            }
-        }
-    }
+    // private IEnumerator LoadImageFromUrl(string url)
+    // {
+    //     using (UnityEngine.Networking.UnityWebRequest uwr = UnityEngine.Networking.UnityWebRequestTexture.GetTexture(url))
+    //     {
+    //         yield return uwr.SendWebRequest();
+    //         if (uwr.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+    //         {
+    //             Debug.Log("Imagen descargada con éxito.");
+    //             Texture2D texture = UnityEngine.Networking.DownloadHandlerTexture.GetContent(uwr);
+    //             DalleCanvas.texture = texture;
+    //             DalleCanvas.color = Color.white; // Asegúrate de que la imagen sea visible
+    //         }
+    //         else
+    //         {
+    //             Debug.LogError("Error al descargar la imagen: " + uwr.error);
+    //         }
+    //     }
+    // }
 
 
 
