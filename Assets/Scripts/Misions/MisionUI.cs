@@ -19,6 +19,7 @@ public class MissionUI : MonoBehaviour
         }
         nameMisionText.text = ("Mision: " + mision.questName);
         descriptionMisionText.text = mision.description;
+        if(mision != null)
         ShowTaskText();
     }
 
@@ -37,5 +38,10 @@ public class MissionUI : MonoBehaviour
             Debug.Log("[MissionUI] Todas las tareas completadas.");
         }
 
+    }
+    public void AsingMission(Mission mission)
+    {
+        mision = mission;
+        ShowTaskText();
     }
 }
