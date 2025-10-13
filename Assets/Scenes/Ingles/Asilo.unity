@@ -579,6 +579,7 @@ Transform:
   - {fileID: 134730998}
   - {fileID: 472331642}
   - {fileID: 1729197270}
+  - {fileID: 932554149}
   - {fileID: 1186050089}
   m_Father: {fileID: 366126080}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -734,6 +735,83 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
+--- !u!1 &42435048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 42435049}
+  - component: {fileID: 42435050}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &42435049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42435048}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.236, y: 0.194, z: -0.057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1171100256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &42435050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42435048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -954,6 +1032,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f04aab73ae23bc45ae13ec96571d96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &66268918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66268919}
+  - component: {fileID: 66268920}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &66268919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66268918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000822, y: -0.001388, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 150616719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &66268920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66268918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1001 &67702553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,6 +1198,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 67702553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &69689019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69689020}
+  - component: {fileID: 69689021}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &69689020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69689019}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.074, y: 0.103, z: -0.124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 845072852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69689021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69689019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1001 &77430727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1993,7 +2225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ef507fb9517dc5646b35ef7c7581f903,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2128594013}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef507fb9517dc5646b35ef7c7581f903, type: 3}
 --- !u!4 &143917388 stripped
@@ -2002,6 +2238,160 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 143917387}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &145793408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145793409}
+  - component: {fileID: 145793410}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &145793409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145793408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00324, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1352888206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &145793410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145793408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
+--- !u!1 &147679713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147679714}
+  - component: {fileID: 147679715}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &147679714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147679713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.197, z: -0.414}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1673933807}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &147679715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147679713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1001 &150616718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2087,7 +2477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed03c6b82d4023b4c9c45e09770a0350,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 66268919}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed03c6b82d4023b4c9c45e09770a0350, type: 3}
 --- !u!4 &150616719 stripped
@@ -3453,6 +3847,7 @@ Transform:
   m_Children:
   - {fileID: 1820679388}
   - {fileID: 142215696}
+  - {fileID: 1694365351}
   m_Father: {fileID: 366126080}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &349923535
@@ -6678,6 +7073,83 @@ Transform:
   - {fileID: 28298242}
   m_Father: {fileID: 1839145751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &498724285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 498724286}
+  - component: {fileID: 498724287}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &498724286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498724285}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2052055400}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &498724287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498724285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &506098745
 GameObject:
   m_ObjectHideFlags: 0
@@ -9666,6 +10138,7 @@ Transform:
   - {fileID: 1241973945}
   - {fileID: 853717045}
   - {fileID: 56429100}
+  - {fileID: 69689020}
   m_Father: {fileID: 366126080}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &853717044
@@ -10525,6 +10998,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 924362796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &932554148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 932554149}
+  - component: {fileID: 932554150}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &932554149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932554148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0.00000019470718}
+  m_LocalPosition: {x: 3.961, y: 1.018, z: -4.7679996}
+  m_LocalScale: {x: 121.95093, y: 121.95093, z: 121.95093}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 28704252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &932554150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932554148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1 &933326705
 GameObject:
   m_ObjectHideFlags: 0
@@ -12367,7 +12917,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2dedfdceff8cf9741be43e1f1fae856f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1514906385}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dedfdceff8cf9741be43e1f1fae856f, type: 3}
 --- !u!4 &1144227418 stripped
@@ -12580,6 +13134,7 @@ Transform:
   - {fileID: 754069317}
   - {fileID: 562598436}
   - {fileID: 933326709}
+  - {fileID: 42435049}
   m_Father: {fileID: 366126080}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1186050088
@@ -13951,7 +14506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 41f5ed6c0905fb249a3ea6c1f59789de,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145793409}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41f5ed6c0905fb249a3ea6c1f59789de, type: 3}
 --- !u!4 &1352888206 stripped
@@ -15221,6 +15780,83 @@ Transform:
   - {fileID: 496718975}
   m_Father: {fileID: 1595678840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1514906384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1514906385}
+  - component: {fileID: 1514906386}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1514906385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514906384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -1.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1144227418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514906386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514906384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1001 &1537173723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17957,6 +18593,7 @@ Transform:
   - {fileID: 268676751}
   - {fileID: 1423461602}
   - {fileID: 1932148085}
+  - {fileID: 147679714}
   m_Father: {fileID: 366126080}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1681108999
@@ -18059,6 +18696,83 @@ MonoBehaviour:
   player: {fileID: 0}
   delayEntreLineas: 1
   controller: {fileID: 2077913247}
+--- !u!1 &1694365350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694365351}
+  - component: {fileID: 1694365352}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1694365351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694365350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.337, z: 0.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 295094177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1694365352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694365350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1001 &1706255462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22022,7 +22736,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b604f1eff5ad7d4d8561d43e9ca3aec,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 498724286}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b604f1eff5ad7d4d8561d43e9ca3aec, type: 3}
 --- !u!4 &2052055400 stripped
@@ -22739,6 +23457,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2110558037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2128594012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128594013}
+  - component: {fileID: 2128594014}
+  m_Layer: 0
+  m_Name: Interactuable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2128594013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128594012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0.0099}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 143917388}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2128594014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128594012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072043a3f6db25489035b29d26bfdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableID: 
+  interactableRadius: 1.37
+  interactableRadiusVisibility: 5
+  player: {fileID: 0}
+  inputButton: 0
+  animator: {fileID: 0}
+  disable: 1
+  iconType: 0
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615558032}
+        m_TargetAssemblyTypeName: Mission, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnimEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  prefabCanvasButton: {fileID: 6103281754865212874, guid: 14e6ecb50e8eeec48bc2ba269a0331ae,
+    type: 3}
+  interactButton: {fileID: 0}
+  buttonParent: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
