@@ -1253,6 +1253,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -1382,70 +1383,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515713fade637bd448a76ebfa5ee910f, type: 3}
---- !u!1 &2028162820
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2028162821}
-  - component: {fileID: 2028162822}
-  - component: {fileID: 2028162823}
-  m_Layer: 0
-  m_Name: UserSession
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2028162821
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028162820}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.760092, y: 446.53928, z: -12.223707}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2028162822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028162820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 049d1f70d18e894448202145ea66603e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLoged: 0
-  sheetRowNumber: 0
-  cells: []
---- !u!114 &2028162823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028162820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b50227592327354ebde932994fe96aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeActual: 
-  tiempoInicial: 0
-  tiempo: 0
-  login: 0
 --- !u!4 &293742984323624042
 Transform:
   m_ObjectHideFlags: 0
@@ -3139,7 +3076,7 @@ PrefabInstance:
     - target: {fileID: 8165282431643686922, guid: 19a5c6c801b91454aab4e792d4d95d66,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8474792614018111225, guid: 19a5c6c801b91454aab4e792d4d95d66,
         type: 3}
@@ -3484,4 +3421,3 @@ SceneRoots:
   - {fileID: 4299012732884871463}
   - {fileID: 750137319}
   - {fileID: 543450653496677198}
-  - {fileID: 2028162821}
