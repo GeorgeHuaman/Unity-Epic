@@ -22,7 +22,7 @@ public class FragLinea : MonoBehaviour
             completed = true;
             FinalQuest.instance.AreAllComplete();
             pickUp.Release();
-            interactable.enabled = false;
+            interactable.Disable();
         }
     }
 
