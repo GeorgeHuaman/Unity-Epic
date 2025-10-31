@@ -174,6 +174,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -323,6 +324,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -464,6 +466,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 152915469}
+    - targetCorrespondingSourceObject: {fileID: 148134813757665273, guid: b423e02e6544e40428092314c689c90d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 152915472}
+    - targetCorrespondingSourceObject: {fileID: 6690309793818984216, guid: b423e02e6544e40428092314c689c90d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 152915471}
   m_SourcePrefab: {fileID: 100100000, guid: b423e02e6544e40428092314c689c90d, type: 3}
 --- !u!4 &152915466 stripped
 Transform:
@@ -474,6 +484,12 @@ Transform:
 --- !u!1 &152915467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b423e02e6544e40428092314c689c90d,
+    type: 3}
+  m_PrefabInstance: {fileID: 152915465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &152915468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6690309793818984216, guid: b423e02e6544e40428092314c689c90d,
     type: 3}
   m_PrefabInstance: {fileID: 152915465}
   m_PrefabAsset: {fileID: 0}
@@ -497,6 +513,56 @@ MonoBehaviour:
   quantityNeedle: 6
   interactable: {fileID: 363907378}
   interactableFinal: {fileID: 955267985}
+--- !u!1 &152915470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 148134813757665273, guid: b423e02e6544e40428092314c689c90d,
+    type: 3}
+  m_PrefabInstance: {fileID: 152915465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &152915471
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152915468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5809736609246510721, guid: b423e02e6544e40428092314c689c90d, type: 3}
+--- !u!64 &152915472
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152915470}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4062184845725542456, guid: b423e02e6544e40428092314c689c90d, type: 3}
 --- !u!4 &177169530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dfb24b7ffda731641943322d9390959e,
@@ -1335,6 +1401,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -1788,6 +1855,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -2414,6 +2482,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -2653,6 +2722,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -2729,6 +2799,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -2898,6 +2969,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -4143,6 +4215,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -4419,6 +4492,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1022135032}
+    - targetCorrespondingSourceObject: {fileID: 148134813757665273, guid: b423e02e6544e40428092314c689c90d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1022135035}
+    - targetCorrespondingSourceObject: {fileID: 6690309793818984216, guid: b423e02e6544e40428092314c689c90d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1022135034}
   m_SourcePrefab: {fileID: 100100000, guid: b423e02e6544e40428092314c689c90d, type: 3}
 --- !u!1 &1022135029 stripped
 GameObject:
@@ -4429,6 +4510,12 @@ GameObject:
 --- !u!4 &1022135030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b423e02e6544e40428092314c689c90d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1022135028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1022135031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6690309793818984216, guid: b423e02e6544e40428092314c689c90d,
     type: 3}
   m_PrefabInstance: {fileID: 1022135028}
   m_PrefabAsset: {fileID: 0}
@@ -4452,6 +4539,56 @@ MonoBehaviour:
   quantityNeedle: 3
   interactable: {fileID: 2069626891}
   interactableFinal: {fileID: 1817496217}
+--- !u!1 &1022135033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 148134813757665273, guid: b423e02e6544e40428092314c689c90d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1022135028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1022135034
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022135031}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5809736609246510721, guid: b423e02e6544e40428092314c689c90d, type: 3}
+--- !u!64 &1022135035
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022135033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4062184845725542456, guid: b423e02e6544e40428092314c689c90d, type: 3}
 --- !u!1 &1045698036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5913068023555347262, guid: 4f1e40973c183424c8118215fc3ffb92,
@@ -5188,6 +5325,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -6698,6 +6836,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9063813870456171174, guid: 7458aa3d20e4c7242af5ce3980565250,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6835,6 +6978,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -7108,6 +7252,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -7516,6 +7661,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -7852,6 +7998,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -7942,6 +8089,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:

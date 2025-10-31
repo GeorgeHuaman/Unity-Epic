@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_CellSize: {x: 299.01, y: 159.5}
   m_Spacing: {x: 132.43, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 4
+  m_ConstraintCount: 3
 --- !u!114 &135787579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1958,7 +1958,6 @@ MonoBehaviour:
   temaList:
   - {fileID: 276829271}
   - {fileID: 1211324444}
-  - {fileID: 626524714}
   - {fileID: 859789726}
   parent: {fileID: 135787576}
   prefab: {fileID: 3803742543020922325, guid: 81dd816a78faaeb4c8a058ac45e26d27, type: 3}
@@ -2315,11 +2314,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2098430924746285268, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098430924746285268, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d15f0170fb745d54380c13a992d7a69d,
+        type: 3}
     - target: {fileID: 2683700145612709082, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1198338469}
+    - target: {fileID: 2683700145612709082, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Marie curi
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778865582889327691, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Name
+      value: Sala Da Vinci
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839337242832014362, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Name
+      value: Socrates
+      objectReference: {fileID: 0}
     - target: {fileID: 5160252610909181757, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_IsActive
@@ -2335,11 +2360,42 @@ PrefabInstance:
       propertyPath: m_TargetDisplay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5322761711099335447, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_text
+      value: Sala Socrates
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493359599147729017, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_text
+      value: Sala Marie Curi
+      objectReference: {fileID: 0}
     - target: {fileID: 5651821035533332506, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1198338469}
+    - target: {fileID: 5651821035533332506, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Da Vinci
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748182778071600555, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748182778071600555, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56675c585cce5944b837e08f6b06de92,
+        type: 3}
+    - target: {fileID: 7336498776196480450, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_text
+      value: Sala Da Vinci
+      objectReference: {fileID: 0}
     - target: {fileID: 7347735160739265207, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2355,6 +2411,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1198338469}
+    - target: {fileID: 8446257688685870185, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446257688685870185, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58878f2ee87d4c649b3b353fc006fb7b,
+        type: 3}
     - target: {fileID: 8603719264670128193, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2455,6 +2522,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8674697838330871299, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_Name
+      value: Marie Curi
+      objectReference: {fileID: 0}
     - target: {fileID: 8705078646747997505, guid: f04879c0abd63e649b9af47253168996,
         type: 3}
       propertyPath: temas
@@ -2510,6 +2582,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1198338469}
+    - target: {fileID: 8891287765519801691, guid: f04879c0abd63e649b9af47253168996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Socrates
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8292,6 +8369,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -9559,6 +9637,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -13774,6 +13853,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -15876,6 +15956,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -24049,6 +24130,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 093b3150a813e9843be6f58d679b1073, type: 2}
   - {fileID: 11400000, guid: 9599c6906e35f794f878a4472be4dd7b, type: 2}
   - {fileID: 11400000, guid: 6dad5100e0bdd5d47a1a69150fc333a2, type: 2}
+  - {fileID: 11400000, guid: 64c9b714361392c47b6981b2c476871c, type: 2}
+  - {fileID: 11400000, guid: e67e309434fc9354eb99aedd03618385, type: 2}
   parent: {fileID: 1430985116}
   prefab: {fileID: 3803742543020922325, guid: 81dd816a78faaeb4c8a058ac45e26d27, type: 3}
 --- !u!1 &1439336599
@@ -28221,6 +28304,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -30181,6 +30265,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:

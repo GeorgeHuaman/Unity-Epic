@@ -9,7 +9,7 @@ public class FragLinea : MonoBehaviour
     public PickHistory pickUp;
     public Transform pos;
     public float moveSpeed = 3f;
-    [HideInInspector] public bool completed;
+    public bool completed;
     public Interactable interactable;
     public void TryPlaceObject()
     {

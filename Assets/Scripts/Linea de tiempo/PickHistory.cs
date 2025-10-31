@@ -18,17 +18,15 @@ public class PickHistory : MonoBehaviour
         if (currentObject != null)
             return;
 
-        Debug.LogError("1");
         HistoryType typeObj = obj.GetComponent<HistoryType>();
         currentObject = obj;
         interactable = currentObject.GetComponent<Interactable>();
-        interactable.enabled = false;
+        interactable.Disable();
         isMoving = true;
 
         objectName.text = "Seleccionado: " + typeObj.letter.name;
         if (typeObj != null)
         {
-            Debug.LogError("2");
             currentType = typeObj.type;
             Debug.Log($"Agarraste un {currentType}: {obj.name}");
         }

@@ -76,8 +76,10 @@ public class Mission : MonoBehaviour
         //progressLevelSystem.UpdatePercentage(this.tasks[taskId].percentage);
         TryStartNextTask();
 
+        Debug.Log("3");
         if (!completed && tasks.TrueForAll(t => t.completed))
         {
+            Debug.Log("1");
             completed = true;
             onMissionComplete?.Invoke();
         }

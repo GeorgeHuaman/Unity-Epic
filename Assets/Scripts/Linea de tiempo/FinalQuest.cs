@@ -21,6 +21,6 @@ public class FinalQuest : MonoBehaviour
                 return;
         }
 
-        interactFinal.tasks[0].CompleteTask();
+        interactFinal.CompleteTask(0);
     }
 }
