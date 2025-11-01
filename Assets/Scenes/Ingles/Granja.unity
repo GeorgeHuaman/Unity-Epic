@@ -2181,6 +2181,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -2412,6 +2413,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -5220,6 +5222,42 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7458aa3d20e4c7242af5ce3980565250, type: 3}
+--- !u!114 &476633573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1577999118356052670, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 476633572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &476633574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8157121796699397769, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 476633572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &476633575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7969921145720175100, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 476633572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &477839128
 GameObject:
   m_ObjectHideFlags: 0
@@ -13331,6 +13369,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769694962728436624, guid: 515713fade637bd448a76ebfa5ee910f,
+        type: 3}
+      propertyPath: buttonJump
+      value: 
+      objectReference: {fileID: 476633573}
+    - target: {fileID: 2769694962728436624, guid: 515713fade637bd448a76ebfa5ee910f,
+        type: 3}
+      propertyPath: joystickDigital
+      value: 
+      objectReference: {fileID: 476633574}
     - target: {fileID: 3615620605639120870, guid: 515713fade637bd448a76ebfa5ee910f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13386,6 +13434,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4909430786510113770, guid: 515713fade637bd448a76ebfa5ee910f,
+        type: 3}
+      propertyPath: joystickDigital
+      value: 
+      objectReference: {fileID: 476633575}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13706,6 +13759,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -14224,6 +14278,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -15089,6 +15144,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 1796857920}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -17876,6 +17932,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -19345,6 +19402,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -20014,6 +20072,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
