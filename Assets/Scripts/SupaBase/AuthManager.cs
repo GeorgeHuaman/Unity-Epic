@@ -22,7 +22,7 @@ public class AuthManager : MonoBehaviour
             var client = SupabaseInit.supabaseClient;
             if (client == null)
             {
-                Debug.LogError("SupabaseClient no inicializado. Inicializa Supabase antes de usar AuthManager.");
+                Debug.LogError("SupabaseClient no inicializado.");
                 return false;
             }
 
@@ -31,27 +31,22 @@ public class AuthManager : MonoBehaviour
             if (session?.User != null)
             {
                 Debug.Log($"Logeado: {session.User.Id} ({session.User.Email})");
-                //_ = UsersService.instance.LoadProfileAsync();
-                onLoginSuccess?.Invoke();
-                //_ = TopicProgressService.Instance.LoadProgressForDefaultTopicAsync();
                 return true;
             }
             else
             {
-                Debug.LogWarning("SignIn no devolvió sesión/usuario. Credenciales inválidas o respuesta inesperada.");
-                onLoginFailure?.Invoke();
+                Debug.LogWarning("SignIn no devolvió sesión/usuario.");
                 return false;
             }
         }
         catch (BadRequestException)
         {
             Debug.LogWarning("Email o contraseña incorrectos.");
-            onLoginFailure?.Invoke();
             return false;
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Error inesperado en SignIn: {ex.Message}");
+            Debug.LogError($"Error inesperado en SignIn: {ex}");
             return false;
         }
     }
@@ -72,14 +67,24 @@ public class AuthManager : MonoBehaviour
     {
         string user = cuentaInput.text.Trim();
         string pass = passwordInput.text.Trim();
+
+        // opcional: bloquear botón/UI aquí para evitar multi-click
         bool ok = await SignIn(user, pass);
+
         if (ok)
         {
             Debug.Log("OnSignInButton: login exitoso.");
+
+            // Invocar evento en el hilo Unity
+            onLoginSuccess?.Invoke();
+
+            // o cargar la escena directamente desde aquí usando LoadSceneAsync:
+            // SceneManager.LoadSceneAsync("NombreDeLaEscena");
         }
         else
         {
             Debug.Log("OnSignInButton: credenciales inválidas o error.");
+            onLoginFailure?.Invoke();
         }
     }
 }
