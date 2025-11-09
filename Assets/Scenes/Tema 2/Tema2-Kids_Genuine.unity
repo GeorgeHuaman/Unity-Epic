@@ -645,6 +645,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -1851,6 +1852,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -2022,6 +2024,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -3000,6 +3003,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -3043,6 +3047,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -3086,6 +3091,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -3474,6 +3480,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -4073,6 +4080,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -4104,6 +4112,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -4797,6 +4806,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -5106,6 +5116,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -5302,6 +5313,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -5575,6 +5587,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -6339,6 +6352,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -7021,6 +7035,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:
@@ -7075,6 +7090,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769694962728436624, guid: 515713fade637bd448a76ebfa5ee910f,
+        type: 3}
+      propertyPath: buttonJump
+      value: 
+      objectReference: {fileID: 2061573312}
+    - target: {fileID: 2769694962728436624, guid: 515713fade637bd448a76ebfa5ee910f,
+        type: 3}
+      propertyPath: joystickDigital
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3615620605639120870, guid: 515713fade637bd448a76ebfa5ee910f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7175,6 +7200,18 @@ Transform:
   - {fileID: 928394483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2061573312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1577999118356052670, guid: 7458aa3d20e4c7242af5ce3980565250,
+    type: 3}
+  m_PrefabInstance: {fileID: 214174280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2065963459
 GameObject:
   m_ObjectHideFlags: 0
@@ -7330,6 +7367,7 @@ MonoBehaviour:
   player: {fileID: 0}
   inputButton: 0
   animator: {fileID: 0}
+  disable: 0
   iconType: 0
   onEnterEvent:
     m_PersistentCalls:

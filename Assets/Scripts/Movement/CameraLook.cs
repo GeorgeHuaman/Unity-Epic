@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 public class CameraLook : MonoBehaviour
 {
@@ -20,7 +21,12 @@ public class CameraLook : MonoBehaviour
 
     public Transform playerBody;
 
-    
+    private void Start()
+    {
+        // Buscar joystick si no está asignado
+        if (joystickDigital == null)
+            joystickDigital = FindInactiveObjectByName<Joystick>("Fixed Joystick Rotate");
+    }
     void Update()
     {
         if (!GameManager.Instance.GetBoolCursorLocked())
@@ -66,5 +72,34 @@ public class CameraLook : MonoBehaviour
     {
         return Application.platform == RuntimePlatform.Android ||
                Application.platform == RuntimePlatform.IPhonePlayer;
+    }
+
+    T FindInactiveObjectByName<T>(string name) where T : Component
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        GameObject[] rootObjects = scene.GetRootGameObjects();
+
+        foreach (GameObject root in rootObjects)
+        {
+            T found = FindInChildren<T>(root.transform, name);
+            if (found != null)
+                return found;
+        }
+
+        return null;
+    }
+    T FindInChildren<T>(Transform parent, string name) where T : Component
+    {
+        if (parent.name == name && parent.TryGetComponent(out T comp))
+            return comp;
+
+        foreach (Transform child in parent)
+        {
+            T result = FindInChildren<T>(child, name);
+            if (result != null)
+                return result;
+        }
+
+        return null;
     }
 }

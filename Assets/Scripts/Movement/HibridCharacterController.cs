@@ -1,7 +1,8 @@
+using Google.Apis.Sheets.v4.Data;
 using System.Collections;
 using System.Collections.Generic;
-using Google.Apis.Sheets.v4.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
@@ -33,11 +34,19 @@ public class HibridCharacterController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        if (buttonJump != null )
-        {
+        // Buscar joystick si no está asignado
+        if (joystickDigital == null)
+            joystickDigital = FindInactiveObjectByName<Joystick>("Fixed Joystick Move");
+
+        // Buscar botón de salto si no está asignado
+        if (buttonJump == null)
+            buttonJump = FindInactiveObjectByName<Button>("ButtonJump");
+
+        // Asignar evento de salto
+        if (buttonJump != null)
             buttonJump.onClick.AddListener(Jump);
-        }
-        
+        else
+            Debug.LogWarning("No se encontró el botón 'ButtonJump'.");
 
         if (cameraTransform == null && Camera.main != null)
             cameraTransform = Camera.main.transform;
@@ -96,8 +105,8 @@ public class HibridCharacterController : MonoBehaviour
     {
         if (GetComponent<CharacterController>().enabled)
         {
-            float inputX = Input.GetAxis("Horizontal") /*+ joystickDigital.Horizontal*/;
-            float inputZ = Input.GetAxis("Vertical")/* + joystickDigital.Vertical*/;
+            float inputX = Input.GetAxis("Horizontal") + joystickDigital.Horizontal;
+            float inputZ = Input.GetAxis("Vertical") + joystickDigital.Vertical;
 
 
             Vector3 move = playerBody.forward * inputZ + playerBody.right * inputX;
@@ -178,4 +187,32 @@ public class HibridCharacterController : MonoBehaviour
         }
     }
 
+    T FindInactiveObjectByName<T>(string name) where T : Component
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        GameObject[] rootObjects = scene.GetRootGameObjects();
+
+        foreach (GameObject root in rootObjects)
+        {
+            T found = FindInChildren<T>(root.transform, name);
+            if (found != null)
+                return found;
+        }
+
+        return null;
+    }
+    T FindInChildren<T>(Transform parent, string name) where T : Component
+    {
+        if (parent.name == name && parent.TryGetComponent(out T comp))
+            return comp;
+
+        foreach (Transform child in parent)
+        {
+            T result = FindInChildren<T>(child, name);
+            if (result != null)
+                return result;
+        }
+
+        return null;
+    }
 }

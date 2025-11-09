@@ -11,7 +11,7 @@ public class QualityGraphics : MonoBehaviour
     void Start()
     {
         qualityNames = QualitySettings.names;
-        quality = PlayerPrefs.GetInt("intQuality", 3);
+        quality = PlayerPrefs.GetInt("intQuality", 1);
         quality = Mathf.Clamp(quality, 0, qualityNames.Length - 1);
         UpdateQualityUI();
 
