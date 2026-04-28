@@ -23,7 +23,7 @@ public class Mission : MonoBehaviour
 
     private void Start()
     {
-        progressLevelSystem = ProgressLevelSystem.instance;
+        //progressLevelSystem = ProgressLevelSystem.instance;
         if (startAutomatically)
         {
             StartMission();

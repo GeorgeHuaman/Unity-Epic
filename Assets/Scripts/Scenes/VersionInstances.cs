@@ -17,37 +17,37 @@ public class VersionInstances : MonoBehaviour
     public Image cartelImage;
     public Texture2D[] cartelTexture;
     // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
-        if (_assetReferenceOne != null)
-        {
-            var asyncReferencOne = _assetReferenceOne.LoadAssetAsync<GameObject>();
-        }
-        if (_assetReferenceTwo != null)
-        {
-            var asyncReferenctwo = _assetReferenceTwo.LoadAssetAsync<GameObject>();
-        }
-        version = ProgressLevelSystem.instance.currentNpcsNumber;
-        index = ProgressLevelSystem.instance.currentCartelIndex-1;
-        Instance();
-        SetCartel(index);
-    }
-    public void Instance()
-    { 
-        switch(version)
-        {
-            case 0:
-                _assetReferenceOne.InstantiateAsync();
-                break;
-            case 1:
-                _assetReferenceTwo.InstantiateAsync();
-                break;
-            case 2:
-                Debug.Log("Escena sin Npcs");
-                break;
-        }
-    }
+    //void Start()
+    //{
+    //    instance = this;
+    //    if (_assetReferenceOne != null)
+    //    {
+    //        var asyncReferencOne = _assetReferenceOne.LoadAssetAsync<GameObject>();
+    //    }
+    //    if (_assetReferenceTwo != null)
+    //    {
+    //        var asyncReferenctwo = _assetReferenceTwo.LoadAssetAsync<GameObject>();
+    //    }
+    //    //version = ProgressLevelSystem.instance.currentNpcsNumber;
+    //    //index = ProgressLevelSystem.instance.currentCartelIndex-1;
+    //    Instance();
+    //    SetCartel(index);
+    //}
+    //public void Instance()
+    //{ 
+    //    switch(version)
+    //    {
+    //        case 0:
+    //            _assetReferenceOne.InstantiateAsync();
+    //            break;
+    //        case 1:
+    //            _assetReferenceTwo.InstantiateAsync();
+    //            break;
+    //        case 2:
+    //            Debug.Log("Escena sin Npcs");
+    //            break;
+    //    }
+    //}
     public void SetCartel(int index)
     {
         // Convierte la textura en un sprite
